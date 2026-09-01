@@ -260,19 +260,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      <div className="p-2 sm:p-2.5 flex flex-col flex-grow min-h-0">
+      <div className="p-2.5 flex flex-col flex-grow min-h-0">
         <div className="flex items-start justify-between gap-1 mb-0.5">
-          <h3 className="font-sora text-[11px] sm:text-xs font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1 leading-tight">
+          <h3 className="font-sora text-xs font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1 leading-tight">
             {project.name}
           </h3>
-          <ArrowUpRight className="w-3 h-3 text-white/40 group-hover:text-blue-400 shrink-0" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-blue-400 shrink-0" />
         </div>
 
-        <p className="font-inter text-[10px] text-white/45 line-clamp-1 mb-1 leading-snug">
+        <p className="font-inter text-[10px] sm:text-[11px] text-white/45 line-clamp-1 mb-1.5 leading-snug">
           {project.description}
         </p>
 
-        <div className="flex items-center justify-between gap-1 mb-1 min-h-[20px] relative z-30">
+        <div className="flex items-center justify-between gap-1 mb-1.5 min-h-[22px] relative z-30">
           <div className="flex flex-wrap items-center gap-1 min-w-0">
             {displayTags.map((tag, idx) => (
               <span
@@ -323,18 +323,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center text-[9px] font-mono text-white/50 mb-1 px-0.5">
+        <div className="flex items-center text-[9px] sm:text-[10px] font-mono text-white/50 mb-1.5 px-0.5">
           <span className="w-1 h-1 rounded-full bg-emerald-400 shrink-0 mr-1" />
           <span className="truncate text-blue-300/80">
             {githubSynced ? t(statLabelKey, { count: statCount.toLocaleString() }) : '…'}
           </span>
         </div>
 
-        <div className="mt-auto pt-1 border-t border-white/5 -mx-2 sm:-mx-2.5 px-2 sm:px-2.5 pb-1.5 sm:pb-2">
+        <div className="mt-auto pt-1.5 border-t border-white/5 -mx-2.5 px-2.5 pb-2">
           {project.projectType === 'web_game' ? (
             <button
               onClick={handleOpenLiveDemo}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-2 py-1 rounded-md text-[10px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
               title={t('projectCard.playOnlineTitle', { name: project.name })}
             >
               <Gamepad2 className="w-3 h-3 shrink-0" />
@@ -343,7 +343,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : project.projectType === 'web_app' ? (
             <button
               onClick={handleOpenLiveDemo}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-2 py-1 rounded-md text-[10px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+              className="bg-blue-600 hover:bg-blue-500 text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
               title={t('projectCard.openWebAppTitle', { name: project.name })}
             >
               <Globe className="w-3 h-3 shrink-0" />
@@ -352,7 +352,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : project.projectType === 'browser_extension' ? (
             <button
               onClick={handleOpenLiveDemo}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1 rounded-md text-[10px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+              className="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
               title={t('projectCard.chromeStoreTitle')}
             >
               <ExternalLink className="w-3 h-3 shrink-0" />
@@ -365,7 +365,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 e.stopPropagation();
                 onSelect(project);
               }}
-              className="bg-[#1a203b] hover:bg-[#242c52] text-white border border-[#29345e] px-2 py-1 rounded-md text-[10px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+              className="bg-[#1a203b] hover:bg-[#242c52] text-white border border-[#29345e] px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
             >
               <ArrowUpRight className="w-3 h-3 shrink-0" />
               <span className="truncate">{t('projectCard.viewDetails')}</span>

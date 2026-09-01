@@ -26,5 +26,5 @@ export function getProjectGalleryImages(images: string[]): string[] {
   });
 }
 
-/** Hub grid thumbnail ratio — balanced between height and readability. */
-export const PROJECT_CARD_ASPECT = 'aspect-[3/2]' as const;
+/** Hub grid thumbnail ratio — between compact and square. */
+export const PROJECT_CARD_ASPECT = 'aspect-[4/3]' as const;
