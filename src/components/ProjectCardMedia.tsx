@@ -63,7 +63,7 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
         onError={handleError}
         className={`absolute inset-0 w-full h-full transition-transform duration-700 ease-out ${
           isBrand
-            ? `object-contain p-3 sm:p-4 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
+            ? `object-contain p-2 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
             : `object-cover object-center ${isHovered ? 'scale-[1.08]' : 'scale-100'}`
         }`}
         loading="lazy"

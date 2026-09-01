@@ -27,4 +27,4 @@ export function getProjectGalleryImages(images: string[]): string[] {
 }
 
 /** Compact square frame for logo previews on the hub grid. */
-export const PROJECT_CARD_ASPECT = 'aspect-square' as const;
+export const PROJECT_CARD_ASPECT = 'aspect-[4/3]' as const;

@@ -371,8 +371,8 @@ export default function App() {
       ) : (
         <main className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24">
           {/* Hero Section — compact on desktop so project grid is visible above the fold */}
-          <section className="py-4 sm:py-5 md:py-4 lg:py-5 flex flex-col items-center text-center px-2">
-            <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black mb-1.5 md:mb-2 text-white tracking-tight max-w-4xl leading-tight">
+          <section className="py-3 sm:py-4 md:py-3 flex flex-col items-center text-center px-2">
+            <h1 className="font-sora text-2xl sm:text-3xl md:text-[2rem] lg:text-4xl font-black mb-1 md:mb-1.5 text-white tracking-tight max-w-4xl leading-tight">
               <span className="inline-flex items-center justify-center flex-wrap gap-x-1">
                 <span>
                   n<span className="text-blue-500">R</span>nW
@@ -384,11 +384,11 @@ export default function App() {
               </span>
             </h1>
 
-            <p className="font-inter text-sm md:text-[15px] text-white/60 max-w-2xl mx-auto leading-snug px-2">
+            <p className="font-inter text-xs sm:text-sm text-white/60 max-w-2xl mx-auto leading-snug px-2">
               {t('hub.subtitle')}
             </p>
 
-            <div className="mt-3 md:mt-3.5 w-full max-w-3xl flex flex-col sm:flex-row items-stretch justify-center gap-2.5 sm:gap-3 px-1">
+            <div className="mt-2.5 md:mt-3 w-full max-w-3xl flex flex-col sm:flex-row items-stretch justify-center gap-2 sm:gap-2.5 px-1">
               <div className="flex items-center justify-center gap-2.5 bg-[#0e1626] px-3 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/40 font-mono text-xs text-white/70 shrink-0">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
                   <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -422,7 +422,7 @@ export default function App() {
           </section>
 
           {/* Search & Filter Bar Section */}
-          <section className="mb-4 md:mb-5">
+          <section className="mb-3 md:mb-4">
             <div className="bg-[#121212] rounded-2xl p-3 md:p-3.5 flex flex-col gap-2.5 md:gap-3 max-w-5xl mx-auto border border-white/5 shadow-xl shadow-black/50 overflow-hidden">
               {/* Search input */}
               <div className="relative w-full min-w-0">
@@ -548,7 +548,7 @@ export default function App() {
               </button>
             </div>
           ) : (
-            <section className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
+            <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-2 md:gap-2.5 lg:gap-3">
               {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
