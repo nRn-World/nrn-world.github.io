@@ -107,6 +107,8 @@ export const svUi = deepMerge(enUi, {
     githubRepo: 'GitHub-repo',
     contributeGithub: 'Bidra på GitHub',
     contributeTitle: 'Forka och bidra till {name} på GitHub',
+    contributeInvite:
+      'Vill du vara med och utveckla projektet? Hoppa gärna in — jag blir jätteglad för din hjälp, och varje bidrag uppskattas och syns.',
     sourceCode: 'Källkod (GitHub-repository)',
     systemRequirements: 'Systemkrav:',
     fileDownloadCount: '{count} nedladdningar',

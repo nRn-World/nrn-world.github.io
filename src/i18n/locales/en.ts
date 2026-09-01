@@ -122,6 +122,8 @@ export const enUi: TranslationDictionary = {
     githubRepo: 'GitHub Repo',
     contributeGithub: 'Contribute on GitHub',
     contributeTitle: 'Fork and contribute to {name} on GitHub',
+    contributeInvite:
+      'Want to help build this project? You\'re very welcome to join — I\'d love your help, and every contribution is truly appreciated.',
     screenshotAlt: '{name} Screenshot',
     expand: 'Expand',
     thumbnailAlt: 'Thumbnail {index}',

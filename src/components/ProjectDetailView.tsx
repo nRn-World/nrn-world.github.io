@@ -584,16 +584,21 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
               {/* Extra Documentation & GitHub actions */}
               <div className="pt-4 border-t border-white/5 flex flex-col gap-3 font-mono text-xs">
-                <a
-                  href={getGithubContributeUrl(project.githubUrl)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full p-2.5 rounded-lg flex items-center justify-center gap-2 transition-all font-mono text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-300 cursor-pointer"
-                  title={t('detail.contributeTitle', { name: project.name })}
-                >
-                  <GitFork className="w-4 h-4" />
-                  <span>{t('detail.contributeGithub')}</span>
-                </a>
+                <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] p-3.5 flex flex-col gap-2.5">
+                  <p className="font-inter text-[11px] sm:text-xs text-white/65 leading-relaxed text-center sm:text-left">
+                    {t('detail.contributeInvite')}
+                  </p>
+                  <a
+                    href={getGithubContributeUrl(project.githubUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full p-2.5 rounded-lg flex items-center justify-center gap-2 transition-all font-mono text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-300 cursor-pointer"
+                    title={t('detail.contributeTitle', { name: project.name })}
+                  >
+                    <GitFork className="w-4 h-4" />
+                    <span>{t('detail.contributeGithub')}</span>
+                  </a>
+                </div>
 
                 <button
                   onClick={() => onToggleStar && onToggleStar(project)}
