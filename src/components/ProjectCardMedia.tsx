@@ -11,7 +11,6 @@ interface ProjectCardMediaProps {
   projectName: string;
   isHovered: boolean;
   previewAlt: (index: number) => string;
-  fillHeight?: boolean;
 }
 
 export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
@@ -19,7 +18,6 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
   projectName,
   isHovered,
   previewAlt,
-  fillHeight = false,
 }) => {
   const [failedCover, setFailedCover] = useState(false);
 
@@ -29,14 +27,10 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
     setFailedCover(true);
   }, []);
 
-  const frameClass = fillHeight
-    ? `relative w-full ${PROJECT_CARD_ASPECT} xl:h-full xl:min-h-0 xl:aspect-auto overflow-hidden bg-[#0a0e14] border-b border-white/5`
-    : `relative w-full ${PROJECT_CARD_ASPECT} overflow-hidden bg-[#0a0e14] border-b border-white/5`;
-
   if (!coverSrc || failedCover) {
     return (
       <div
-        className={`${frameClass} bg-gradient-to-br from-[#141a24] to-[#0a0e14] flex items-center justify-center`}
+        className={`relative w-full ${PROJECT_CARD_ASPECT} overflow-hidden bg-gradient-to-br from-[#141a24] to-[#0a0e14] border-b border-white/5 flex items-center justify-center`}
       >
         <Monitor className="w-8 h-8 text-white/15" aria-hidden />
         <span className="sr-only">{projectName}</span>
@@ -47,7 +41,9 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
   const isBrand = isBrandStyleImage(coverSrc) || coverSrc.includes('opengraph.githubassets.com');
 
   return (
-    <div className={frameClass}>
+    <div
+      className={`relative w-full ${PROJECT_CARD_ASPECT} overflow-hidden bg-[#0a0e14] border-b border-white/5`}
+    >
       <img
         src={coverSrc}
         alt=""
@@ -67,7 +63,7 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
         onError={handleError}
         className={`absolute inset-0 w-full h-full transition-transform duration-700 ease-out ${
           isBrand
-            ? `object-contain p-2 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
+            ? `object-contain p-2.5 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
             : `object-cover object-center ${isHovered ? 'scale-[1.08]' : 'scale-100'}`
         }`}
         loading="lazy"

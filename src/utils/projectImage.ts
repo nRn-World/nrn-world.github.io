@@ -26,5 +26,5 @@ export function getProjectGalleryImages(images: string[]): string[] {
   });
 }
 
-/** Compact square frame for logo previews on the hub grid. */
-export const PROJECT_CARD_ASPECT = 'aspect-[4/3]' as const;
+/** Hub grid thumbnail ratio — balanced between height and readability. */
+export const PROJECT_CARD_ASPECT = 'aspect-[3/2]' as const;
