@@ -1,0 +1,6 @@
+{
+  "name": "nRnWorld",
+  "description": "Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
