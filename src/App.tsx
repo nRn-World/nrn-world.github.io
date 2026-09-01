@@ -13,6 +13,11 @@ import { SavedProjectsDrawer } from './components/SavedProjectsDrawer';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
+import {
+  findProjectBySlug,
+  getProjectPath,
+  getSlugFromLocation,
+} from './utils/projectSlug';
 import { GitHubActivityStatus } from './components/GitHubActivityStatus';
 import { useI18n, useLocalizedProjects } from './i18n/context';
 import { Search, Filter, Monitor, Smartphone, Wrench, Shield, Star, Download, FolderArchive, ArrowUpDown, Globe, Github, CheckCircle2 } from 'lucide-react';
@@ -160,35 +165,49 @@ export default function App() {
     }
   }, [starredProjectIds]);
 
-  // Sync hash routing (e.g. #nexus-core-modeler)
+  // Path routing (e.g. /thesilentroom1986)
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash) {
-        const found = projects.find((p) => p.id === hash);
+    const syncRoute = () => {
+      const legacyHash = window.location.hash.replace('#', '').trim();
+      if (legacyHash) {
+        const fromHash = findProjectBySlug(projects, legacyHash) ?? projects.find((p) => p.id === legacyHash);
+        if (fromHash) {
+          const path = getProjectPath(fromHash);
+          history.replaceState(null, '', path);
+          setSelectedProject(fromHash);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      }
+
+      const slug = getSlugFromLocation();
+      if (slug) {
+        const found = findProjectBySlug(projects, slug);
         if (found) {
           setSelectedProject(found);
           window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
         }
-      } else {
-        setSelectedProject(null);
+        history.replaceState(null, '', '/');
       }
+
+      setSelectedProject(null);
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    syncRoute();
+    window.addEventListener('popstate', syncRoute);
+    return () => window.removeEventListener('popstate', syncRoute);
   }, [projects]);
 
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
-    window.location.hash = project.id;
+    history.pushState(null, '', getProjectPath(project));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToHub = () => {
     setSelectedProject(null);
-    history.pushState('', document.title, window.location.pathname + window.location.search);
+    history.pushState(null, '', '/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
