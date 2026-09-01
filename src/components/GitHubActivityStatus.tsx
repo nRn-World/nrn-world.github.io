@@ -11,7 +11,7 @@ const LEVEL_COLORS: Record<number, string> = {
   4: '#39d353',
 };
 
-const WEEKS_TO_SHOW = 26;
+const WEEKS_TO_SHOW = 22;
 
 interface GitHubActivityStatusProps {
   login: string;
@@ -44,18 +44,18 @@ export const GitHubActivityStatus: React.FC<GitHubActivityStatusProps> = ({
       href={`https://github.com/${login}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center gap-3 sm:gap-4 bg-[#0d1117] hover:bg-[#111820] border border-white/10 hover:border-white/20 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 transition-all shadow-lg shadow-black/30 w-full h-full min-h-[52px]"
+      className="group flex items-center gap-2.5 sm:gap-3 bg-[#0d1117] hover:bg-[#111820] border border-white/10 hover:border-white/20 rounded-xl px-3 py-2 transition-all shadow-lg shadow-black/30 w-full h-full min-h-[48px]"
       title={t('hub.githubActivityTitle', {
         count: totalContributions.toLocaleString(),
         login,
       })}
     >
       <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0">
-        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
-          <Github className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-white" />
+        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
+          <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
         </div>
         <div className="min-w-0 text-left">
-          <div className="font-sora text-sm sm:text-base font-bold text-white truncate group-hover:text-blue-400 transition-colors">
+          <div className="font-sora text-sm font-bold text-white truncate group-hover:text-blue-400 transition-colors">
             {login}
           </div>
           <div className="font-mono text-[10px] sm:text-xs text-white/45">GitHub</div>
