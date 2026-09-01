@@ -142,3 +142,11 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* Desktop: first project row fills remaining viewport — full cards, no row 2 peek */
+@media (min-width: 1280px) and (min-height: 720px) {
+  .hub-project-grid > .hub-project-card {
+    min-height: calc(100dvh - 17.75rem);
+    max-height: calc(100dvh - 17.75rem);
+  }
+}
+
