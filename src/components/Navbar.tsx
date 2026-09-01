@@ -31,58 +31,60 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#0D0D0D] backdrop-blur-2xl border-b border-white/5">
-      <div className="flex justify-between items-center h-16 px-4 md:px-8 max-w-[1440px] mx-auto">
-        {/* Brand & Left Navigation */}
-        <div className="flex items-center gap-8">
+    <nav className="fixed top-0 w-full z-50 bg-[#0D0D0D]/95 backdrop-blur-2xl border-b border-white/5 safe-area-top">
+      <div className="flex justify-between items-center gap-2 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[1440px] mx-auto">
+        {/* Brand */}
+        <button
+          onClick={onResetView}
+          className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer min-w-0 shrink"
+        >
+          <img
+            src="/logo.gif"
+            alt="nRnWorld"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
+          />
+          <h1 className="text-lg sm:text-2xl font-black tracking-tighter text-white whitespace-nowrap leading-none">
+            <span className="hidden min-[380px]:inline">
+              n<span className="text-blue-500">R</span>n
+            </span>
+            <span className="min-[380px]:hidden">nRn</span>
+            <span className="text-white">
+              <span className="hidden sm:inline">{t('navbar.brandWorld')}</span>
+              <span className="sm:hidden">W</span>
+            </span>
+          </h1>
+        </button>
+
+        {/* Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/50 ml-4">
           <button
             onClick={onResetView}
-            className="flex items-center gap-3 text-left group cursor-pointer"
+            className={`pb-1 transition-colors cursor-pointer ${
+              activeView === 'hub'
+                ? 'text-white border-b-2 border-blue-500 font-semibold'
+                : 'hover:text-white'
+            }`}
           >
-            <img
-              src="/logo.gif"
-              alt="nRnWorld"
-              className="w-10 h-10 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform"
-            />
-            <h1 className="text-2xl font-black tracking-tighter text-white flex items-center">
-              <span>n<span className="text-blue-500">R</span>n</span>
-              <span className="inline-flex items-center ml-0.5">
-                {t('navbar.brandWorld')}
-              </span>
-            </h1>
+            {t('navbar.allProjects')}
           </button>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/50">
-            <button
-              onClick={onResetView}
-              className={`pb-1 transition-colors cursor-pointer ${
-                activeView === 'hub'
-                  ? 'text-white border-b-2 border-blue-500 font-semibold'
-                  : 'hover:text-white'
-              }`}
-            >
-              {t('navbar.allProjects')}
-            </button>
-            <button
-              onClick={onOpenDocs}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
-              {t('navbar.installationGuide')}
-            </button>
-            <button
-              onClick={onOpenConnect}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
-              {t('navbar.creatorNetwork')}
-            </button>
-          </nav>
-        </div>
+          <button
+            onClick={onOpenDocs}
+            className="hover:text-white transition-colors cursor-pointer"
+          >
+            {t('navbar.installationGuide')}
+          </button>
+          <button
+            onClick={onOpenConnect}
+            className="hover:text-white transition-colors cursor-pointer"
+          >
+            {t('navbar.creatorNetwork')}
+          </button>
+        </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Active Projects Counter Badge */}
-          <div className="hidden sm:flex items-center px-3.5 py-1.5 bg-white/5 rounded-full border border-white/10 text-xs text-white/70 font-mono">
+          <div className="hidden lg:flex items-center px-3.5 py-1.5 bg-white/5 rounded-full border border-white/10 text-xs text-white/70 font-mono">
             <span className="text-blue-400 font-bold mr-1.5">{allProjects.length}</span> {t('navbar.projects')}
           </div>
 
@@ -111,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="https://github.com/nRn-World?tab=repositories"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/80 border border-white/10 text-xs font-mono tracking-wider hover:border-blue-500/50 hover:text-blue-400 transition-all"
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/80 border border-white/10 text-xs font-mono tracking-wider hover:border-blue-500/50 hover:text-blue-400 transition-all"
             title={t('navbar.githubTitle')}
           >
             <Github className="w-3.5 h-3.5 text-white/70" />
@@ -121,12 +123,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Bookmarked / Saved Items */}
           <button
             onClick={onOpenSavedDrawer}
-            className="relative p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors cursor-pointer"
+            className="relative p-1.5 sm:p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors cursor-pointer shrink-0"
             title={t('navbar.saved')}
           >
             <Bookmark className="w-4 h-4" />
             {savedProjects.length > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-blue-600 text-white text-[10px] font-mono rounded-full flex items-center justify-center font-bold">
+              <span className="absolute -top-0.5 -right-0.5 min-w-[1rem] h-4 px-0.5 bg-blue-600 text-white text-[9px] font-mono rounded-full flex items-center justify-center font-bold leading-none ring-2 ring-[#0D0D0D]">
                 {savedProjects.length}
               </span>
             )}
@@ -134,10 +136,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <LanguageSwitcher />
 
-          {/* Connect Button */}
+          {/* Connect Button — desktop only; mobile uses hamburger menu */}
           <button
             onClick={onOpenConnect}
-            className="p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all text-xs font-bold px-4 flex items-center gap-2 cursor-pointer shadow-lg shadow-blue-900/20"
+            className="hidden md:flex p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all text-xs font-bold px-4 items-center gap-2 cursor-pointer shadow-lg shadow-blue-900/20"
           >
             {t('navbar.contact')}
           </button>
@@ -145,7 +147,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white/80 hover:bg-white/5 rounded-lg border border-white/5"
+            className="md:hidden p-1.5 sm:p-2 text-white/80 hover:bg-white/5 rounded-lg border border-white/5 shrink-0"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -193,6 +196,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Github className="w-4 h-4" />
               {t('navbar.mobileGithub')}
             </a>
+            <button
+              onClick={() => {
+                onOpenConnect();
+                setMobileMenuOpen(false);
+              }}
+              className="text-left text-white/70 hover:text-white py-1.5 text-sm"
+            >
+              {t('navbar.contact')}
+            </button>
             <button
               onClick={() => {
                 onOpenConnect();

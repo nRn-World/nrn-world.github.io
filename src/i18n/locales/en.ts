@@ -36,6 +36,7 @@ export const enUi: TranslationDictionary = {
     directZip: 'Direct .ZIP',
     playOnline: 'Play & open online',
     searchPlaceholder: "Search for projects, utilities, or tools (e.g. 'Nexus', '.zip', 'Android')...",
+    searchPlaceholderMobile: 'Search projects...',
     clear: 'Clear',
     format: 'Format:',
     showing: 'Showing {count} of {total} releases',

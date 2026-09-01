@@ -30,6 +30,7 @@ export const svUi = deepMerge(enUi, {
     directZip: 'Direkt .ZIP',
     playOnline: 'Spela & öppna online',
     searchPlaceholder: "Sök projekt, verktyg eller appar (t.ex. 'Nexus', '.zip', 'Android')...",
+    searchPlaceholderMobile: 'Sök projekt...',
     clear: 'Rensa',
     format: 'Format:',
     showing: 'Visar {count} av {total} releaser',

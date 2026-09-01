@@ -134,3 +134,11 @@
   -webkit-mask-image: linear-gradient(to left, black calc(100% - 1.5rem), transparent);
 }
 
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+

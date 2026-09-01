@@ -321,7 +321,7 @@ export default function App() {
         onCanPlay={(event) => applyBackgroundVideoSpeed(event.currentTarget)}
       />
 
-      <div className="relative z-10 flex min-h-screen flex-col pt-16">
+      <div className="relative z-10 flex min-h-screen flex-col pt-14 sm:pt-16">
       {/* Top Navigation Bar */}
       <Navbar
         searchQuery={searchQuery}
@@ -352,21 +352,25 @@ export default function App() {
       ) : (
         <main className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24">
           {/* Hero Section */}
-          <section className="py-14 md:py-20 flex flex-col items-center text-center">
+          <section className="py-10 sm:py-14 md:py-20 flex flex-col items-center text-center px-2">
             {/* Main Title */}
-            <h1 className="font-sora text-4xl md:text-6xl font-black mb-4 text-white tracking-tight max-w-4xl flex items-center justify-center flex-wrap gap-x-3 gap-y-1">
-              <span className="inline-flex items-center">
-                n<span className="text-blue-500">R</span>nW<Globe className="w-[0.78em] h-[0.78em] text-blue-400 mx-[0.04em] inline-block animate-[spin_20s_linear_infinite]" />rld
+            <h1 className="font-sora text-2xl sm:text-4xl md:text-6xl font-black mb-3 sm:mb-4 text-white tracking-tight max-w-4xl leading-tight">
+              <span className="inline-flex items-center justify-center flex-wrap gap-x-1">
+                <span>
+                  n<span className="text-blue-500">R</span>nW
+                  <Globe className="w-[0.75em] h-[0.75em] text-blue-400 mx-[0.02em] inline-block align-[-0.1em] animate-[spin_20s_linear_infinite]" />
+                  rld
+                </span>
+                <span className="text-blue-500 font-bold animate-[slash-blink_1s_step-end_infinite]">/</span>
+                <span>{t('hub.title')}</span>
               </span>
-              <span className="text-blue-500 font-bold animate-[slash-blink_1s_step-end_infinite]">/</span>
-              <span>{t('hub.title')}</span>
             </h1>
 
-            <p className="font-inter text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-inter text-sm sm:text-base md:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed px-2">
               {t('hub.subtitle')}
             </p>
 
-            <div className="mt-6 w-full max-w-3xl px-2 flex flex-col sm:flex-row items-stretch justify-center gap-3 sm:gap-4">
+            <div className="mt-5 sm:mt-6 w-full max-w-3xl flex flex-col sm:flex-row items-stretch justify-center gap-3 sm:gap-4 px-1">
               <div className="flex items-center justify-center gap-3 bg-[#0e1626] px-4 py-2.5 sm:py-3 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/40 font-mono text-xs text-white/70 shrink-0">
                 <div className="flex flex-col items-center gap-1.5 shrink-0">
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-black border border-white/10 flex items-center justify-center">
@@ -410,8 +414,15 @@ export default function App() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t('hub.searchPlaceholderMobile')}
+                  className="w-full bg-[#181818] border border-white/10 rounded-xl py-3 pl-11 pr-10 text-white placeholder:text-white/40 placeholder:font-mono text-sm focus:border-blue-500 focus:outline-none transition-colors sm:hidden"
+                />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t('hub.searchPlaceholder')}
-                  className="w-full bg-[#181818] border border-white/10 rounded-xl py-3 pl-11 pr-10 text-white placeholder:text-white/40 placeholder:font-mono text-sm focus:border-blue-500 focus:outline-none transition-colors"
+                  className="hidden sm:block w-full bg-[#181818] border border-white/10 rounded-xl py-3 pl-11 pr-10 text-white placeholder:text-white/40 placeholder:font-mono text-sm focus:border-blue-500 focus:outline-none transition-colors"
                 />
                 {searchQuery && (
                   <button
@@ -520,7 +531,7 @@ export default function App() {
               </button>
             </div>
           ) : (
-            <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
+            <section className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
               {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
