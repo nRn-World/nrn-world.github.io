@@ -42,17 +42,17 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto"
+      className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-start sm:items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="about-modal-title"
     >
       <div
-        className="bg-[#121212] rounded-2xl max-w-3xl w-full border border-white/10 shadow-2xl relative my-8 overflow-hidden"
+        className="bg-[#121212] rounded-2xl max-w-3xl w-full border border-white/10 shadow-2xl relative my-4 sm:my-8 max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-br from-blue-600/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-br from-blue-600/20 via-transparent to-transparent pointer-events-none rounded-t-2xl" />
 
         <button
           type="button"
@@ -63,19 +63,23 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
           <X className="w-5 h-5" />
         </button>
 
-        <div className="p-6 md:p-8">
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start mb-6">
-            <div className="relative shrink-0">
-              <div className="w-40 sm:w-44 md:w-48 aspect-[2/3] rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-xl shadow-blue-950/50 ring-2 ring-blue-500/10 bg-[#f0b429]">
+        <div className="p-5 sm:p-6 md:p-8">
+          <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 md:gap-8 items-center sm:items-start mb-6">
+            <div className="relative shrink-0 w-[148px] h-[222px] sm:w-[168px] sm:h-[252px]">
+              <div className="w-full h-full rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-xl shadow-blue-950/50 ring-2 ring-blue-500/10 bg-[#1a1a1a]">
                 <img
                   src="/profile.jpg"
                   alt={t('about.photoAlt')}
-                  className="w-full h-full object-cover object-[50%_12%] scale-[1.12]"
+                  width={168}
+                  height={252}
+                  loading="eager"
+                  decoding="async"
+                  className="block w-full h-full object-cover object-top"
                 />
               </div>
             </div>
 
-            <div className="text-center md:text-left flex-1 min-w-0 md:pt-2">
+            <div className="text-center sm:text-left flex-1 min-w-0 w-full sm:pt-2">
               <p className="font-mono text-[11px] uppercase tracking-widest text-blue-400 mb-1">
                 {t('about.badge')}
               </p>
@@ -84,8 +88,8 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
               </h2>
               <p className="font-mono text-sm text-white/50">{t('about.role')}</p>
 
-              <div className="flex flex-col items-center md:items-start gap-2.5 mt-4">
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+              <div className="flex flex-col items-center sm:items-start gap-2.5 mt-4">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 w-full">
                   <a
                     href={INSTAGRAM_URL}
                     target="_blank"
@@ -116,7 +120,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                   </a>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 w-full">
                   <button
                     type="button"
                     onClick={() => setSwishOpen(true)}

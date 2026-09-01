@@ -33,26 +33,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav className="fixed top-0 w-full z-50 bg-[#0D0D0D]/95 backdrop-blur-2xl border-b border-white/5 safe-area-top">
       <div className="flex justify-between items-center gap-2 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[1440px] mx-auto">
-        {/* Brand */}
+        {/* Brand — always show full nRnWorld */}
         <button
           onClick={onResetView}
-          className="flex items-center gap-2 sm:gap-3 text-left group cursor-pointer min-w-0 shrink"
+          className="flex items-center gap-2 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1"
         >
           <img
             src="/logo.gif"
-            alt="nRnWorld"
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
+            alt=""
+            aria-hidden
+            className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
           />
-          <h1 className="text-lg sm:text-2xl font-black tracking-tighter text-white whitespace-nowrap leading-none">
-            <span className="hidden min-[380px]:inline">
-              n<span className="text-blue-500">R</span>n
-            </span>
-            <span className="min-[380px]:hidden">nRn</span>
-            <span className="text-white">
-              <span className="hidden sm:inline">{t('navbar.brandWorld')}</span>
-              <span className="sm:hidden">W</span>
-            </span>
-          </h1>
+          <span className="text-[15px] sm:text-xl md:text-2xl font-black tracking-tight text-white leading-none whitespace-nowrap">
+            n<span className="text-blue-500">R</span>n{t('navbar.brandWorld')}
+          </span>
         </button>
 
         {/* Desktop Navigation Links */}
@@ -120,10 +114,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>{t('navbar.github')}</span>
           </a>
 
-          {/* Bookmarked / Saved Items */}
+          {/* Bookmarked / Saved Items — desktop/tablet only */}
           <button
             onClick={onOpenSavedDrawer}
-            className="relative p-1.5 sm:p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors cursor-pointer shrink-0"
+            className="relative hidden sm:flex p-1.5 sm:p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors cursor-pointer shrink-0"
             title={t('navbar.saved')}
           >
             <Bookmark className="w-4 h-4" />
@@ -177,6 +171,21 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="text-left text-blue-400 font-medium py-1.5 text-sm"
             >
               {t('navbar.allProjectsCount', { count: allProjects.length })}
+            </button>
+            <button
+              onClick={() => {
+                onOpenSavedDrawer();
+                setMobileMenuOpen(false);
+              }}
+              className="text-left text-white/70 hover:text-white py-1.5 text-sm flex items-center gap-2"
+            >
+              <Bookmark className="w-4 h-4" />
+              {t('navbar.saved')}
+              {savedProjects.length > 0 && (
+                <span className="ml-auto min-w-[1.25rem] h-5 px-1 bg-blue-600 text-white text-[10px] font-mono rounded-full flex items-center justify-center font-bold">
+                  {savedProjects.length}
+                </span>
+              )}
             </button>
             <button
               onClick={() => {
