@@ -12,7 +12,7 @@ import { ConnectModal } from './components/ConnectModal';
 import { AboutModal } from './components/AboutModal';
 import { SavedProjectsDrawer } from './components/SavedProjectsDrawer';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
-import { syncProjectsWithGitHub } from './services/githubService';
+import { syncProjectsWithGitHub, mergeGithubStatsPayload, type GithubStatsPayload } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
 import {
   findProjectBySlug,
@@ -23,6 +23,7 @@ import { updatePageSeo } from './utils/seoMeta';
 import { GitHubActivityStatus } from './components/GitHubActivityStatus';
 import { useI18n, useLocalizedProjects } from './i18n/context';
 import { Search, Filter, Monitor, Smartphone, Wrench, Shield, Star, Download, FolderArchive, ArrowUpDown, Globe, Github, CheckCircle2, Puzzle } from 'lucide-react';
+import githubStatsSnapshot from './data/githubStatsSeed.json';
 
 type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
 
@@ -31,6 +32,15 @@ const STORAGE_STARRED_KEY = 'nrnworld_starred_projects_v1';
 const GITGIT_BACKGROUND_VIDEO =
   'https://media.gitgit.me/background-videos/8fdbb0a4-43fc-4ffe-94d8-f7994fd813b5_1777587444217.mp4';
 const BACKGROUND_VIDEO_PLAYBACK_RATE = 0.25;
+
+const SEEDED_PROJECTS = mergeGithubStatsPayload(
+  ALL_PROJECTS,
+  githubStatsSnapshot as GithubStatsPayload
+);
+const SNAPSHOT_SYNCED =
+  (githubStatsSnapshot as GithubStatsPayload).successCount > 0
+    ? new Date((githubStatsSnapshot as GithubStatsPayload).fetchedAt)
+    : null;
 
 function getGithubActivityTimestamp(project: Project): number {
   if (project.githubPushedAt) {
@@ -43,10 +53,10 @@ function getGithubActivityTimestamp(project: Project): number {
 
 export default function App() {
   const { t, localizeCategory } = useI18n();
-  // Official nRnWorld project releases with live GitHub synchronization
-  const [projects, setProjects] = useState<Project[]>(ALL_PROJECTS);
+  // Official nRnWorld project releases — seeded from build-time GitHub snapshot to avoid CLS
+  const [projects, setProjects] = useState<Project[]>(SEEDED_PROJECTS);
   const localizedProjects = useLocalizedProjects(projects);
-  const [lastGithubSync, setLastGithubSync] = useState<Date | null>(null);
+  const [lastGithubSync, setLastGithubSync] = useState<Date | null>(SNAPSHOT_SYNCED);
   const [githubActivity, setGithubActivity] = useState<GithubActivityPayload | null>(null);
   const githubSynced = lastGithubSync !== null;
 
@@ -111,9 +121,35 @@ export default function App() {
   const [fileTypeFilter, setFileTypeFilter] = useState<'all' | 'exe' | 'zip' | 'apk'>('all');
   const [sortBy, setSortBy] = useState<'featured' | 'downloads' | 'newest' | 'name' | 'stars'>('featured');
   const backgroundVideoRef = useRef<HTMLVideoElement>(null);
+  const [backgroundVideoSrc, setBackgroundVideoSrc] = useState<string | undefined>(undefined);
 
   const applyBackgroundVideoSpeed = useCallback((video: HTMLVideoElement) => {
     video.playbackRate = BACKGROUND_VIDEO_PLAYBACK_RATE;
+  }, []);
+
+  // Defer background video so it does not compete with LCP (esp. on mobile).
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const loadVideo = () => setBackgroundVideoSrc(GITGIT_BACKGROUND_VIDEO);
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    if ('requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(loadVideo, { timeout: 2500 });
+    } else {
+      timeoutId = window.setTimeout(loadVideo, 1200);
+    }
+
+    return () => {
+      if (idleId !== undefined && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   // Total GitHub download count across all repositories
@@ -334,8 +370,9 @@ export default function App() {
         loop
         muted
         playsInline
+        preload="none"
         className="fixed inset-0 z-0 h-full w-full object-cover pointer-events-none"
-        src={GITGIT_BACKGROUND_VIDEO}
+        src={backgroundVideoSrc}
         aria-hidden="true"
         onLoadedMetadata={(event) => applyBackgroundVideoSpeed(event.currentTarget)}
         onCanPlay={(event) => applyBackgroundVideoSpeed(event.currentTarget)}
@@ -560,7 +597,7 @@ export default function App() {
           ) : (
             <section aria-label="Projektkatalog" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2 md:gap-2.5">
               <h2 className="sr-only">Projektkatalog</h2>
-              {filteredProjects.map((project) => (
+              {filteredProjects.map((project, index) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
@@ -570,6 +607,7 @@ export default function App() {
                   onToggleSave={handleToggleSave}
                   isStarred={starredProjectIds.includes(project.id)}
                   onToggleStar={handleToggleStar}
+                  imagePriority={index < 4}
                 />
               ))}
             </section>

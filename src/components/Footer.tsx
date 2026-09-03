@@ -54,7 +54,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
             title={t('footer.swishTitle')}
             aria-label={t('footer.swishAria')}
           >
-            <img src="/swish-logo.png" alt="Swish" className="h-6 w-auto" />
+            <img
+              src="/swish-logo.png"
+              alt="Swish"
+              width={134}
+              height={48}
+              className="h-6 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
           </button>
 
           <a
@@ -65,7 +73,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
             title={t('footer.kofiTitle')}
             aria-label={t('footer.kofiAria')}
           >
-            <img src="/ko-fi.png" alt="Ko-fi" className="h-7 w-7 rounded-md object-cover shrink-0" />
+            <img
+              src="/ko-fi.png"
+              alt="Ko-fi"
+              width={28}
+              height={28}
+              className="h-7 w-7 rounded-md object-cover shrink-0"
+              loading="lazy"
+              decoding="async"
+            />
             <span className="sm:hidden">Ko-fi</span>
             <span className="hidden sm:inline">{t('footer.kofiLabel')}</span>
           </a>

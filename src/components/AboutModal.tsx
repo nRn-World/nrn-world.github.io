@@ -128,7 +128,16 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                     title={t('footer.swishTitle')}
                     aria-label={t('footer.swishAria')}
                   >
-                    <img src="/swish-logo.png" alt="" className="h-5 w-auto shrink-0" aria-hidden />
+                    <img
+                      src="/swish-logo.png"
+                      alt=""
+                      width={134}
+                      height={48}
+                      className="h-5 w-auto shrink-0"
+                      aria-hidden
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <span className="font-mono text-[11px] text-white/70 group-hover:text-white transition-colors">
                       Swish
                     </span>

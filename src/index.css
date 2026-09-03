@@ -2,13 +2,13 @@
 
 @layer base {
   :root {
-    --font-sora: 'Sora', sans-serif;
-    --font-inter: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-sora: 'Sora', 'Segoe UI', system-ui, sans-serif;
+    --font-inter: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter);
     background-color: #0C1014;
     color: #E0E0E0;
     overflow-x: hidden;
@@ -26,7 +26,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Sora', sans-serif;
+    font-family: var(--font-sora);
   }
 
   /* WCAG 2.4.7 Synligt tangentbordsfokus */
@@ -37,15 +37,15 @@
 }
 
 .font-sora {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--font-sora);
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
 }
 
 .font-inter {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter);
 }
 
 .glass-card {

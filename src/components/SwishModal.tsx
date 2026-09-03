@@ -74,7 +74,15 @@ export const SwishModal: React.FC<SwishModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         <div className="flex items-center gap-3 mb-5">
-          <img src="/swish-logo.png" alt="Swish" className="h-8 w-auto" />
+          <img
+            src="/swish-logo.png"
+            alt="Swish"
+            width={134}
+            height={48}
+            className="h-8 w-auto"
+            loading="lazy"
+            decoding="async"
+          />
           <div>
             <h3 id="swish-modal-title" className="font-sora text-xl font-black text-white">
               {t('swish.title')}

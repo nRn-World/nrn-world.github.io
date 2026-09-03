@@ -30,6 +30,8 @@ interface ProjectCardProps {
   onToggleSave: (projectId: string, e: React.MouseEvent) => void;
   isStarred?: boolean;
   onToggleStar?: (project: Project, e: React.MouseEvent) => void;
+  /** Eager-load cover image (first viewport cards / LCP). */
+  imagePriority?: boolean;
 }
 
 const HOVER_INFO_DELAY_MS = 5000;
@@ -42,6 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   onToggleSave,
   isStarred = false,
   onToggleStar,
+  imagePriority = false,
 }) => {
   const { t, localizeTag, localizeCategory } = useI18n();
   const [isHovered, setIsHovered] = useState(false);
@@ -139,6 +142,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           projectName={project.name}
           isHovered={isHovered}
           previewAlt={(index) => t('projectCard.previewAlt', { name: project.name, index })}
+          priority={imagePriority}
         />
 
         <div className="absolute top-1.5 right-1.5 flex items-center gap-1 z-30">
@@ -350,7 +354,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
               onClick={stopCardNav}
               onMouseDown={stopCardNav}
-              className={`${liveLinkClass} bg-emerald-600 hover:bg-emerald-500`}
+              className={`${liveLinkClass} bg-emerald-800 hover:bg-emerald-700`}
               title={t('projectCard.playOnlineTitle', { name: project.name })}
             >
               <Gamepad2 className="w-3 h-3 shrink-0" />

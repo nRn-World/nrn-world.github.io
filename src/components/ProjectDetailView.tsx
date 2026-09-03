@@ -485,7 +485,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     rel="noopener noreferrer"
                     className={`w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg cursor-pointer no-underline ${
                       isWebGame
-                        ? 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/40'
+                        ? 'bg-emerald-800 hover:bg-emerald-700 shadow-emerald-950/40'
                         : isBrowserExtension
                           ? 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-950/40'
                           : 'bg-blue-600 hover:bg-blue-500 shadow-blue-950/40'

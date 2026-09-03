@@ -200,6 +200,36 @@ async function main() {
     `Wrote ${outPath} (${payload.successCount}/${payload.totalRepos} repos OK)`
   );
 
+  // Slim seed for first-paint (avoids CLS from post-load reorder / stat flash)
+  const seed = {
+    fetchedAt: payload.fetchedAt,
+    successCount: payload.successCount,
+    totalRepos: payload.totalRepos,
+    repos: Object.fromEntries(
+      Object.entries(payload.repos).map(([name, stats]) => {
+        if (!stats) return [name, null];
+        return [
+          name,
+          {
+            repoName: stats.repoName,
+            totalDownloads: stats.totalDownloads,
+            starsCount: stats.starsCount,
+            latestVersion: stats.latestVersion,
+            latestReleaseDate: stats.latestReleaseDate,
+            githubPushedAt: stats.githubPushedAt,
+            assets: [],
+            lastFetched: stats.lastFetched,
+            fetchOk: stats.fetchOk,
+          },
+        ];
+      })
+    ),
+  };
+  const seedPath = join(root, 'src', 'data', 'githubStatsSeed.json');
+  mkdirSync(dirname(seedPath), { recursive: true });
+  writeFileSync(seedPath, JSON.stringify(seed), 'utf8');
+  console.log(`Wrote ${seedPath}`);
+
   if (payload.successCount === 0) {
     process.exit(1);
   }

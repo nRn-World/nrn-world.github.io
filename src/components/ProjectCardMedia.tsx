@@ -11,6 +11,8 @@ interface ProjectCardMediaProps {
   projectName: string;
   isHovered: boolean;
   previewAlt: (index: number) => string;
+  /** Above-the-fold cards: eager load + high fetch priority for LCP. */
+  priority?: boolean;
 }
 
 export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
@@ -18,6 +20,7 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
   projectName,
   isHovered,
   previewAlt,
+  priority = false,
 }) => {
   const [failedCover, setFailedCover] = useState(false);
 
@@ -62,7 +65,9 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
             ? `object-contain p-1.5 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
             : `object-cover object-center ${isHovered ? 'scale-[1.08]' : 'scale-100'}`
         }`}
-        loading="lazy"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        decoding={priority ? 'sync' : 'async'}
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/10 to-black/30 pointer-events-none" />

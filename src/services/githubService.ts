@@ -130,6 +130,24 @@ export interface GithubSyncResult {
 }
 
 /**
+ * Merge a GitHub stats payload into projects (shared by live sync + build snapshot seed).
+ */
+export function mergeGithubStatsPayload(
+  projects: Project[],
+  payload: GithubStatsPayload
+): Project[] {
+  return projects.map((project) => {
+    const repoName = extractRepoName(project.githubUrl);
+    if (!repoName) return project;
+
+    const stats = payload.repos[repoName];
+    if (!stats?.fetchOk) return project;
+
+    return applyStatsToProject(project, stats);
+  });
+}
+
+/**
  * Merge live GitHub data into projects via server-side batched API (avoids browser rate limits).
  */
 export async function syncProjectsWithGitHub(projects: Project[]): Promise<GithubSyncResult> {
@@ -139,18 +157,8 @@ export async function syncProjectsWithGitHub(projects: Project[]): Promise<Githu
     return { projects, successCount: 0, totalRepos: 0 };
   }
 
-  const updatedProjects = projects.map((project) => {
-    const repoName = extractRepoName(project.githubUrl);
-    if (!repoName) return project;
-
-    const stats = payload.repos[repoName];
-    if (!stats?.fetchOk) return project;
-
-    return applyStatsToProject(project, stats);
-  });
-
   return {
-    projects: updatedProjects,
+    projects: mergeGithubStatsPayload(projects, payload),
     successCount: payload.successCount,
     totalRepos: payload.totalRepos,
   };

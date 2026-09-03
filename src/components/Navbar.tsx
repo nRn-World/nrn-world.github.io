@@ -40,12 +40,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-1.5 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1 overflow-hidden"
         >
           <img
-            src="/logo.webp"
+            src="/logo-72.webp"
             alt=""
             aria-hidden
             width={36}
             height={36}
             className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
+            fetchPriority="high"
+            decoding="async"
           />
           <span className="text-[15px] sm:text-xl md:text-2xl font-black tracking-tight text-white leading-none truncate">
             n<span className="text-blue-500">R</span>n{t('navbar.brandWorld')}
