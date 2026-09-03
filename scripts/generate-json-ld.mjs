@@ -50,13 +50,17 @@ const jsonLd = {
   itemListElement: items
 };
 
-const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n    </script>`;
+const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(jsonLd)}\n    </script>`;
 
-// Replace or insert JSON-LD
+// Keep JSON-LD at end of body so it does not delay first paint parsing.
 if (indexHtml.includes('application/ld+json')) {
-  indexHtml = indexHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, scriptTag);
+  indexHtml = indexHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
+}
+
+if (indexHtml.includes('</body>')) {
+  indexHtml = indexHtml.replace('</body>', `    ${scriptTag}\n  </body>`);
 } else {
-  indexHtml = indexHtml.replace('</head>', `    ${scriptTag}\n  </head>`);
+  indexHtml += `\n${scriptTag}\n`;
 }
 
 fs.writeFileSync(indexPath, indexHtml);

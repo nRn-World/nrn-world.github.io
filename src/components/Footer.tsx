@@ -55,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
             aria-label={t('footer.swishAria')}
           >
             <img
-              src="/swish-logo.png"
+              src="/swish-logo.webp"
               alt="Swish"
               width={67}
               height={24}

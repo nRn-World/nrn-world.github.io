@@ -2,24 +2,49 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import { ALL_PROJECTS } from '../data/projectsData';
 import { Project } from '../types';
 import { DEFAULT_LOCALE, LANGUAGES, STORAGE_KEY } from './languages';
-import { arUi } from './locales/ar';
 import { enUi } from './locales/en';
-import { esUi } from './locales/es';
-import { frUi } from './locales/fr';
-import { svUi } from './locales/sv';
-import { trUi } from './locales/tr';
-import { projectTranslations } from './projects';
-import { Locale, TranslationDictionary } from './types';
+import { Locale, ProjectTranslation, TranslationDictionary } from './types';
 import { getNestedValue, interpolate } from './utils';
 
-const uiByLocale: Record<Locale, TranslationDictionary> = {
+type ProjectMap = Record<string, ProjectTranslation>;
+
+const uiCache: Partial<Record<Locale, TranslationDictionary>> = {
   en: enUi,
-  sv: svUi,
-  tr: trUi,
-  es: esUi,
-  fr: frUi,
-  ar: arUi,
 };
+
+const projectCache: Partial<Record<Locale, ProjectMap>> = {};
+
+async function loadLocalePack(locale: Locale): Promise<void> {
+  if (locale === 'en') return;
+
+  switch (locale) {
+    case 'sv': {
+      if (!uiCache.sv) uiCache.sv = (await import('./locales/sv')).svUi;
+      if (!projectCache.sv) projectCache.sv = (await import('./projects/sv')).svProjects;
+      break;
+    }
+    case 'tr': {
+      if (!uiCache.tr) uiCache.tr = (await import('./locales/tr')).trUi;
+      if (!projectCache.tr) projectCache.tr = (await import('./projects/tr')).trProjects;
+      break;
+    }
+    case 'es': {
+      if (!uiCache.es) uiCache.es = (await import('./locales/es')).esUi;
+      if (!projectCache.es) projectCache.es = (await import('./projects/es')).esProjects;
+      break;
+    }
+    case 'fr': {
+      if (!uiCache.fr) uiCache.fr = (await import('./locales/fr')).frUi;
+      if (!projectCache.fr) projectCache.fr = (await import('./projects/fr')).frProjects;
+      break;
+    }
+    case 'ar': {
+      if (!uiCache.ar) uiCache.ar = (await import('./locales/ar')).arUi;
+      if (!projectCache.ar) projectCache.ar = (await import('./projects/ar')).arProjects;
+      break;
+    }
+  }
+}
 
 interface I18nContextValue {
   locale: Locale;
@@ -36,7 +61,7 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 function readStoredLocale(): Locale {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && stored in uiByLocale) {
+    if (stored && LANGUAGES.some((l) => l.code === stored)) {
       return stored as Locale;
     }
   } catch {
@@ -47,6 +72,18 @@ function readStoredLocale(): Locale {
 
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [locale, setLocaleState] = useState<Locale>(readStoredLocale);
+  const [localeTick, setLocaleTick] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (locale === 'en') return;
+    loadLocalePack(locale).then(() => {
+      if (!cancelled) setLocaleTick((n) => n + 1);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
@@ -58,22 +95,23 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const dir = LANGUAGES.find((lang) => lang.code === locale)?.dir ?? 'ltr';
+  const activeUi = uiCache[locale] ?? enUi;
 
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = dir;
-    document.title = getNestedValue(uiByLocale[locale], 'meta.title') ?? document.title;
-  }, [locale, dir]);
+    document.title = getNestedValue(activeUi, 'meta.title') ?? document.title;
+  }, [locale, dir, activeUi, localeTick]);
 
   const t = useCallback(
     (key: string, vars?: Record<string, string | number>) => {
       const value =
-        getNestedValue(uiByLocale[locale], key) ??
-        getNestedValue(uiByLocale.en, key) ??
+        getNestedValue(activeUi, key) ??
+        getNestedValue(enUi, key) ??
         key;
       return interpolate(value, vars);
     },
-    [locale]
+    [activeUi, localeTick]
   );
 
   const localizeCategory = useCallback(
@@ -101,7 +139,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return localizedTags ? { ...project, tags: localizedTags } : project;
       }
 
-      const translated = projectTranslations[locale]?.[project.id];
+      const translated = projectCache[locale]?.[project.id];
       if (!translated) {
         return localizedTags ? { ...project, tags: localizedTags } : project;
       }
@@ -115,7 +153,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
         tags: localizedTags,
       };
     },
-    [locale, localizeTag]
+    [locale, localizeTag, localeTick]
   );
 
   const value = useMemo(

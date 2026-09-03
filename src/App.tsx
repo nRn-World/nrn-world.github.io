@@ -635,7 +635,7 @@ export default function App() {
                   onToggleSave={handleToggleSave}
                   isStarred={starredProjectIds.includes(project.id)}
                   onToggleStar={handleToggleStar}
-                  imagePriority={index < 4}
+                  imagePriority={index < 2}
                 />
               ))}
             </section>

@@ -42,7 +42,7 @@ for (const chunk of projectBlocks) {
 }
 
 projects.sort((a, b) => b.ts - a.ts);
-const top = [...new Set(projects.map((p) => p.img))].slice(0, 4);
+const top = [...new Set(projects.map((p) => p.img))].slice(0, 1);
 
 if (top.length === 0) {
   console.warn('inject-lcp-preloads: no cover images found');
@@ -50,7 +50,7 @@ if (top.length === 0) {
   console.log(
     'LCP preload order:',
     projects
-      .slice(0, 4)
+      .slice(0, 1)
       .map((p) => `${p.id}→${p.img}`)
       .join(', ')
   );

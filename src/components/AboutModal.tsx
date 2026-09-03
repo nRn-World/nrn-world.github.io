@@ -129,7 +129,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                     aria-label={t('footer.swishAria')}
                   >
                     <img
-                      src="/swish-logo.png"
+                      src="/swish-logo.webp"
                       alt=""
                       width={54}
                       height={20}

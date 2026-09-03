@@ -8,7 +8,7 @@
     "fetch:github-stats": "node scripts/fetch-github-stats.mjs",
     "fetch:github-activity": "node scripts/fetch-github-activity.mjs",
     "prebuild": "node scripts/fetch-github-stats.mjs && node scripts/fetch-github-activity.mjs && node scripts/inject-lcp-preloads.mjs && node scripts/generate-json-ld.mjs",
-    "build": "vite build",
+    "build": "vite build && node scripts/defer-css.mjs",
     "start": "node server.js",
     "preview": "node server.js",
     "clean": "rm -rf dist",

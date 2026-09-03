@@ -75,7 +75,7 @@ export const SwishModal: React.FC<SwishModalProps> = ({ isOpen, onClose }) => {
 
         <div className="flex items-center gap-3 mb-5">
           <img
-            src="/swish-logo.png"
+            src="/swish-logo.webp"
             alt="Swish"
             width={80}
             height={30}
