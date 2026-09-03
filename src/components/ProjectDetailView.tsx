@@ -177,23 +177,50 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
             <span>{(project.starsCount ?? 0).toLocaleString()} {isStarred ? t('detail.starred') : t('detail.starAction')}</span>
           </button>
 
-          <button
-            onClick={handleShare}
-            className="bg-white/5 border border-white/10 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors text-xs font-mono cursor-pointer"
-            title={t('detail.shareTitle')}
-          >
-            {copiedShare ? (
-              <>
-                <Check className="w-4 h-4 text-emerald-400" />
-                <span>{t('detail.copiedLink')}</span>
-              </>
-            ) : (
-              <>
-                <Share2 className="w-4 h-4 text-white/70" />
-                <span>{t('detail.share')}</span>
-              </>
-            )}
-          </button>
+          <div className="relative group">
+            <button
+              onClick={handleShare}
+              className="bg-white/5 border border-white/10 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/10 transition-colors text-xs font-mono cursor-pointer"
+              title={t('detail.shareTitle')}
+            >
+              {copiedShare ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-400" />
+                  <span>{t('detail.copiedLink')}</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-4 h-4 text-white/70" />
+                  <span>{t('detail.share')}</span>
+                </>
+              )}
+            </button>
+            <div className="absolute top-full mt-1 right-0 hidden group-hover:flex flex-col bg-[#1a1a2e] border border-white/10 rounded-lg overflow-hidden shadow-xl z-50 min-w-[160px]">
+              {(() => {
+                const shareUrl = `https://nrnworld.one/${project.githubUrl?.replace(/\/+$/, '').split('/').pop()?.replace(/[-_]/g, '').toLowerCase() ?? ''}`;
+                const shareText = `${project.name} – ${project.tagline ?? project.description ?? ''}`;
+                return (
+                  <>
+                    <a href={`https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 text-xs text-white/80 hover:bg-white/10 flex items-center gap-2">
+                      <span className="font-bold">𝕏</span> Twitter / X
+                    </a>
+                    <a href={`https://www.reddit.com/submit?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 text-xs text-white/80 hover:bg-white/10 flex items-center gap-2">
+                      <span>🔗</span> Reddit
+                    </a>
+                    <a href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 text-xs text-white/80 hover:bg-white/10 flex items-center gap-2">
+                      <span>💬</span> WhatsApp
+                    </a>
+                    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 text-xs text-white/80 hover:bg-white/10 flex items-center gap-2">
+                      <span>💼</span> LinkedIn
+                    </a>
+                    <a href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 text-xs text-white/80 hover:bg-white/10 flex items-center gap-2">
+                      <span>✈️</span> Telegram
+                    </a>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
 
           <button
             onClick={() => onToggleSave(project.id)}

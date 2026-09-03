@@ -19,3 +19,6 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://nrnworld.one/sitemap.xml
+
+# LLM-friendly content
+# See also: https://nrnworld.one/llms.txt
