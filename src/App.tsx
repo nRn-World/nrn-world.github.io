@@ -131,7 +131,13 @@ export default function App() {
   }, [projects, localizedProjects]);
 
   // Search and filters
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState(() => {
+    try {
+      return new URLSearchParams(window.location.search).get('q') ?? '';
+    } catch {
+      return '';
+    }
+  });
   const [selectedCategory, setSelectedCategory] = useState<HubFilter>('All');
   const [fileTypeFilter, setFileTypeFilter] = useState<'all' | 'exe' | 'zip' | 'apk'>('all');
   const [sortBy, setSortBy] = useState<'featured' | 'downloads' | 'newest' | 'name' | 'stars'>('featured');

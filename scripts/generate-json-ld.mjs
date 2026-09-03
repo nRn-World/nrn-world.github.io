@@ -1,58 +1,80 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import { writeFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { loadSeoProjects, SITE } from './lib/seo-projects.mjs';
+import { readFileSync } from 'fs';
 
-const indexPath = path.resolve('index.html');
-let indexHtml = fs.readFileSync(indexPath, 'utf8');
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const indexPath = join(root, 'index.html');
+let indexHtml = readFileSync(indexPath, 'utf8');
+const projects = loadSeoProjects();
 
-const projectsData = fs.readFileSync(path.resolve('src/data/projectsData.ts'), 'utf8');
+const listItems = projects.map((p, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  item: {
+    '@type': 'SoftwareApplication',
+    name: p.name,
+    description: p.tagline || p.description,
+    url: `${SITE.origin}/${p.slug}`,
+    image: p.coverImage,
+    applicationCategory: p.category === 'Games' ? 'GameApplication' : 'UtilitiesApplication',
+    operatingSystem:
+      p.projectType === 'web_game' || p.projectType === 'web_app'
+        ? 'Web Browser'
+        : 'Windows 10, Windows 11, Web',
+    downloadUrl: `${p.githubUrl}/releases/latest`,
+    ...(p.liveDemoUrl ? { installUrl: p.liveDemoUrl } : {}),
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    author: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.origin,
+    },
+  },
+}));
 
-const regex = /name:\s*'([^']+)',[\s\S]*?category:\s*'([^']+)',[\s\S]*?githubUrl:\s*'([^']+)'/g;
-let m;
-const items = [];
-let pos = 1;
-
-while ((m = regex.exec(projectsData)) !== null) {
-  const name = m[1];
-  const category = m[2];
-  const githubUrl = m[3];
-  const repoName = githubUrl.split('/').pop();
-  const slug = repoName.replace(/[-_]/g, '').toLowerCase();
-
-  items.push({
-    '@type': 'ListItem',
-    position: pos++,
-    item: {
-      '@type': 'SoftwareApplication',
-      name: name,
-      url: `https://nrnworld.one/${slug}`,
-      applicationCategory: category === 'Games' ? 'GameApplication' : 'UtilitiesApplication',
-      operatingSystem: 'Windows 10, Windows 11, Web',
-      downloadUrl: `${githubUrl}/releases/latest`,
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD'
-      },
-      author: {
-        '@type': 'Organization',
-        name: 'nRnWorld',
-        url: 'https://nrnworld.one/'
-      }
-    }
-  });
-}
-
-const jsonLd = {
+const graph = {
   '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: 'nRnWorld – Öppna verktyg, appar och spel',
-  numberOfItems: items.length,
-  itemListElement: items
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE.origin}/#organization`,
+      name: SITE.name,
+      url: SITE.origin,
+      logo: `${SITE.origin}/logo-72.webp`,
+      sameAs: [SITE.githubOrg, 'https://ko-fi.com/nrnworld'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.origin}/#website`,
+      url: SITE.origin,
+      name: SITE.defaultTitle,
+      description: SITE.defaultDescription,
+      publisher: { '@id': `${SITE.origin}/#organization` },
+      inLanguage: ['en', 'sv', 'tr', 'es', 'fr', 'ar'],
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${SITE.origin}/?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${SITE.origin}/#projects`,
+      name: 'nRnWorld – Open tools, apps and games',
+      numberOfItems: listItems.length,
+      itemListElement: listItems,
+    },
+  ],
 };
 
-const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(jsonLd)}\n    </script>`;
+const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(graph)}\n    </script>`;
 
-// Keep JSON-LD at end of body so it does not delay first paint parsing.
 if (indexHtml.includes('application/ld+json')) {
   indexHtml = indexHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
 }
@@ -63,5 +85,5 @@ if (indexHtml.includes('</body>')) {
   indexHtml += `\n${scriptTag}\n`;
 }
 
-fs.writeFileSync(indexPath, indexHtml);
-console.log(`Injected JSON-LD with ${items.length} projects into index.html`);
+writeFileSync(indexPath, indexHtml, 'utf8');
+console.log(`Injected JSON-LD graph with Organization, WebSite and ${listItems.length} projects`);

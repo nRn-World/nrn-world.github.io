@@ -1,28 +1,29 @@
 # nRnWorld
-> Öppna Windows-verktyg, AI-agenter och ljudmotorer. 19 projekt, direkta nedladdningar, källkod på GitHub under @nRn-World.
+> Open Windows tools, AI agents, audio engines and browser games. 19 projects with direct downloads and source on GitHub (@nRn-World).
 
-## Projekt
-- [ShadowPaw: Noir Typist](https://nrnworld.one/shadowpaw): Retro noir typing thriller where words become powers. Web browser. Live: https://nrn-world.github.io/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
-- [Doggy-Player](https://nrnworld.one/doggyplayer): High-fidelity audio & video desktop media player with customized skinning and EQ. Windows/Linux. Nedladdning: https://github.com/nRn-World/Doggy-Player/releases/latest
-- [WindowsSmartTaskbar](https://nrnworld.one/windowssmarttaskbar): Sleek Windows system tray utility for smart application organization. Windows 10/11. Nedladdning: https://github.com/nRn-World/WindowsSmartTaskbar/releases/latest
-- [NOBreak-Audio-Builder](https://nrnworld.one/nobreakaudiobuilder): Desktop audio mixer for creating seamless, gapless compilations. Windows/macOS. Nedladdning: https://github.com/nRn-World/NOBreak-Audio-Builder/releases/latest
-- [OctosArmy](https://nrnworld.one/octosarmy): Multi-agent AI orchestration system for autonomous file management. Windows/Linux. Nedladdning: https://github.com/nRn-World/OctosArmy/releases/latest
-- [TheSilentRoom1986](https://nrnworld.one/thesilentroom1986): 1980s-inspired underground typing game defying the regime. Web browser. Live: https://nrn-world.github.io/TheSilentRoom1986/
-- [Farm-Guardian-TD](https://nrnworld.one/farmguardiantd): Mobile animal tower-defense and merge game built with Phaser 3. Web/PWA. Live: https://nrn-world.github.io/Farm-Guardian-TD/
-- [NeonPathPuzzle](https://nrnworld.one/neonpathpuzzle): Neon light pathfinding and circuit alignment logic game. Web/PWA. Live: https://nrn-world.github.io/NeonPathPuzzle/
-- [DoneTogether](https://nrnworld.one/donetogether): Real-time collaborative planning app for teams and friends. Web/PWA. Live: https://donetogether.vercel.app/
-- [NexNote](https://nrnworld.one/nexnote): Minimalist distraction-free markdown note-taking suite with KaTeX. Web/PWA. Live: https://nrn-world.github.io/NexNote/
-- [SecretPromts](https://nrnworld.one/secretpromts): Curated AI prompt discovery directory, tester, and playground. Web/PWA. Live: https://nrn-world.github.io/SecretPromts/
-- [SiteScannerPro](https://nrnworld.one/sitescannerpro): Website health analysis for SEO, performance, security, and accessibility. Web/CLI. GitHub: https://github.com/nRn-World/SiteScannerPro
-- [GLOBAL_EMERGENCY](https://nrnworld.one/globalemergency): Global emergency information and travel safety PWA. Web/PWA. Live: https://nrn-world.github.io/GLOBAL_EMERGENCY/
-- [PrivateLinkSaver](https://nrnworld.one/privatelinksaver): Secure Chrome extension to privately save and manage bookmarks. Chrome Extension. Chrome Web Store: https://chromewebstore.google.com/
-- [BUGRAIDER](https://nrnworld.one/bugraider): AI agent skill that hunts bugs, security flaws, and dead code. CLI / AI Tool. GitHub: https://github.com/nRn-World/BUGRAIDER
-- [BluetoothSafetyLock](https://nrnworld.one/bluetoothsafetylock): Automated proximity lock utility for Windows when Bluetooth disconnects. Windows 10/11. Nedladdning: https://github.com/nRn-World/BluetoothSafetyLock/releases/latest
-- [FlashVideoDownloader](https://nrnworld.one/flashvideodownloader): Lightweight video stream discovery and downloader script. Python/CLI. GitHub: https://github.com/nRn-World/FlashVideoDownloader
-- [NotePin](https://nrnworld.one/notepin): Minimalist sticky note desktop pin utility. Windows 10/11. Nedladdning: https://github.com/nRn-World/NotePin/releases/latest
-- [ParkeraiSthlm](https://nrnworld.one/parkeraisthlm): Realtidskarta för gatuparkering i Stockholm med officiella taxezoner. Web/PWA. Live: https://nrn-world.github.io/ParkeraiSthlm/
+## Projects
+- [ShadowPaw: Noir Typist](https://nrnworld.one/shadowpaw): https://nrnworld.one/shadowpaw: Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth. | Live: https://nrn-world.github.io/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
+- [Doggy-Player](https://nrnworld.one/doggyplayer): https://nrnworld.one/doggyplayer: High-fidelity audio & video desktop media player with customized skinning, EQ, and gapless playback. | GitHub: https://github.com/nRn-World/Doggy-Player
+- [WindowsSmartTaskbar](https://nrnworld.one/windowssmarttaskbar): https://nrnworld.one/windowssmarttaskbar: Sleek Windows system tray utility for smart application organization and taskbar decluttering. | GitHub: https://github.com/nRn-World/WindowsSmartTaskbar
+- [NOBreak-Audio-Builder](https://nrnworld.one/nobreakaudiobuilder): https://nrnworld.one/nobreakaudiobuilder: Professional desktop audio mixer for creating seamless, gapless audio compilations. | GitHub: https://github.com/nRn-World/NOBreak-Audio-Builder
+- [OctosArmy](https://nrnworld.one/octosarmy): https://nrnworld.one/octosarmy: Multi-agent AI orchestration system for autonomous file management and workspace hygiene. | GitHub: https://github.com/nRn-World/OctosArmy
+- [TheSilentRoom1986](https://nrnworld.one/thesilentroom1986): https://nrnworld.one/thesilentroom1986: A 1980s-inspired underground typing game where your words manifest into reality to defy the regime. | Live: https://nrn-world.github.io/TheSilentRoom1986/ | GitHub: https://github.com/nRn-World/TheSilentRoom1986
+- [Farm-Guardian-TD](https://nrnworld.one/farmguardiantd): https://nrnworld.one/farmguardiantd: Modern mobile animal tower-defense and merge game built with Phaser 3 and TypeScript. | Live: https://farm-guardian-td.vercel.app | GitHub: https://github.com/nRn-World/Farm-Guardian-TD
+- [NeonPathPuzzle](https://nrnworld.one/neonpathpuzzle): https://nrnworld.one/neonpathpuzzle: Challenging neon light pathfinding and circuit alignment logic game. | Live: https://nrn-world.github.io/NeonPathPuzzle/ | GitHub: https://github.com/nRn-World/NeonPathPuzzle
+- [DoneTogether](https://nrnworld.one/donetogether): https://nrnworld.one/donetogether: Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase. | Live: https://nrn-world.github.io/DoneTogether/ | GitHub: https://github.com/nRn-World/DoneTogether
+- [NexNote](https://nrnworld.one/nexnote): https://nrnworld.one/nexnote: Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math. | Live: https://nexnote.vercel.app | GitHub: https://github.com/nRn-World/NexNote
+- [SecretPromts](https://nrnworld.one/secretpromts): https://nrnworld.one/secretpromts: Curated AI prompt discovery directory, tester, and optimization playground. | Live: https://secretpromts.vercel.app | GitHub: https://github.com/nRn-World/SecretPromts
+- [SiteScannerPro](https://nrnworld.one/sitescannerpro): https://nrnworld.one/sitescannerpro: Website health analysis for SEO, performance, security, accessibility, and code quality. | Live: https://nrn-world.github.io/SiteScannerPro/ | GitHub: https://github.com/nRn-World/SiteScannerPro
+- [GLOBAL_EMERGENCY](https://nrnworld.one/globalemergency): https://nrnworld.one/globalemergency: Global Emergency, source-backed country emergency information and travel safety PWA. | Live: https://nrn-world.github.io/GLOBAL_EMERGENCY/ | GitHub: https://github.com/nRn-World/GLOBAL_EMERGENCY
+- [PrivateLinkSaver](https://nrnworld.one/privatelinksaver): https://nrnworld.one/privatelinksaver: A secure Chrome extension to privately save, organize, and manage bookmarks with password protection. | Live: https://chromewebstore.google.com/detail/privatelinksaver/kdnhcpdhlpopdggnbkechdkcdbolkinf?hl=sv | GitHub: https://github.com/nRn-World/PrivateLinkSaver
+- [BUGRAIDER](https://nrnworld.one/bugraider): https://nrnworld.one/bugraider: Drop it into any AI agent and watch it hunt every bug, security flaw, and dead code in your project. | GitHub: https://github.com/nRn-World/BUGRAIDER
+- [BluetoothSafetyLock](https://nrnworld.one/bluetoothsafetylock): https://nrnworld.one/bluetoothsafetylock: Automated proximity lock utility that secures your Windows workstation when your Bluetooth device disconnects. | GitHub: https://github.com/nRn-World/BluetoothSafetyLock
+- [FlashVideoDownloader](https://nrnworld.one/flashvideodownloader): https://nrnworld.one/flashvideodownloader: Lightweight video stream discovery and downloader script. | GitHub: https://github.com/nRn-World/FlashVideoDownloader
+- [NotePin](https://nrnworld.one/notepin): https://nrnworld.one/notepin: Minimalist sticky note desktop pin utility for quick thoughts. | GitHub: https://github.com/nRn-World/NotePin
+- [ParkeraiSthlm](https://nrnworld.one/parkeraisthlm): https://nrnworld.one/parkeraisthlm: Realtidskarta för gatuparkering i Stockholm med officiella taxezoner och priser. | Live: https://nrn-world.github.io/ParkeraiSthlm/ | GitHub: https://github.com/nRn-World/ParkeraiSthlm
 
-## Om
-- Webbplats: https://nrnworld.one/
-- GitHub-organisation: https://github.com/nRn-World
-- Licens: Öppen källkod (MIT)
+## About
+- Website: https://nrnworld.one/
+- GitHub organization: https://github.com/nRn-World
+- License: Open source (MIT)
+- Contact: via Connect form on the website
