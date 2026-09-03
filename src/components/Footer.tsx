@@ -57,9 +57,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
             <img
               src="/swish-logo.png"
               alt="Swish"
-              width={134}
-              height={48}
-              className="h-6 w-auto"
+              width={67}
+              height={24}
+              className="h-6 w-[67px] object-contain"
               loading="lazy"
               decoding="async"
             />

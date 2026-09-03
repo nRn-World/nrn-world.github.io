@@ -1,16 +1,9 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback, lazy, Suspense } from 'react';
 import { ALL_PROJECTS } from './data/projectsData';
 import { Project, ProjectCategory, DownloadOption } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ProjectCard } from './components/ProjectCard';
-import { ProjectDetailView } from './components/ProjectDetailView';
-import { DownloadProgressModal } from './components/DownloadProgressModal';
-import { StarGithubModal } from './components/StarGithubModal';
-import { DocsModal } from './components/DocsModal';
-import { ConnectModal } from './components/ConnectModal';
-import { AboutModal } from './components/AboutModal';
-import { SavedProjectsDrawer } from './components/SavedProjectsDrawer';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub, mergeGithubStatsPayload, type GithubStatsPayload } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
@@ -24,6 +17,28 @@ import { GitHubActivityStatus } from './components/GitHubActivityStatus';
 import { useI18n, useLocalizedProjects } from './i18n/context';
 import { Search, Filter, Monitor, Smartphone, Wrench, Shield, Star, Download, FolderArchive, ArrowUpDown, Globe, Github, CheckCircle2, Puzzle } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
+
+const ProjectDetailView = lazy(() =>
+  import('./components/ProjectDetailView').then((m) => ({ default: m.ProjectDetailView }))
+);
+const DownloadProgressModal = lazy(() =>
+  import('./components/DownloadProgressModal').then((m) => ({ default: m.DownloadProgressModal }))
+);
+const StarGithubModal = lazy(() =>
+  import('./components/StarGithubModal').then((m) => ({ default: m.StarGithubModal }))
+);
+const DocsModal = lazy(() =>
+  import('./components/DocsModal').then((m) => ({ default: m.DocsModal }))
+);
+const ConnectModal = lazy(() =>
+  import('./components/ConnectModal').then((m) => ({ default: m.ConnectModal }))
+);
+const AboutModal = lazy(() =>
+  import('./components/AboutModal').then((m) => ({ default: m.AboutModal }))
+);
+const SavedProjectsDrawer = lazy(() =>
+  import('./components/SavedProjectsDrawer').then((m) => ({ default: m.SavedProjectsDrawer }))
+);
 
 type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
 
@@ -127,28 +142,39 @@ export default function App() {
     video.playbackRate = BACKGROUND_VIDEO_PLAYBACK_RATE;
   }, []);
 
-  // Defer background video so it does not compete with LCP (esp. on mobile).
+  // Background video: desktop only, long defer — avoid competing with LCP / cache audits.
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 767px)').matches) return;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (conn?.saveData) return;
 
-    const loadVideo = () => setBackgroundVideoSrc(GITGIT_BACKGROUND_VIDEO);
-    let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let cancelled = false;
+    const loadVideo = () => {
+      if (!cancelled) setBackgroundVideoSrc(GITGIT_BACKGROUND_VIDEO);
+    };
 
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(loadVideo, { timeout: 2500 });
-    } else {
-      timeoutId = window.setTimeout(loadVideo, 1200);
-    }
+    const onInteract = () => {
+      loadVideo();
+      cleanupInteract();
+    };
+    const cleanupInteract = () => {
+      window.removeEventListener('pointerdown', onInteract);
+      window.removeEventListener('keydown', onInteract);
+      window.removeEventListener('scroll', onInteract);
+    };
+
+    window.addEventListener('pointerdown', onInteract, { once: true, passive: true });
+    window.addEventListener('keydown', onInteract, { once: true });
+    window.addEventListener('scroll', onInteract, { once: true, passive: true });
+
+    const timeoutId = window.setTimeout(loadVideo, 15000);
 
     return () => {
-      if (idleId !== undefined && 'cancelIdleCallback' in window) {
-        window.cancelIdleCallback(idleId);
-      }
-      if (timeoutId !== undefined) {
-        window.clearTimeout(timeoutId);
-      }
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      cleanupInteract();
     };
   }, []);
 
@@ -402,17 +428,19 @@ export default function App() {
         {/* Main View Router */}
         {selectedProject ? (
           <div id="main-content" tabIndex={-1} className="focus:outline-none flex-grow">
-            <ProjectDetailView
-              project={selectedProject}
-              onBack={handleBackToHub}
-              onDownload={handleDownload}
-              githubSynced={githubSynced}
-              isSaved={savedProjectIds.includes(selectedProject.id)}
-              onToggleSave={handleToggleSave}
-              onOpenDocs={() => setDocsModalOpen(true)}
-              isStarred={starredProjectIds.includes(selectedProject.id)}
-              onToggleStar={handleToggleStar}
-            />
+            <Suspense fallback={<div className="min-h-[50vh]" aria-hidden />}>
+              <ProjectDetailView
+                project={selectedProject}
+                onBack={handleBackToHub}
+                onDownload={handleDownload}
+                githubSynced={githubSynced}
+                isSaved={savedProjectIds.includes(selectedProject.id)}
+                onToggleSave={handleToggleSave}
+                onOpenDocs={() => setDocsModalOpen(true)}
+                isStarred={starredProjectIds.includes(selectedProject.id)}
+                onToggleStar={handleToggleStar}
+              />
+            </Suspense>
           </div>
         ) : (
           <main id="main-content" tabIndex={-1} className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24 min-w-0 overflow-x-hidden focus:outline-none">
@@ -455,15 +483,15 @@ export default function App() {
                 </div>
               </div>
 
-              {githubActivity && (
-                <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 min-h-[4.5rem] sm:min-h-[4.75rem]">
+                {githubActivity ? (
                   <GitHubActivityStatus
                     login={githubActivity.login}
                     days={githubActivity.days}
                     totalContributions={githubActivity.totalContributions}
                   />
-                </div>
-              )}
+                ) : null}
+              </div>
             </div>
           </section>
 
@@ -621,48 +649,40 @@ export default function App() {
         onOpenAbout={() => setAboutModalOpen(true)}
       />
 
-      {/* Active Download Progress Modal / Toast */}
-      <DownloadProgressModal
-        download={activeDownload}
-        onClose={() => setActiveDownload(null)}
-      />
-
-      {/* Star GitHub Modal */}
-      <StarGithubModal
-        isOpen={starModalOpen}
-        onClose={() => setStarModalOpen(false)}
-        project={starModalProject}
-        hasStarredLocally={starModalProject ? starredProjectIds.includes(starModalProject.id) : false}
-      />
-
-      {/* Installation Docs Modal */}
-      <DocsModal
-        isOpen={docsModalOpen}
-        onClose={() => setDocsModalOpen(false)}
-      />
-
-      {/* Connect & Creator Modal */}
-      <ConnectModal
-        isOpen={connectModalOpen}
-        onClose={() => setConnectModalOpen(false)}
-      />
-
-      <AboutModal
-        isOpen={aboutModalOpen}
-        onClose={() => setAboutModalOpen(false)}
-      />
-
-      {/* Saved Projects Drawer */}
-      <SavedProjectsDrawer
-        isOpen={savedDrawerOpen}
-        onClose={() => setSavedDrawerOpen(false)}
-        savedProjectIds={savedProjectIds}
-        allProjects={projects}
-        githubSynced={githubSynced}
-        onSelectProject={handleSelectProject}
-        onRemoveSaved={handleToggleSave}
-        onClearAll={handleClearSaved}
-      />
+      <Suspense fallback={null}>
+        <DownloadProgressModal
+          download={activeDownload}
+          onClose={() => setActiveDownload(null)}
+        />
+        <StarGithubModal
+          isOpen={starModalOpen}
+          onClose={() => setStarModalOpen(false)}
+          project={starModalProject}
+          hasStarredLocally={starModalProject ? starredProjectIds.includes(starModalProject.id) : false}
+        />
+        <DocsModal
+          isOpen={docsModalOpen}
+          onClose={() => setDocsModalOpen(false)}
+        />
+        <ConnectModal
+          isOpen={connectModalOpen}
+          onClose={() => setConnectModalOpen(false)}
+        />
+        <AboutModal
+          isOpen={aboutModalOpen}
+          onClose={() => setAboutModalOpen(false)}
+        />
+        <SavedProjectsDrawer
+          isOpen={savedDrawerOpen}
+          onClose={() => setSavedDrawerOpen(false)}
+          savedProjectIds={savedProjectIds}
+          allProjects={projects}
+          githubSynced={githubSynced}
+          onSelectProject={handleSelectProject}
+          onRemoveSaved={handleToggleSave}
+          onClearAll={handleClearSaved}
+        />
+      </Suspense>
       </div>
     </div>
   );

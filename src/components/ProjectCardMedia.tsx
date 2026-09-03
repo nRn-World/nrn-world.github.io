@@ -56,8 +56,8 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
       <img
         src={coverSrc}
         alt={previewAlt(1)}
-        width={400}
-        height={267}
+        width={280}
+        height={187}
         referrerPolicy="no-referrer"
         onError={handleError}
         className={`absolute inset-0 w-full h-full transition-transform duration-700 ease-out ${

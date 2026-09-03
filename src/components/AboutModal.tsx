@@ -131,9 +131,9 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                     <img
                       src="/swish-logo.png"
                       alt=""
-                      width={134}
-                      height={48}
-                      className="h-5 w-auto shrink-0"
+                      width={54}
+                      height={20}
+                      className="h-5 w-[54px] shrink-0 object-contain"
                       aria-hidden
                       loading="lazy"
                       decoding="async"

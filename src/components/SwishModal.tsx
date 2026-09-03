@@ -77,9 +77,9 @@ export const SwishModal: React.FC<SwishModalProps> = ({ isOpen, onClose }) => {
           <img
             src="/swish-logo.png"
             alt="Swish"
-            width={134}
-            height={48}
-            className="h-8 w-auto"
+            width={80}
+            height={30}
+            className="h-8 w-20 object-contain"
             loading="lazy"
             decoding="async"
           />

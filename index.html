@@ -21,25 +21,25 @@
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
     <link rel="icon" type="image/webp" href="/logo-72.webp" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preload" as="image" href="/logo-72.webp" type="image/webp" fetchpriority="high" />
+    <!-- LCP_PRELOADS_START -->
+    <link rel="preload" as="image" href="/images/projects/doneTogether.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/projects/theSilentRoom1986.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/images/projects/secretPrompts.webp" type="image/webp" />
+    <link rel="preload" as="image" href="/images/projects/flashVideoDownloader.webp" type="image/webp" />
+    <!-- LCP_PRELOADS_END -->
+    <link rel="preload" as="image" href="/logo-72.webp" type="image/webp" />
     
-    <!-- Google Fonts: non-blocking load (reduces render-blocking ~820ms) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- System fonts first for FCP; optional webfonts after paint -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=optional"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=optional"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=optional"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=optional"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=optional"
         rel="stylesheet"
       />
     </noscript>
