@@ -9,6 +9,7 @@ import { DownloadProgressModal } from './components/DownloadProgressModal';
 import { StarGithubModal } from './components/StarGithubModal';
 import { DocsModal } from './components/DocsModal';
 import { ConnectModal } from './components/ConnectModal';
+import { AboutModal } from './components/AboutModal';
 import { SavedProjectsDrawer } from './components/SavedProjectsDrawer';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub } from './services/githubService';
@@ -18,9 +19,10 @@ import {
   getProjectPath,
   getSlugFromLocation,
 } from './utils/projectSlug';
+import { updatePageSeo } from './utils/seoMeta';
 import { GitHubActivityStatus } from './components/GitHubActivityStatus';
 import { useI18n, useLocalizedProjects } from './i18n/context';
-import { Search, Filter, Monitor, Smartphone, Wrench, Shield, Star, Download, FolderArchive, ArrowUpDown, Globe, Github, CheckCircle2 } from 'lucide-react';
+import { Search, Filter, Monitor, Smartphone, Wrench, Shield, Star, Download, FolderArchive, ArrowUpDown, Globe, Github, CheckCircle2, Puzzle } from 'lucide-react';
 
 type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
 
@@ -145,6 +147,7 @@ export default function App() {
   const [starModalOpen, setStarModalOpen] = useState(false);
   const [docsModalOpen, setDocsModalOpen] = useState(false);
   const [connectModalOpen, setConnectModalOpen] = useState(false);
+  const [aboutModalOpen, setAboutModalOpen] = useState(false);
   const [savedDrawerOpen, setSavedDrawerOpen] = useState(false);
 
   // Save bookmarked IDs to localStorage
@@ -199,6 +202,10 @@ export default function App() {
     return () => window.removeEventListener('popstate', syncRoute);
   }, [projects]);
 
+  useEffect(() => {
+    updatePageSeo(selectedProject);
+  }, [selectedProject]);
+
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
     history.pushState(null, '', getProjectPath(project));
@@ -238,13 +245,6 @@ export default function App() {
     triggerDirectDownload(project, option, (progressState) => {
       setActiveDownload(progressState);
     });
-  };
-
-  const handleOpenLive = (project: Project, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    const url = project.liveDemoUrl || project.githubUrl;
-    if (!url) return;
-    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   // Filter and sort computation
@@ -319,6 +319,7 @@ export default function App() {
     { label: 'Windows', icon: <Monitor className="w-3.5 h-3.5" /> },
     { label: 'Android', icon: <Smartphone className="w-3.5 h-3.5" /> },
     { label: 'Tools', icon: <Wrench className="w-3.5 h-3.5" /> },
+    { label: 'Chrome Extensions', icon: <Puzzle className="w-3.5 h-3.5" /> },
     { label: 'Security', icon: <Shield className="w-3.5 h-3.5" /> },
     { label: 'Games' },
     { label: 'Top Stars', icon: <Star className="w-3.5 h-3.5" /> },
@@ -326,7 +327,7 @@ export default function App() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#0C1014] text-[#E0E0E0] selection:bg-blue-600 selection:text-white">
+    <div className="relative min-h-screen bg-[#0C1014] text-[#E0E0E0] selection:bg-blue-600 selection:text-white overflow-x-hidden max-w-full">
       <video
         ref={backgroundVideoRef}
         autoPlay
@@ -340,39 +341,47 @@ export default function App() {
         onCanPlay={(event) => applyBackgroundVideoSpeed(event.currentTarget)}
       />
 
-      <div className="relative z-10 flex min-h-screen flex-col pt-14 sm:pt-16">
-      {/* Top Navigation Bar */}
-      <Navbar
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        savedProjects={savedProjectIds}
-        allProjects={projects}
-        onOpenSavedDrawer={() => setSavedDrawerOpen(true)}
-        onOpenDocs={() => setDocsModalOpen(true)}
-        onOpenConnect={() => setConnectModalOpen(true)}
-        onResetView={handleBackToHub}
-        activeView={selectedProject ? 'details' : 'hub'}
-      />
+      <div className="relative z-10 flex min-h-screen flex-col pt-14 sm:pt-16 overflow-x-hidden max-w-full">
+        {/* Skip to main content link (WCAG 2.4.1) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:font-bold focus:shadow-xl focus:outline-none"
+        >
+          {t('navbar.allProjects')}
+        </a>
 
-      {/* Main View Router */}
-      {selectedProject ? (
-        <ProjectDetailView
-          project={selectedProject}
-          onBack={handleBackToHub}
-          onDownload={handleDownload}
-          onOpenLive={handleOpenLive}
-          githubSynced={githubSynced}
-          isSaved={savedProjectIds.includes(selectedProject.id)}
-          onToggleSave={handleToggleSave}
+        {/* Top Navigation Bar */}
+        <Navbar
+          savedProjects={savedProjectIds}
+          allProjects={projects}
+          onOpenSavedDrawer={() => setSavedDrawerOpen(true)}
           onOpenDocs={() => setDocsModalOpen(true)}
-          isStarred={starredProjectIds.includes(selectedProject.id)}
-          onToggleStar={handleToggleStar}
+          onOpenConnect={() => setConnectModalOpen(true)}
+          onOpenAbout={() => setAboutModalOpen(true)}
+          onResetView={handleBackToHub}
+          activeView={selectedProject ? 'details' : 'hub'}
         />
-      ) : (
-        <main className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24">
-          {/* Hero Section — compact on desktop so project grid is visible above the fold */}
-          <section className="py-3 sm:py-4 md:py-3 flex flex-col items-center text-center px-2">
-            <h1 className="font-sora text-2xl sm:text-3xl md:text-[2rem] lg:text-4xl font-black mb-1 md:mb-1.5 text-white tracking-tight max-w-4xl leading-tight">
+
+        {/* Main View Router */}
+        {selectedProject ? (
+          <div id="main-content" tabIndex={-1} className="focus:outline-none flex-grow">
+            <ProjectDetailView
+              project={selectedProject}
+              onBack={handleBackToHub}
+              onDownload={handleDownload}
+              githubSynced={githubSynced}
+              isSaved={savedProjectIds.includes(selectedProject.id)}
+              onToggleSave={handleToggleSave}
+              onOpenDocs={() => setDocsModalOpen(true)}
+              isStarred={starredProjectIds.includes(selectedProject.id)}
+              onToggleStar={handleToggleStar}
+            />
+          </div>
+        ) : (
+          <main id="main-content" tabIndex={-1} className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24 min-w-0 overflow-x-hidden focus:outline-none">
+          {/* Hero Section */}
+          <section className="py-4 sm:py-5 md:py-7 lg:py-8 flex flex-col items-center text-center px-2 min-w-0 max-w-full overflow-hidden">
+            <h1 className="font-sora text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] font-black mb-2 md:mb-3 text-white tracking-tight max-w-5xl leading-[1.05]">
               <span className="inline-flex items-center justify-center flex-wrap gap-x-1">
                 <span>
                   n<span className="text-blue-500">R</span>nW
@@ -384,12 +393,12 @@ export default function App() {
               </span>
             </h1>
 
-            <p className="font-inter text-xs sm:text-sm text-white/60 max-w-2xl mx-auto leading-snug px-2">
+            <p className="font-inter text-sm sm:text-base md:text-lg text-white/65 max-w-2xl mx-auto leading-relaxed px-2">
               {t('hub.subtitle')}
             </p>
 
-            <div className="mt-2.5 md:mt-3 w-full max-w-3xl flex flex-col sm:flex-row items-stretch justify-center gap-2 sm:gap-2.5 px-1">
-              <div className="flex items-center justify-center gap-2.5 bg-[#0e1626] px-3 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/40 font-mono text-xs text-white/70 shrink-0">
+            <div className="mt-3 md:mt-4 w-full max-w-3xl flex flex-col sm:flex-row items-stretch justify-center gap-2 sm:gap-2.5 px-1 min-w-0">
+              <div className="flex items-center justify-center gap-2.5 bg-[#0e1626] px-3 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/40 font-mono text-xs text-white/70 w-full sm:w-auto sm:shrink-0">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
                   <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
@@ -422,8 +431,8 @@ export default function App() {
           </section>
 
           {/* Search & Filter Bar Section */}
-          <section className="mb-3 md:mb-4">
-            <div className="bg-[#121212] rounded-2xl p-3 md:p-3.5 flex flex-col gap-2.5 md:gap-3 max-w-5xl mx-auto border border-white/5 shadow-xl shadow-black/50 overflow-hidden">
+          <section className="mb-2 md:mb-2.5">
+            <div className="bg-[#121212] rounded-2xl p-2.5 md:p-3 flex flex-col gap-2 md:gap-2.5 max-w-5xl mx-auto border border-white/5 shadow-xl shadow-black/50 overflow-hidden">
               {/* Search input */}
               <div className="relative w-full min-w-0">
                 <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40" />
@@ -489,29 +498,30 @@ export default function App() {
               {/* Format filter & Sort — inside card to save vertical space */}
               <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5 text-[11px] sm:text-xs font-mono text-white/60">
                 <div className="flex items-center gap-2">
-                  <span className="text-white/40">{t('hub.format')}</span>
+                  <span className="text-white/70">{t('hub.format')}</span>
                   <button
                     onClick={() => setFileTypeFilter('all')}
-                    className={`px-2 py-0.5 rounded-md transition-colors cursor-pointer ${fileTypeFilter === 'all' ? 'bg-white/10 text-white font-bold' : 'hover:text-white'}`}
+                    className={`px-2 py-1 min-h-[28px] rounded-md transition-colors cursor-pointer ${fileTypeFilter === 'all' ? 'bg-white/10 text-white font-bold' : 'hover:text-white'}`}
                   >
                     {t('filters.all')}
                   </button>
                   <button
                     onClick={() => setFileTypeFilter('zip')}
-                    className={`px-2 py-0.5 rounded-md transition-colors cursor-pointer ${fileTypeFilter === 'zip' ? 'bg-blue-600/20 text-blue-400 font-bold border border-blue-500/30' : 'hover:text-white'}`}
+                    className={`px-2 py-1 min-h-[28px] rounded-md transition-colors cursor-pointer ${fileTypeFilter === 'zip' ? 'bg-blue-600/20 text-blue-400 font-bold border border-blue-500/30' : 'hover:text-white'}`}
                   >
                     {t('filters.zip')}
                   </button>
                 </div>
 
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-white/50 hidden sm:inline">
+                  <span className="text-white/60 hidden sm:inline">
                     {t('hub.showing', { count: filteredProjects.length, total: projects.length })}
                   </span>
 
-                  <div className="flex items-center gap-1.5 bg-[#181818] px-2 py-1 rounded-lg border border-white/10">
+                  <div className="flex items-center gap-1.5 bg-[#181818] px-2 py-1 rounded-lg border border-white/10 min-h-[28px]">
                     <ArrowUpDown className="w-3 h-3 text-blue-400" />
                     <select
+                      aria-label="Sortera projekt"
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                       className="bg-transparent border-none text-[11px] sm:text-xs text-white focus:outline-none cursor-pointer"
@@ -548,14 +558,14 @@ export default function App() {
               </button>
             </div>
           ) : (
-            <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2.5 md:gap-3">
+            <section aria-label="Projektkatalog" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2 md:gap-2.5">
+              <h2 className="sr-only">Projektkatalog</h2>
               {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
                   githubSynced={githubSynced}
                   onSelect={handleSelectProject}
-                  onOpenLive={handleOpenLive}
                   isSaved={savedProjectIds.includes(project.id)}
                   onToggleSave={handleToggleSave}
                   isStarred={starredProjectIds.includes(project.id)}
@@ -570,6 +580,7 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenConnect={() => setConnectModalOpen(true)}
+        onOpenAbout={() => setAboutModalOpen(true)}
       />
 
       {/* Active Download Progress Modal / Toast */}
@@ -596,6 +607,11 @@ export default function App() {
       <ConnectModal
         isOpen={connectModalOpen}
         onClose={() => setConnectModalOpen(false)}
+      />
+
+      <AboutModal
+        isOpen={aboutModalOpen}
+        onClose={() => setAboutModalOpen(false)}
       />
 
       {/* Saved Projects Drawer */}

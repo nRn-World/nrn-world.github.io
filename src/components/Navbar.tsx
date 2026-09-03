@@ -1,29 +1,27 @@
 import React from 'react';
-import { Search, Bookmark, Menu, X, Github } from 'lucide-react';
+import { Bookmark, Menu, X, Github, User } from 'lucide-react';
 import { Project } from '../types';
 import { useI18n } from '../i18n/context';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavbarProps {
-  onSearchChange: (query: string) => void;
-  searchQuery: string;
   savedProjects: string[];
   allProjects: Project[];
   onOpenSavedDrawer: () => void;
   onOpenDocs: () => void;
   onOpenConnect: () => void;
+  onOpenAbout: () => void;
   onResetView: () => void;
   activeView: 'hub' | 'details';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  onSearchChange,
-  searchQuery,
   savedProjects,
   allProjects,
   onOpenSavedDrawer,
   onOpenDocs,
   onOpenConnect,
+  onOpenAbout,
   onResetView,
   activeView,
 }) => {
@@ -31,29 +29,37 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#0D0D0D]/95 backdrop-blur-2xl border-b border-white/5 safe-area-top">
-      <div className="flex justify-between items-center gap-2 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[1440px] mx-auto">
+    <nav
+      aria-label="Huvudmeny"
+      className="fixed top-0 left-0 right-0 w-full max-w-full z-50 bg-[#0D0D0D]/95 backdrop-blur-2xl border-b border-white/5 safe-area-top overflow-x-hidden"
+    >
+      <div className="flex justify-between items-center gap-1.5 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[1440px] mx-auto min-w-0">
         {/* Brand — always show full nRnWorld */}
         <button
           onClick={onResetView}
-          className="flex items-center gap-2 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1"
+          className="flex items-center gap-1.5 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1 overflow-hidden"
         >
           <img
-            src="/logo.gif"
+            src="/logo.webp"
             alt=""
             aria-hidden
+            width={36}
+            height={36}
             className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
           />
-          <span className="text-[15px] sm:text-xl md:text-2xl font-black tracking-tight text-white leading-none whitespace-nowrap">
+          <span className="text-[15px] sm:text-xl md:text-2xl font-black tracking-tight text-white leading-none truncate">
             n<span className="text-blue-500">R</span>n{t('navbar.brandWorld')}
           </span>
         </button>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/50 ml-4">
+        <nav
+          aria-label="Snabblänkar"
+          className="hidden md:flex items-center gap-8 text-sm font-medium text-white/50 ml-4"
+        >
           <button
             onClick={onResetView}
-            className={`pb-1 transition-colors cursor-pointer ${
+            className={`py-1.5 transition-colors cursor-pointer ${
               activeView === 'hub'
                 ? 'text-white border-b-2 border-blue-500 font-semibold'
                 : 'hover:text-white'
@@ -63,13 +69,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <button
             onClick={onOpenDocs}
-            className="hover:text-white transition-colors cursor-pointer"
+            className="py-1.5 hover:text-white transition-colors cursor-pointer"
           >
             {t('navbar.installationGuide')}
           </button>
           <button
             onClick={onOpenConnect}
-            className="hover:text-white transition-colors cursor-pointer"
+            className="py-1.5 hover:text-white transition-colors cursor-pointer"
           >
             {t('navbar.creatorNetwork')}
           </button>
@@ -82,25 +88,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="text-blue-400 font-bold mr-1.5">{allProjects.length}</span> {t('navbar.projects')}
           </div>
 
-          {/* Quick Search Input */}
-          <div className="hidden lg:flex items-center bg-[#1A1A1A] rounded-lg px-3 py-1.5 border border-white/10 focus-within:border-blue-500 transition-colors">
-            <Search className="w-4 h-4 text-white/50 mr-2" />
-            <input
-              type="text"
-              placeholder={t('navbar.searchPlaceholder')}
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              className="bg-transparent border-none text-xs text-white placeholder:text-white/40 focus:outline-none w-40 font-mono"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => onSearchChange('')}
-                className="text-xs text-white/50 hover:text-white ml-1 font-mono"
-              >
-                ✕
-              </button>
-            )}
-          </div>
+          {/* About Me */}
+          <button
+            type="button"
+            onClick={onOpenAbout}
+            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-blue-400 border border-white/10 text-xs font-semibold tracking-wide hover:border-blue-500/50 hover:text-blue-300 transition-all cursor-pointer"
+          >
+            <User className="w-3.5 h-3.5" />
+            <span>{t('footer.about')}</span>
+          </button>
 
           {/* GitHub Repositories Link */}
           <a
@@ -151,18 +147,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0D0D0D] border-b border-white/5 px-4 py-4 space-y-3">
-          <div className="flex items-center bg-[#1A1A1A] rounded-lg px-3 py-2 border border-white/10">
-            <Search className="w-4 h-4 text-white/50 mr-2" />
-            <input
-              type="text"
-              placeholder={t('navbar.searchMobile')}
-              value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
-              className="bg-transparent border-none text-sm text-white placeholder:text-white/40 focus:outline-none w-full font-mono"
-            />
-          </div>
-          <div className="flex flex-col gap-2 pt-2 border-t border-white/5">
+        <div className="md:hidden bg-[#0D0D0D] border-b border-white/5 px-4 py-4 space-y-3 w-full max-w-full overflow-x-hidden">
+          <div className="flex flex-col gap-2">
             <button
               onClick={() => {
                 onResetView();
@@ -186,6 +172,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {savedProjects.length}
                 </span>
               )}
+            </button>
+            <button
+              onClick={() => {
+                onOpenAbout();
+                setMobileMenuOpen(false);
+              }}
+              className="text-left text-blue-400 font-medium py-1.5 text-sm flex items-center gap-2"
+            >
+              <User className="w-4 h-4" />
+              {t('footer.about')}
             </button>
             <button
               onClick={() => {

@@ -6,7 +6,8 @@ export type ProjectCategory =
   | 'CLI'
   | 'AI'
   | 'Security'
-  | 'Games';
+  | 'Games'
+  | 'Chrome Extensions';
 
 export type PlatformBadge = 'WIN' | 'APK' | 'CLI' | 'TOOL' | 'CROSS' | 'LINUX' | 'MACOS' | 'WEB';
 

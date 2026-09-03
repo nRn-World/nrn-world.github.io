@@ -1,0 +1,21 @@
+# nrnworld.one
+User-agent: *
+Allow: /
+
+# Tillåt AI-assistenter att läsa och citera sajten
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://nrnworld.one/sitemap.xml

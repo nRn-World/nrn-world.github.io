@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { X, Github, Mail, Send, Check, Globe, MessageSquare } from 'lucide-react';
-import { CONTACT_EMAIL } from '../constants/contact';
+import React, { useState, useEffect, useRef } from 'react';
+import { X, Github, Mail, Send, Check, Globe, MessageSquare, AlertCircle } from 'lucide-react';
+import { CONTACT_EMAIL, WEB3FORMS_ACCESS_KEY } from '../constants/contact';
 import { ALL_PROJECTS } from '../data/projectsData';
 import { useI18n } from '../i18n/context';
 
@@ -9,11 +9,19 @@ interface ConnectModalProps {
   onClose: () => void;
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) => {
   const { t } = useI18n();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [link, setLink] = useState('');
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [errorKey, setErrorKey] = useState<string | null>(null);
+  const [errorDetail, setErrorDetail] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -34,25 +42,214 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
     };
   }, [isOpen, onClose]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      setSent(false);
+      setSending(false);
+      setErrorKey(null);
+      setErrorDetail(null);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const resolveErrorMessage = (code: string) => {
+    switch (code) {
+      case 'email_required':
+        return t('connect.emailRequired');
+      case 'name_required':
+        return t('connect.nameRequired');
+      case 'email_invalid':
+        return t('connect.emailInvalid');
+      case 'message_required':
+        return t('connect.messageRequired');
+      case 'email_not_configured':
+        return t('connect.sendErrorConfig');
+      case 'activation_required':
+        return t('connect.activationRequired');
+      case 'rate_limited':
+        return t('connect.rateLimited');
+      case 'send_blocked':
+        return t('connect.sendBlocked');
+      default:
+        return t('connect.sendError');
+    }
+  };
+
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setLink('');
+    setMessage('');
+  };
+
+  const submitViaServerFallback = async (payload: {
+    name: string;
+    email: string;
+    link: string;
+    message: string;
+  }): Promise<'ok' | 'activation_required' | 'failed'> => {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        ...payload,
+        subject: t('connect.mailSubject'),
+      }),
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (response.ok && data.ok === true) {
+      return 'ok';
+    }
+
+    if (data.error === 'activation_required') {
+      return 'activation_required';
+    }
+
+    return 'failed';
+  };
+
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!message.trim()) return;
+    setErrorKey(null);
+    setErrorDetail(null);
 
-    const subject = encodeURIComponent(t('connect.mailSubject'));
-    const body = encodeURIComponent(
-      `${message.trim()}\n\n---\nReply to: ${email.trim() || t('connect.replyNotProvided')}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    const form = formRef.current;
+    const formName =
+      (form?.querySelector('input[name="name"]') as HTMLInputElement | null)?.value ?? name;
+    const formEmail =
+      (form?.querySelector('input[name="email"]') as HTMLInputElement | null)?.value ?? email;
+    const formLink =
+      (form?.querySelector('input[name="link"]') as HTMLInputElement | null)?.value ?? link;
+    const formMessage =
+      (form?.querySelector('textarea[name="message"]') as HTMLTextAreaElement | null)?.value ??
+      message;
 
-    setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      setMessage('');
-      setEmail('');
-      onClose();
-    }, 2000);
+    const trimmedName = formName.trim();
+    const trimmedEmail = formEmail.trim();
+    const trimmedLink = formLink.trim();
+    const trimmedMessage = formMessage.trim();
+
+    if (!trimmedName) {
+      setErrorKey('name_required');
+      return;
+    }
+
+    if (!trimmedEmail) {
+      setErrorKey('email_required');
+      return;
+    }
+
+    if (!EMAIL_RE.test(trimmedEmail)) {
+      setErrorKey('email_invalid');
+      return;
+    }
+
+    if (!trimmedMessage) {
+      setErrorKey('message_required');
+      return;
+    }
+
+    setSending(true);
+
+    const payload = {
+      name: trimmedName,
+      email: trimmedEmail,
+      link: trimmedLink,
+      message: trimmedMessage,
+    };
+
+    const web3formsBody: Record<string, string> = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: t('connect.mailSubject'),
+      name: trimmedName,
+      email: trimmedEmail,
+      replyto: trimmedEmail,
+      message: trimmedMessage,
+      botcheck: '',
+    };
+    if (trimmedLink) {
+      web3formsBody.link = trimmedLink;
+    }
+
+    const handleSuccess = () => {
+      setSent(true);
+      setTimeout(() => {
+        setSent(false);
+        resetForm();
+        onClose();
+      }, 2000);
+    };
+
+    try {
+      if (!WEB3FORMS_ACCESS_KEY) {
+        const fallback = await submitViaServerFallback(payload);
+        if (fallback === 'ok') {
+          handleSuccess();
+          return;
+        }
+        setErrorKey(fallback === 'activation_required' ? 'activation_required' : 'send_failed');
+        return;
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(web3formsBody),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || data.success !== true) {
+        console.error('Web3Forms error:', data);
+        const fallback = await submitViaServerFallback(payload).catch(() => 'failed' as const);
+        if (fallback === 'ok') {
+          handleSuccess();
+          return;
+        }
+
+        if (fallback === 'activation_required') {
+          setErrorKey('activation_required');
+          return;
+        }
+
+        if (response.status === 429) {
+          setErrorKey('rate_limited');
+          return;
+        }
+
+        setErrorKey('send_failed');
+        if (typeof data.message === 'string' && data.message.trim()) {
+          setErrorDetail(data.message.trim());
+        }
+        return;
+      }
+
+      handleSuccess();
+    } catch (error) {
+      console.error('Contact form network error:', error);
+      try {
+        const fallback = await submitViaServerFallback(payload);
+        if (fallback === 'ok') {
+          handleSuccess();
+          return;
+        }
+        if (fallback === 'activation_required') {
+          setErrorKey('activation_required');
+          return;
+        }
+      } catch {
+        // ignore secondary failure
+      }
+      setErrorKey('send_blocked');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -88,7 +285,6 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
           </p>
         </div>
 
-        {/* Status indicator badge */}
         <div className="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -105,7 +301,6 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
           </div>
         </div>
 
-        {/* Creator Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
           <a
             href="https://github.com/nRn-World?tab=repositories"
@@ -136,35 +331,97 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
           </a>
         </div>
 
-        {/* Message / Feedback Form */}
-        <form onSubmit={handleSendMessage} className="space-y-4">
+        <form ref={formRef} onSubmit={handleSendMessage} className="space-y-4">
+          <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
           <div className="font-sora text-sm font-bold text-white flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-blue-400" />
             <span>{t('connect.formTitle')}</span>
           </div>
 
           <div>
-            <label className="block font-mono text-xs text-white/70 mb-1">{t('connect.emailLabel')}</label>
+            <label className="block font-mono text-xs text-white/70 mb-1">
+              {t('connect.nameLabel')} <span className="text-blue-400">*</span>
+            </label>
             <input
-              type="email"
-              placeholder={t('connect.emailPlaceholder')}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              name="name"
+              required
+              autoComplete="name"
+              placeholder={t('connect.namePlaceholder')}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (errorKey) setErrorKey(null);
+              }}
               className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
             />
           </div>
 
           <div>
-            <label className="block font-mono text-xs text-white/70 mb-1">{t('connect.messageLabel')}</label>
+            <label className="block font-mono text-xs text-white/70 mb-1">
+              {t('connect.emailLabel')} <span className="text-blue-400">*</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              autoComplete="email"
+              placeholder={t('connect.emailPlaceholder')}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (errorKey) setErrorKey(null);
+              }}
+              className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block font-mono text-xs text-white/70 mb-1">
+              {t('connect.linkLabel')}
+            </label>
+            <input
+              type="text"
+              name="link"
+              inputMode="url"
+              autoComplete="url"
+              placeholder={t('connect.linkPlaceholder')}
+              value={link}
+              onChange={(e) => {
+                setLink(e.target.value);
+                if (errorKey) setErrorKey(null);
+              }}
+              className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div>
+            <label className="block font-mono text-xs text-white/70 mb-1">
+              {t('connect.messageLabel')} <span className="text-blue-400">*</span>
+            </label>
             <textarea
+              name="message"
               required
               rows={3}
               placeholder={t('connect.messagePlaceholder')}
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                if (errorKey) setErrorKey(null);
+              }}
               className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
             />
           </div>
+
+          {errorKey && (
+            <div className="flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+              <span>
+                {resolveErrorMessage(errorKey)}
+                {errorDetail ? ` (${errorDetail})` : ''}
+              </span>
+            </div>
+          )}
 
           <div className="flex justify-end gap-3 pt-2">
             <button
@@ -176,14 +433,16 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
             </button>
             <button
               type="submit"
-              disabled={sent}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 shadow-lg shadow-blue-900/30 flex items-center gap-2 cursor-pointer"
+              disabled={sent || sending}
+              className="bg-blue-600 hover:bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white px-5 py-2 rounded-xl text-sm font-bold transition-all active:scale-95 shadow-lg shadow-blue-900/30 flex items-center gap-2 cursor-pointer"
             >
               {sent ? (
                 <>
                   <Check className="w-4 h-4 text-emerald-300" />
                   <span>{t('connect.sent')}</span>
                 </>
+              ) : sending ? (
+                <span>{t('connect.sending')}</span>
               ) : (
                 <>
                   <Send className="w-4 h-4" />

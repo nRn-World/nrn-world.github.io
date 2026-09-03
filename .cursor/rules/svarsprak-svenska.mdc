@@ -1,0 +1,11 @@
+---
+description: Svara alltid på svenska till användaren
+alwaysApply: true
+---
+
+# Språk
+
+Svara **alltid på svenska** i alla meddelanden till användaren.
+
+- Blanda inte in turkiska, engelska eller andra språk i svaren (om inte användaren uttryckligen ber om det).
+- Kod, filnamn, commit-meddelanden och tekniska termer i koden följer projektets konventioner — men förklaringar och dialog sker på svenska.

@@ -36,7 +36,6 @@ interface ProjectDetailViewProps {
   project: Project;
   onBack: () => void;
   onDownload: (project: Project, option: DownloadOption) => void;
-  onOpenLive: (project: Project) => void;
   githubSynced?: boolean;
   isSaved: boolean;
   onToggleSave: (projectId: string) => void;
@@ -49,7 +48,6 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   project,
   onBack,
   onDownload,
-  onOpenLive,
   githubSynced = false,
   isSaved,
   onToggleSave,
@@ -63,11 +61,16 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   const [copiedClone, setCopiedClone] = useState(false);
   const [copiedShare, setCopiedShare] = useState(false);
   const [copiedMd5, setCopiedMd5] = useState<string | null>(null);
+  const headingRef = React.useRef<HTMLHeadingElement>(null);
 
   const galleryImages = useMemo(
     () => getProjectGalleryImages(project.images ?? []),
     [project.images]
   );
+
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, [project.id]);
 
   useEffect(() => {
     setSelectedImageIndex(0);
@@ -109,10 +112,6 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
   const goToNextImage = () => {
     setSelectedImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
-  };
-
-  const handleOpenLive = () => {
-    onOpenLive(project);
   };
 
   const handleShare = () => {
@@ -249,7 +248,11 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </a>
             </div>
 
-            <h1 className="font-sora text-3xl md:text-5xl font-black text-white tracking-tight">
+            <h1
+              ref={headingRef}
+              tabIndex={-1}
+              className="font-sora text-3xl md:text-5xl font-black text-white tracking-tight focus:outline-none"
+            >
               {project.name}
             </h1>
 
@@ -476,9 +479,11 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
               {showLiveAction && (
                 <div className="flex flex-col gap-3">
-                  <button
-                    onClick={handleOpenLive}
-                    className={`w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg cursor-pointer ${
+                  <a
+                    href={project.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg cursor-pointer no-underline ${
                       isWebGame
                         ? 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/40'
                         : isBrowserExtension
@@ -502,7 +507,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                         <span>{t('detail.openWebAppBtn')}</span>
                       </>
                     )}
-                  </button>
+                  </a>
 
                   <a
                     href={project.liveDemoUrl}
@@ -573,6 +578,32 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     </div>
                   </div>
                 ))}
+
+                {/* Förtroendefaktorer och säkerhetsinformation (Avsnitt 8.5) */}
+                <div className="rounded-xl border border-blue-500/20 bg-blue-950/20 p-3.5 flex flex-col gap-2 font-mono text-xs">
+                  <div className="flex items-center gap-1.5 text-blue-400 font-bold">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Officiella och verifierade releaser</span>
+                  </div>
+                  <p className="font-inter text-[11px] text-white/70 leading-relaxed">
+                    Byggs och signeras direkt via GitHub Actions från repots källkod under @nRn-World.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1.5 border-t border-white/5 text-[10px] text-white/60">
+                    <a
+                      href={`https://www.virustotal.com/gui/search/${encodeURIComponent(project.name)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 hover:underline cursor-pointer"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>Sök på VirusTotal</span>
+                    </a>
+                    <span>•</span>
+                    <span className="text-white/60">
+                      Windows SmartScreen: Klicka <strong className="text-white">"Mer information"</strong> → <strong className="text-white">"Kör ändå"</strong>
+                    </span>
+                  </div>
+                </div>
               </div>
               )}
 

@@ -4,6 +4,7 @@ import path from 'path';
 import {defineConfig} from 'vite';
 import { handleGithubStatsRequest } from './server/github-stats-api.mjs';
 import { handleGithubActivityRequest } from './server/github-activity-api.mjs';
+import { handleContactRequest } from './server/contact-api.mjs';
 
 function githubApiPlugin() {
   return {
@@ -15,6 +16,9 @@ function githubApiPlugin() {
       server.middlewares.use('/api/github-activity', (req, res) => {
         void handleGithubActivityRequest(req, res);
       });
+      server.middlewares.use('/api/contact', (req, res) => {
+        void handleContactRequest(req, res);
+      });
     },
     configurePreviewServer(server) {
       server.middlewares.use('/api/github-stats', (req, res) => {
@@ -22,6 +26,9 @@ function githubApiPlugin() {
       });
       server.middlewares.use('/api/github-activity', (req, res) => {
         void handleGithubActivityRequest(req, res);
+      });
+      server.middlewares.use('/api/contact', (req, res) => {
+        void handleContactRequest(req, res);
       });
     },
   };

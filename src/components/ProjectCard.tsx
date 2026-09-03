@@ -20,12 +20,12 @@ import { ProjectCardMedia } from './ProjectCardMedia';
 import { isOnlineProjectType } from '../services/engagementService';
 import { getProjectGalleryImages } from '../utils/projectImage';
 import { getGithubContributeUrl } from '../utils/githubLinks';
+import { getProjectPath } from '../utils/projectSlug';
 
 interface ProjectCardProps {
   project: Project;
   githubSynced?: boolean;
   onSelect: (project: Project) => void;
-  onOpenLive: (project: Project, e: React.MouseEvent) => void;
   isSaved: boolean;
   onToggleSave: (projectId: string, e: React.MouseEvent) => void;
   isStarred?: boolean;
@@ -38,7 +38,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   githubSynced = false,
   onSelect,
-  onOpenLive,
   isSaved,
   onToggleSave,
   isStarred = false,
@@ -102,9 +101,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     window.open(project.githubUrl, '_blank', 'noopener,noreferrer');
   };
 
-  const handleOpenLiveDemo = (e: React.MouseEvent) => {
-    onOpenLive(project, e);
+  const stopCardNav = (e: React.MouseEvent) => {
+    e.stopPropagation();
   };
+
+  const liveLinkClass =
+    'text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer no-underline';
 
   const isOnline = isOnlineProjectType(project.projectType);
   const statLabelKey = isOnline ? 'projectCard.githubStars' : 'projectCard.githubDownloads';
@@ -128,7 +130,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       onClick={() => onSelect(project)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="bg-[#121212] rounded-xl border border-white/5 hover:border-blue-500/50 transition-all duration-300 flex flex-col cursor-pointer group relative overflow-hidden shadow-md shadow-black/40 hover:shadow-blue-950/20"
+      className="bg-[#121212] rounded-lg border border-white/5 hover:border-blue-500/50 transition-all duration-300 flex flex-col cursor-pointer group relative overflow-hidden shadow-md shadow-black/40 hover:shadow-blue-950/20"
       id={`project-card-${project.id}`}
     >
       <div className="relative">
@@ -185,9 +187,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         aria-hidden={!showInfoOverlay}
       >
         <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-sora text-sm font-bold text-white leading-tight line-clamp-2">
+          <div aria-hidden="true" className="font-sora text-sm font-bold text-white leading-tight line-clamp-2">
             {project.name}
-          </h3>
+          </div>
           <span className="shrink-0 font-mono text-[9px] text-blue-300/90 bg-blue-500/10 border border-blue-500/25 px-1.5 py-0.5 rounded">
             {project.version}
           </span>
@@ -260,19 +262,29 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      <div className="p-2.5 flex flex-col flex-grow min-h-0">
+      <div className="p-2 sm:p-2.5 flex flex-col flex-grow min-h-0">
         <div className="flex items-start justify-between gap-1 mb-0.5">
-          <h3 className="font-sora text-xs font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1 leading-tight">
-            {project.name}
-          </h3>
+          <a
+            href={getProjectPath(project)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onSelect(project);
+            }}
+            className="group-hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 rounded"
+          >
+            <h3 className="font-sora text-[11px] sm:text-xs font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1 leading-tight">
+              {project.name}
+            </h3>
+          </a>
           <ArrowUpRight className="w-3.5 h-3.5 text-white/40 group-hover:text-blue-400 shrink-0" />
         </div>
 
-        <p className="font-inter text-[10px] sm:text-[11px] text-white/45 line-clamp-1 mb-1.5 leading-snug">
+        <p className="font-inter text-[10px] sm:text-[11px] text-white/45 line-clamp-1 mb-1 leading-snug">
           {project.description}
         </p>
 
-        <div className="flex items-center justify-between gap-1 mb-1.5 min-h-[22px] relative z-30">
+        <div className="flex items-center justify-between gap-1 mb-1 min-h-[20px] relative z-30">
           <div className="flex flex-wrap items-center gap-1 min-w-0">
             {displayTags.map((tag, idx) => (
               <span
@@ -323,53 +335,66 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center text-[9px] sm:text-[10px] font-mono text-white/50 mb-1.5 px-0.5">
+        <div className="flex items-center text-[8px] sm:text-[9px] font-mono text-white/50 mb-1 px-0.5">
           <span className="w-1 h-1 rounded-full bg-emerald-400 shrink-0 mr-1" />
           <span className="truncate text-blue-300/80">
             {githubSynced ? t(statLabelKey, { count: statCount.toLocaleString() }) : '…'}
           </span>
         </div>
 
-        <div className="mt-auto pt-1.5 border-t border-white/5 -mx-2.5 px-2.5 pb-2">
-          {project.projectType === 'web_game' ? (
-            <button
-              onClick={handleOpenLiveDemo}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+        <div className="mt-auto pt-1.5 border-t border-white/5 -mx-2 sm:-mx-2.5 px-2 sm:px-2.5 pb-2">
+          {project.projectType === 'web_game' && project.liveDemoUrl ? (
+            <a
+              href={project.liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={stopCardNav}
+              onMouseDown={stopCardNav}
+              className={`${liveLinkClass} bg-emerald-600 hover:bg-emerald-500`}
               title={t('projectCard.playOnlineTitle', { name: project.name })}
             >
               <Gamepad2 className="w-3 h-3 shrink-0" />
               <span className="truncate">{t('projectCard.playOnline')}</span>
-            </button>
-          ) : project.projectType === 'web_app' ? (
-            <button
-              onClick={handleOpenLiveDemo}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+            </a>
+          ) : project.projectType === 'web_app' && project.liveDemoUrl ? (
+            <a
+              href={project.liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={stopCardNav}
+              onMouseDown={stopCardNav}
+              className={`${liveLinkClass} bg-blue-600 hover:bg-blue-500`}
               title={t('projectCard.openWebAppTitle', { name: project.name })}
             >
               <Globe className="w-3 h-3 shrink-0" />
               <span className="truncate">{t('projectCard.openWebApp')}</span>
-            </button>
-          ) : project.projectType === 'browser_extension' ? (
-            <button
-              onClick={handleOpenLiveDemo}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+            </a>
+          ) : project.projectType === 'browser_extension' && project.liveDemoUrl ? (
+            <a
+              href={project.liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={stopCardNav}
+              onMouseDown={stopCardNav}
+              className={`${liveLinkClass} bg-indigo-600 hover:bg-indigo-500`}
               title={t('projectCard.chromeStoreTitle')}
             >
               <ExternalLink className="w-3 h-3 shrink-0" />
               <span className="truncate">{t('projectCard.chromeStore')}</span>
-            </button>
+            </a>
           ) : (
-            <button
-              type="button"
+            <a
+              href={getProjectPath(project)}
               onClick={(e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 onSelect(project);
               }}
-              className="bg-[#1a203b] hover:bg-[#242c52] text-white border border-[#29345e] px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer"
+              className="bg-[#1a203b] hover:bg-[#242c52] text-white border border-[#29345e] px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-500"
             >
-              <ArrowUpRight className="w-3 h-3 shrink-0" />
+              <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
               <span className="truncate">{t('projectCard.viewDetails')}</span>
-            </button>
+            </a>
           )}
         </div>
       </div>

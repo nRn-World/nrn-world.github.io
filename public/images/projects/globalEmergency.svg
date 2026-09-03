@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Global Emergency</title>
+  <rect width="512" height="512" rx="112" fill="#c91522"/>
+  <path fill="#fff" d="M214 82h84v132h132v84H298v132h-84V298H82v-84h132z"/>
+</svg>

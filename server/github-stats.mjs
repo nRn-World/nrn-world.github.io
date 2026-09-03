@@ -68,21 +68,50 @@ export async function fetchRepoLiveStats(repoName, token) {
 
   let latestVersion;
   let latestReleaseDate;
-  const allAssets = [];
+  const usefulAssets = [];
+  let totalDownloads = 0;
 
   if (releases.length > 0) {
     const latest = releases[0];
     latestVersion = latest.tag_name || latest.name;
-    latestReleaseDate = latest.published_at;
+    latestReleaseDate =
+      latest.published_at ||
+      latest.created_at ||
+      releases.find((r) => r.published_at)?.published_at ||
+      null;
+
+    const latestReleaseAssets = releases[0]?.assets || [];
+    const addedNames = new Set();
+    for (const asset of latestReleaseAssets) {
+      usefulAssets.push({
+        name: asset.name,
+        size: asset.size || 0,
+        download_count: asset.download_count || 0,
+        browser_download_url: asset.browser_download_url || '',
+      });
+      addedNames.add(asset.name.toLowerCase());
+    }
 
     for (const rel of releases) {
       if (Array.isArray(rel.assets)) {
-        allAssets.push(...rel.assets);
+        for (const asset of rel.assets) {
+          if (isCountableInstallerAsset(asset.name)) {
+            totalDownloads += asset.download_count || 0;
+            const lower = asset.name.toLowerCase();
+            if (!addedNames.has(lower) && (lower.includes('setup') || lower.includes('portable') || lower.includes('win'))) {
+              usefulAssets.push({
+                name: asset.name,
+                size: asset.size || 0,
+                download_count: asset.download_count || 0,
+                browser_download_url: asset.browser_download_url || '',
+              });
+              addedNames.add(lower);
+            }
+          }
+        }
       }
     }
   }
-
-  const totalDownloads = sumInstallerDownloads(allAssets);
 
   let starsCount = 0;
   let githubPushedAt;
@@ -102,7 +131,7 @@ export async function fetchRepoLiveStats(repoName, token) {
     latestVersion,
     latestReleaseDate,
     githubPushedAt,
-    assets: allAssets,
+    assets: usefulAssets,
     lastFetched: Date.now(),
     fetchOk: true,
   };

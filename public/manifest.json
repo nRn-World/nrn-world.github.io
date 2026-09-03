@@ -1,0 +1,16 @@
+{
+  "name": "nRnWorld - Project Hub & Direct Downloads",
+  "short_name": "nRnWorld",
+  "description": "Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#131315",
+  "theme_color": "#131315",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ]
+}

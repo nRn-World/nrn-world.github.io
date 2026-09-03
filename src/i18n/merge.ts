@@ -1,4 +1,4 @@
-import { TranslationDictionary, TranslationValue } from '../types';
+import { TranslationDictionary, TranslationValue } from './types';
 
 export function deepMerge(
   base: TranslationDictionary,

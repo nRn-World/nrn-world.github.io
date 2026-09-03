@@ -44,26 +44,22 @@ export const ProjectCardMedia: React.FC<ProjectCardMediaProps> = ({
     <div
       className={`relative w-full ${PROJECT_CARD_ASPECT} overflow-hidden bg-[#0a0e14] border-b border-white/5`}
     >
-      <img
-        src={coverSrc}
-        alt=""
-        referrerPolicy="no-referrer"
-        onError={handleError}
-        aria-hidden
-        className={`absolute inset-0 w-full h-full blur-2xl opacity-50 saturate-125 ${
-          isBrand ? 'object-contain scale-150' : 'object-cover scale-125'
-        }`}
-        loading="lazy"
+      {/* Dekorativ CSS-glow som ersätter tunga dubblerade bilder */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(188,19,254,0.14),rgba(59,130,246,0.08)_55%,transparent_80%)] pointer-events-none"
       />
 
       <img
         src={coverSrc}
         alt={previewAlt(1)}
+        width={400}
+        height={267}
         referrerPolicy="no-referrer"
         onError={handleError}
         className={`absolute inset-0 w-full h-full transition-transform duration-700 ease-out ${
           isBrand
-            ? `object-contain p-2.5 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
+            ? `object-contain p-1.5 drop-shadow-lg ${isHovered ? 'scale-105' : ''}`
             : `object-cover object-center ${isHovered ? 'scale-[1.08]' : 'scale-100'}`
         }`}
         loading="lazy"

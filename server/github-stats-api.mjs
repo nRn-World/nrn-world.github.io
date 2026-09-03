@@ -66,15 +66,49 @@ async function fetchAllWithGhFallback() {
     for (const repoName of REPOS) {
       try {
         const releases = ghApiJson(`repos/nRn-World/${repoName}/releases?per_page=100`);
-        const allAssets = [];
         let latestVersion;
         let latestReleaseDate;
+        let totalDownloads = 0;
+        const usefulAssets = [];
 
         if (Array.isArray(releases) && releases.length > 0) {
           latestVersion = releases[0].tag_name || releases[0].name;
-          latestReleaseDate = releases[0].published_at;
+          latestReleaseDate =
+            releases[0].published_at ||
+            releases[0].created_at ||
+            releases.find((r) => r.published_at)?.published_at ||
+            null;
+
+          const latestReleaseAssets = releases[0]?.assets || [];
+          const addedNames = new Set();
+          for (const asset of latestReleaseAssets) {
+            usefulAssets.push({
+              name: asset.name,
+              size: asset.size || 0,
+              download_count: asset.download_count || 0,
+              browser_download_url: asset.browser_download_url || '',
+            });
+            addedNames.add(asset.name.toLowerCase());
+          }
+
           for (const rel of releases) {
-            if (Array.isArray(rel.assets)) allAssets.push(...rel.assets);
+            if (Array.isArray(rel.assets)) {
+              for (const asset of rel.assets) {
+                if (isCountableInstallerAsset(asset.name)) {
+                  totalDownloads += asset.download_count || 0;
+                  const lower = asset.name.toLowerCase();
+                  if (!addedNames.has(lower) && (lower.includes('setup') || lower.includes('portable') || lower.includes('win'))) {
+                    usefulAssets.push({
+                      name: asset.name,
+                      size: asset.size || 0,
+                      download_count: asset.download_count || 0,
+                      browser_download_url: asset.browser_download_url || '',
+                    });
+                    addedNames.add(lower);
+                  }
+                }
+              }
+            }
           }
         }
 
@@ -86,14 +120,6 @@ async function fetchAllWithGhFallback() {
           ? (repoData[0]?.pushed_at ?? repoData[0]?.updated_at)
           : (repoData?.pushed_at ?? repoData?.updated_at);
 
-        const totalDownloads = allAssets.reduce(
-          (sum, asset) =>
-            isCountableInstallerAsset(asset.name)
-              ? sum + (asset.download_count || 0)
-              : sum,
-          0
-        );
-
         repos[repoName] = {
           repoName,
           totalDownloads,
@@ -101,7 +127,7 @@ async function fetchAllWithGhFallback() {
           latestVersion,
           latestReleaseDate,
           githubPushedAt,
-          assets: allAssets,
+          assets: usefulAssets,
           lastFetched: Date.now(),
           fetchOk: true,
         };
@@ -141,7 +167,7 @@ export async function handleGithubStatsRequest(_req, res) {
   try {
     const payload = await getGithubStatsPayload();
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Cache-Control', 'public, max-age=60');
+    res.setHeader('Cache-Control', 'public, max-age=600');
     res.statusCode = payload.successCount > 0 ? 200 : 503;
     res.end(JSON.stringify(payload));
   } catch (error) {
