@@ -7,7 +7,7 @@ export function getProjectSlug(project: Project): string {
 }
 
 export function getProjectPath(project: Project): string {
-  return `/${getProjectSlug(project)}`;
+  return `/p/${getProjectSlug(project)}`;
 }
 
 export function getProjectUrl(project: Project): string {
@@ -18,8 +18,11 @@ export function getProjectUrl(project: Project): string {
 }
 
 export function getSlugFromLocation(): string {
-  const segment = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/')[0] ?? '';
-  return segment.toLowerCase();
+  const parts = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+  if (parts[0] === 'p' && parts[1]) {
+    return parts[1].toLowerCase();
+  }
+  return '';
 }
 
 export function findProjectBySlug(projects: Project[], slug: string): Project | undefined {

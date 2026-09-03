@@ -22,7 +22,7 @@ if (!existsSync(keyFilePath)) {
 
 const urls = [
   `${SITE.origin}/`,
-  ...projects.map((p) => `${SITE.origin}/${p.slug}`),
+  ...projects.map((p) => `${SITE.origin}/p/${p.slug}`),
 ];
 
 async function pingIndexNow() {

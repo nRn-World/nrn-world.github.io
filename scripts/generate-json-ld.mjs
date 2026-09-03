@@ -16,7 +16,7 @@ const listItems = projects.map((p, i) => ({
     '@type': 'SoftwareApplication',
     name: p.name,
     description: p.tagline || p.description,
-    url: `${SITE.origin}/${p.slug}`,
+    url: `${SITE.origin}/p/${p.slug}`,
     image: p.coverImage,
     applicationCategory: p.category === 'Games' ? 'GameApplication' : 'UtilitiesApplication',
     operatingSystem:

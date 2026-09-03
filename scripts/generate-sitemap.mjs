@@ -15,7 +15,7 @@ const urls = [
     priority: '1.0',
   },
   ...projects.map((p) => ({
-    loc: `${SITE.origin}/${p.slug}`,
+    loc: `${SITE.origin}/p/${p.slug}`,
     lastmod: p.releaseDate || today,
     changefreq: 'weekly',
     priority: '0.8',
