@@ -427,18 +427,18 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 9. DoneTogether (Direct Web App)
+  // 9. DoneTogether (Web App + Android APK)
   {
     id: 'done-together',
     name: 'DoneTogether',
     tagline: 'Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase.',
-    description: 'Intelligent collaborative task manager with instant real-time synchronization, smart deadline reminders, and responsive cross-platform UI.',
-    detailedAbout: 'DoneTogether is a modern collaborative planning application designed for teams, couples, and friends. Built with React, TypeScript, and Firebase, it provides real-time state synchronization, smart milestone tracking, custom tag workflows, and dark-themed aesthetics.\n\nOpen directly in your browser or install as a PWA.',
-    version: 'v1.3.2-live',
-    releaseDate: '2026-08-19',
+    description: 'Intelligent collaborative task manager with instant real-time synchronization, smart deadline reminders, and responsive cross-platform UI. Use in the browser or install the Android APK.',
+    detailedAbout: 'DoneTogether is a modern collaborative planning application designed for teams, couples, and friends. Built with React, TypeScript, and Firebase, it provides real-time state synchronization, smart milestone tracking, custom tag workflows, and dark-themed aesthetics.\n\nOpen directly in your browser, install as a PWA, or download the official Android APK from GitHub Releases.',
+    version: 'v1.2.2',
+    releaseDate: '2026-09-03',
     category: 'Android',
-    tags: ['Mobil', 'Webb', 'Samarbete', 'PWA'],
-    platformBadge: 'WEB',
+    tags: ['Mobil', 'Webb', 'Android', 'APK'],
+    platformBadge: 'APK',
     projectType: 'web_app',
     liveDemoUrl: 'https://nrn-world.github.io/DoneTogether/',
     featured: true,
@@ -446,17 +446,42 @@ export const INITIAL_PROJECTS: Project[] = [
     downloadsCount: 0,
     starsCount: 1,
     images: [...PROJECT_IMAGES.doneTogether],
-    downloadOptions: [],
+    downloadOptions: [
+      {
+        id: 'done-together-apk',
+        platform: 'Android',
+        label: 'Android APK',
+        fileType: 'apk',
+        size: '4.5 MB',
+        filename: 'DoneTogether-1.2.2.apk',
+        directUrl:
+          'https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk',
+        githubReleaseUrl:
+          'https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk',
+        md5Checksum: 'b6b408ae21f4bb4b773f1d085e17d8ef',
+        architecture: 'Universal',
+        isPrimary: true,
+      },
+    ],
     specs: [
       { label: 'Sync Engine', value: 'Real-Time Firebase Synchronization', icon: 'wifi' },
       { label: 'Offline Mode', value: 'Optimistic Caching & Offline PWA', icon: 'memory' },
-      { label: 'Platforms', value: 'Web PWA / Android / iOS', icon: 'smartphone' },
+      { label: 'Platforms', value: 'Web PWA / Android APK / iOS', icon: 'smartphone' },
     ],
     changelog: [
       {
+        version: 'v1.2.2',
+        date: '2026.09.03',
+        isCurrent: true,
+        items: [
+          'Official Android APK release on GitHub Releases',
+          'Direct mobile install link for phones and tablets',
+          'Web app remains available on GitHub Pages',
+        ],
+      },
+      {
         version: 'v1.3.2',
         date: '2026.08.19',
-        isCurrent: true,
         items: [
           'Direct online web app live on GitHub Pages',
           'Real-time cursor & presence badges for collaborators',
@@ -467,11 +492,11 @@ export const INITIAL_PROJECTS: Project[] = [
     githubUrl: 'https://github.com/nRn-World/DoneTogether',
     license: 'MIT License',
     maintainer: 'nRnWorld',
-    lastUpdated: 'Live Online',
+    lastUpdated: 'Recently Updated',
     systemRequirements: {
-      os: 'Modern browser on Desktop, Android, or iOS',
+      os: 'Modern browser, or Android 8+ for APK',
       ram: '2 GB RAM',
-      storage: 'Runs in browser',
+      storage: 'Web: browser only · APK: ~5 MB',
     }
   },
 

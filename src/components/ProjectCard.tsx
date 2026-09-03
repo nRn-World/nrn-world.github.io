@@ -13,8 +13,9 @@ import {
   ExternalLink,
   GitFork,
   Info,
+  Download,
 } from 'lucide-react';
-import { Project } from '../types';
+import { DownloadOption, Project } from '../types';
 import { useI18n } from '../i18n/context';
 import { ProjectCardMedia } from './ProjectCardMedia';
 import { isOnlineProjectType } from '../services/engagementService';
@@ -30,6 +31,7 @@ interface ProjectCardProps {
   onToggleSave: (projectId: string, e: React.MouseEvent) => void;
   isStarred?: boolean;
   onToggleStar?: (project: Project, e: React.MouseEvent) => void;
+  onDownload?: (project: Project, option: DownloadOption, e?: React.MouseEvent) => void;
   /** Eager-load cover image (first viewport cards / LCP). */
   imagePriority?: boolean;
 }
@@ -44,6 +46,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   onToggleSave,
   isStarred = false,
   onToggleStar,
+  onDownload,
   imagePriority = false,
 }) => {
   const { t, localizeTag, localizeCategory } = useI18n();
@@ -112,8 +115,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     'text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer no-underline';
 
   const isOnline = isOnlineProjectType(project.projectType);
-  const statLabelKey = isOnline ? 'projectCard.githubStars' : 'projectCard.githubDownloads';
-  const statCount = isOnline ? (project.starsCount ?? 0) : project.downloadsCount;
+  const primaryDownload =
+    project.downloadOptions.find((opt) => opt.isPrimary) ?? project.downloadOptions[0];
+  const hasHybridAccess =
+    project.projectType === 'web_app' && Boolean(project.liveDemoUrl) && Boolean(primaryDownload);
+  const apkDownloadUrl = primaryDownload?.directUrl || primaryDownload?.githubReleaseUrl;
+  const statLabelKey =
+    isOnline && !primaryDownload ? 'projectCard.githubStars' : 'projectCard.githubDownloads';
+  const statCount =
+    isOnline && !primaryDownload ? (project.starsCount ?? 0) : project.downloadsCount;
 
   const tagSource =
     project.tags && project.tags.length > 0 ? project.tags : [localizeCategory(project.category)];
@@ -122,6 +132,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const hoverTags = tagSource.slice(0, 4);
 
   const hoverSpecs = project.specs.slice(0, 2);
+
+  const handleCardDownload = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!primaryDownload || !onDownload || apkDownloadUrl) return;
+    e.preventDefault();
+    onDownload(project, primaryDownload, e);
+  };
 
   const hoverGalleryImages = useMemo(
     () => getProjectGalleryImages(project.images ?? []).slice(0, 6),
@@ -347,7 +364,59 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         <div className="mt-auto pt-1.5 border-t border-white/5 -mx-2 sm:-mx-2.5 px-2 sm:px-2.5 pb-2">
-          {project.projectType === 'web_game' && project.liveDemoUrl ? (
+          {hasHybridAccess && primaryDownload ? (
+            <div className="flex flex-col gap-1">
+              <a
+                href={project.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={stopCardNav}
+                onMouseDown={stopCardNav}
+                className={`${liveLinkClass} bg-blue-600 hover:bg-blue-500`}
+                title={t('projectCard.openWebAppTitle', { name: project.name })}
+              >
+                <Globe className="w-3 h-3 shrink-0" />
+                <span className="truncate">{t('projectCard.openWebApp')}</span>
+              </a>
+              {apkDownloadUrl ? (
+                <a
+                  href={apkDownloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={stopCardNav}
+                  onMouseDown={stopCardNav}
+                  className={`${liveLinkClass} bg-emerald-700 hover:bg-emerald-600`}
+                  title={t('projectCard.downloadApkTitle', {
+                    filename: primaryDownload.filename,
+                    size: primaryDownload.size,
+                  })}
+                >
+                  <Download className="w-3 h-3 shrink-0" />
+                  <span className="truncate">
+                    {primaryDownload.fileType === 'apk'
+                      ? t('projectCard.downloadApk')
+                      : t('projectCard.download', {
+                          fileType: primaryDownload.fileType,
+                          size: primaryDownload.size,
+                        })}
+                  </span>
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleCardDownload}
+                  className={`${liveLinkClass} bg-emerald-700 hover:bg-emerald-600 border-0`}
+                  title={t('projectCard.downloadApkTitle', {
+                    filename: primaryDownload.filename,
+                    size: primaryDownload.size,
+                  })}
+                >
+                  <Download className="w-3 h-3 shrink-0" />
+                  <span className="truncate">{t('projectCard.downloadApk')}</span>
+                </button>
+              )}
+            </div>
+          ) : project.projectType === 'web_game' && project.liveDemoUrl ? (
             <a
               href={project.liveDemoUrl}
               target="_blank"

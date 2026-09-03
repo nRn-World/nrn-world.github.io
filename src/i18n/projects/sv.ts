@@ -60,9 +60,10 @@ export const svProjects: Record<string, ProjectTranslation> = {
   'done-together': {
     name: 'DoneTogether',
     tagline: 'Samarbetsapp för realtidsplanering för team och vänner, byggd med React, TypeScript och Firebase.',
-    description: 'Intelligent samarbetsverktyg för uppgifter med omedelbar realtidssynkronisering, smarta deadline-påminnelser och responsivt gränssnitt på alla plattformar.',
+    description:
+      'Intelligent samarbetsverktyg för uppgifter med omedelbar realtidssynkronisering, smarta deadline-påminnelser och responsivt gränssnitt. Använd i webbläsaren eller ladda ner Android-APK.',
     detailedAbout:
-      'DoneTogether är en modern samarbetsapp för planering, designad för team, par och vänner. Byggd med React, TypeScript och Firebase med realtidssynkronisering, smart milstolpsspårning och egna taggflöden.\n\nHuvudfunktioner:\n• Omedelbar realtidssynkronisering mellan alla användare\n• Smart milstolpsspårning och deadline-påminnelser\n• Egna taggflöden och mörkt tema\n• Öppna direkt i webbläsaren eller installera som PWA',
+      'DoneTogether är en modern samarbetsapp för planering, designad för team, par och vänner. Byggd med React, TypeScript och Firebase med realtidssynkronisering, smart milstolpsspårning och egna taggflöden.\n\nHuvudfunktioner:\n• Omedelbar realtidssynkronisering mellan alla användare\n• Smart milstolpsspårning och deadline-påminnelser\n• Egna taggflöden och mörkt tema\n• Öppna som webbapp, installera som PWA, eller ladda ner officiell Android-APK från GitHub',
   },
   'nex-note': {
     name: 'NexNote',

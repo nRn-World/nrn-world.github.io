@@ -65,14 +65,21 @@ function applyStatsToProject(project: Project, stats: RepoLiveStats): Project {
     project.projectType === 'web_game' ||
     project.projectType === 'web_app' ||
     project.projectType === 'browser_extension';
+  const hasDownloadPackages = project.downloadOptions.length > 0;
 
   const updatedDownloadOptions: DownloadOption[] = project.downloadOptions.map((opt) => {
-    const matchingAsset = findAssetForFilename(stats.assets, opt.filename);
+    const matchingAsset =
+      findAssetForFilename(stats.assets, opt.filename) ??
+      (opt.fileType === 'apk'
+        ? stats.assets.find((asset) => asset.name.toLowerCase().endsWith('.apk'))
+        : undefined);
 
     if (matchingAsset) {
       return {
         ...opt,
+        filename: matchingAsset.name,
         directUrl: matchingAsset.browser_download_url,
+        githubReleaseUrl: matchingAsset.browser_download_url,
         size: `${(matchingAsset.size / (1024 * 1024)).toFixed(1)} MB`,
         downloadCount: isCountableInstallerAsset(matchingAsset.name)
           ? (matchingAsset.download_count ?? 0)
@@ -82,18 +89,21 @@ function applyStatsToProject(project: Project, stats: RepoLiveStats): Project {
     return { ...opt, downloadCount: 0 };
   });
 
+  const liveVersion = stats.latestVersion
+    ? stats.latestVersion.startsWith('v')
+      ? stats.latestVersion
+      : `v${stats.latestVersion}`
+    : undefined;
+
   return {
     ...project,
-    downloadsCount: isOnlineProject ? 0 : stats.totalDownloads,
+    downloadsCount: hasDownloadPackages ? stats.totalDownloads : isOnlineProject ? 0 : stats.totalDownloads,
     starsCount: stats.starsCount,
-    version:
-      isOnlineProject || project.downloadOptions.length === 0
+    version: hasDownloadPackages
+      ? liveVersion ?? project.version
+      : isOnlineProject
         ? project.version
-        : stats.latestVersion
-          ? stats.latestVersion.startsWith('v')
-            ? stats.latestVersion
-            : `v${stats.latestVersion}`
-          : project.version,
+        : liveVersion ?? project.version,
     downloadOptions: updatedDownloadOptions,
     githubPushedAt: stats.githubPushedAt ?? project.githubPushedAt,
   };

@@ -105,6 +105,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   const isOnline = isOnlineProjectType(project.projectType);
   const hasDownloads = project.downloadOptions.length > 0;
   const showLiveAction = hasLiveUrl && (isWebGame || isWebApp || isBrowserExtension);
+  const isHybridAccess = showLiveAction && hasDownloads && isWebApp;
 
   const goToPrevImage = () => {
     setSelectedImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
@@ -481,22 +482,36 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               <div className="flex items-center justify-between border-b border-white/5 pb-4">
                 <div>
                   <h3 className="font-sora text-lg font-bold text-white">
-                    {showLiveAction
-                      ? isWebGame
-                        ? t('detail.playOnline')
-                        : isBrowserExtension
-                          ? t('detail.installExtension')
-                          : t('detail.openWebApp')
-                      : t('detail.downloadCenter')}
+                    {isHybridAccess
+                      ? t('detail.chooseAccess')
+                      : showLiveAction
+                        ? isWebGame
+                          ? t('detail.playOnline')
+                          : isBrowserExtension
+                            ? t('detail.installExtension')
+                            : t('detail.openWebApp')
+                        : t('detail.downloadCenter')}
                   </h3>
                   <p className="text-xs text-white/50 font-mono mt-0.5">
-                    {showLiveAction
-                      ? t('detail.liveLinkHint')
-                      : t('detail.downloadHint')}
+                    {isHybridAccess
+                      ? t('detail.chooseAccessHint')
+                      : showLiveAction
+                        ? t('detail.liveLinkHint')
+                        : t('detail.downloadHint')}
                   </p>
                 </div>
-                <div className={`p-2.5 rounded-xl ${showLiveAction ? 'bg-emerald-600/15 text-emerald-400' : 'bg-blue-600/15 text-blue-400'}`}>
-                  {showLiveAction ? (
+                <div
+                  className={`p-2.5 rounded-xl ${
+                    isHybridAccess
+                      ? 'bg-blue-600/15 text-blue-400'
+                      : showLiveAction
+                        ? 'bg-emerald-600/15 text-emerald-400'
+                        : 'bg-blue-600/15 text-blue-400'
+                  }`}
+                >
+                  {isHybridAccess ? (
+                    <Smartphone className="w-5 h-5" />
+                  ) : showLiveAction ? (
                     isWebGame ? <Gamepad2 className="w-5 h-5" /> : <Globe className="w-5 h-5" />
                   ) : (
                     <Download className="w-5 h-5" />
@@ -536,6 +551,26 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     )}
                   </a>
 
+                  {isHybridAccess &&
+                    project.downloadOptions
+                      .filter((opt) => opt.fileType === 'apk' && (opt.directUrl || opt.githubReleaseUrl))
+                      .map((opt) => {
+                        const apkUrl = (opt.directUrl || opt.githubReleaseUrl)!;
+                        return (
+                          <a
+                            key={`cta-${opt.id}`}
+                            href={apkUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-emerald-950/40 cursor-pointer no-underline bg-emerald-700 hover:bg-emerald-600"
+                          >
+                            <Smartphone className="w-4 h-4" />
+                            <span>{t('detail.downloadApkBtn')}</span>
+                            <span className="text-emerald-100/80 font-normal">· {opt.size}</span>
+                          </a>
+                        );
+                      })}
+
                   <a
                     href={project.liveDemoUrl}
                     target="_blank"
@@ -545,13 +580,42 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     <ExternalLink className="w-3.5 h-3.5 shrink-0" />
                     <span>{project.liveDemoUrl}</span>
                   </a>
+
+                  {isHybridAccess &&
+                    project.downloadOptions
+                      .filter((opt) => opt.fileType === 'apk' && (opt.directUrl || opt.githubReleaseUrl))
+                      .map((opt) => {
+                        const apkUrl = (opt.directUrl || opt.githubReleaseUrl)!;
+                        return (
+                          <a
+                            key={`link-${opt.id}`}
+                            href={apkUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-[#181818] rounded-xl p-3 border border-emerald-500/20 hover:border-emerald-500/50 transition-all text-xs font-mono text-white/70 hover:text-emerald-300 flex items-center gap-2 break-all"
+                          >
+                            <Download className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
+                            <span className="truncate">{opt.filename}</span>
+                          </a>
+                        );
+                      })}
                 </div>
               )}
 
-              {/* Download Packages List */}
-              {hasDownloads && (
+              {/* Download Packages List (non-APK packages, or all when not hybrid web+apk) */}
+              {hasDownloads && !(isHybridAccess && project.downloadOptions.every((o) => o.fileType === 'apk')) && (
               <div className="flex flex-col gap-3">
-                {project.downloadOptions.map((opt) => (
+                {isHybridAccess && (
+                  <p className="text-[11px] font-mono text-white/45 uppercase tracking-wide">
+                    {t('detail.downloadCenter')}
+                  </p>
+                )}
+                {project.downloadOptions
+                  .filter((opt) => !(isHybridAccess && opt.fileType === 'apk'))
+                  .map((opt) => {
+                  const directUrl = opt.directUrl || opt.githubReleaseUrl;
+                  const isApk = opt.fileType === 'apk';
+                  return (
                   <div
                     key={opt.id}
                     className="bg-[#181818] rounded-xl p-4 border border-white/5 hover:border-blue-500/50 transition-all group"
@@ -574,13 +638,25 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                         </div>
                       </div>
 
-                      <button
-                        onClick={() => onDownload(project, opt)}
-                        className="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold hover:shadow-lg hover:shadow-blue-900/40 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        <span>{t('detail.get')}</span>
-                      </button>
+                      {isApk && directUrl ? (
+                        <a
+                          href={directUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-emerald-700 hover:bg-emerald-600 text-white px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer no-underline"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span>{t('detail.downloadApkBtn')}</span>
+                        </a>
+                      ) : (
+                        <button
+                          onClick={() => onDownload(project, opt)}
+                          className="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold hover:shadow-lg hover:shadow-blue-900/40 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span>{t('detail.get')}</span>
+                        </button>
+                      )}
                     </div>
 
                     <div className="flex justify-between items-center font-mono text-xs text-white/40 pt-2 border-t border-white/5">
@@ -604,7 +680,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                       </button>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
 
                 {/* Förtroendefaktorer och säkerhetsinformation (Avsnitt 8.5) */}
                 <div className="rounded-xl border border-blue-500/20 bg-blue-950/20 p-3.5 flex flex-col gap-2 font-mono text-xs">

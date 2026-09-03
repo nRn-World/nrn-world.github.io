@@ -60,9 +60,10 @@ export const trProjects: Record<string, ProjectTranslation> = {
   'done-together': {
     name: 'DoneTogether',
     tagline: 'React, TypeScript ve Firebase ile geliştirilmiş ekipler ve arkadaşlar için gerçek zamanlı işbirlikçi planlama uygulaması.',
-    description: 'Anlık gerçek zamanlı senkronizasyon, akıllı son tarih hatırlatıcıları ve duyarlı çapraz platform arayüzüyle akıllı işbirlikçi görev yöneticisi.',
+    description:
+      'Anlık gerçek zamanlı senkronizasyon, akıllı son tarih hatırlatıcıları ve duyarlı arayüzle akıllı işbirlikçi görev yöneticisi. Tarayıcıda kullanın veya Android APK indirin.',
     detailedAbout:
-      'DoneTogether, ekipler, çiftler ve arkadaşlar için tasarlanmış modern bir işbirlikçi planlama uygulamasıdır. React, TypeScript ve Firebase ile geliştirilmiş olup gerçek zamanlı durum senkronizasyonu, akıllı kilometre taşı takibi, özel etiket iş akışları ve koyu temalı estetik sunar.\n\nÖne çıkanlar:\n• Anlık gerçek zamanlı senkronizasyon\n• Akıllı kilometre taşı takibi ve son tarih hatırlatıcıları\n• Özel etiket iş akışları ve koyu temalı arayüz\n• Tarayıcınızda doğrudan açın veya PWA olarak yükleyin',
+      'DoneTogether, ekipler, çiftler ve arkadaşlar için tasarlanmış modern bir işbirlikçi planlama uygulamasıdır. React, TypeScript ve Firebase ile geliştirilmiş olup gerçek zamanlı durum senkronizasyonu, akıllı kilometre taşı takibi, özel etiket iş akışları ve koyu temalı estetik sunar.\n\nÖne çıkanlar:\n• Anlık gerçek zamanlı senkronizasyon\n• Akıllı kilometre taşı takibi ve son tarih hatırlatıcıları\n• Özel etiket iş akışları ve koyu temalı arayüz\n• Web uygulaması olarak açın, PWA olarak yükleyin veya resmi Android APK indirin',
   },
   'nex-note': {
     name: 'NexNote',
