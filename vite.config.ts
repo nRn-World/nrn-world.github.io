@@ -39,7 +39,7 @@ export default defineConfig(() => {
     plugins: [react(), tailwindcss(), githubApiPlugin()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(__dirname, './src'),
       },
     },
     server: {

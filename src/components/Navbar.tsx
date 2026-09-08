@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav
       aria-label="Huvudmeny"
-      className="fixed top-0 left-0 right-0 w-full max-w-full z-50 bg-[#0D0D0D]/95 backdrop-blur-2xl border-b border-white/5 safe-area-top overflow-x-hidden"
+      className="fixed top-0 left-0 right-0 w-full max-w-full z-50 bg-[#0D0D0D]/95 backdrop-blur-2xl border-b border-white/5 safe-area-top"
     >
       <div className="flex justify-between items-center gap-1.5 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[1440px] mx-auto min-w-0">
         {/* Brand — always show full nRnWorld */}

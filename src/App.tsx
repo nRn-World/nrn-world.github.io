@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, lazy, Suspense } from 'react';
 import { ALL_PROJECTS } from './data/projectsData';
 import { Project, ProjectCategory, DownloadOption } from './types';
 import { Navbar } from './components/Navbar';
@@ -13,10 +13,10 @@ import {
   getSlugFromLocation,
 } from './utils/projectSlug';
 import { updatePageSeo } from './utils/seoMeta';
-import { GitHubActivityStatus } from './components/GitHubActivityStatus';
 import { useI18n, useLocalizedProjects } from './i18n/context';
-import { Search, Filter, Monitor, Smartphone, Wrench, Shield, Star, Download, FolderArchive, ArrowUpDown, Globe, Github, CheckCircle2, Puzzle } from 'lucide-react';
+import { Search, Monitor, Smartphone, Wrench, Shield, Star, Download, ArrowUpDown, Puzzle } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
+import { SplineSceneBasic } from './components/ui/spline-scene-basic';
 
 const ProjectDetailView = lazy(() =>
   import('./components/ProjectDetailView').then((m) => ({ default: m.ProjectDetailView }))
@@ -44,8 +44,6 @@ type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
 
 const STORAGE_SAVED_KEY = 'nrnworld_saved_projects_v1';
 const STORAGE_STARRED_KEY = 'nrnworld_starred_projects_v1';
-const GITGIT_BACKGROUND_VIDEO =
-  'https://media.gitgit.me/background-videos/8fdbb0a4-43fc-4ffe-94d8-f7994fd813b5_1777587444217.mp4';
 const BACKGROUND_VIDEO_PLAYBACK_RATE = 0.25;
 
 const SEEDED_PROJECTS = mergeGithubStatsPayload(
@@ -141,48 +139,24 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<HubFilter>('All');
   const [fileTypeFilter, setFileTypeFilter] = useState<'all' | 'exe' | 'zip' | 'apk'>('all');
   const [sortBy, setSortBy] = useState<'featured' | 'downloads' | 'newest' | 'name' | 'stars'>('featured');
-  const backgroundVideoRef = useRef<HTMLVideoElement>(null);
-  const [backgroundVideoSrc, setBackgroundVideoSrc] = useState<string | undefined>(undefined);
-
   const applyBackgroundVideoSpeed = useCallback((video: HTMLVideoElement) => {
     video.playbackRate = BACKGROUND_VIDEO_PLAYBACK_RATE;
   }, []);
 
-  // Background video: desktop only, long defer — avoid competing with LCP / cache audits.
+  // Bakgrundsvideo ligger i index.html (#site-bg-video) så den startar före React — ingen blå flash.
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.matchMedia('(max-width: 767px)').matches) return;
-    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    if (conn?.saveData) return;
-
-    let cancelled = false;
-    const loadVideo = () => {
-      if (!cancelled) setBackgroundVideoSrc(GITGIT_BACKGROUND_VIDEO);
-    };
-
-    const onInteract = () => {
-      loadVideo();
-      cleanupInteract();
-    };
-    const cleanupInteract = () => {
-      window.removeEventListener('pointerdown', onInteract);
-      window.removeEventListener('keydown', onInteract);
-      window.removeEventListener('scroll', onInteract);
-    };
-
-    window.addEventListener('pointerdown', onInteract, { once: true, passive: true });
-    window.addEventListener('keydown', onInteract, { once: true });
-    window.addEventListener('scroll', onInteract, { once: true, passive: true });
-
-    const timeoutId = window.setTimeout(loadVideo, 15000);
-
+    const video = document.getElementById('site-bg-video') as HTMLVideoElement | null;
+    if (!video) return;
+    applyBackgroundVideoSpeed(video);
+    const onReady = () => applyBackgroundVideoSpeed(video);
+    video.addEventListener('loadedmetadata', onReady);
+    video.addEventListener('canplay', onReady);
+    void video.play().catch(() => {});
     return () => {
-      cancelled = true;
-      window.clearTimeout(timeoutId);
-      cleanupInteract();
+      video.removeEventListener('loadedmetadata', onReady);
+      video.removeEventListener('canplay', onReady);
     };
-  }, []);
+  }, [applyBackgroundVideoSpeed]);
 
   // Total GitHub download count across all repositories
   const totalLiveDownloads = useMemo(() => {
@@ -193,9 +167,9 @@ export default function App() {
   const [savedProjectIds, setSavedProjectIds] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_SAVED_KEY);
-      return saved ? JSON.parse(saved) : ['windows-smart-taskbar', 'nobreak-audio-builder'];
+      return saved ? JSON.parse(saved) : [];
     } catch {
-      return ['windows-smart-taskbar', 'nobreak-audio-builder'];
+      return [];
     }
   });
 
@@ -395,20 +369,7 @@ export default function App() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#0C1014] text-[#E0E0E0] selection:bg-blue-600 selection:text-white overflow-x-hidden max-w-full">
-      <video
-        ref={backgroundVideoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-        className="fixed inset-0 z-0 h-full w-full object-cover pointer-events-none"
-        src={backgroundVideoSrc}
-        aria-hidden="true"
-        onLoadedMetadata={(event) => applyBackgroundVideoSpeed(event.currentTarget)}
-        onCanPlay={(event) => applyBackgroundVideoSpeed(event.currentTarget)}
-      />
+    <div className="relative min-h-screen bg-transparent text-[#E0E0E0] selection:bg-blue-600 selection:text-white overflow-x-hidden max-w-full">
 
       <div className="relative z-10 flex min-h-screen flex-col pt-14 sm:pt-16 overflow-x-hidden max-w-full">
         {/* Skip to main content link (WCAG 2.4.1) */}
@@ -450,54 +411,16 @@ export default function App() {
           </div>
         ) : (
           <main id="main-content" tabIndex={-1} className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24 min-w-0 overflow-x-hidden focus:outline-none">
-          {/* Hero Section */}
-          <section className="py-4 sm:py-5 md:py-7 lg:py-8 flex flex-col items-center text-center px-2 min-w-0 max-w-full overflow-hidden">
-            <h1 className="font-sora text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] font-black mb-2 md:mb-3 text-white tracking-tight max-w-5xl leading-[1.05]">
-              <span className="inline-flex items-center justify-center flex-wrap gap-x-1">
-                <span>
-                  n<span className="text-blue-500">R</span>nW
-                  <Globe className="w-[0.75em] h-[0.75em] text-blue-400 mx-[0.02em] inline-block align-[-0.1em] animate-[spin_20s_linear_infinite]" />
-                  rld
-                </span>
-                <span className="text-blue-500 font-bold animate-[slash-blink_1s_step-end_infinite]">/</span>
-                <span>{t('hub.title')}</span>
-              </span>
-            </h1>
-
-            <p className="font-inter text-sm sm:text-base md:text-lg text-white/65 max-w-2xl mx-auto leading-relaxed px-2">
-              {t('hub.subtitle')}
-            </p>
-
-            <div className="mt-3 md:mt-4 w-full max-w-3xl flex flex-col sm:flex-row items-stretch justify-center gap-2 sm:gap-2.5 px-1 min-w-0">
-              <div className="flex items-center justify-center gap-2.5 bg-[#0e1626] px-3 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/40 font-mono text-xs text-white/70 w-full sm:w-auto sm:shrink-0">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
-                  <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <div className="flex flex-col items-start text-left min-w-0">
-                  <span className="text-[9px] sm:text-[10px] text-blue-300/80 leading-tight">
-                    {t('hub.githubDownloads')}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="relative flex h-1.5 w-1.5 shrink-0">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                    </span>
-                    <span className="font-sora text-lg sm:text-xl font-bold text-white tabular-nums leading-none">
-                      {githubSynced ? totalLiveDownloads.toLocaleString() : '…'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-1 min-w-0 min-h-[4.5rem] sm:min-h-[4.75rem]">
-                {githubActivity ? (
-                  <GitHubActivityStatus
-                    login={githubActivity.login}
-                    days={githubActivity.days}
-                    totalContributions={githubActivity.totalContributions}
-                  />
-                ) : null}
-              </div>
+          {/* Hero Section — modern 3D Spline scene */}
+          <section className="py-4 sm:py-5 md:py-7 lg:py-8 flex flex-col items-center px-2 min-w-0 max-w-full overflow-hidden">
+            <div className="w-full max-w-5xl mx-auto min-w-0">
+              <SplineSceneBasic
+                hubTitle={t('hub.title')}
+                subtitle={t('hub.subtitle')}
+                downloadsLabel={t('hub.githubDownloads')}
+                totalDownloads={githubSynced ? totalLiveDownloads : null}
+                githubActivity={githubActivity}
+              />
             </div>
           </section>
 

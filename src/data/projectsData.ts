@@ -510,7 +510,7 @@ export const INITIAL_PROJECTS: Project[] = [
     version: 'v2.0.1-live',
     releaseDate: '2026-08-14',
     category: 'Tools',
-    tags: ['Webb', 'Editor', 'Markdown'],
+    tags: ['Verktyg', 'Webb', 'Editor', 'Markdown'],
     platformBadge: 'WEB',
     projectType: 'web_app',
     liveDemoUrl: 'https://nexnote.vercel.app',

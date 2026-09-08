@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="nRnWorld - Project Hub & Direct Downloads" />
     <meta name="twitter:description" content="Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World)." />
     <meta name="twitter:image" content="https://nrnworld.one/og-image.png" />
-    <meta name="theme-color" content="#0C1014" />
+    <meta name="theme-color" content="#000000" />
     <meta name="author" content="nRnWorld" />
     <meta property="og:site_name" content="nRnWorld" />
     <meta property="og:locale" content="en_US" />
@@ -32,9 +32,80 @@
     <link rel="preload" as="image" href="/images/projects/doneTogether.webp" type="image/webp" fetchpriority="high" />
     <!-- LCP_PRELOADS_END -->
     <link rel="preload" as="image" href="/logo-72.webp" type="image/webp" />
-    <style>html,body{background:#0C1014;color:#E0E0E0;margin:0}#root{min-height:100vh}</style>
+    <link
+      rel="preload"
+      as="video"
+      href="https://media.gitgit.me/background-videos/8fdbb0a4-43fc-4ffe-94d8-f7994fd813b5_1777587444217.mp4"
+      type="video/mp4"
+    />
+    <link rel="preconnect" href="https://prod.spline.design" crossorigin />
+    <link rel="dns-prefetch" href="https://prod.spline.design" />
+    <link
+      rel="preload"
+      as="fetch"
+      href="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+      crossorigin="anonymous"
+    />
+    <script>
+      // Börja hämta robot-scenen direkt (före React)
+      try {
+        fetch('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode', {
+          mode: 'cors',
+          credentials: 'omit',
+          priority: 'high',
+        }).catch(function () {});
+      } catch (e) {}
+    </script>
+    <style>
+      html, body {
+        background: #000000;
+        color: #E0E0E0;
+        margin: 0;
+      }
+      #root { min-height: 100vh; }
+      #site-bg-video {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+        background: #000000;
+      }
+    </style>
       </head>
-  <body class="bg-[#131315] text-[#e5e1e4] antialiased selection:bg-[#bc13fe] selection:text-white min-h-screen">
+  <body class="bg-black text-[#E0E0E0] antialiased min-h-screen">
+    <video
+      id="site-bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    ></video>
+    <script>
+      (function () {
+        try {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (window.matchMedia('(max-width: 767px)').matches) return;
+          if (navigator.connection && navigator.connection.saveData) return;
+          var video = document.getElementById('site-bg-video');
+          if (!video) return;
+          video.src =
+            'https://media.gitgit.me/background-videos/8fdbb0a4-43fc-4ffe-94d8-f7994fd813b5_1777587444217.mp4';
+          video.playbackRate = 0.25;
+          var play = function () {
+            video.playbackRate = 0.25;
+            video.play().catch(function () {});
+          };
+          video.addEventListener('loadedmetadata', play);
+          video.addEventListener('canplay', play);
+          play();
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
                   <script type="application/ld+json">

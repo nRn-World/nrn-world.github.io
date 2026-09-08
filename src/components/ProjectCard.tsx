@@ -130,6 +130,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   const displayTags = tagSource.slice(0, 2);
   const hoverTags = tagSource.slice(0, 4);
+  const categoryLabel = localizeCategory(project.category);
+  const tagsAlreadyShowCategory = tagSource.some(
+    (tag) => localizeTag(tag) === categoryLabel || tag === project.category
+  );
+  const showCategoryBadge = Boolean(project.tags?.length) && !tagsAlreadyShowCategory;
 
   const hoverSpecs = project.specs.slice(0, 2);
 
@@ -255,7 +260,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </span>
           ))}
           <span className="bg-white/5 text-white/55 border border-white/10 text-[9px] font-mono px-1.5 py-0.5 rounded-full">
-            {localizeCategory(project.category)}
+            {categoryLabel}
           </span>
         </div>
 
@@ -315,6 +320,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {localizeTag(tag)}
               </span>
             ))}
+            {showCategoryBadge && (
+              <span
+                className="bg-white/5 text-white/55 border border-white/10 text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded-full truncate max-w-[72px]"
+                title={categoryLabel}
+              >
+                {categoryLabel}
+              </span>
+            )}
           </div>
           <div className="flex items-center shrink-0 rounded-lg border border-[#29345e] bg-[#141a2e] p-0.5 shadow-sm shadow-black/20">
             <button

@@ -50,7 +50,7 @@ export const LanguageSwitcher: React.FC = () => {
 
       {open && (
         <div
-          className={`absolute mt-2 min-w-[11rem] z-[60] rounded-xl border border-white/10 bg-[#121212] shadow-2xl shadow-black/60 py-1.5 overflow-hidden ${
+          className={`absolute mt-2 min-w-[11rem] z-[100] rounded-xl border border-white/10 bg-[#121212] shadow-2xl shadow-black/60 py-1.5 overflow-hidden ${
             dir === 'rtl' ? 'left-0' : 'right-0'
           }`}
           role="listbox"

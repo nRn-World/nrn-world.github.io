@@ -5,11 +5,14 @@
     --font-sora: 'Sora', 'Segoe UI', system-ui, sans-serif;
     --font-inter: 'Inter', 'Segoe UI', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+    --muted-foreground: 0 0% 65%;
   }
 
   body {
     font-family: var(--font-inter);
-    background-color: #0C1014;
+    background-color: #000000;
     color: #E0E0E0;
     overflow-x: hidden;
     max-width: 100%;
@@ -18,11 +21,13 @@
   html {
     overflow-x: hidden;
     max-width: 100%;
+    background-color: #000000;
   }
 
   #root {
     overflow-x: hidden;
     max-width: 100%;
+    background-color: transparent;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -158,5 +163,43 @@
 
 .safe-area-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.bg-card {
+  background-color: hsl(var(--card));
+}
+
+.text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.loader {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  animation: spline-loader-spin 0.7s linear infinite;
+}
+
+@keyframes spline-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ambient-spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
 }
 
