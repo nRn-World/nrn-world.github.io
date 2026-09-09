@@ -3,10 +3,8 @@ import { X, Copy, Check, Heart } from 'lucide-react';
 import { useI18n } from '../i18n/context';
 
 const SWISH_NUMBER_DISPLAY = '0702202027';
-const SWISH_MESSAGE = 'Tack <3 för att du stödjer mitt projekt!';
-// Type C: mottagare;belopp;meddelande;lockmask
-// Tomt belopp + lockmask 2 = användaren kan välja summa, meddelandet är förifyllt.
-const SWISH_QR_PAYLOAD = `C${SWISH_NUMBER_DISPLAY};;${SWISH_MESSAGE};2`;
+// Type A: endast mottagarnummer. Belopp och meddelande fylls i av användaren.
+const SWISH_QR_PAYLOAD = `A${SWISH_NUMBER_DISPLAY}`;
 
 interface SwishModalProps {
   isOpen: boolean;
