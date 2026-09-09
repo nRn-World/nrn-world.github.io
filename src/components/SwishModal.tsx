@@ -3,13 +3,9 @@ import { X, Copy, Check, Heart } from 'lucide-react';
 import { useI18n } from '../i18n/context';
 
 const SWISH_NUMBER_DISPLAY = '0702202027';
-// Swish förväntar ofta mottagare i internationellt format (t.ex. 46 + resten istället för 0 + resten).
-const SWISH_NUMBER_RECEIVER = SWISH_NUMBER_DISPLAY.replace(/^0/, '46');
-const SWISH_MESSAGE = 'Tack nRnWorld';
-
-// Swish-appen validerar QR-koder som innehåller en Swish-betalnings-URL.
-// Vi encodar `msg` med `encodeURIComponent` för att få stabil hantering av mellanslag (t.ex. %20).
-const SWISH_QR_URL = `https://app.swish.nu/1/p/sw/?sw=${SWISH_NUMBER_RECEIVER}&msg=${encodeURIComponent(SWISH_MESSAGE)}`;
+// Type A är den enklaste Swish-payloaden: endast mottagarnummer.
+// Detta är ofta mest kompatibelt för privata Swish-nummer.
+const SWISH_QR_PAYLOAD = `A${SWISH_NUMBER_DISPLAY}`;
 
 interface SwishModalProps {
   isOpen: boolean;
@@ -41,7 +37,7 @@ export const SwishModal: React.FC<SwishModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(SWISH_QR_URL)}`;
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(SWISH_QR_PAYLOAD)}`;
 
   const handleCopyNumber = async () => {
     try {
