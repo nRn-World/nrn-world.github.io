@@ -99,9 +99,9 @@ export const arProjects: Record<string, ProjectTranslation> = {
   },
   'flash-video-downloader': {
     name: 'FlashVideoDownloader',
-    tagline: 'سكربت خفيف لاكتشاف وتنزيل تدفقات الفيديو.',
-    description: 'يفحص نقاط نهاية تدفق الوسائط ويتيح تنزيل الفيديو بسرعة من التدفقات المدعومة على الويب.',
-    detailedAbout: 'FlashVideoDownloader هي أداة JavaScript لاستخراج روابط الوسائط وتنزيل محتوى الفيديو المتدفق.',
+    tagline: 'اكتشف ونزّل الفيديوهات المفتوحة (MP4 وWEBM وM3U8) من علامة التبويب النشطة.',
+    description: 'إضافة Chrome تعثر على الفيديوهات المفتوحة في الصفحة الحالية وتحفظها. معاينة الإيقاف المؤقت والإلغاء — سجل محلي فقط، بلا سحابة ولا تتبع.',
+    detailedAbout: 'FlashVideoDownloader هي إضافة Chrome منشورة على متجر Chrome Web Store الرسمي من Google. تكتشف وتنزّل الفيديوهات المفتوحة (MP4 وWEBM وM3U8) من علامة التبويب النشطة دون تجاوز حماية DRM.',
   },
   'note-pin': {
     name: 'NotePin',

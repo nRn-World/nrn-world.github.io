@@ -50,7 +50,7 @@
 | 14 | [Private Link Saver](https://nrnworld.one/privatelinksaver) | Utilities | Windows |
 | 15 | [BUGRAIDER](https://nrnworld.one/bugraider) | Dev Tools | Windows |
 | 16 | [Bluetooth Safety Lock](https://nrnworld.one/bluetoothsafetylock) | Security | Windows |
-| 17 | [Flash Video Downloader](https://nrnworld.one/flashvideodownloader) | Utilities | Windows |
+| 17 | [Flash Video Downloader](https://nrnworld.one/flashvideodownloader) | Chrome Extensions | Chrome Web Store |
 | 18 | [NotePin](https://nrnworld.one/notepin) | Productivity | Windows |
 | 19 | [Parkera i Sthlm](https://nrnworld.one/parkeriasthlm) | AI & Automation | Web |
 

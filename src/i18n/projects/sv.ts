@@ -116,10 +116,10 @@ export const svProjects: Record<string, ProjectTranslation> = {
   },
   'flash-video-downloader': {
     name: 'FlashVideoDownloader',
-    tagline: 'Lättviktigt skript för att hitta och ladda ner videoströmmar.',
-    description: 'Inspekterar mediaströmmars slutpunkter och möjliggör snabb nedladdning av video från stödda webbströmmar.',
+    tagline: 'Hitta och ladda ner öppna videor (MP4, WEBM, M3U8) från den aktiva fliken.',
+    description: 'Chrome-tillägg som hittar och sparar öppna videor från den aktuella sidan. Förhandsgranska, pausa och avbryt nedladdningar — lokal historik, ingen molnlagring, ingen spårning.',
     detailedAbout:
-      'FlashVideoDownloader är ett JavaScript-verktyg för att extrahera medialänkar och ladda ner strömmande videoinnehåll.\n\nHuvudfunktioner:\n• Automatisk upptäckt av mediaströmmars slutpunkter\n• Snabb extraktion av videolänkar från webbströmmar\n• Nedladdning av strömmande videoinnehåll\n• Lättviktigt skript utan tung installation',
+      'FlashVideoDownloader är ett Chrome-tillägg publicerat i Google Chrome Web Store. Det upptäcker och laddar ner öppna videor (MP4, WEBM, M3U8) från den aktiva fliken utan att kringgå DRM-skydd.\n\nHuvudfunktioner:\n• Upptäckt av öppna videor på den aktuella sidan\n• Stöd för MP4, WEBM och M3U8\n• Förhandsgranska, pausa och avbryt nedladdningar\n• Publicerat i officiella Google Chrome Web Store',
   },
   'note-pin': {
     name: 'NotePin',

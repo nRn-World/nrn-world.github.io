@@ -116,10 +116,10 @@ export const trProjects: Record<string, ProjectTranslation> = {
   },
   'flash-video-downloader': {
     name: 'FlashVideoDownloader',
-    tagline: 'Hafif video akışı keşif ve indirme betiği.',
-    description: 'Medya akış uç noktalarını inceler ve desteklenen web akışlarından hızlı video indirmeye olanak tanır.',
+    tagline: 'Aktif sekmedeki açık videoları (MP4, WEBM, M3U8) tespit edip indirin.',
+    description: 'Mevcut sayfadaki açık videoları bulan ve kaydeden Chrome uzantısı. İndirmeleri önizleyin, duraklatın ve iptal edin — yalnızca yerel geçmiş, bulut yok, izleme yok.',
     detailedAbout:
-      'FlashVideoDownloader, medya bağlantılarını çıkarmak ve akış video içeriğini indirmek için bir JavaScript aracıdır.\n\nÖne çıkanlar:\n• Web akışlarından medya bağlantısı çıkarma\n• Desteklenen akışlardan hızlı video indirme\n• Hafif ve kullanımı kolay betik yapısı\n• Medya akış uç noktası inceleme aracı',
+      'FlashVideoDownloader, resmi Google Chrome Web Store\'da yayınlanan bir Chrome uzantısıdır. DRM korumasını aşmadan aktif sekmedeki açık videoları (MP4, WEBM, M3U8) tespit eder ve indirir.\n\nÖne çıkanlar:\n• Mevcut sayfadaki açık video tespiti\n• MP4, WEBM ve M3U8 desteği\n• İndirmeleri önizleme, duraklatma ve iptal\n• Resmi Google Chrome Web Store\'da yayınlanmış',
   },
   'note-pin': {
     name: 'NotePin',

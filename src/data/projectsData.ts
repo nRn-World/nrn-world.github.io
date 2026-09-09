@@ -826,19 +826,20 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 17. FlashVideoDownloader
+  // 17. FlashVideoDownloader (Chrome Web Store Extension)
   {
     id: 'flash-video-downloader',
     name: 'FlashVideoDownloader',
-    tagline: 'Lightweight video stream discovery and downloader script.',
-    description: 'Inspects media stream endpoints and allows rapid video downloading from supported web streams.',
-    detailedAbout: 'FlashVideoDownloader is a JavaScript utility to extract media links and download streaming video content.',
-    version: 'v1.0.0-repo',
-    releaseDate: '2026-08-18',
+    tagline: 'Detect and download open videos (MP4, WEBM, M3U8) from the active tab.',
+    description: 'Chrome extension that finds and saves open videos from the current page. Preview, pause and cancel downloads — local history only, no cloud, no tracking.',
+    detailedAbout: 'FlashVideoDownloader is a Chrome extension published on the official Google Chrome Web Store. It detects and downloads open videos (MP4, WEBM, M3U8) from the active tab without bypassing DRM protection.',
+    version: 'v3.2.5-store',
+    releaseDate: '2026-09-09',
     category: 'Chrome Extensions',
-    tags: ['Chrome', 'Extension', 'Video', 'JavaScript'],
+    tags: ['Chrome', 'Extension', 'Video', 'Download'],
     platformBadge: 'TOOL',
-    projectType: 'github_repo',
+    projectType: 'browser_extension',
+    liveDemoUrl: 'https://chromewebstore.google.com/detail/flash-video-downloader/blbajmihakahbldejkginpccillhakdg',
     featured: false,
     rating: 4.85,
     downloadsCount: 0,
@@ -846,24 +847,30 @@ export const INITIAL_PROJECTS: Project[] = [
     images: [...PROJECT_IMAGES.flashVideoDownloader],
     downloadOptions: [],
     specs: [
-      { label: 'Runtime', value: 'JavaScript / Node.js', icon: 'terminal' },
+      { label: 'Platform', value: 'Google Chrome Web Store Extension', icon: 'globe' },
+      { label: 'Formats', value: 'MP4, WEBM, M3U8', icon: 'layers' },
+      { label: 'Compatibility', value: 'Chrome, Brave, Edge, Opera, Vivaldi', icon: 'shield' },
     ],
     changelog: [
       {
-        version: 'v1.0.0',
-        date: '2026.08.18',
+        version: 'v3.2.5',
+        date: '2026.09.09',
         isCurrent: true,
-        items: ['Initial repository release on GitHub']
+        items: [
+          'Published on Google Chrome Web Store',
+          'Detect and download open videos (MP4, WEBM, M3U8)',
+          'Preview, pause and cancel downloads with local history',
+        ]
       }
     ],
     githubUrl: 'https://github.com/nRn-World/FlashVideoDownloader',
     license: 'MIT License',
     maintainer: 'nRnWorld',
-    lastUpdated: 'Active Repo',
+    lastUpdated: 'Chrome Web Store',
     systemRequirements: {
-      os: 'Cross-platform',
-      ram: '1 GB RAM',
-      storage: '10 MB',
+      os: 'Google Chrome, Brave, Microsoft Edge, or Chromium browser',
+      ram: '512 MB RAM',
+      storage: '20 MB',
     }
   },
 

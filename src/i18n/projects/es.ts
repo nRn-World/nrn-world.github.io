@@ -99,9 +99,9 @@ export const esProjects: Record<string, ProjectTranslation> = {
   },
   'flash-video-downloader': {
     name: 'FlashVideoDownloader',
-    tagline: 'Script ligero de descubrimiento y descarga de flujos de vídeo.',
-    description: 'Inspecciona endpoints de flujos multimedia y permite descargar vídeo rápidamente desde flujos web compatibles.',
-    detailedAbout: 'FlashVideoDownloader es una utilidad JavaScript para extraer enlaces multimedia y descargar contenido de vídeo en streaming.',
+    tagline: 'Detecta y descarga vídeos abiertos (MP4, WEBM, M3U8) de la pestaña activa.',
+    description: 'Extensión de Chrome que encuentra y guarda vídeos abiertos de la página actual. Previsualiza, pausa y cancela descargas — historial local, sin nube ni seguimiento.',
+    detailedAbout: 'FlashVideoDownloader es una extensión de Chrome publicada en la Chrome Web Store oficial de Google. Detecta y descarga vídeos abiertos (MP4, WEBM, M3U8) de la pestaña activa sin eludir la protección DRM.',
   },
   'note-pin': {
     name: 'NotePin',
