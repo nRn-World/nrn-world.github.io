@@ -27,9 +27,10 @@ export function SplineSceneBasic({
   githubActivity,
 }: SplineSceneBasicProps) {
   return (
-    <Card className="w-full h-[420px] sm:h-[460px] md:h-[500px] bg-black/[0.96] relative overflow-hidden border-0 shadow-none">
+    <Card className="w-full h-auto md:h-[500px] bg-black/[0.96] relative overflow-hidden border-0 shadow-none">
       <div className="flex h-full flex-col md:flex-row relative z-10">
-        <div className="flex-1 p-6 sm:p-8 relative z-20 flex flex-col justify-center items-center md:items-end md:pr-2 lg:pr-4">
+        {/* Text + widgets — krymper inte roboten på mobil */}
+        <div className="shrink-0 md:flex-1 p-5 sm:p-6 md:p-8 relative z-20 flex flex-col justify-center items-center md:items-end md:pr-2 lg:pr-4">
           <div className="w-full max-w-md md:max-w-sm lg:max-w-md text-center">
             <h1 className="font-sora text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white">
               <span className="inline-flex flex-col items-center gap-1">
@@ -50,8 +51,8 @@ export function SplineSceneBasic({
               className="mt-3 sm:mt-4 w-full justify-center font-inter text-sm sm:text-base font-normal text-neutral-300 leading-relaxed"
             />
 
-            {/* Kompakta GitHub-widgets under underrubriken */}
-            <div className="mt-20 sm:mt-24 flex flex-col gap-2 w-full max-w-[26rem] mx-auto">
+            {/* Kompakta GitHub-widgets — mindre mellanrum på mobil */}
+            <div className="mt-4 md:mt-20 lg:mt-24 flex flex-col gap-2 w-full max-w-[26rem] mx-auto">
               <div className="flex items-center gap-2.5 bg-[#0e1626] px-2.5 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/30 font-mono text-white/70 w-full">
                 <div className="w-7 h-7 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
                   <Github className="w-3.5 h-3.5 text-white" />
@@ -84,7 +85,8 @@ export function SplineSceneBasic({
           </div>
         </div>
 
-        <div className="flex-1 relative min-h-[220px] md:min-h-0">
+        {/* Robot — garanterad synlig höjd på mobil */}
+        <div className="relative w-full h-[280px] sm:h-[320px] md:h-auto md:flex-1 md:min-h-0 shrink-0">
           <SplineScene className="w-full h-full" />
         </div>
       </div>
