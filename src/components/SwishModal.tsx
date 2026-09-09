@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { X, Copy, Check, Heart } from 'lucide-react';
 import { useI18n } from '../i18n/context';
 
-const SWISH_NUMBER = '0702202027';
-const SWISH_QR_PAYLOAD = `C${SWISH_NUMBER};0;Tack nRnWorld;1`;
+const SWISH_NUMBER_DISPLAY = '0702202027';
+// Swish förväntar ofta mottagare i internationellt format (t.ex. 46 + resten istället för 0 + resten).
+const SWISH_NUMBER_RECEIVER = SWISH_NUMBER_DISPLAY.replace(/^0/, '46');
+const SWISH_MESSAGE = 'Tack nRnWorld';
+
+// Swish-appen validerar QR-koder som innehåller en Swish-betalnings-URL.
+// Vi encodar `msg` med `encodeURIComponent` för att få stabil hantering av mellanslag (t.ex. %20).
+const SWISH_QR_URL = `https://app.swish.nu/1/p/sw/?sw=${SWISH_NUMBER_RECEIVER}&msg=${encodeURIComponent(SWISH_MESSAGE)}`;
 
 interface SwishModalProps {
   isOpen: boolean;
@@ -35,14 +41,14 @@ export const SwishModal: React.FC<SwishModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(SWISH_QR_PAYLOAD)}`;
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(SWISH_QR_URL)}`;
 
   const handleCopyNumber = async () => {
     try {
-      await navigator.clipboard.writeText(SWISH_NUMBER);
+      await navigator.clipboard.writeText(SWISH_NUMBER_DISPLAY);
     } catch {
       const textarea = document.createElement('textarea');
-      textarea.value = SWISH_NUMBER;
+      textarea.value = SWISH_NUMBER_DISPLAY;
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
@@ -107,7 +113,7 @@ export const SwishModal: React.FC<SwishModalProps> = ({ isOpen, onClose }) => {
 
           <div className="flex items-center gap-2 bg-[#0A0A0A] border border-white/10 rounded-xl px-4 py-3 w-full justify-center">
             <Heart className="w-4 h-4 text-pink-400 shrink-0" />
-            <span className="font-mono text-lg font-bold text-white tracking-wide">{SWISH_NUMBER}</span>
+            <span className="font-mono text-lg font-bold text-white tracking-wide">{SWISH_NUMBER_DISPLAY}</span>
             <button
               type="button"
               onClick={handleCopyNumber}
