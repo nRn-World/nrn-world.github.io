@@ -22,7 +22,6 @@ const COVERS = {
   nobreakAudioBuilder: raw('NOBreak-Audio-Builder', 'master', 'Icon/Icon-no-bg.png'),
   octosArmy: raw('OctosArmy', 'main', 'Logo/OSAI-no-bg.png'),
   theSilentRoom1986: 'https://raw.githubusercontent.com/RobinAyzit/The-Silent-Room-1986/master/logo.png',
-  farmGuardianTd: raw('Farm-Guardian-TD', 'main', 'public/icons/icon-512.png'),
   neonPathPuzzle: raw('NeonPathPuzzle', 'main', 'assets/icon.png'),
   doneTogether: raw('DoneTogether', 'main', 'public/pwa-icon.png'),
   nexNote: raw('NexNote', 'main', 'logo-no-bg.png'),
@@ -38,7 +37,7 @@ const COVERS = {
 };
 
 async function optimizeAll() {
-  console.log('Downloading and optimizing 19 project covers...');
+  console.log(`Downloading and optimizing ${Object.keys(COVERS).length} project covers...`);
   let totalOriginalBytes = 0;
   let totalOptimizedBytes = 0;
 

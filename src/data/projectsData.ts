@@ -336,55 +336,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 7. Farm-Guardian-TD (Direct Game Link)
-  {
-    id: 'farm-guardian-td',
-    name: 'Farm-Guardian-TD',
-    tagline: 'Modern mobile animal tower-defense and merge game built with Phaser 3 and TypeScript.',
-    description: 'Strategically merge animal guardians, defend pastures, and unlock unique tactical synergy bonuses against incoming enemy waves.',
-    detailedAbout: 'Farm-Guardian-TD is an action-packed tower-defense game developed with Phaser 3. Merge defender critters, upgrade elemental barns, and protect your farm through hundreds of levels.\n\nPlay directly in your browser or mobile phone.',
-    version: 'v1.2.0-live',
-    releaseDate: '2026-08-26',
-    category: 'Games',
-    tags: ['Spel', 'Tower Defense', 'Webb', 'Mobil'],
-    platformBadge: 'WEB',
-    projectType: 'web_game',
-    liveDemoUrl: 'https://farm-guardian-td.vercel.app',
-    featured: true,
-    rating: 4.92,
-    downloadsCount: 0,
-    starsCount: 1,
-    images: [...PROJECT_IMAGES.farmGuardianTd],
-    downloadOptions: [],
-    specs: [
-      { label: 'Game Engine', value: 'Phaser 3 + TypeScript', icon: 'speed' },
-      { label: 'Platform', value: 'Web & Mobile Browser', icon: 'smartphone' },
-      { label: 'Controls', value: 'Touch Drag-and-Drop & Mouse', icon: 'layers' },
-    ],
-    changelog: [
-      {
-        version: 'v1.2.0',
-        date: '2026.08.26',
-        isCurrent: true,
-        items: [
-          'Live deployment on Vercel',
-          'Added new merge tiers and legendary guardian abilities',
-          'Mobile touch screen optimization',
-        ]
-      }
-    ],
-    githubUrl: 'https://github.com/nRn-World/Farm-Guardian-TD',
-    license: 'MIT License',
-    maintainer: 'nRnWorld',
-    lastUpdated: 'Live Online',
-    systemRequirements: {
-      os: 'Modern browser on Desktop or Mobile',
-      ram: '2 GB RAM',
-      storage: 'Runs in browser',
-    }
-  },
-
-  // 8. NeonPathPuzzle (Direct Game Link)
+  // 7. NeonPathPuzzle (Direct Game Link)
   {
     id: 'neon-path-puzzle',
     name: 'NeonPathPuzzle',
@@ -427,7 +379,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 9. DoneTogether (Web App + Android APK)
+  // 8. DoneTogether (Web App + Android APK)
   {
     id: 'done-together',
     name: 'DoneTogether',
@@ -500,7 +452,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 10. NexNote (Direct Web App)
+  // 9. NexNote (Direct Web App)
   {
     id: 'nex-note',
     name: 'NexNote',
@@ -548,7 +500,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 11. SecretPromts (Direct Web App)
+  // 10. SecretPromts (Direct Web App)
   {
     id: 'secret-prompts',
     name: 'SecretPromts',
@@ -591,7 +543,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 12. SiteScannerPro (Direct Web App)
+  // 11. SiteScannerPro (Direct Web App)
   {
     id: 'site-scanner-pro',
     name: 'SiteScannerPro',
@@ -634,7 +586,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 13. GLOBAL_EMERGENCY (Direct Web App)
+  // 12. GLOBAL_EMERGENCY (Direct Web App)
   {
     id: 'global-emergency',
     name: 'GLOBAL_EMERGENCY',
@@ -677,7 +629,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 14. PrivateLinkSaver (Chrome Web Store Extension)
+  // 13. PrivateLinkSaver (Chrome Web Store Extension)
   {
     id: 'private-link-saver',
     name: 'PrivateLinkSaver',
@@ -725,7 +677,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 15. BUGRAIDER (AI Agent Bug Hunter Prompt/Tool)
+  // 14. BUGRAIDER (AI Agent Bug Hunter Prompt/Tool)
   {
     id: 'bugraider',
     name: 'BUGRAIDER',
@@ -767,7 +719,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 16. BluetoothSafetyLock (Windows BLE Daemon)
+  // 15. BluetoothSafetyLock (Windows BLE Daemon)
   {
     id: 'bluetooth-safety-lock',
     name: 'BluetoothSafetyLock',
@@ -826,7 +778,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 17. FlashVideoDownloader (Chrome Web Store Extension)
+  // 16. FlashVideoDownloader (Chrome Web Store Extension)
   {
     id: 'flash-video-downloader',
     name: 'FlashVideoDownloader',
@@ -874,7 +826,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 18. NotePin
+  // 17. NotePin
   {
     id: 'note-pin',
     name: 'NotePin',
@@ -915,7 +867,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 19. ParkeraiSthlm (Stockholm Parking Map)
+  // 18. ParkeraiSthlm (Stockholm Parking Map)
   {
     id: 'parkera-i-sthlm',
     name: 'ParkeraiSthlm',

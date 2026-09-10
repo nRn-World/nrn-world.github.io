@@ -43,13 +43,6 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'TheSilentRoom1986 är ett interaktivt retro-berättelseskrivspel. Bakom järnridån i ett alternativt 1986 använder du en smugglad terminal i ett ljudisolerat skyddsrum för att dekryptera meddelanden, motverka övervakningsnoder och sända förbjuden sanning.\n\nHuvudfunktioner:\n• Berättelsedrivet skrivspel med kalla krigets atmosfär\n• Dekryptera meddelanden och motverka övervakning via tangentkommandon\n• Sänd förbjudna frekvenser och tända en digital revolution\n• Spela direkt i webbläsaren utan installation',
   },
-  'farm-guardian-td': {
-    name: 'Farm-Guardian-TD',
-    tagline: 'Modern mobil tower defense- och merge-spel med djur, byggt med Phaser 3 och TypeScript.',
-    description: 'Slå ihop djurväktare strategiskt, försvara betesmarker och lås upp unika taktiska synergibonusar mot inkommande fiendevågor.',
-    detailedAbout:
-      'Farm-Guardian-TD är ett actionfyllt tower defense-spel utvecklat med Phaser 3. Slå ihop försvarande djur, uppgradera elementära ladugårdar och skydda gården genom hundratals nivåer.\n\nHuvudfunktioner:\n• Strategisk merge-mekanik med djurväktare\n• Uppgradera elementära ladugårdar och försvar\n• Unika taktiska synergibonusar mot fiendevågor\n• Spela direkt i webbläsaren eller på mobilen',
-  },
   'neon-path-puzzle': {
     name: 'NeonPathPuzzle',
     tagline: 'Utmanande neon-logikspel med vägfindning och kretjustering.',

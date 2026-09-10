@@ -19,14 +19,14 @@
 
 ## ✨ Features
 
-- 🎯 **19 open-source projects** — Windows utilities, AI agents, audio engines, games and web tools
+- 🎯 **18 open-source projects** — Windows utilities, AI agents, audio engines, games and web tools
 - ⚡ **Live GitHub stats** — stars, downloads and release dates fetched at build time via GitHub CLI
 - 🌍 **i18n** — full support for English, Swedish, Arabic, French, Spanish and Turkish
 - 🔎 **Smart search & filters** — instant fuzzy search across all projects with category and format filters
 - 📦 **Direct downloads** — verified installer binaries with MD5 checksum display and VirusTotal links
 - 🤖 **AI-ready** — exposes `llms.txt`, Schema.org JSON-LD and structured metadata for AI agents and search engines
 - ♿ **WCAG 2.1 AA** — skip-to-content, focus rings, semantic headings, aria-labels and 4.5:1 contrast throughout
-- 🖼️ **Optimized images** — all 19 project covers converted to local WebP/SVG (5.27 MB → 246 KB, **-95%**)
+- 🖼️ **Optimized images** — all 18 project covers converted to local WebP/SVG (5.27 MB → 246 KB, **-95%**)
 
 ---
 
@@ -40,19 +40,18 @@
 | 4 | [NOBreak Audio Builder](https://nrnworld.one/nobreakaudibuilder) | Audio & Media | Windows |
 | 5 | [OctosArmy](https://nrnworld.one/octosarmy) | Games | Windows |
 | 6 | [The Silent Room 1986](https://nrnworld.one/thesilentroom1986) | Games | Windows |
-| 7 | [Farm Guardian TD](https://nrnworld.one/farmguardiantd) | Games | Windows |
-| 8 | [Neon Path Puzzle](https://nrnworld.one/neonpathpuzzle) | Games | Windows |
-| 9 | [DoneTogether](https://nrnworld.one/donetogether) | Productivity | Windows |
-| 10 | [NexNote](https://nrnworld.one/nexnote) | Productivity | Windows |
-| 11 | [Secret Prompts](https://nrnworld.one/secretpromts) | AI & Automation | Windows |
-| 12 | [Site Scanner Pro](https://nrnworld.one/sitescannerpro) | Dev Tools | Windows |
-| 13 | [GLOBAL EMERGENCY](https://nrnworld.one/globalemergency) | Games | Windows |
-| 14 | [Private Link Saver](https://nrnworld.one/privatelinksaver) | Utilities | Windows |
-| 15 | [BUGRAIDER](https://nrnworld.one/bugraider) | Dev Tools | Windows |
-| 16 | [Bluetooth Safety Lock](https://nrnworld.one/bluetoothsafetylock) | Security | Windows |
-| 17 | [Flash Video Downloader](https://nrnworld.one/flashvideodownloader) | Chrome Extensions | Chrome Web Store |
-| 18 | [NotePin](https://nrnworld.one/notepin) | Productivity | Windows |
-| 19 | [Parkera i Sthlm](https://nrnworld.one/parkeriasthlm) | AI & Automation | Web |
+| 7 | [Neon Path Puzzle](https://nrnworld.one/neonpathpuzzle) | Games | Windows |
+| 8 | [DoneTogether](https://nrnworld.one/donetogether) | Productivity | Windows |
+| 9 | [NexNote](https://nrnworld.one/nexnote) | Productivity | Windows |
+| 10 | [Secret Prompts](https://nrnworld.one/secretpromts) | AI & Automation | Windows |
+| 11 | [Site Scanner Pro](https://nrnworld.one/sitescannerpro) | Dev Tools | Windows |
+| 12 | [GLOBAL EMERGENCY](https://nrnworld.one/globalemergency) | Games | Windows |
+| 13 | [Private Link Saver](https://nrnworld.one/privatelinksaver) | Utilities | Windows |
+| 14 | [BUGRAIDER](https://nrnworld.one/bugraider) | Dev Tools | Windows |
+| 15 | [Bluetooth Safety Lock](https://nrnworld.one/bluetoothsafetylock) | Security | Windows |
+| 16 | [Flash Video Downloader](https://nrnworld.one/flashvideodownloader) | Chrome Extensions | Chrome Web Store |
+| 17 | [NotePin](https://nrnworld.one/notepin) | Productivity | Windows |
+| 18 | [Parkera i Sthlm](https://nrnworld.one/parkeriasthlm) | AI & Automation | Web |
 
 ---
 
@@ -117,7 +116,7 @@ nRnWorld/
 │   ├── images/projects/   # Optimized WebP/SVG project covers
 │   ├── github-stats.json  # Live GitHub data (generated at build)
 │   ├── robots.txt         # Search engine & AI bot configuration
-│   ├── sitemap.xml        # All 19 project routes
+│   ├── sitemap.xml        # All 18 project routes
 │   └── llms.txt           # Structured data for AI agents
 ├── scripts/
 │   ├── fetch-github-stats.mjs    # GitHub API → github-stats.json

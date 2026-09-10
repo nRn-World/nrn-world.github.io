@@ -43,13 +43,6 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'TheSilentRoom1986, etkileşimli bir retro anlatı yazma oyunudur. Alternatif bir 1986\'da Demir Perde arkasında geçen oyunda, ses yalıtımlı bir sığınakta kaçak bir terminal kullanarak mesajları şifresini çözer, gözetleme düğümlerine karşı saldırırsınız ve yasak gerçeği yayınlarsınız.\n\nKurulum olmadan doğrudan tarayıcınızda oynayın:\n• Soğuk Savaş atmosferinde sürükleyici hikâye anlatımı\n• Tuş vuruşu tabanlı oynanış ve gerilim dolu karar anları\n• Retro terminal estetiği ve dönem atmosferi\n• Tarayıcıda anında oynanabilir, kurulum gerektirmez',
   },
-  'farm-guardian-td': {
-    name: 'Farm-Guardian-TD',
-    tagline: 'Phaser 3 ve TypeScript ile geliştirilmiş modern mobil hayvan kule savunması ve birleştirme oyunu.',
-    description: 'Hayvan koruyucularını stratejik olarak birleştirin, meraları savunun ve gelen düşman dalgalarına karşı benzersiz taktik sinerji bonuslarının kilidini açın.',
-    detailedAbout:
-      'Farm-Guardian-TD, Phaser 3 ile geliştirilmiş aksiyon dolu bir kule savunma oyunudur. Savunucu yaratıkları birleştirin, element ahırlarını yükseltin ve yüzlerce seviye boyunca çiftliğinizi koruyun.\n\nOynanış özellikleri:\n• Hayvan birleştirme mekaniğiyle derinlemesine strateji\n• Element ahırları ve taktik sinerji bonusları\n• Yüzlerce seviye ve artan zorluk\n• Tarayıcınızda veya mobil telefonunuzda doğrudan oynayın',
-  },
   'neon-path-puzzle': {
     name: 'NeonPathPuzzle',
     tagline: 'Zorlu neon ışık yol bulma ve devre hizalama mantık oyunu.',

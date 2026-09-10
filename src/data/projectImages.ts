@@ -46,13 +46,6 @@ export const PROJECT_IMAGES = {
     '/images/projects/theSilentRoom1986.webp',
     og('TheSilentRoom1986'),
   ],
-  farmGuardianTd: [
-    '/images/projects/farmGuardianTd.webp',
-    raw('Farm-Guardian-TD', 'main', 'screenshots/desktop-home.png'),
-    raw('Farm-Guardian-TD', 'main', 'screenshots/professional-battle-390.png'),
-    raw('Farm-Guardian-TD', 'main', 'screenshots/campaign-2026-390.png'),
-    raw('Farm-Guardian-TD', 'main', 'screenshots/mobile-battle.png'),
-  ],
   neonPathPuzzle: [
     '/images/projects/neonPathPuzzle.webp',
     raw('NeonPathPuzzle', 'main', 'screenshots/main-menu.png'),

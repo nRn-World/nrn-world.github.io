@@ -1,5 +1,5 @@
 # nRnWorld
-> Open Windows tools, AI agents, audio engines and browser games. 19 projects with direct downloads and source on GitHub (@nRn-World).
+> Open Windows tools, AI agents, audio engines and browser games. 18 projects with direct downloads and source on GitHub (@nRn-World).
 
 ## Projects
 - [ShadowPaw: Noir Typist](https://nrnworld.one/p/shadowpaw): https://nrnworld.one/p/shadowpaw: Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth. | Live: https://nrn-world.github.io/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
@@ -8,7 +8,6 @@
 - [NOBreak-Audio-Builder](https://nrnworld.one/p/nobreakaudiobuilder): https://nrnworld.one/p/nobreakaudiobuilder: Professional desktop audio mixer for creating seamless, gapless audio compilations. | GitHub: https://github.com/nRn-World/NOBreak-Audio-Builder
 - [OctosArmy](https://nrnworld.one/p/octosarmy): https://nrnworld.one/p/octosarmy: Multi-agent AI orchestration system for autonomous file management and workspace hygiene. | GitHub: https://github.com/nRn-World/OctosArmy
 - [TheSilentRoom1986](https://nrnworld.one/p/thesilentroom1986): https://nrnworld.one/p/thesilentroom1986: A 1980s-inspired underground typing game where your words manifest into reality to defy the regime. | Live: https://nrn-world.github.io/TheSilentRoom1986/ | GitHub: https://github.com/nRn-World/TheSilentRoom1986
-- [Farm-Guardian-TD](https://nrnworld.one/p/farmguardiantd): https://nrnworld.one/p/farmguardiantd: Modern mobile animal tower-defense and merge game built with Phaser 3 and TypeScript. | Live: https://farm-guardian-td.vercel.app | GitHub: https://github.com/nRn-World/Farm-Guardian-TD
 - [NeonPathPuzzle](https://nrnworld.one/p/neonpathpuzzle): https://nrnworld.one/p/neonpathpuzzle: Challenging neon light pathfinding and circuit alignment logic game. | Live: https://nrn-world.github.io/NeonPathPuzzle/ | GitHub: https://github.com/nRn-World/NeonPathPuzzle
 - [DoneTogether](https://nrnworld.one/p/donetogether): https://nrnworld.one/p/donetogether: Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase. | Live: https://nrn-world.github.io/DoneTogether/ | GitHub: https://github.com/nRn-World/DoneTogether
 - [NexNote](https://nrnworld.one/p/nexnote): https://nrnworld.one/p/nexnote: Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math. | Live: https://nexnote.vercel.app | GitHub: https://github.com/nRn-World/NexNote

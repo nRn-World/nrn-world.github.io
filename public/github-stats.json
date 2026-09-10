@@ -1,7 +1,7 @@
 {
   "fetchedAt": "2026-09-03T13:11:25.341Z",
-  "successCount": 19,
-  "totalRepos": 19,
+  "successCount": 18,
+  "totalRepos": 18,
   "repos": {
     "ShadowPaw": {
       "repoName": "ShadowPaw",
@@ -1069,15 +1069,6 @@
       "githubPushedAt": "2026-08-31T23:27:27Z",
       "assets": [],
       "lastFetched": 1788441073763,
-      "fetchOk": true
-    },
-    "Farm-Guardian-TD": {
-      "repoName": "Farm-Guardian-TD",
-      "totalDownloads": 0,
-      "starsCount": 1,
-      "githubPushedAt": "2026-08-26T15:16:09Z",
-      "assets": [],
-      "lastFetched": 1788441074593,
       "fetchOk": true
     },
     "NeonPathPuzzle": {

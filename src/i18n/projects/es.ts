@@ -37,12 +37,6 @@ export const esProjects: Record<string, ProjectTranslation> = {
     description: 'Adéntrate en el underground de la Guerra Fría de los años 80. Evade a la policía secreta, transmite frecuencias prohibidas e inicia una revolución digital con comandos de teclado.',
     detailedAbout: 'TheSilentRoom1986 es un juego narrativo retro interactivo de mecanografía. Ambientado tras el Telón de Acero en un 1986 alternativo, operas un terminal de contrabando en un búnker insonorizado para descifrar mensajes, contraatacar nodos de vigilancia y difundir la verdad prohibida.\n\nJuega directamente en tu navegador sin instalación.',
   },
-  'farm-guardian-td': {
-    name: 'Farm-Guardian-TD',
-    tagline: 'Moderno juego móvil de tower defense y fusión de animales, desarrollado con Phaser 3 y TypeScript.',
-    description: 'Fusiona estratégicamente guardianes animales, defiende pastos y desbloquea bonificaciones de sinergia táctica únicas contra oleadas de enemigos.',
-    detailedAbout: 'Farm-Guardian-TD es un juego de tower defense lleno de acción desarrollado con Phaser 3. Fusiona criaturas defensoras, mejora graneros elementales y protege tu granja a través de cientos de niveles.\n\nJuega directamente en tu navegador o en tu teléfono móvil.',
-  },
   'neon-path-puzzle': {
     name: 'NeonPathPuzzle',
     tagline: 'Desafiante juego de lógica de búsqueda de rutas de luz neón y alineación de circuitos.',

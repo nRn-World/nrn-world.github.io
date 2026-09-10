@@ -8,7 +8,6 @@ const REPOS = [
   'NOBreak-Audio-Builder',
   'OctosArmy',
   'TheSilentRoom1986',
-  'Farm-Guardian-TD',
   'NeonPathPuzzle',
   'DoneTogether',
   'NexNote',
