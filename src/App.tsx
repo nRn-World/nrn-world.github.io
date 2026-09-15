@@ -8,6 +8,14 @@ import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub, mergeGithubStatsPayload, type GithubStatsPayload } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
 import {
+  fetchEngagementPayload,
+  getLiveEngagementKind,
+  mergeEngagementIntoProjects,
+  recordEngagement,
+  type EngagementKind,
+  type EngagementPayload,
+} from './services/engagementService';
+import {
   findProjectBySlug,
   getProjectPath,
   getSlugFromLocation,
@@ -67,11 +75,47 @@ function getGithubActivityTimestamp(project: Project): number {
 export default function App() {
   const { t, localizeCategory } = useI18n();
   // Official nRnWorld project releases — seeded from build-time GitHub snapshot to avoid CLS
-  const [projects, setProjects] = useState<Project[]>(SEEDED_PROJECTS);
+  const [baseProjects, setBaseProjects] = useState<Project[]>(SEEDED_PROJECTS);
+  const [engagement, setEngagement] = useState<EngagementPayload | null>(null);
+  const projects = useMemo(
+    () => mergeEngagementIntoProjects(baseProjects, engagement),
+    [baseProjects, engagement]
+  );
   const localizedProjects = useLocalizedProjects(projects);
   const [lastGithubSync, setLastGithubSync] = useState<Date | null>(SNAPSHOT_SYNCED);
   const [githubActivity, setGithubActivity] = useState<GithubActivityPayload | null>(null);
   const githubSynced = lastGithubSync !== null;
+
+  const bumpEngagement = useCallback((projectId: string, kind: EngagementKind) => {
+    setEngagement((prev) => {
+      const projectsMap = { ...(prev?.projects ?? {}) };
+      const current = projectsMap[projectId] ?? {
+        stars: 0,
+        downloads: 0,
+        plays: 0,
+        opens: 0,
+      };
+      projectsMap[projectId] = {
+        ...current,
+        [kind]: (current[kind] ?? 0) + 1,
+      };
+      return {
+        updatedAt: new Date().toISOString(),
+        projects: projectsMap,
+      };
+    });
+    void recordEngagement(projectId, kind).then((remote) => {
+      if (!remote) return;
+      setEngagement((prev) => {
+        const projectsMap = { ...(prev?.projects ?? {}) };
+        projectsMap[projectId] = remote;
+        return {
+          updatedAt: new Date().toISOString(),
+          projects: projectsMap,
+        };
+      });
+    });
+  }, []);
 
   // Sync projects with live GitHub stats on mount
   useEffect(() => {
@@ -81,7 +125,7 @@ export default function App() {
       try {
         const result = await syncProjectsWithGitHub(ALL_PROJECTS);
         if (isMounted && result.successCount > 0) {
-          setProjects(result.projects);
+          setBaseProjects(result.projects);
           setLastGithubSync(new Date());
         }
       } catch (err) {
@@ -115,6 +159,29 @@ export default function App() {
     };
   }, []);
 
+  // Shared hub stars / downloads / plays visible to everyone online
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadEngagement() {
+      try {
+        const payload = await fetchEngagementPayload();
+        if (isMounted && payload) {
+          setEngagement(payload);
+        }
+      } catch (err) {
+        console.warn('Engagement sync notice:', err);
+      }
+    }
+
+    loadEngagement();
+    const intervalId = window.setInterval(loadEngagement, 60_000);
+    return () => {
+      isMounted = false;
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
   // Selected project for full detail page
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -143,15 +210,15 @@ export default function App() {
     video.playbackRate = BACKGROUND_VIDEO_PLAYBACK_RATE;
   }, []);
 
-  // Bakgrundsvideo ligger i index.html (#site-bg-video) så den startar före React — ingen blå flash.
+  // Bakgrundsvideo startas i index.html (desktop only). Här synkar vi bara playbackRate.
   useEffect(() => {
     const video = document.getElementById('site-bg-video') as HTMLVideoElement | null;
     if (!video) return;
+    if (window.matchMedia('(max-width: 767px)').matches) return;
     applyBackgroundVideoSpeed(video);
     const onReady = () => applyBackgroundVideoSpeed(video);
     video.addEventListener('loadedmetadata', onReady);
     video.addEventListener('canplay', onReady);
-    void video.play().catch(() => {});
     return () => {
       video.removeEventListener('loadedmetadata', onReady);
       video.removeEventListener('canplay', onReady);
@@ -276,6 +343,7 @@ export default function App() {
     const isAlreadyStarred = starredProjectIds.includes(project.id);
     if (!isAlreadyStarred) {
       setStarredProjectIds((prev) => [...prev, project.id]);
+      bumpEngagement(project.id, 'stars');
     }
     // Always open GitHub Star dialog so user can easily star it on GitHub too
     setStarModalProject(project);
@@ -284,9 +352,15 @@ export default function App() {
 
   const handleDownload = (project: Project, option: DownloadOption, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    bumpEngagement(project.id, 'downloads');
     triggerDirectDownload(project, option, (progressState) => {
       setActiveDownload(progressState);
     });
+  };
+
+  const handleLiveOpen = (project: Project, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    bumpEngagement(project.id, getLiveEngagementKind(project.projectType));
   };
 
   // Filter and sort computation
@@ -400,7 +474,10 @@ export default function App() {
                 project={selectedProject}
                 onBack={handleBackToHub}
                 onDownload={handleDownload}
+                onLiveOpen={handleLiveOpen}
+                onCountDownload={(p) => bumpEngagement(p.id, 'downloads')}
                 githubSynced={githubSynced}
+                engagement={engagement}
                 isSaved={savedProjectIds.includes(selectedProject.id)}
                 onToggleSave={handleToggleSave}
                 onOpenDocs={() => setDocsModalOpen(true)}
@@ -411,7 +488,7 @@ export default function App() {
           </div>
         ) : (
           <main id="main-content" tabIndex={-1} className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24 min-w-0 overflow-x-hidden focus:outline-none">
-          {/* Hero Section — modern 3D Spline scene */}
+          {/* Hero Section — text eager; Spline lazy desktop-only */}
           <section className="py-4 sm:py-5 md:py-7 lg:py-8 flex flex-col items-center px-2 min-w-0 max-w-full overflow-hidden">
             <div className="w-full max-w-5xl mx-auto min-w-0">
               <SplineSceneBasic
@@ -559,12 +636,15 @@ export default function App() {
                   key={project.id}
                   project={project}
                   githubSynced={githubSynced}
+                  engagement={engagement}
                   onSelect={handleSelectProject}
                   isSaved={savedProjectIds.includes(project.id)}
                   onToggleSave={handleToggleSave}
                   isStarred={starredProjectIds.includes(project.id)}
                   onToggleStar={handleToggleStar}
                   onDownload={handleDownload}
+                  onLiveOpen={handleLiveOpen}
+                  onCountDownload={(p) => bumpEngagement(p.id, 'downloads')}
                   imagePriority={index < 2}
                 />
               ))}

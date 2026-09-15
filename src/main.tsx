@@ -1,17 +1,20 @@
-import {StrictMode} from 'react';
+import {StrictMode, lazy, Suspense} from 'react';
 import {createRoot} from 'react-dom/client';
-import { Analytics } from '@vercel/analytics/react';
 import App from './App.tsx';
 import { I18nProvider } from './i18n/context.tsx';
 import './index.css';
-// Ladda Spline-runtime + börja hämta scenen så tidigt som möjligt
-import './components/ui/splite';
+
+const Analytics = lazy(() =>
+  import('@vercel/analytics/react').then((m) => ({ default: m.Analytics }))
+);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <I18nProvider>
       <App />
-      <Analytics />
+      <Suspense fallback={null}>
+        <Analytics />
+      </Suspense>
     </I18nProvider>
   </StrictMode>,
 );

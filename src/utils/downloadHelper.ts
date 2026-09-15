@@ -1,5 +1,4 @@
-import confetti from 'canvas-confetti';
-import { DownloadOption, Project } from '../types';
+import type { DownloadOption, Project } from '../types';
 
 export interface ActiveDownload {
   id: string;
@@ -10,6 +9,20 @@ export interface ActiveDownload {
   receivedMB: number;
   totalMB: number;
   status: 'starting' | 'downloading' | 'verifying' | 'completed' | 'error';
+}
+
+async function fireConfetti() {
+  try {
+    const { default: confetti } = await import('canvas-confetti');
+    confetti({
+      particleCount: 40,
+      spread: 60,
+      origin: { y: 0.85 },
+      colors: ['#bc13fe', '#ebb2ff', '#ffffff'],
+    });
+  } catch {
+    // Ignore if confetti not supported
+  }
 }
 
 /**
@@ -62,12 +75,7 @@ export function triggerDirectDownload(
           deliverFileToBrowser(project, option);
 
           try {
-            confetti({
-              particleCount: 40,
-              spread: 60,
-              origin: { y: 0.85 },
-              colors: ['#bc13fe', '#ebb2ff', '#ffffff'],
-            });
+            void fireConfetti();
           } catch (e) {
             // Ignore if confetti not supported
           }

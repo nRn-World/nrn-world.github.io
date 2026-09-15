@@ -5,6 +5,7 @@ import { config } from 'dotenv';
 import { handleGithubStatsRequest } from './server/github-stats-api.mjs';
 import { handleGithubActivityRequest } from './server/github-activity-api.mjs';
 import { handleContactRequest } from './server/contact-api.mjs';
+import { handleEngagementRequest } from './server/engagement-api.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = __dirname;
@@ -28,6 +29,14 @@ app.get('/api/github-activity', (req, res) => {
 
 app.post('/api/contact', (req, res) => {
   void handleContactRequest(req, res);
+});
+
+app.get('/api/engagement', (req, res) => {
+  void handleEngagementRequest(req, res);
+});
+
+app.post('/api/engagement', (req, res) => {
+  void handleEngagementRequest(req, res);
 });
 
 app.use(express.static(distPath));

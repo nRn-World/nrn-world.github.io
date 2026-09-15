@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nRnWorld – Project Releases</title>
+    <link>https://nrnworld.one</link>
+    <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 14 Sep 2026 14:37:46 GMT</lastBuildDate>
+    <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://nrnworld.one/logo-72.webp</url>
+      <title>nRnWorld</title>
+      <link>https://nrnworld.one</link>
+    </image>
+    <item>
+      <title>FlashVideoDownloader</title>
+      <link>https://nrnworld.one/p/flashvideodownloader</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/flashvideodownloader</guid>
+      <description>Detect and download open videos (MP4, WEBM, M3U8) from the active tab.</description>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Chrome Extensions</category>
+      <enclosure url="https://nrnworld.one/images/projects/flashVideoDownloader.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>DoneTogether</title>
+      <link>https://nrnworld.one/p/donetogether</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/donetogether</guid>
+      <description>Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase.</description>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Android</category>
+      <enclosure url="https://nrnworld.one/images/projects/doneTogether.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>Doggy-Player</title>
+      <link>https://nrnworld.one/p/doggyplayer</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/doggyplayer</guid>
+      <description>High-fidelity audio &amp; video desktop media player with customized skinning, EQ, and gapless playback.</description>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Windows</category>
+      <enclosure url="https://nrnworld.one/images/projects/doggyPlayer.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>ShadowPaw: Noir Typist</title>
+      <link>https://nrnworld.one/p/shadowpaw</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/shadowpaw</guid>
+      <description>Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth.</description>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Games</category>
+      <enclosure url="https://nrnworld.one/images/projects/shadowPaw.svg" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>TheSilentRoom1986</title>
+      <link>https://nrnworld.one/p/thesilentroom1986</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/thesilentroom1986</guid>
+      <description>A 1980s-inspired underground typing game where your words manifest into reality to defy the regime.</description>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Games</category>
+      <enclosure url="https://nrnworld.one/images/projects/theSilentRoom1986.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>BUGRAIDER</title>
+      <link>https://nrnworld.one/p/bugraider</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/bugraider</guid>
+      <description>Drop it into any AI agent and watch it hunt every bug, security flaw, and dead code in your project.</description>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <enclosure url="https://nrnworld.one/images/projects/bugraider.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>OctosArmy</title>
+      <link>https://nrnworld.one/p/octosarmy</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/octosarmy</guid>
+      <description>Multi-agent AI orchestration system for autonomous file management and workspace hygiene.</description>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+      <category>CLI</category>
+      <enclosure url="https://nrnworld.one/images/projects/octosArmy.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>NeonPathPuzzle</title>
+      <link>https://nrnworld.one/p/neonpathpuzzle</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/neonpathpuzzle</guid>
+      <description>Challenging neon light pathfinding and circuit alignment logic game.</description>
+      <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Games</category>
+      <enclosure url="https://nrnworld.one/images/projects/neonPathPuzzle.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>WindowsSmartTaskbar</title>
+      <link>https://nrnworld.one/p/windowssmarttaskbar</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/windowssmarttaskbar</guid>
+      <description>Sleek Windows system tray utility for smart application organization and taskbar decluttering.</description>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Windows</category>
+      <enclosure url="https://nrnworld.one/images/projects/windowsSmartTaskbar.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>SiteScannerPro</title>
+      <link>https://nrnworld.one/p/sitescannerpro</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/sitescannerpro</guid>
+      <description>Website health analysis for SEO, performance, security, accessibility, and code quality.</description>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Security</category>
+      <enclosure url="https://nrnworld.one/images/projects/siteScannerPro.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>PrivateLinkSaver</title>
+      <link>https://nrnworld.one/p/privatelinksaver</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/privatelinksaver</guid>
+      <description>A secure Chrome extension to privately save, organize, and manage bookmarks with password protection.</description>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Chrome Extensions</category>
+      <enclosure url="https://nrnworld.one/images/projects/privateLinkSaver.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>GLOBAL_EMERGENCY</title>
+      <link>https://nrnworld.one/p/globalemergency</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/globalemergency</guid>
+      <description>Global Emergency, source-backed country emergency information and travel safety PWA.</description>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Security</category>
+      <enclosure url="https://nrnworld.one/images/projects/globalEmergency.svg" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>NOBreak-Audio-Builder</title>
+      <link>https://nrnworld.one/p/nobreakaudiobuilder</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/nobreakaudiobuilder</guid>
+      <description>Professional desktop audio mixer for creating seamless, gapless audio compilations.</description>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Windows</category>
+      <enclosure url="https://nrnworld.one/images/projects/nobreakAudioBuilder.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>SecretPromts</title>
+      <link>https://nrnworld.one/p/secretpromts</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/secretpromts</guid>
+      <description>Curated AI prompt discovery directory, tester, and optimization playground.</description>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <enclosure url="https://nrnworld.one/images/projects/secretPrompts.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>BluetoothSafetyLock</title>
+      <link>https://nrnworld.one/p/bluetoothsafetylock</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/bluetoothsafetylock</guid>
+      <description>Automated proximity lock utility that secures your Windows workstation when your Bluetooth device disconnects.</description>
+      <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Security</category>
+      <enclosure url="https://nrnworld.one/images/projects/bluetoothSafetyLock.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>ParkeraiSthlm</title>
+      <link>https://nrnworld.one/p/parkeraisthlm</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/parkeraisthlm</guid>
+      <description>Realtidskarta för gatuparkering i Stockholm med officiella taxezoner och priser.</description>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Android</category>
+      <enclosure url="https://nrnworld.one/images/projects/parkeraISthlm.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>NotePin</title>
+      <link>https://nrnworld.one/p/notepin</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/notepin</guid>
+      <description>Minimalist sticky note desktop pin utility for quick thoughts.</description>
+      <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Chrome Extensions</category>
+      <enclosure url="https://nrnworld.one/images/projects/notePin.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>NexNote</title>
+      <link>https://nrnworld.one/p/nexnote</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/nexnote</guid>
+      <description>Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math.</description>
+      <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Tools</category>
+      <enclosure url="https://nrnworld.one/images/projects/nexNote.webp" type="image/webp" length="0" />
+    </item>
+  </channel>
+</rss>

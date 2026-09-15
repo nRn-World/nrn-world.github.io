@@ -18,7 +18,11 @@ import {
 import { DownloadOption, Project } from '../types';
 import { useI18n } from '../i18n/context';
 import { ProjectCardMedia } from './ProjectCardMedia';
-import { isOnlineProjectType } from '../services/engagementService';
+import {
+  EngagementPayload,
+  getProjectEngagement,
+} from '../services/engagementService';
+import { getEngagementMetric } from '../utils/projectEngagement';
 import { getProjectGalleryImages } from '../utils/projectImage';
 import { getGithubContributeUrl } from '../utils/githubLinks';
 import { getProjectPath } from '../utils/projectSlug';
@@ -26,12 +30,15 @@ import { getProjectPath } from '../utils/projectSlug';
 interface ProjectCardProps {
   project: Project;
   githubSynced?: boolean;
+  engagement?: EngagementPayload | null;
   onSelect: (project: Project) => void;
   isSaved: boolean;
   onToggleSave: (projectId: string, e: React.MouseEvent) => void;
   isStarred?: boolean;
   onToggleStar?: (project: Project, e: React.MouseEvent) => void;
   onDownload?: (project: Project, option: DownloadOption, e?: React.MouseEvent) => void;
+  onLiveOpen?: (project: Project, e?: React.MouseEvent) => void;
+  onCountDownload?: (project: Project) => void;
   /** Eager-load cover image (first viewport cards / LCP). */
   imagePriority?: boolean;
 }
@@ -41,12 +48,15 @@ const HOVER_INFO_DELAY_MS = 5000;
 export const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   githubSynced = false,
+  engagement = null,
   onSelect,
   isSaved,
   onToggleSave,
   isStarred = false,
   onToggleStar,
   onDownload,
+  onLiveOpen,
+  onCountDownload,
   imagePriority = false,
 }) => {
   const { t, localizeTag, localizeCategory } = useI18n();
@@ -114,16 +124,34 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const liveLinkClass =
     'text-white px-2 py-1.5 rounded-md text-[10px] sm:text-[11px] font-mono font-bold flex items-center justify-center gap-1 w-full transition-all active:scale-95 cursor-pointer no-underline';
 
-  const isOnline = isOnlineProjectType(project.projectType);
   const primaryDownload =
     project.downloadOptions.find((opt) => opt.isPrimary) ?? project.downloadOptions[0];
   const hasHybridAccess =
     project.projectType === 'web_app' && Boolean(project.liveDemoUrl) && Boolean(primaryDownload);
   const apkDownloadUrl = primaryDownload?.directUrl || primaryDownload?.githubReleaseUrl;
-  const statLabelKey =
-    isOnline && !primaryDownload ? 'projectCard.githubStars' : 'projectCard.githubDownloads';
-  const statCount =
-    isOnline && !primaryDownload ? (project.starsCount ?? 0) : project.downloadsCount;
+  const hubCounts = getProjectEngagement(engagement, project.id);
+  const engagementMetric = getEngagementMetric(project);
+  const starsCount = project.starsCount ?? 0;
+  const secondaryCount =
+    engagementMetric === 'plays'
+      ? hubCounts.plays
+      : engagementMetric === 'opens'
+        ? hubCounts.opens
+        : project.downloadsCount;
+  const secondaryLabelKey =
+    engagementMetric === 'plays'
+      ? 'projectCard.plays'
+      : engagementMetric === 'opens'
+        ? 'projectCard.opens'
+        : 'projectCard.downloads';
+
+  const handleLiveClick = (e: React.MouseEvent) => {
+    onLiveOpen?.(project, e);
+  };
+
+  const handleExternalDownloadClick = () => {
+    onCountDownload?.(project);
+  };
 
   const tagSource =
     project.tags && project.tags.length > 0 ? project.tags : [localizeCategory(project.category)];
@@ -181,7 +209,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             title={t('projectCard.starTitle')}
           >
             <Star className={`w-3 h-3 ${isStarred ? 'fill-amber-400 text-amber-400' : 'text-amber-400'}`} />
-            <span className="hidden sm:inline">{(project.starsCount ?? 0).toLocaleString()}</span>
+            <span>{starsCount.toLocaleString()}</span>
           </button>
 
           <button
@@ -280,7 +308,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
         <div className="mt-auto pt-2 border-t border-white/10 flex items-center justify-between gap-2">
           <span className="text-[9px] font-mono text-emerald-400/90 truncate">
-            {githubSynced ? t(statLabelKey, { count: statCount.toLocaleString() }) : '…'}
+            {githubSynced || engagement
+              ? `${starsCount.toLocaleString()} ★ · ${t(secondaryLabelKey, { count: secondaryCount.toLocaleString() })}`
+              : '…'}
           </span>
           <span className="text-[9px] font-mono text-blue-400/80 shrink-0">
             {t('projectCard.hoverHint')}
@@ -369,10 +399,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center text-[8px] sm:text-[9px] font-mono text-white/50 mb-1 px-0.5">
-          <span className="w-1 h-1 rounded-full bg-emerald-400 shrink-0 mr-1" />
+        <div className="flex items-center text-[8px] sm:text-[9px] font-mono text-white/50 mb-1 px-0.5 gap-1.5 min-w-0">
+          <span className="w-1 h-1 rounded-full bg-emerald-400 shrink-0" />
+          <span className="truncate text-amber-300/90">{starsCount.toLocaleString()} ★</span>
+          <span className="text-white/25 shrink-0">·</span>
           <span className="truncate text-blue-300/80">
-            {githubSynced ? t(statLabelKey, { count: statCount.toLocaleString() }) : '…'}
+            {githubSynced || engagement
+              ? t(secondaryLabelKey, { count: secondaryCount.toLocaleString() })
+              : '…'}
           </span>
         </div>
 
@@ -383,7 +417,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 href={project.liveDemoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={stopCardNav}
+                onClick={(e) => {
+                  stopCardNav(e);
+                  handleLiveClick(e);
+                }}
                 onMouseDown={stopCardNav}
                 className={`${liveLinkClass} bg-blue-600 hover:bg-blue-500`}
                 title={t('projectCard.openWebAppTitle', { name: project.name })}
@@ -396,7 +433,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   href={apkDownloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={stopCardNav}
+                  onClick={(e) => {
+                    stopCardNav(e);
+                    handleExternalDownloadClick();
+                  }}
                   onMouseDown={stopCardNav}
                   className={`${liveLinkClass} bg-emerald-700 hover:bg-emerald-600`}
                   title={t('projectCard.downloadApkTitle', {
@@ -434,7 +474,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               href={project.liveDemoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={stopCardNav}
+              onClick={(e) => {
+                stopCardNav(e);
+                handleLiveClick(e);
+              }}
               onMouseDown={stopCardNav}
               className={`${liveLinkClass} bg-emerald-800 hover:bg-emerald-700`}
               title={t('projectCard.playOnlineTitle', { name: project.name })}
@@ -447,7 +490,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               href={project.liveDemoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={stopCardNav}
+              onClick={(e) => {
+                stopCardNav(e);
+                handleLiveClick(e);
+              }}
               onMouseDown={stopCardNav}
               className={`${liveLinkClass} bg-blue-600 hover:bg-blue-500`}
               title={t('projectCard.openWebAppTitle', { name: project.name })}
@@ -460,7 +506,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               href={project.liveDemoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={stopCardNav}
+              onClick={(e) => {
+                stopCardNav(e);
+                handleLiveClick(e);
+              }}
               onMouseDown={stopCardNav}
               className={`${liveLinkClass} bg-indigo-600 hover:bg-indigo-500`}
               title={t('projectCard.chromeStoreTitle')}

@@ -28,7 +28,11 @@ import {
 } from 'lucide-react';
 import { Project, DownloadOption } from '../types';
 import { useI18n } from '../i18n/context';
-import { isOnlineProjectType } from '../services/engagementService';
+import {
+  EngagementPayload,
+  getProjectEngagement,
+} from '../services/engagementService';
+import { getEngagementMetric } from '../utils/projectEngagement';
 import { getProjectGalleryImages } from '../utils/projectImage';
 import { getGithubContributeUrl } from '../utils/githubLinks';
 
@@ -36,7 +40,10 @@ interface ProjectDetailViewProps {
   project: Project;
   onBack: () => void;
   onDownload: (project: Project, option: DownloadOption) => void;
+  onLiveOpen?: (project: Project) => void;
+  onCountDownload?: (project: Project) => void;
   githubSynced?: boolean;
+  engagement?: EngagementPayload | null;
   isSaved: boolean;
   onToggleSave: (projectId: string) => void;
   onOpenDocs: () => void;
@@ -48,7 +55,10 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   project,
   onBack,
   onDownload,
+  onLiveOpen,
+  onCountDownload,
   githubSynced = false,
+  engagement = null,
   isSaved,
   onToggleSave,
   onOpenDocs,
@@ -102,10 +112,24 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
   const isWebApp = project.projectType === 'web_app';
   const isBrowserExtension = project.projectType === 'browser_extension';
   const hasLiveUrl = Boolean(project.liveDemoUrl);
-  const isOnline = isOnlineProjectType(project.projectType);
   const hasDownloads = project.downloadOptions.length > 0;
   const showLiveAction = hasLiveUrl && (isWebGame || isWebApp || isBrowserExtension);
   const isHybridAccess = showLiveAction && hasDownloads && isWebApp;
+  const hubCounts = getProjectEngagement(engagement, project.id);
+  const engagementMetric = getEngagementMetric(project);
+  const starsCount = project.starsCount ?? 0;
+  const secondaryCount =
+    engagementMetric === 'plays'
+      ? hubCounts.plays
+      : engagementMetric === 'opens'
+        ? hubCounts.opens
+        : project.downloadsCount;
+  const secondaryMetaLabel =
+    engagementMetric === 'plays'
+      ? t('detail.hubPlays')
+      : engagementMetric === 'opens'
+        ? t('detail.hubOpens')
+        : t('detail.downloads');
 
   const goToPrevImage = () => {
     setSelectedImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
@@ -525,6 +549,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     href={project.liveDemoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => onLiveOpen?.(project)}
                     className={`w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg cursor-pointer no-underline ${
                       isWebGame
                         ? 'bg-emerald-800 hover:bg-emerald-700 shadow-emerald-950/40'
@@ -562,6 +587,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                             href={apkUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => onCountDownload?.(project)}
                             className="w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-emerald-950/40 cursor-pointer no-underline bg-emerald-700 hover:bg-emerald-600"
                           >
                             <Smartphone className="w-4 h-4" />
@@ -575,6 +601,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     href={project.liveDemoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => onLiveOpen?.(project)}
                     className="bg-[#181818] rounded-xl p-3 border border-white/5 hover:border-emerald-500/40 transition-all text-xs font-mono text-white/70 hover:text-emerald-300 flex items-center gap-2 break-all"
                   >
                     <ExternalLink className="w-3.5 h-3.5 shrink-0" />
@@ -592,6 +619,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                             href={apkUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => onCountDownload?.(project)}
                             className="bg-[#181818] rounded-xl p-3 border border-emerald-500/20 hover:border-emerald-500/50 transition-all text-xs font-mono text-white/70 hover:text-emerald-300 flex items-center gap-2 break-all"
                           >
                             <Download className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
@@ -643,6 +671,7 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                           href={directUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => onCountDownload?.(project)}
                           className="bg-emerald-700 hover:bg-emerald-600 text-white px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer no-underline"
                         >
                           <Download className="w-3.5 h-3.5" />
@@ -801,16 +830,20 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               </div>
               <div className="flex justify-between items-center border-b border-white/5 pb-2.5">
                 <span className="text-white/50 font-mono text-xs flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                  {t('detail.stars')}
+                </span>
+                <span className="text-amber-300 font-mono font-bold">
+                  {starsCount.toLocaleString()}
+                </span>
+              </div>
+              <div className="flex justify-between items-center border-b border-white/5 pb-2.5">
+                <span className="text-white/50 font-mono text-xs flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  {isOnline ? t('detail.githubStars') : t('detail.githubDownloads')}
+                  {secondaryMetaLabel}
                 </span>
                 <span className="text-blue-400 font-mono font-bold">
-                  {githubSynced
-                    ? (isOnline
-                        ? (project.starsCount ?? 0)
-                        : project.downloadsCount
-                      ).toLocaleString()
-                    : '…'}
+                  {githubSynced || engagement ? secondaryCount.toLocaleString() : '…'}
                 </span>
               </div>
 

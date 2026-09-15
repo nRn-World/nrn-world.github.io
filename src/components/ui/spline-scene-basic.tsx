@@ -29,14 +29,13 @@ export function SplineSceneBasic({
   return (
     <Card className="w-full h-auto md:h-[500px] bg-black/[0.96] relative overflow-hidden border-0 shadow-none">
       <div className="flex h-full flex-col md:flex-row relative z-10">
-        {/* Text + widgets — krymper inte roboten på mobil */}
         <div className="shrink-0 md:flex-1 p-5 sm:p-6 md:p-8 relative z-20 flex flex-col justify-center items-center md:items-end md:pr-2 lg:pr-4">
           <div className="w-full max-w-md md:max-w-sm lg:max-w-md text-center">
             <h1 className="font-sora text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white">
               <span className="inline-flex flex-col items-center gap-1">
                 <span>
                   n<span className="text-blue-500">R</span>nW
-                  <Globe className="w-[0.75em] h-[0.75em] text-blue-400 mx-[0.02em] inline-block align-[-0.1em] animate-[spin_20s_linear_infinite]" />
+                  <Globe className="w-[0.75em] h-[0.75em] text-blue-400 mx-[0.02em] inline-block align-[-0.1em] motion-safe:animate-[spin_20s_linear_infinite]" />
                   rld
                 </span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
@@ -51,7 +50,6 @@ export function SplineSceneBasic({
               className="mt-3 sm:mt-4 w-full justify-center font-inter text-sm sm:text-base font-normal text-neutral-300 leading-relaxed"
             />
 
-            {/* Kompakta GitHub-widgets — mindre mellanrum på mobil */}
             <div className="mt-4 md:mt-20 lg:mt-24 flex flex-col gap-2 w-full max-w-[26rem] mx-auto">
               <div className="flex items-center gap-2.5 bg-[#0e1626] px-2.5 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/30 font-mono text-white/70 w-full">
                 <div className="w-7 h-7 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
@@ -63,7 +61,6 @@ export function SplineSceneBasic({
                   </span>
                   <div className="flex items-center gap-1.5">
                     <span className="relative flex h-1.5 w-1.5 shrink-0">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
                     </span>
                     <span className="font-sora text-base font-bold text-white tabular-nums leading-none">
@@ -85,9 +82,17 @@ export function SplineSceneBasic({
           </div>
         </div>
 
-        {/* Robot — garanterad synlig höjd på mobil */}
-        <div className="relative w-full h-[280px] sm:h-[320px] md:h-auto md:flex-1 md:min-h-0 shrink-0">
-          <SplineScene className="w-full h-full" />
+        {/* Robot: CSS-placeholder på mobil; Spline endast desktop (lazy) */}
+        <div className="relative w-full h-[200px] sm:h-[240px] md:h-auto md:flex-1 md:min-h-0 shrink-0">
+          <div
+            className="md:hidden absolute inset-0 flex items-center justify-center pointer-events-none"
+            aria-hidden
+          >
+            <div className="w-40 h-40 rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.35)_0%,transparent_70%)]" />
+          </div>
+          <div className="hidden md:block absolute inset-0">
+            <SplineScene className="w-full h-full" />
+          </div>
         </div>
       </div>
     </Card>

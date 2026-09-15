@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface TypingEffectProps {
@@ -22,11 +21,31 @@ export const TypingEffect = ({
   const [displayedText, setDisplayedText] = useState('');
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [isInView, setIsInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true });
 
   const safeTexts = texts.length > 0 ? texts : DEMO;
   const currentText = safeTexts[currentTextIndex % safeTexts.length];
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '40px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isInView) return;
@@ -63,15 +82,9 @@ export const TypingEffect = ({
       )}
     >
       <span className="min-h-[1.25em]">{displayedText}</span>
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.8,
-          repeat: Infinity,
-          repeatType: 'reverse',
-        }}
-        className="ml-1 h-[1em] w-0.5 shrink-0 rounded-sm bg-current"
+      <span
+        aria-hidden
+        className="ml-1 h-[1em] w-0.5 shrink-0 rounded-sm bg-current animate-pulse"
       />
     </div>
   );

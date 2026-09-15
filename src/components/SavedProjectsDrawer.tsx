@@ -2,7 +2,6 @@ import React from 'react';
 import { X, Bookmark, ArrowRight, Trash2 } from 'lucide-react';
 import { Project } from '../types';
 import { useI18n } from '../i18n/context';
-import { isOnlineProjectType } from '../services/engagementService';
 
 interface SavedProjectsDrawerProps {
   isOpen: boolean;
@@ -20,7 +19,6 @@ export const SavedProjectsDrawer: React.FC<SavedProjectsDrawerProps> = ({
   onClose,
   savedProjectIds,
   allProjects,
-  githubSynced = false,
   onSelectProject,
   onRemoveSaved,
   onClearAll,
@@ -73,9 +71,7 @@ export const SavedProjectsDrawer: React.FC<SavedProjectsDrawerProps> = ({
               </div>
             ) : (
               savedProjects.map((project) => {
-                const isOnline = isOnlineProjectType(project.projectType);
-                const statLabelKey = isOnline ? 'projectCard.githubStars' : 'projectCard.githubDownloads';
-                const statCount = isOnline ? (project.starsCount ?? 0) : project.downloadsCount;
+                const starsCount = project.starsCount ?? 0;
 
                 const openProject = () => {
                   onSelectProject(project);
@@ -96,9 +92,9 @@ export const SavedProjectsDrawer: React.FC<SavedProjectsDrawerProps> = ({
                           {localizeCategory(project.category)}
                         </span>
                         <span className="font-mono text-[10px] text-blue-300/80 mt-0.5 block">
-                          {githubSynced
-                            ? t(statLabelKey, { count: statCount.toLocaleString() })
-                            : '…'}
+                          {`${starsCount.toLocaleString()} ★ · ${t('projectCard.downloads', {
+                            count: project.downloadsCount.toLocaleString(),
+                          })}`}
                         </span>
                       </div>
 
