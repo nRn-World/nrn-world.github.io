@@ -74,7 +74,7 @@ let count = 0;
 for (const p of projects) {
   const title = `${p.name} – Direct Download & Details | nRnWorld`;
   const description = `${p.tagline || p.description} Download official releases, explore specs, and view changelogs on nRnWorld.`;
-  const url = `${SITE.origin}/${p.slug}`;
+  const url = `${SITE.origin}/p/${p.slug}`;
   const html = replaceMeta(template, {
     title,
     description,
@@ -83,7 +83,7 @@ for (const p of projects) {
     type: 'article',
   });
 
-  const dir = join(dist, p.slug);
+  const dir = join(dist, 'p', p.slug);
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'index.html'), html, 'utf8');
   count += 1;

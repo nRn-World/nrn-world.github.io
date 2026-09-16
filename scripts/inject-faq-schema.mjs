@@ -38,7 +38,7 @@ let count = 0;
 const blocks = projectsSrc.split(/\n  \{\n/);
 
 for (const p of projects) {
-  const htmlPath = join(dist, p.slug, 'index.html');
+  const htmlPath = join(dist, 'p', p.slug, 'index.html');
   if (!existsSync(htmlPath)) continue;
 
   const chunk = blocks.find((b) => b.includes(`id: '${p.id}'`)) ?? '';
@@ -75,7 +75,7 @@ for (const p of projects) {
       name: `How do I download ${p.name}?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `Visit ${SITE.origin}/${p.slug} for the official download page, or get the latest release directly from GitHub at ${p.githubUrl}/releases/latest.`,
+        text: `Visit ${SITE.origin}/p/${p.slug} for the official download page, or get the latest release directly from GitHub at ${p.githubUrl}/releases/latest.`,
       },
     });
   }

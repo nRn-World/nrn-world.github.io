@@ -10,8 +10,9 @@ export function getProjectSlug(project: Project): string {
   return normalizeProjectSlug(extractRepoName(project.githubUrl));
 }
 
+/** Hub detail pages live under /p/ so root paths stay free for GitHub Pages project sites. */
 export function getProjectPath(project: Project): string {
-  return `/${getProjectSlug(project)}`;
+  return `/p/${getProjectSlug(project)}`;
 }
 
 export function getProjectUrl(project: Project): string {
@@ -21,26 +22,11 @@ export function getProjectUrl(project: Project): string {
   return `${window.location.origin}${getProjectPath(project)}`;
 }
 
-const RESERVED_TOP_SEGMENTS = new Set([
-  'api',
-  'assets',
-  'images',
-  'p',
-]);
-
 export function getSlugFromLocation(): string {
   const parts = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
-  if (!parts[0]) return '';
-
-  // Temporary compat: /p/sitescannerpro → sitescannerpro
   if (parts[0] === 'p' && parts[1]) {
     return normalizeProjectSlug(parts[1]);
   }
-
-  if (parts.length === 1 && !RESERVED_TOP_SEGMENTS.has(parts[0].toLowerCase())) {
-    return normalizeProjectSlug(parts[0]);
-  }
-
   return '';
 }
 

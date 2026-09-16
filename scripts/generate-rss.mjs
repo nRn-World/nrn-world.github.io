@@ -21,7 +21,7 @@ function escapeXml(s) {
 const items = projects
   .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
   .map((p) => {
-    const url = `${SITE.origin}/${p.slug}`;
+    const url = `${SITE.origin}/p/${p.slug}`;
     const desc = p.tagline || p.description;
     const pubDate = p.releaseDate ? new Date(p.releaseDate).toUTCString() : now;
     return `    <item>
