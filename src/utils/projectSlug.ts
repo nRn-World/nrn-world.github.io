@@ -2,8 +2,12 @@ import { Project } from '../types';
 import { extractRepoName } from '../services/githubService';
 
 /** Public URL segment: lowercase GitHub repo name without hyphens or underscores. */
+export function normalizeProjectSlug(raw: string): string {
+  return raw.replace(/[-_]/g, '').toLowerCase();
+}
+
 export function getProjectSlug(project: Project): string {
-  return extractRepoName(project.githubUrl).replace(/[-_]/g, '').toLowerCase();
+  return normalizeProjectSlug(extractRepoName(project.githubUrl));
 }
 
 export function getProjectPath(project: Project): string {
@@ -17,16 +21,32 @@ export function getProjectUrl(project: Project): string {
   return `${window.location.origin}${getProjectPath(project)}`;
 }
 
+const RESERVED_TOP_SEGMENTS = new Set([
+  'api',
+  'assets',
+  'images',
+  'p',
+]);
+
 export function getSlugFromLocation(): string {
   const parts = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+  if (!parts[0]) return '';
+
+  // Canonical: /p/sitescannerpro
   if (parts[0] === 'p' && parts[1]) {
-    return parts[1].toLowerCase();
+    return normalizeProjectSlug(parts[1]);
   }
+
+  // Legacy top-level: /SiteScannerPro, /thesilentroom1986
+  if (parts.length === 1 && !RESERVED_TOP_SEGMENTS.has(parts[0].toLowerCase())) {
+    return normalizeProjectSlug(parts[0]);
+  }
+
   return '';
 }
 
 export function findProjectBySlug(projects: Project[], slug: string): Project | undefined {
-  const normalized = slug.toLowerCase();
+  const normalized = normalizeProjectSlug(slug);
   if (!normalized) return undefined;
 
   const byRepoSlug = projects.find((project) => getProjectSlug(project) === normalized);
@@ -36,7 +56,7 @@ export function findProjectBySlug(projects: Project[], slug: string): Project | 
   return projects.find(
     (project) =>
       project.id === normalized ||
-      project.id.replace(/-/g, '') === normalized ||
+      normalizeProjectSlug(project.id) === normalized ||
       getProjectSlug(project) === normalized
   );
 }
