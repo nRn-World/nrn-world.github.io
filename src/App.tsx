@@ -277,7 +277,7 @@ export default function App() {
     }
   }, [starredProjectIds]);
 
-  // Path routing (e.g. /thesilentroom1986)
+  // Path routing: hub details at /p/:slug; root /RepoName is GitHub Pages project sites
   useEffect(() => {
     const syncRoute = () => {
       const legacyHash = window.location.hash.replace('#', '').trim();
@@ -289,6 +289,19 @@ export default function App() {
           setSelectedProject(fromHash);
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
+        }
+      }
+
+      const parts = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
+      // Lowercase /sitescannerpro → /SiteScannerPro/ (GitHub Pages project site)
+      if (parts.length === 1 && parts[0] && parts[0] !== 'p') {
+        const fromRoot = findProjectBySlug(projects, parts[0]);
+        if (fromRoot?.liveDemoUrl?.startsWith(window.location.origin)) {
+          const repo = fromRoot.githubUrl.replace(/\/+$/, '').split('/').pop();
+          if (repo && parts[0] !== repo) {
+            window.location.replace(`/${repo}/`);
+            return;
+          }
         }
       }
 
