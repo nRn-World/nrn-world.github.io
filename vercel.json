@@ -65,6 +65,16 @@
   ],
   "redirects": [
     {
+      "source": "/p/:slug",
+      "destination": "/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/p/:slug/",
+      "destination": "/:slug",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.nrnworld.one" }],
       "destination": "https://nrnworld.one/:path*",

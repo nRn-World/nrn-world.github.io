@@ -11,7 +11,7 @@ export function getProjectSlug(project: Project): string {
 }
 
 export function getProjectPath(project: Project): string {
-  return `/p/${getProjectSlug(project)}`;
+  return `/${getProjectSlug(project)}`;
 }
 
 export function getProjectUrl(project: Project): string {
@@ -32,12 +32,11 @@ export function getSlugFromLocation(): string {
   const parts = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
   if (!parts[0]) return '';
 
-  // Canonical: /p/sitescannerpro
+  // Temporary compat: /p/sitescannerpro → sitescannerpro
   if (parts[0] === 'p' && parts[1]) {
     return normalizeProjectSlug(parts[1]);
   }
 
-  // Legacy top-level: /SiteScannerPro, /thesilentroom1986
   if (parts.length === 1 && !RESERVED_TOP_SEGMENTS.has(parts[0].toLowerCase())) {
     return normalizeProjectSlug(parts[0]);
   }

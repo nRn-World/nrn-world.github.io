@@ -296,10 +296,6 @@ export default function App() {
       if (slug) {
         const found = findProjectBySlug(projects, slug);
         if (found) {
-          const path = getProjectPath(found);
-          if (window.location.pathname.replace(/\/+$/, '') !== path) {
-            history.replaceState(null, '', path);
-          }
           setSelectedProject(found);
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
