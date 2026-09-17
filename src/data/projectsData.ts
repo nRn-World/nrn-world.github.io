@@ -240,7 +240,7 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 5. OctosArmy (Direct Download)
+  // 5. OctosArmy (Direct Windows Download)
   {
     id: 'octos-army',
     name: 'OctosArmy',
@@ -252,13 +252,26 @@ export const INITIAL_PROJECTS: Project[] = [
     category: 'CLI',
     tags: ['AI-Agenter', 'CLI', 'Säkerhet'],
     platformBadge: 'CLI',
-    projectType: 'github_repo',
+    projectType: 'downloadable',
     featured: true,
     rating: 4.94,
     downloadsCount: 0,
     starsCount: 6,
     images: [...PROJECT_IMAGES.octosArmy],
-    downloadOptions: [],
+    downloadOptions: [
+      {
+        id: 'octos-exe',
+        platform: 'Windows',
+        label: 'Windows Setup (.EXE)',
+        fileType: 'exe',
+        size: '109.1 MB',
+        filename: 'OctosArmy-Setup-1.1.36.exe',
+        directUrl: 'https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/OctosArmy-Setup-1.1.36.exe',
+        githubReleaseUrl: 'https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/OctosArmy-Setup-1.1.36.exe',
+        architecture: 'x64',
+        isPrimary: true,
+      },
+    ],
     specs: [
       { label: 'Architecture', value: 'Multi-Agent LLM Orchestrator', icon: 'cpu' },
       { label: 'Security Model', value: 'Strict Air-Gapped Sandbox', icon: 'shield' },
@@ -459,7 +472,7 @@ export const INITIAL_PROJECTS: Project[] = [
     tagline: 'Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math.',
     description: 'Lightweight, ultra-fast Markdown editor with split-screen live KaTeX math rendering, vim keybindings, local folder synchronization, and instant export.',
     detailedAbout: 'NexNote delivers a clean, frictionless writing environment for developers, researchers, and technical writers.\n\nHighlights:\n• Instant KaTeX Math & Mermaid Diagrams: Split-screen live preview with high-speed rendering.\n• Plain-Text Markdown Vault: Stores your files directly with instant export.\n• Vim & Emacs Keybinding Modes: Full keyboard navigation for power users.\n• Zero Cloud Requirement: Completely private and local offline note-taking.',
-    version: 'v2.0.1-live',
+    version: 'v1.1.30-live',
     releaseDate: '2026-08-14',
     category: 'Tools',
     tags: ['Verktyg', 'Webb', 'Editor', 'Markdown'],
@@ -479,7 +492,7 @@ export const INITIAL_PROJECTS: Project[] = [
     ],
     changelog: [
       {
-        version: 'v2.0.1',
+        version: 'v1.1.30',
         date: '2026.08.14',
         isCurrent: true,
         items: [
@@ -636,8 +649,8 @@ export const INITIAL_PROJECTS: Project[] = [
     tagline: 'A secure Chrome extension to privately save, organize, and manage bookmarks with password protection.',
     description: 'Zero-knowledge encrypted link manager and Chrome extension. Safely save, categorize, and password-protect your links directly in your browser.',
     detailedAbout: 'PrivateLinkSaver is a privacy-first browser extension published on the official Google Chrome Web Store. It keeps your personal research, secret bookmarks, and workflow links confidential with master password protection.',
-    version: 'v1.4.0-store',
-    releaseDate: '2026-08-22',
+    version: 'v2.5.3-store',
+    releaseDate: '2026-08-23',
     category: 'Chrome Extensions',
     tags: ['Chrome', 'Extension', 'Security', 'Webb'],
     platformBadge: 'TOOL',
@@ -656,11 +669,11 @@ export const INITIAL_PROJECTS: Project[] = [
     ],
     changelog: [
       {
-        version: 'v1.4.0',
-        date: '2026.08.22',
+        version: 'v2.5.3',
+        date: '2026.08.23',
         isCurrent: true,
         items: [
-          'Published on Google Chrome Web Store',
+          'Manifest version aligned with Chrome Web Store package 2.5.3',
           'Biometric and master password vault unlock',
           'Offline encrypted JSON backup & restore',
         ]
@@ -785,8 +798,8 @@ export const INITIAL_PROJECTS: Project[] = [
     tagline: 'Detect and download open videos (MP4, WEBM, M3U8) from the active tab.',
     description: 'Chrome extension that finds and saves open videos from the current page. Preview, pause and cancel downloads — local history only, no cloud, no tracking.',
     detailedAbout: 'FlashVideoDownloader is a Chrome extension published on the official Google Chrome Web Store. It detects and downloads open videos (MP4, WEBM, M3U8) from the active tab without bypassing DRM protection.',
-    version: 'v3.2.5-store',
-    releaseDate: '2026-09-09',
+    version: 'v3.3.2-store',
+    releaseDate: '2026-09-10',
     category: 'Chrome Extensions',
     tags: ['Chrome', 'Extension', 'Video', 'Download'],
     platformBadge: 'TOOL',
@@ -805,11 +818,12 @@ export const INITIAL_PROJECTS: Project[] = [
     ],
     changelog: [
       {
-        version: 'v3.2.5',
-        date: '2026.09.09',
+        version: 'v3.3.2',
+        date: '2026.09.10',
         isCurrent: true,
         items: [
-          'Published on Google Chrome Web Store',
+          'Bump to 3.3.2 for Chrome Web Store package replacement',
+          'Freemium / Ko-fi Pro licensing aligned with live product',
           'Detect and download open videos (MP4, WEBM, M3U8)',
           'Preview, pause and cancel downloads with local history',
         ]
