@@ -63,55 +63,79 @@ async function fetchAllReleases(repoName, token) {
   return releases;
 }
 
-export async function fetchRepoLiveStats(repoName, token) {
-  const releases = await fetchAllReleases(repoName, token);
+/**
+ * Prefer a fully published release over drafts/prereleases.
+ * GitHub lists releases by created_at, so drafts can otherwise appear first.
+ */
+export function pickLatestRelease(releases) {
+  if (!Array.isArray(releases) || releases.length === 0) return null;
+  return (
+    releases.find((r) => !r.draft && !r.prerelease) ||
+    releases.find((r) => !r.draft) ||
+    releases[0]
+  );
+}
 
+function mapAsset(asset) {
+  return {
+    name: asset.name,
+    size: asset.size || 0,
+    download_count: asset.download_count || 0,
+    browser_download_url: asset.browser_download_url || '',
+  };
+}
+
+/**
+ * Build downloadable assets with the latest published release first,
+ * then older Windows/setup/portable installers for totals + fallback matching.
+ */
+export function buildAssetsFromReleases(releases) {
   let latestVersion;
   let latestReleaseDate;
   const usefulAssets = [];
   let totalDownloads = 0;
 
-  if (releases.length > 0) {
-    const latest = releases[0];
-    latestVersion = latest.tag_name || latest.name;
-    latestReleaseDate =
-      latest.published_at ||
-      latest.created_at ||
-      releases.find((r) => r.published_at)?.published_at ||
-      null;
+  if (!Array.isArray(releases) || releases.length === 0) {
+    return { latestVersion, latestReleaseDate, usefulAssets, totalDownloads };
+  }
 
-    const latestReleaseAssets = releases[0]?.assets || [];
-    const addedNames = new Set();
-    for (const asset of latestReleaseAssets) {
-      usefulAssets.push({
-        name: asset.name,
-        size: asset.size || 0,
-        download_count: asset.download_count || 0,
-        browser_download_url: asset.browser_download_url || '',
-      });
-      addedNames.add(asset.name.toLowerCase());
-    }
+  const latest = pickLatestRelease(releases);
+  latestVersion = latest?.tag_name || latest?.name;
+  latestReleaseDate =
+    latest?.published_at ||
+    latest?.created_at ||
+    releases.find((r) => r.published_at)?.published_at ||
+    null;
 
-    for (const rel of releases) {
-      if (Array.isArray(rel.assets)) {
-        for (const asset of rel.assets) {
-          if (isCountableInstallerAsset(asset.name)) {
-            totalDownloads += asset.download_count || 0;
-            const lower = asset.name.toLowerCase();
-            if (!addedNames.has(lower) && (lower.includes('setup') || lower.includes('portable') || lower.includes('win'))) {
-              usefulAssets.push({
-                name: asset.name,
-                size: asset.size || 0,
-                download_count: asset.download_count || 0,
-                browser_download_url: asset.browser_download_url || '',
-              });
-              addedNames.add(lower);
-            }
-          }
-        }
+  const addedNames = new Set();
+  for (const asset of latest?.assets || []) {
+    usefulAssets.push(mapAsset(asset));
+    addedNames.add(asset.name.toLowerCase());
+  }
+
+  for (const rel of releases) {
+    if (!Array.isArray(rel.assets)) continue;
+    for (const asset of rel.assets) {
+      if (!isCountableInstallerAsset(asset.name)) continue;
+      totalDownloads += asset.download_count || 0;
+      const lower = asset.name.toLowerCase();
+      if (
+        !addedNames.has(lower) &&
+        (lower.includes('setup') || lower.includes('portable') || lower.includes('win'))
+      ) {
+        usefulAssets.push(mapAsset(asset));
+        addedNames.add(lower);
       }
     }
   }
+
+  return { latestVersion, latestReleaseDate, usefulAssets, totalDownloads };
+}
+
+export async function fetchRepoLiveStats(repoName, token) {
+  const releases = await fetchAllReleases(repoName, token);
+  const { latestVersion, latestReleaseDate, usefulAssets, totalDownloads } =
+    buildAssetsFromReleases(releases);
 
   let starsCount = 0;
   let githubPushedAt;

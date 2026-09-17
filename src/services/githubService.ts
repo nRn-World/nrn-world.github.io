@@ -60,6 +60,45 @@ function findAssetForFilename(
   return assets.find((asset) => asset.name.toLowerCase() === target);
 }
 
+function assetExtensionMatches(name: string, fileType: DownloadOption['fileType']): boolean {
+  const lower = name.toLowerCase();
+  if (fileType === 'tar.gz') return lower.endsWith('.tar.gz');
+  if (fileType === 'AppImage') return lower.endsWith('.appimage');
+  return lower.endsWith(`.${fileType.toLowerCase()}`);
+}
+
+/**
+ * Match a download option to a live GitHub asset.
+ * Exact filename first; otherwise prefer latest-release assets (listed first)
+ * with the same extension and naming hints (setup / portable / win).
+ */
+function findAssetForOption(
+  assets: GitHubReleaseAsset[],
+  opt: DownloadOption
+): GitHubReleaseAsset | undefined {
+  const exact = findAssetForFilename(assets, opt.filename);
+  if (exact) return exact;
+
+  if (opt.fileType === 'apk') {
+    return assets.find((asset) => asset.name.toLowerCase().endsWith('.apk'));
+  }
+
+  const original = opt.filename.toLowerCase();
+  const wantsSetup = original.includes('setup');
+  const wantsPortable = original.includes('portable');
+  const wantsWin = original.includes('-win-') || original.includes('_win_');
+
+  return assets.find((asset) => {
+    const name = asset.name.toLowerCase();
+    if (!isCountableInstallerAsset(asset.name)) return false;
+    if (!assetExtensionMatches(name, opt.fileType)) return false;
+    if (wantsSetup && !name.includes('setup')) return false;
+    if (wantsPortable && !name.includes('portable')) return false;
+    if (wantsWin && !name.includes('win')) return false;
+    return true;
+  });
+}
+
 function applyStatsToProject(project: Project, stats: RepoLiveStats): Project {
   const isOnlineProject =
     project.projectType === 'web_game' ||
@@ -68,11 +107,7 @@ function applyStatsToProject(project: Project, stats: RepoLiveStats): Project {
   const hasDownloadPackages = project.downloadOptions.length > 0;
 
   const updatedDownloadOptions: DownloadOption[] = project.downloadOptions.map((opt) => {
-    const matchingAsset =
-      findAssetForFilename(stats.assets, opt.filename) ??
-      (opt.fileType === 'apk'
-        ? stats.assets.find((asset) => asset.name.toLowerCase().endsWith('.apk'))
-        : undefined);
+    const matchingAsset = findAssetForOption(stats.assets, opt);
 
     if (matchingAsset) {
       return {

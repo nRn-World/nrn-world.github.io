@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { fetchAllReposStats } from './github-stats.mjs';
+import { buildAssetsFromReleases, fetchAllReposStats } from './github-stats.mjs';
 
 const REPOS = [
   'ShadowPaw',
@@ -58,58 +58,14 @@ async function fetchAllWithGhFallback() {
   const token = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN || '';
 
   if (ghAvailable()) {
-    const { isCountableInstallerAsset } = await import('./github-stats.mjs');
     const repos = {};
     let successCount = 0;
 
     for (const repoName of REPOS) {
       try {
         const releases = ghApiJson(`repos/nRn-World/${repoName}/releases?per_page=100`);
-        let latestVersion;
-        let latestReleaseDate;
-        let totalDownloads = 0;
-        const usefulAssets = [];
-
-        if (Array.isArray(releases) && releases.length > 0) {
-          latestVersion = releases[0].tag_name || releases[0].name;
-          latestReleaseDate =
-            releases[0].published_at ||
-            releases[0].created_at ||
-            releases.find((r) => r.published_at)?.published_at ||
-            null;
-
-          const latestReleaseAssets = releases[0]?.assets || [];
-          const addedNames = new Set();
-          for (const asset of latestReleaseAssets) {
-            usefulAssets.push({
-              name: asset.name,
-              size: asset.size || 0,
-              download_count: asset.download_count || 0,
-              browser_download_url: asset.browser_download_url || '',
-            });
-            addedNames.add(asset.name.toLowerCase());
-          }
-
-          for (const rel of releases) {
-            if (Array.isArray(rel.assets)) {
-              for (const asset of rel.assets) {
-                if (isCountableInstallerAsset(asset.name)) {
-                  totalDownloads += asset.download_count || 0;
-                  const lower = asset.name.toLowerCase();
-                  if (!addedNames.has(lower) && (lower.includes('setup') || lower.includes('portable') || lower.includes('win'))) {
-                    usefulAssets.push({
-                      name: asset.name,
-                      size: asset.size || 0,
-                      download_count: asset.download_count || 0,
-                      browser_download_url: asset.browser_download_url || '',
-                    });
-                    addedNames.add(lower);
-                  }
-                }
-              }
-            }
-          }
-        }
+        const { latestVersion, latestReleaseDate, usefulAssets, totalDownloads } =
+          buildAssetsFromReleases(Array.isArray(releases) ? releases : []);
 
         const repoData = ghApiJson(`repos/nRn-World/${repoName}`);
         const starsCount = Array.isArray(repoData)

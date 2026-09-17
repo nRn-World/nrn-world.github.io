@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-14T14:37:44.823Z",
+  "fetchedAt": "2026-09-17T19:24:41.779Z",
   "successCount": 18,
   "totalRepos": 18,
   "repos": {
@@ -9,40 +9,70 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:33:15Z",
       "assets": [],
-      "lastFetched": 1789396647746,
+      "lastFetched": 1789673066991,
       "fetchOk": true
     },
     "Doggy-Player": {
       "repoName": "Doggy-Player",
-      "totalDownloads": 576,
+      "totalDownloads": 580,
       "starsCount": 6,
-      "latestVersion": "v1.1.68",
-      "latestReleaseDate": "2026-09-06T03:35:35Z",
+      "latestVersion": "v1.1.71",
+      "latestReleaseDate": "2026-09-10T23:49:31Z",
       "githubPushedAt": "2026-09-10T23:47:53Z",
       "assets": [
         {
-          "name": "Doggy-Player-1.1.68.dmg",
-          "size": 156416506,
+          "name": "Doggy-Player-1.1.71.AppImage",
+          "size": 177448211,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-1.1.68.dmg"
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-1.1.71.AppImage"
         },
         {
-          "name": "Doggy-Player-1.1.68.dmg.blockmap",
-          "size": 164470,
+          "name": "Doggy-Player-1.1.71.dmg",
+          "size": 156390470,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-1.1.68.dmg.blockmap"
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-1.1.71.dmg"
         },
         {
-          "name": "Doggy-Player-1.1.68.zip",
-          "size": 150302591,
+          "name": "Doggy-Player-1.1.71.zip",
+          "size": 150305024,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-1.1.68.zip"
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-1.1.71.zip"
         },
         {
-          "name": "Doggy-Player-1.1.68.zip.blockmap",
-          "size": 158442,
+          "name": "Doggy-Player-Setup-1.1.71.exe",
+          "size": 137581323,
+          "download_count": 4,
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.exe"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.71.exe.blockmap",
+          "size": 145756,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.exe.blockmap"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.71.zip",
+          "size": 187359781,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-1.1.68.zip.blockmap"
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.zip"
+        },
+        {
+          "name": "latest-linux.yml",
+          "size": 379,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/latest-linux.yml"
+        },
+        {
+          "name": "latest-mac.yml",
+          "size": 498,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/latest-mac.yml"
+        },
+        {
+          "name": "latest.yml",
+          "size": 356,
+          "download_count": 27,
+          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/latest.yml"
         },
         {
           "name": "Doggy-Player-Setup-1.1.68.exe",
@@ -51,28 +81,10 @@
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.exe"
         },
         {
-          "name": "Doggy-Player-Setup-1.1.68.exe.blockmap",
-          "size": 145661,
-          "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.exe.blockmap"
-        },
-        {
           "name": "Doggy-Player-Setup-1.1.68.zip",
           "size": 187355361,
           "download_count": 0,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.zip"
-        },
-        {
-          "name": "latest-mac.yml",
-          "size": 498,
-          "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/latest-mac.yml"
-        },
-        {
-          "name": "latest.yml",
-          "size": 356,
-          "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/latest.yml"
         },
         {
           "name": "Doggy-Player-Setup-1.1.62.exe",
@@ -147,18 +159,6 @@
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-5b7ac5dca2009b4635b8/Doggy-Player-Setup-1.1.42.zip"
         },
         {
-          "name": "Doggy-Player-Setup-1.1.71.exe",
-          "size": 137581323,
-          "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.exe"
-        },
-        {
-          "name": "Doggy-Player-Setup-1.1.71.zip",
-          "size": 187359781,
-          "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.zip"
-        },
-        {
           "name": "Doggy-Player-Setup-1.1.70.exe",
           "size": 137580510,
           "download_count": 1,
@@ -197,7 +197,7 @@
         {
           "name": "Doggy-Player-Setup-1.1.66.exe",
           "size": 137576384,
-          "download_count": 2,
+          "download_count": 3,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.66/Doggy-Player-Setup-1.1.66.exe"
         },
         {
@@ -227,7 +227,7 @@
         {
           "name": "Doggy-Player-Setup-1.1.64.zip",
           "size": 187352675,
-          "download_count": 2,
+          "download_count": 3,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.64/Doggy-Player-Setup-1.1.64.zip"
         },
         {
@@ -855,7 +855,7 @@
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/1.0.9/DoggyStyle-Player.zip.Setup-1.0.9.zip"
         }
       ],
-      "lastFetched": 1789396649361,
+      "lastFetched": 1789673068545,
       "fetchOk": true
     },
     "WindowsSmartTaskbar": {
@@ -881,7 +881,7 @@
         {
           "name": "releases.win.json",
           "size": 799,
-          "download_count": 50,
+          "download_count": 51,
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.17/releases.win.json"
         },
         {
@@ -921,7 +921,7 @@
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.0/WindowsSmartTaskbar-v1.5.0.zip"
         }
       ],
-      "lastFetched": 1789396650525,
+      "lastFetched": 1789673069467,
       "fetchOk": true
     },
     "NOBreak-Audio-Builder": {
@@ -1077,7 +1077,7 @@
           "browser_download_url": "https://github.com/nRn-World/NOBreak-Audio-Builder/releases/download/v1.0.0/NoBreak-Audio-Builder-Setup-1.0.0.zip"
         }
       ],
-      "lastFetched": 1789396651514,
+      "lastFetched": 1789673070360,
       "fetchOk": true
     },
     "OctosArmy": {
@@ -1161,7 +1161,7 @@
           "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.28/OctosArmy-Setup-1.1.28.exe"
         }
       ],
-      "lastFetched": 1789396652535,
+      "lastFetched": 1789673071152,
       "fetchOk": true
     },
     "TheSilentRoom1986": {
@@ -1170,7 +1170,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-09-11T12:52:05Z",
       "assets": [],
-      "lastFetched": 1789396653478,
+      "lastFetched": 1789673071991,
       "fetchOk": true
     },
     "NeonPathPuzzle": {
@@ -1179,12 +1179,12 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:32:58Z",
       "assets": [],
-      "lastFetched": 1789396654363,
+      "lastFetched": 1789673072695,
       "fetchOk": true
     },
     "DoneTogether": {
       "repoName": "DoneTogether",
-      "totalDownloads": 10,
+      "totalDownloads": 16,
       "starsCount": 1,
       "latestVersion": "v1.2.2",
       "latestReleaseDate": "2026-09-03T20:50:41Z",
@@ -1193,11 +1193,11 @@
         {
           "name": "DoneTogether-1.2.2.apk",
           "size": 4731648,
-          "download_count": 7,
+          "download_count": 13,
           "browser_download_url": "https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk"
         }
       ],
-      "lastFetched": 1789396655295,
+      "lastFetched": 1789673073534,
       "fetchOk": true
     },
     "NexNote": {
@@ -1206,7 +1206,7 @@
       "starsCount": 7,
       "githubPushedAt": "2026-08-23T21:33:17Z",
       "assets": [],
-      "lastFetched": 1789396656288,
+      "lastFetched": 1789673074398,
       "fetchOk": true
     },
     "SecretPromts": {
@@ -1215,16 +1215,16 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-29T21:39:20Z",
       "assets": [],
-      "lastFetched": 1789396657347,
+      "lastFetched": 1789673075199,
       "fetchOk": true
     },
     "SiteScannerPro": {
       "repoName": "SiteScannerPro",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-08-26T13:50:24Z",
+      "githubPushedAt": "2026-09-17T18:39:51Z",
       "assets": [],
-      "lastFetched": 1789396658234,
+      "lastFetched": 1789673075961,
       "fetchOk": true
     },
     "GLOBAL_EMERGENCY": {
@@ -1233,7 +1233,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:36:28Z",
       "assets": [],
-      "lastFetched": 1789396659117,
+      "lastFetched": 1789673076683,
       "fetchOk": true
     },
     "PrivateLinkSaver": {
@@ -1242,7 +1242,7 @@
       "starsCount": 3,
       "githubPushedAt": "2026-08-23T21:33:10Z",
       "assets": [],
-      "lastFetched": 1789396660154,
+      "lastFetched": 1789673077431,
       "fetchOk": true
     },
     "BUGRAIDER": {
@@ -1251,7 +1251,7 @@
       "starsCount": 8,
       "githubPushedAt": "2026-08-23T21:33:01Z",
       "assets": [],
-      "lastFetched": 1789396661006,
+      "lastFetched": 1789673078475,
       "fetchOk": true
     },
     "BluetoothSafetyLock": {
@@ -1269,7 +1269,7 @@
           "browser_download_url": "https://github.com/nRn-World/BluetoothSafetyLock/releases/download/v1.0/BluetoothSafetyLock-v1.0.zip"
         }
       ],
-      "lastFetched": 1789396662266,
+      "lastFetched": 1789673079394,
       "fetchOk": true
     },
     "FlashVideoDownloader": {
@@ -1278,7 +1278,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-09-10T22:42:32Z",
       "assets": [],
-      "lastFetched": 1789396663085,
+      "lastFetched": 1789673080222,
       "fetchOk": true
     },
     "NotePin": {
@@ -1287,7 +1287,7 @@
       "starsCount": 2,
       "githubPushedAt": "2026-08-23T21:33:07Z",
       "assets": [],
-      "lastFetched": 1789396663928,
+      "lastFetched": 1789673081029,
       "fetchOk": true
     },
     "ParkeraiSthlm": {
@@ -1296,7 +1296,7 @@
       "starsCount": 2,
       "githubPushedAt": "2026-08-23T21:32:59Z",
       "assets": [],
-      "lastFetched": 1789396664823,
+      "lastFetched": 1789673081779,
       "fetchOk": true
     }
   }
