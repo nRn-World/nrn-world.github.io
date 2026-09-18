@@ -16,9 +16,11 @@ export const svUi = deepMerge(enUi, {
     projects: 'Projekt',
     searchPlaceholder: 'Sök i katalogen...',
     searchMobile: 'Sök projekt...',
+    githubTitle: 'Visa GitHub-profilen',
     saved: 'Sparade projekt',
     contact: 'Kontakt',
     mobileGuide: 'Installationsguide (.zip)',
+    mobileGithub: 'GitHub-profil (@nRn-World)',
   },
   hub: {
     title: 'Projekthubb',

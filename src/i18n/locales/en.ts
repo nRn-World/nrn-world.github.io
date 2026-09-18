@@ -20,11 +20,11 @@ export const enUi: TranslationDictionary = {
     searchPlaceholder: 'Search catalog...',
     searchMobile: 'Search projects...',
     github: 'GitHub',
-    githubTitle: 'View repositories on GitHub',
+    githubTitle: 'View GitHub profile',
     saved: 'Saved Projects',
     contact: 'Contact',
     mobileGuide: 'Installation Guide (.zip)',
-    mobileGithub: 'GitHub Repositories (@nRn-World)',
+    mobileGithub: 'GitHub profile (@nRn-World)',
   },
   hub: {
     title: 'Project Hub',

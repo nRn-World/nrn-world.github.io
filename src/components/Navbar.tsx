@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bookmark, Menu, X, Github, User } from 'lucide-react';
 import { Project } from '../types';
+import { GITHUB_PROFILE_URL } from '../constants/social';
 import { useI18n } from '../i18n/context';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -100,9 +101,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>{t('footer.about')}</span>
           </button>
 
-          {/* GitHub Repositories Link */}
+          {/* GitHub Profile Link */}
           <a
-            href="https://github.com/nRn-World?tab=repositories"
+            href={GITHUB_PROFILE_URL}
             target="_blank"
             rel="noreferrer"
             className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/80 border border-white/10 text-xs font-mono tracking-wider hover:border-blue-500/50 hover:text-blue-400 transition-all"
@@ -195,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {t('navbar.mobileGuide')}
             </button>
             <a
-              href="https://github.com/nRn-World?tab=repositories"
+              href={GITHUB_PROFILE_URL}
               target="_blank"
               rel="noreferrer"
               className="text-left text-white/70 hover:text-blue-400 py-1.5 text-sm flex items-center gap-2"
