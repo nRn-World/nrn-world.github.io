@@ -478,7 +478,7 @@ export const INITIAL_PROJECTS: Project[] = [
     tags: ['Verktyg', 'Webb', 'Editor', 'Markdown'],
     platformBadge: 'WEB',
     projectType: 'web_app',
-    liveDemoUrl: 'https://nexnote.vercel.app',
+    liveDemoUrl: 'https://nrnworld.one/NexNote/',
     featured: true,
     rating: 4.95,
     downloadsCount: 0,
