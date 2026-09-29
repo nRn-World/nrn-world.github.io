@@ -128,4 +128,11 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'Parkera i Stockholm, Stockholm şehrinde park yeri bulmanıza ve geçerli tarifeleri görmenize yardımcı olan mobil uyumlu bir web uygulamasıdır. Trafikkontoret düzenlemelerine göre doğru fiyat ve saatlerle Taxa 1–5\'i gösterir, ayrıca OpenStreetMap üzerinden gerçek zamanlı veri sunar.\n\nÖne çıkanlar:\n• Stockholm\'ün beş resmi park tarifesi (Taxa 1–5)\n• Trafikkontoret\'e uygun doğru fiyat ve saatler\n• OpenStreetMap ile gerçek zamanlı veri\n• Çevrimdışı destek ve mobil uyumlu tasarım',
   },
+  'auto-account-maker': {
+    name: 'AutoAccountMaker',
+    tagline: 'Geçici bir e-posta adresiyle otomatik olarak hesap oluşturur, doğrular ve sizin için giriş yapar.',
+    description: 'Geçici e-posta hesapları oluşturan, kayıt alanlarını tespit eden, formları dolduran, doğrulama kodlarını yakalayan ve kimlik bilgilerini güvenle saklayan otonom tarayıcı uzantısı.',
+    detailedAbout:
+      'AutoAccountMaker, nRnWorld tarafından geliştirilen ve hesap oluşturma sürecini uçtan uca otomatikleştiren akıllı bir tarayıcı uzantısıdır.\n\nÖne çıkanlar:\n• Otomatik kayıt: Herhangi bir sayfadaki kayıt formunu tek tıkla doldurur.\n• Anında geçici e-posta: mail.tm ve RapidAPI temp-mail entegrasyonu.\n• Otomatik doğrulama: E-posta onay kodlarını otomatik yakalar ve kaydı tamamlar.\n• Güvenli hesap kasası: Şifrelenmiş yerel depolama ve CSV, PDF, .enc dışa aktarımı.\n• Çoklu dil desteği: Türkçe dahil 7 dahili dil.',
+  },
 };

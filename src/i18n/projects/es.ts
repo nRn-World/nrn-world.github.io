@@ -109,4 +109,10 @@ export const esProjects: Record<string, ProjectTranslation> = {
     description: 'Mapa web interactivo que muestra las cinco tarifas oficiales de aparcamiento de Estocolmo, datos en tiempo real y soporte sin conexión directamente en el navegador.',
     detailedAbout: 'Parkera i Stockholm es una aplicación web adaptada a móviles que te ayuda a encontrar aparcamiento y ver las tarifas vigentes en la ciudad de Estocolmo. Muestra las Tarifas 1–5 con precios y horarios correctos según las normas de la Oficina de Tráfico, además de datos en tiempo real vía OpenStreetMap.',
   },
+  'auto-account-maker': {
+    name: 'AutoAccountMaker',
+    tagline: 'Crea cuentas automáticamente con una dirección de correo temporal, las verifica e inicia sesión por ti.',
+    description: 'Extensión de navegador que genera cuentas temporales de correo, detecta formularios, completa registros y guarda credenciales de forma segura.',
+    detailedAbout: 'AutoAccountMaker es una extensión inteligente desarrollada por nRnWorld que automatiza la creación de cuentas de principio a fin con soporte para mail.tm, RapidAPI y bóveda cifrada de credenciales.',
+  },
 };

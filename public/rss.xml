@@ -5,7 +5,7 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Sep 2026 14:37:46 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 22:13:57 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-72.webp</url>
@@ -13,11 +13,29 @@
       <link>https://nrnworld.one</link>
     </image>
     <item>
+      <title>AutoAccountMaker</title>
+      <link>https://nrnworld.one/p/autoaccountmaker</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/autoaccountmaker</guid>
+      <description>Creates accounts automatically with a temporary email address, verifies them, and logs in for you.</description>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Chrome Extensions</category>
+      <enclosure url="https://nrnworld.one/images/projects/autoAccountMaker.svg" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>Doggy-Player</title>
+      <link>https://nrnworld.one/p/doggyplayer</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/doggyplayer</guid>
+      <description>High-fidelity audio &amp; video desktop media player with customized skinning, EQ, and gapless playback.</description>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Windows</category>
+      <enclosure url="https://nrnworld.one/images/projects/doggyPlayer.webp" type="image/webp" length="0" />
+    </item>
+    <item>
       <title>FlashVideoDownloader</title>
       <link>https://nrnworld.one/p/flashvideodownloader</link>
       <guid isPermaLink="true">https://nrnworld.one/p/flashvideodownloader</guid>
       <description>Detect and download open videos (MP4, WEBM, M3U8) from the active tab.</description>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
       <category>Chrome Extensions</category>
       <enclosure url="https://nrnworld.one/images/projects/flashVideoDownloader.webp" type="image/webp" length="0" />
     </item>
@@ -29,15 +47,6 @@
       <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
       <category>Android</category>
       <enclosure url="https://nrnworld.one/images/projects/doneTogether.webp" type="image/webp" length="0" />
-    </item>
-    <item>
-      <title>Doggy-Player</title>
-      <link>https://nrnworld.one/p/doggyplayer</link>
-      <guid isPermaLink="true">https://nrnworld.one/p/doggyplayer</guid>
-      <description>High-fidelity audio &amp; video desktop media player with customized skinning, EQ, and gapless playback.</description>
-      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Windows</category>
-      <enclosure url="https://nrnworld.one/images/projects/doggyPlayer.webp" type="image/webp" length="0" />
     </item>
     <item>
       <title>ShadowPaw: Noir Typist</title>
@@ -94,6 +103,15 @@
       <enclosure url="https://nrnworld.one/images/projects/windowsSmartTaskbar.webp" type="image/webp" length="0" />
     </item>
     <item>
+      <title>PrivateLinkSaver</title>
+      <link>https://nrnworld.one/p/privatelinksaver</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/privatelinksaver</guid>
+      <description>A secure Chrome extension to privately save, organize, and manage bookmarks with password protection.</description>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Chrome Extensions</category>
+      <enclosure url="https://nrnworld.one/images/projects/privateLinkSaver.webp" type="image/webp" length="0" />
+    </item>
+    <item>
       <title>SiteScannerPro</title>
       <link>https://nrnworld.one/p/sitescannerpro</link>
       <guid isPermaLink="true">https://nrnworld.one/p/sitescannerpro</guid>
@@ -101,15 +119,6 @@
       <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
       <category>Security</category>
       <enclosure url="https://nrnworld.one/images/projects/siteScannerPro.webp" type="image/webp" length="0" />
-    </item>
-    <item>
-      <title>PrivateLinkSaver</title>
-      <link>https://nrnworld.one/p/privatelinksaver</link>
-      <guid isPermaLink="true">https://nrnworld.one/p/privatelinksaver</guid>
-      <description>A secure Chrome extension to privately save, organize, and manage bookmarks with password protection.</description>
-      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Chrome Extensions</category>
-      <enclosure url="https://nrnworld.one/images/projects/privateLinkSaver.webp" type="image/webp" length="0" />
     </item>
     <item>
       <title>GLOBAL_EMERGENCY</title>

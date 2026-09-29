@@ -101,6 +101,10 @@ export const arUi = deepMerge(enUi, {
     'Top Stars': 'أعلى نجوم',
     'Most Downloads': 'الأكثر تنزيلاً',
   },
+  downloadButton: {
+    download: 'تنزيل',
+    open: 'فتح',
+  },
   tags: {
     Chrome: 'Chrome',
     Extension: 'إضافة',

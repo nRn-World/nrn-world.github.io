@@ -68,7 +68,7 @@ export const GitHubActivityStatus: React.FC<GitHubActivityStatusProps> = ({
 
   return (
     <a
-      href={`https://github.com/${login}`}
+      href={`https://github.com/${login}?tab=overview`}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Github, Copy, Check } from 'lucide-react';
 import { CONTACT_EMAIL } from '../constants/contact';
+import { GITHUB_PROFILE_URL } from '../constants/social';
 import { SwishModal } from './SwishModal';
 import { useI18n } from '../i18n/context';
 
@@ -94,7 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
           </button>
 
           <a
-            href="https://github.com/nRn-World?tab=repositories"
+            href={GITHUB_PROFILE_URL}
             target="_blank"
             rel="noreferrer"
             className="hover:text-blue-400 transition-colors flex items-center gap-1.5 shrink-0"

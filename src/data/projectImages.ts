@@ -112,4 +112,12 @@ export const PROJECT_IMAGES = {
     '/images/projects/parkeraISthlm.webp',
     raw('ParkeraiSthlm', 'master', 'public/icon-192.png'),
   ],
+  autoAccountMaker: [
+    '/images/projects/autoAccountMaker.svg',
+    raw('AutoAccountMaker', 'main', 'docs/popup.png'),
+    raw('AutoAccountMaker', 'main', 'docs/popup-done.png'),
+    raw('AutoAccountMaker', 'main', 'docs/filled-form.png'),
+    raw('AutoAccountMaker', 'main', 'docs/vault.png'),
+    raw('AutoAccountMaker', 'main', 'docs/settings.png'),
+  ],
 } as const;

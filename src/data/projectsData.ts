@@ -923,6 +923,55 @@ export const INITIAL_PROJECTS: Project[] = [
       ram: '2 GB RAM',
       storage: 'Runs in browser',
     }
+  },
+
+  // 19. AutoAccountMaker (Chrome Extension)
+  {
+    id: 'auto-account-maker',
+    name: 'AutoAccountMaker',
+    tagline: 'Creates accounts automatically with a temporary email address, verifies them, and logs in for you.',
+    description: 'Autonomous browser extension that generates temporary email accounts, detects registration fields, auto-fills forms, catches verification codes, and securely stores credentials.',
+    detailedAbout: 'AutoAccountMaker is an intelligent browser extension developed by nRnWorld that automates account creation end-to-end.\n\nKey features:\n• Automatic Registration: Detects signup forms on any page and fills them with a single click.\n• Instant Temp Mail: Integrates seamlessly with mail.tm (free, zero setup) and RapidAPI temp-mail.\n• Verification Code Handling: Automatically fetches one-time email confirmation codes and completes registration.\n• Account Vault: Encrypted local storage of all created accounts with CSV, PDF, and encrypted (.enc) backup export.\n• Multilingual Support: 7 languages built-in (English, Svenska, Türkçe, العربية, Español, Deutsch, Français).',
+    version: 'v1.12.0',
+    releaseDate: '2026-09-28',
+    category: 'Chrome Extensions',
+    tags: ['Chrome', 'Extension', 'Verktyg', 'Automation', 'Säkerhet'],
+    platformBadge: 'TOOL',
+    projectType: 'browser_extension',
+    featured: true,
+    rating: 4.95,
+    downloadsCount: 0,
+    starsCount: 0,
+    images: [...PROJECT_IMAGES.autoAccountMaker],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Chromium Browser Extension (Manifest V3)', icon: 'globe' },
+      { label: 'Mail Engine', value: 'mail.tm & RapidAPI Temp-Mail', icon: 'layers' },
+      { label: 'Vault Export', value: 'Encrypted (.enc), CSV, PDF', icon: 'shield' },
+      { label: 'Languages', value: '7 Languages Supported', icon: 'terminal' },
+    ],
+    changelog: [
+      {
+        version: 'v1.12.0',
+        date: '2026.09.28',
+        isCurrent: true,
+        items: [
+          'Initial open release of AutoAccountMaker with Manifest V3 support',
+          'Automated registration flow with mail.tm integration',
+          'Built-in secure account vault with encrypted export/import',
+          'Added side panel and options page with multi-language selector',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/AutoAccountMaker',
+    license: 'BUSL-1.1',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Active Repo',
+    systemRequirements: {
+      os: 'Google Chrome, Microsoft Edge, Brave, Opera, or Chromium browser',
+      ram: '512 MB RAM',
+      storage: '25 MB',
+    }
   }
 ];
 

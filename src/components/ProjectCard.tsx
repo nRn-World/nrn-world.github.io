@@ -13,9 +13,9 @@ import {
   ExternalLink,
   GitFork,
   Info,
-  Download,
 } from 'lucide-react';
 import { DownloadOption, Project } from '../types';
+import { AnimatedDownloadButton } from './AnimatedDownloadButton';
 import { useI18n } from '../i18n/context';
 import { ProjectCardMedia } from './ProjectCardMedia';
 import {
@@ -149,8 +149,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     onLiveOpen?.(project, e);
   };
 
-  const handleExternalDownloadClick = () => {
+  const activateExternalDownload = () => {
+    if (!apkDownloadUrl) return;
     onCountDownload?.(project);
+    window.open(apkDownloadUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const activateCardDownload = () => {
+    if (!primaryDownload || !onDownload || apkDownloadUrl) return;
+    onDownload(project, primaryDownload);
   };
 
   const tagSource =
@@ -165,13 +172,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const showCategoryBadge = Boolean(project.tags?.length) && !tagsAlreadyShowCategory;
 
   const hoverSpecs = project.specs.slice(0, 2);
-
-  const handleCardDownload = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!primaryDownload || !onDownload || apkDownloadUrl) return;
-    e.preventDefault();
-    onDownload(project, primaryDownload, e);
-  };
 
   const hoverGalleryImages = useMemo(
     () => getProjectGalleryImages(project.images ?? []).slice(0, 6),
@@ -428,46 +428,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 <Globe className="w-3 h-3 shrink-0" />
                 <span className="truncate">{t('projectCard.openWebApp')}</span>
               </a>
-              {apkDownloadUrl ? (
-                <a
-                  href={apkDownloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    stopCardNav(e);
-                    handleExternalDownloadClick();
-                  }}
-                  onMouseDown={stopCardNav}
-                  className={`${liveLinkClass} bg-emerald-700 hover:bg-emerald-600`}
+              <div className="flex justify-center">
+                <AnimatedDownloadButton
+                  compact
+                  idleLabel={t('downloadButton.download')}
+                  doneLabel={t('downloadButton.open')}
                   title={t('projectCard.downloadApkTitle', {
                     filename: primaryDownload.filename,
                     size: primaryDownload.size,
                   })}
-                >
-                  <Download className="w-3 h-3 shrink-0" />
-                  <span className="truncate">
-                    {primaryDownload.fileType === 'apk'
-                      ? t('projectCard.downloadApk')
-                      : t('projectCard.download', {
-                          fileType: primaryDownload.fileType,
-                          size: primaryDownload.size,
-                        })}
-                  </span>
-                </a>
-              ) : (
-                <button
-                  type="button"
-                  onClick={handleCardDownload}
-                  className={`${liveLinkClass} bg-emerald-700 hover:bg-emerald-600 border-0`}
-                  title={t('projectCard.downloadApkTitle', {
-                    filename: primaryDownload.filename,
-                    size: primaryDownload.size,
-                  })}
-                >
-                  <Download className="w-3 h-3 shrink-0" />
-                  <span className="truncate">{t('projectCard.downloadApk')}</span>
-                </button>
-              )}
+                  onActivate={apkDownloadUrl ? activateExternalDownload : activateCardDownload}
+                />
+              </div>
             </div>
           ) : project.projectType === 'web_game' && project.liveDemoUrl ? (
             <a

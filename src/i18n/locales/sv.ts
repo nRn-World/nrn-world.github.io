@@ -143,6 +143,10 @@ export const svUi = deepMerge(enUi, {
     clearAll: 'Rensa alla bokmärken',
     close: 'Stäng',
   },
+  downloadButton: {
+    download: 'Ladda ner',
+    open: 'Öppna',
+  },
   downloadModal: {
     downloading: 'Laddar ner binärfil',
     complete: 'Nedladdning klar!',

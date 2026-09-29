@@ -128,4 +128,11 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'Parkera i Stockholm är en mobilanpassad webbapp som hjälper dig hitta parkering och se gällande taxor i Stockholms stad.\n\nHuvudfunktioner:\n• Visar Taxa 1–5 med korrekta priser och tider enligt Trafikkontorets bestämmelser\n• Realtidsdata via OpenStreetMap\n• Offline-stöd direkt i webbläsaren\n• Mobilanpassad karta för gatuparkering i Stockholm',
   },
+  'auto-account-maker': {
+    name: 'AutoAccountMaker',
+    tagline: 'Skapar konton automatiskt med en tillfällig e-postadress, verifierar dem och loggar in åt dig.',
+    description: 'Autonomt webbläsartillägg som skapar temporära e-postkonton, identifierar registreringsfält, fyller i formulär, hämtar verifieringskoder och sparar inloggningar säkert.',
+    detailedAbout:
+      'AutoAccountMaker är ett intelligent webbläsartillägg utvecklat av nRnWorld som automatiserar kontoregistrering från början till slut.\n\nHuvudfunktioner:\n• Automatisk registrering: Upptäcker registreringsformulär på vilken sida som helst och fyller i dem med ett klick.\n• Omedelbar tillfällig e-post: Integrerad med mail.tm (helt gratis) och RapidAPI temp-mail.\n• Automatisk verifiering: Hämtar engångskoder via e-post och slutför verifieringen automatiskt.\n• Säker kontovalv: Lokalt krypterad lagring av alla skapade konton med export till CSV, PDF och krypterad säkerhetskopia (.enc).\n• Flerspråksstöd: 7 inbyggda språk inklusive svenska och engelska.',
+  },
 };

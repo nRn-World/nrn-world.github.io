@@ -91,6 +91,10 @@ export const trUi = deepMerge(enUi, {
     clearAll: 'Tüm yer imlerini temizle',
     close: 'Kapat',
   },
+  downloadButton: {
+    download: 'İndir',
+    open: 'Aç',
+  },
   downloadModal: {
     downloading: 'Dosya indiriliyor',
     complete: 'İndirme hazır!',

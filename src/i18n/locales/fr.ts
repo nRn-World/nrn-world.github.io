@@ -101,6 +101,10 @@ export const frUi = deepMerge(enUi, {
     'Top Stars': 'Top Étoiles',
     'Most Downloads': 'Plus Téléchargés',
   },
+  downloadButton: {
+    download: 'Télécharger',
+    open: 'Ouvrir',
+  },
   tags: {
     Chrome: 'Chrome',
     Extension: 'Extension',

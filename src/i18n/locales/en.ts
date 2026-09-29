@@ -72,7 +72,7 @@ export const enUi: TranslationDictionary = {
     kofiLabel: 'Buy Me a Coffee',
     contact: 'Contact',
     about: 'About Me',
-    github: 'GitHub Repositories',
+    github: 'GitHub',
     copyEmail: 'Copy email address',
     copied: 'Copied!',
   },
@@ -192,6 +192,10 @@ export const enUi: TranslationDictionary = {
     clearAll: 'Clear all bookmarks',
     close: 'Close Drawer',
   },
+  downloadButton: {
+    download: 'Download',
+    open: 'Open',
+  },
   downloadModal: {
     downloading: 'Downloading Direct Binary',
     complete: 'Download Ready!',
@@ -242,7 +246,7 @@ export const enUi: TranslationDictionary = {
     statusTitle: 'All Release CDN Nodes Online',
     statusSubtitle: '{count}+ Projects active with 99.98% uptime',
     operational: 'OPERATIONAL',
-    githubTitle: 'GitHub Repositories',
+    githubTitle: 'GitHub profile',
     githubHandle: '@nRn-World (nRnWorld)',
     emailTitle: 'Direct Email',
     formTitle: 'Send Project Feedback or Feature Request',

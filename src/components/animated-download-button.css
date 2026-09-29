@@ -1,0 +1,250 @@
+/* Animerad nedladdningsknapp, anpassad från Uiverse.io (nazar-gavrylyk).
+   Klassnamn är scoped så de inte krockar med resten av sidan. */
+
+.dl-container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.dl-container--compact {
+  width: 134px;
+  height: 46px;
+}
+
+.dl-container--compact .dl-label {
+  transform: scale(0.76);
+  transform-origin: top left;
+  flex-shrink: 0;
+}
+
+.dl-label {
+  background-color: transparent;
+  border: 2px solid rgb(91, 91, 240);
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  width: 176px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 5px;
+  position: relative;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.dl-label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  transition: all 0.4s ease;
+  border-radius: 100%;
+  margin: auto;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-label .dl-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dl-label .dl-input:focus-visible {
+  outline: none !important;
+}
+
+.dl-label:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.dl-label .dl-title {
+  font-size: 17px;
+  line-height: 1;
+  color: #fff;
+  transition: all 0.4s ease;
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.dl-label .dl-title:last-child {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-label .dl-circle {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: rgb(91, 91, 240);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  position: relative;
+  box-shadow: 0 0 0 0 rgb(255, 255, 255);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dl-label .dl-circle .dl-icon {
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.dl-label .dl-circle .dl-square {
+  aspect-ratio: 1;
+  width: 15px;
+  border-radius: 2px;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.dl-label .dl-circle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3333a8;
+  width: 100%;
+  height: 0;
+  transition: all 0.4s ease;
+}
+
+.dl-label:has(.dl-input:checked) {
+  width: 57px;
+  animation: dl-installed 0.4s ease 3.5s forwards;
+}
+
+.dl-label:has(.dl-input:checked)::before {
+  animation: dl-rotate 3s ease-in-out 0.4s forwards;
+}
+
+.dl-label .dl-input:checked + .dl-circle {
+  animation:
+    dl-pulse 1s forwards,
+    dl-circle-delete 0.2s ease 3.5s forwards;
+  rotate: 180deg;
+}
+
+.dl-label .dl-input:checked + .dl-circle::before {
+  animation: dl-installing 3s ease-in-out forwards;
+}
+
+.dl-label .dl-input:checked + .dl-circle .dl-icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-label .dl-input:checked ~ .dl-circle .dl-square {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dl-label .dl-input:checked ~ .dl-title {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dl-label .dl-input:checked ~ .dl-title:last-child {
+  animation: dl-show-installed 0.4s ease 3.5s forwards;
+}
+
+@keyframes dl-pulse {
+  0% {
+    scale: 0.95;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    scale: 1;
+    box-shadow: 0 0 0 16px rgba(255, 255, 255, 0);
+  }
+  100% {
+    scale: 0.95;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes dl-installing {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes dl-rotate {
+  0% {
+    transform: rotate(-90deg) translate(27px) rotate(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  99% {
+    transform: rotate(270deg) translate(27px) rotate(270deg);
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes dl-installed {
+  100% {
+    width: 150px;
+    border-color: rgb(35, 174, 35);
+  }
+}
+
+@keyframes dl-circle-delete {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes dl-show-installed {
+  100% {
+    opacity: 1;
+    visibility: visible;
+    right: 56px;
+  }
+}

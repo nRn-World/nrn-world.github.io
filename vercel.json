@@ -59,6 +59,14 @@
   ],
   "rewrites": [
     {
+      "source": "/Foodtruckkollen",
+      "destination": "https://foodtruckkollen.vercel.app/Foodtruckkollen"
+    },
+    {
+      "source": "/Foodtruckkollen/:path*",
+      "destination": "https://foodtruckkollen.vercel.app/Foodtruckkollen/:path*"
+    },
+    {
       "source": "/((?!api/|assets/|.*\\.(?:txt|xml|json|ico|png|gif|svg|webp|webmanifest|mp4|woff2|woff|ttf)).*)",
       "destination": "/index.html"
     }

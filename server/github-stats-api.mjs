@@ -20,6 +20,7 @@ const REPOS = [
   'FlashVideoDownloader',
   'NotePin',
   'ParkeraiSthlm',
+  'AutoAccountMaker',
 ];
 
 let cachedPayload = null;

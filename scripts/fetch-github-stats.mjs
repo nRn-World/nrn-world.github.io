@@ -34,6 +34,7 @@ const REPOS = [
   'FlashVideoDownloader',
   'NotePin',
   'ParkeraiSthlm',
+  'AutoAccountMaker',
 ];
 
 const GITHUB_OWNER = 'nRn-World';

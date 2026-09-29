@@ -35,6 +35,7 @@ import {
 import { getEngagementMetric } from '../utils/projectEngagement';
 import { getProjectGalleryImages } from '../utils/projectImage';
 import { getGithubContributeUrl } from '../utils/githubLinks';
+import { AnimatedDownloadButton } from './AnimatedDownloadButton';
 
 interface ProjectDetailViewProps {
   project: Project;
@@ -582,18 +583,17 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                       .map((opt) => {
                         const apkUrl = (opt.directUrl || opt.githubReleaseUrl)!;
                         return (
-                          <a
-                            key={`cta-${opt.id}`}
-                            href={apkUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => onCountDownload?.(project)}
-                            className="w-full text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-emerald-950/40 cursor-pointer no-underline bg-emerald-700 hover:bg-emerald-600"
-                          >
-                            <Smartphone className="w-4 h-4" />
-                            <span>{t('detail.downloadApkBtn')}</span>
-                            <span className="text-emerald-100/80 font-normal">· {opt.size}</span>
-                          </a>
+                          <div key={`cta-${opt.id}`} className="flex justify-center">
+                            <AnimatedDownloadButton
+                              idleLabel={t('downloadButton.download')}
+                              doneLabel={t('downloadButton.open')}
+                              title={`${t('detail.downloadApkBtn')} · ${opt.size}`}
+                              onActivate={() => {
+                                onCountDownload?.(project);
+                                window.open(apkUrl, '_blank', 'noopener,noreferrer');
+                              }}
+                            />
+                          </div>
                         );
                       })}
 
@@ -648,44 +648,41 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     key={opt.id}
                     className="bg-[#181818] rounded-xl p-4 border border-white/5 hover:border-blue-500/50 transition-all group"
                   >
-                    <div className="flex justify-between items-center mb-3">
-                      <div className="flex items-center gap-3">
-                        {getPlatformIcon(opt.platform, opt.fileType)}
-                        <div>
-                          <div className="font-inter text-sm font-semibold text-white flex items-center gap-1.5">
-                            <span>{opt.label}</span>
-                            {opt.isPrimary && (
-                              <span className="text-[9px] font-mono bg-blue-600/20 text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase">
-                                {t('detail.recommended')}
-                              </span>
-                            )}
-                          </div>
-                          <div className="font-mono text-[11px] text-white/50 truncate max-w-[180px]">
-                            {opt.filename}
-                          </div>
+                    <div className="flex items-center gap-3 mb-3">
+                      {getPlatformIcon(opt.platform, opt.fileType)}
+                      <div className="min-w-0">
+                        <div className="font-inter text-sm font-semibold text-white flex items-center gap-1.5">
+                          <span>{opt.label}</span>
+                          {opt.isPrimary && (
+                            <span className="text-[9px] font-mono bg-blue-600/20 text-blue-400 px-1.5 py-0.5 rounded font-bold uppercase">
+                              {t('detail.recommended')}
+                            </span>
+                          )}
+                        </div>
+                        <div className="font-mono text-[11px] text-white/50 truncate">
+                          {opt.filename}
                         </div>
                       </div>
+                    </div>
 
-                      {isApk && directUrl ? (
-                        <a
-                          href={directUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => onCountDownload?.(project)}
-                          className="bg-emerald-700 hover:bg-emerald-600 text-white px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer no-underline"
-                        >
-                          <Download className="w-3.5 h-3.5" />
-                          <span>{t('detail.downloadApkBtn')}</span>
-                        </a>
-                      ) : (
-                        <button
-                          onClick={() => onDownload(project, opt)}
-                          className="bg-blue-600 hover:bg-blue-500 text-white px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold hover:shadow-lg hover:shadow-blue-900/40 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer"
-                        >
-                          <Download className="w-3.5 h-3.5" />
-                          <span>{t('detail.get')}</span>
-                        </button>
-                      )}
+                    <div className="flex justify-center mb-3">
+                      <AnimatedDownloadButton
+                        idleLabel={t('downloadButton.download')}
+                        doneLabel={t('downloadButton.open')}
+                        title={
+                          isApk
+                            ? `${t('detail.downloadApkBtn')} · ${opt.filename}`
+                            : `${opt.filename} (${opt.size})`
+                        }
+                        onActivate={() => {
+                          if (isApk && directUrl) {
+                            onCountDownload?.(project);
+                            window.open(directUrl, '_blank', 'noopener,noreferrer');
+                          } else {
+                            onDownload(project, opt);
+                          }
+                        }}
+                      />
                     </div>
 
                     <div className="flex justify-between items-center font-mono text-xs text-white/40 pt-2 border-t border-white/5">
