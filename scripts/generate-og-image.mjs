@@ -23,7 +23,7 @@ async function createOgImage() {
     
     <text x="600" y="340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="500" font-size="28" fill="#a1a1aa" text-anchor="middle">Project Hub &amp; Direct Downloads for Windows Utilities &amp; AI Tools</text>
     
-    <text x="600" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="20" fill="#3b82f6" text-anchor="middle" letter-spacing="2">19 VERIFIED OPEN SOURCE PROJECTS • DIRECT OFFICIAL RELEASES</text>
+    <text x="600" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="20" fill="#3b82f6" text-anchor="middle" letter-spacing="2">20 VERIFIED OPEN SOURCE PROJECTS • DIRECT OFFICIAL RELEASES</text>
   </svg>
   `;
 

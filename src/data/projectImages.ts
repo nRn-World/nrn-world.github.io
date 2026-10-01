@@ -120,4 +120,10 @@ export const PROJECT_IMAGES = {
     raw('AutoAccountMaker', 'main', 'docs/vault.png'),
     raw('AutoAccountMaker', 'main', 'docs/settings.png'),
   ],
+  githubRepoAnalyzer: [
+    '/images/projects/githubRepoAnalyzer.svg',
+    raw('GitHubRepoAnalyzer', 'main', 'Screenshots/1.png'),
+    raw('GitHubRepoAnalyzer', 'main', 'Screenshots/2.png'),
+    raw('GitHubRepoAnalyzer', 'main', 'Screenshots/3.png'),
+  ],
 } as const;

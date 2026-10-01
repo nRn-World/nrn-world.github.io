@@ -21,6 +21,7 @@ const REPOS = [
   'NotePin',
   'ParkeraiSthlm',
   'AutoAccountMaker',
+  'GitHubRepoAnalyzer',
 ];
 
 let cachedPayload = null;

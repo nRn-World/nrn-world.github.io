@@ -972,6 +972,55 @@ export const INITIAL_PROJECTS: Project[] = [
       ram: '512 MB RAM',
       storage: '25 MB',
     }
+  },
+
+  // 20. GitHubRepoAnalyzer (Chrome Extension)
+  {
+    id: 'github-repo-analyzer',
+    name: 'GitHubRepoAnalyzer',
+    tagline: 'Understand any GitHub repository in seconds. Fully local Chrome extension with no AI services, no external APIs and no network calls.',
+    description: 'Manifest V3 browser extension that reads a GitHub repository page and summarizes what the project actually is: purpose, README highlights, topics, stars, license and languages, all extracted and translated on-device.',
+    detailedAbout: 'GitHubRepoAnalyzer is a Manifest V3 Chrome extension developed by nRnWorld that turns any github.com repository page into a short, human-readable digest in seconds.\n\nKey features:\n• In short: one or two sentences on what the project is and why it exists, built from deterministic classification of README headings, topics and description.\n• What it is: a human summary taken straight from the README plus the tagline, and up to five key points in the words of the project authors.\n• Facts: sidebar description, topic chips, stars, license and main languages, with a deep analysis view one click away.\n• Ask your AI: copies a ready-to-paste question plus everything the popup already knows for your favourite AI chat.\n• 100% local: extraction, classification and translation run on-device through the Chrome Translator and LanguageDetector APIs. No AI services, no external APIs, no network calls, no telemetry.\n• Five UI languages: English, Svenska, Türkçe, العربية (full right-to-left layout) and Español, while code, paths and identifiers stay untranslated.',
+    version: 'v1.0.0-repo',
+    releaseDate: '2026-10-01',
+    category: 'Chrome Extensions',
+    tags: ['Chrome', 'Extension', 'GitHub', 'Analys'],
+    platformBadge: 'TOOL',
+    projectType: 'browser_extension',
+    featured: true,
+    rating: 4.9,
+    downloadsCount: 0,
+    starsCount: 1,
+    images: [...PROJECT_IMAGES.githubRepoAnalyzer],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Chromium Browser Extension (Manifest V3)', icon: 'globe' },
+      { label: 'Privacy', value: '100% On-Device, Zero Network Calls', icon: 'shield' },
+      { label: 'Engine', value: 'Chrome Translator & LanguageDetector APIs', icon: 'cpu' },
+      { label: 'Languages', value: 'English, Svenska, Türkçe, العربية, Español', icon: 'layers' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.10.01',
+        isCurrent: true,
+        items: [
+          'Initial open release of GitHubRepoAnalyzer with Manifest V3 support',
+          'One-click repository digest: in short, what it is, key points and facts',
+          'Fully on-device analysis via Chrome Translator and LanguageDetector APIs',
+          'Five built-in UI languages with full right-to-left Arabic layout',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/GitHubRepoAnalyzer',
+    license: 'nRnWorld Source-Available License',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Active Repo',
+    systemRequirements: {
+      os: 'Google Chrome, Microsoft Edge, Brave, Opera, or Chromium browser',
+      ram: '512 MB RAM',
+      storage: '20 MB',
+    }
   }
 ];
 

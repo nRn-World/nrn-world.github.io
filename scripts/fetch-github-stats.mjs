@@ -35,6 +35,7 @@ const REPOS = [
   'NotePin',
   'ParkeraiSthlm',
   'AutoAccountMaker',
+  'GitHubRepoAnalyzer',
 ];
 
 const GITHUB_OWNER = 'nRn-World';

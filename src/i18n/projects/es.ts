@@ -115,4 +115,10 @@ export const esProjects: Record<string, ProjectTranslation> = {
     description: 'Extensión de navegador que genera cuentas temporales de correo, detecta formularios, completa registros y guarda credenciales de forma segura.',
     detailedAbout: 'AutoAccountMaker es una extensión inteligente desarrollada por nRnWorld que automatiza la creación de cuentas de principio a fin con soporte para mail.tm, RapidAPI y bóveda cifrada de credenciales.',
   },
+  'github-repo-analyzer': {
+    name: 'GitHubRepoAnalyzer',
+    tagline: 'Entiende cualquier repositorio de GitHub en segundos. Extensión de Chrome totalmente local, sin servicios de IA, sin API externas y sin llamadas de red.',
+    description: 'Extensión Manifest V3 que lee la página de un repositorio de GitHub y resume en qué consiste el proyecto: propósito, puntos destacados del README, temas, estrellas, licencia e idiomas, todo extraído y traducido en el dispositivo.',
+    detailedAbout: 'GitHubRepoAnalyzer es una extensión de Chrome Manifest V3 desarrollada por nRnWorld que convierte cualquier página de repositorio de github.com en un resumen breve y legible en segundos.\n\nCaracterísticas clave:\n• En corto: una o dos frases sobre qué es el proyecto y por qué existe, a partir de la clasificación determinista de encabezados, temas y descripción del README.\n• Qué es: un resumen humano tomado del README y la etiqueta, más hasta cinco puntos clave con las palabras de los propios autores.\n• Datos: descripción de la barra lateral, etiquetas de temas, estrellas, licencia e idiomas principales, con vista de análisis profundo a un clic.\n• Pregunta a tu IA: copia una pregunta lista para pegar con todo lo que sabe la ventana emergente para tu chat de IA favorito.\n• 100 % local: el análisis, la clasificación y la traducción se realizan en el dispositivo con las API Translator y LanguageDetector de Chrome. Sin servicios de IA, sin API externas, sin llamadas de red y sin telemetría.\n• Cinco idiomas de interfaz: English, Svenska, Türkçe, العربية (con diseño completo de derecha a izquierda) y Español, mientras que el código, las rutas y los identificadores no se traducen.',
+  },
 };

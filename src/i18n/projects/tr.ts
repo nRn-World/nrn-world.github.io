@@ -135,4 +135,11 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'AutoAccountMaker, nRnWorld tarafından geliştirilen ve hesap oluşturma sürecini uçtan uca otomatikleştiren akıllı bir tarayıcı uzantısıdır.\n\nÖne çıkanlar:\n• Otomatik kayıt: Herhangi bir sayfadaki kayıt formunu tek tıkla doldurur.\n• Anında geçici e-posta: mail.tm ve RapidAPI temp-mail entegrasyonu.\n• Otomatik doğrulama: E-posta onay kodlarını otomatik yakalar ve kaydı tamamlar.\n• Güvenli hesap kasası: Şifrelenmiş yerel depolama ve CSV, PDF, .enc dışa aktarımı.\n• Çoklu dil desteği: Türkçe dahil 7 dahili dil.',
   },
+  'github-repo-analyzer': {
+    name: 'GitHubRepoAnalyzer',
+    tagline: 'Herhangi bir GitHub deposunu saniyeler içinde anlayın. Yapay zeka servisleri, harici API ve ağ bağlantısı olmayan tamamen yerel bir Chrome uzantısı.',
+    description: 'Manifest V3 uzantısı, bir GitHub deposu sayfasını okuyup projenin gerçekte ne olduğunu özetler: amacı, README vurguları, konular, yıldızlar, lisans ve diller; hepsi cihaz içinde çıkarılır ve çevrilir.',
+    detailedAbout:
+      'GitHubRepoAnalyzer, herhangi bir github.com deposu sayfasını saniyeler içinde kısa ve okunabilir bir özete dönüştüren nRnWorld tarafından geliştirilen bir Manifest V3 Chrome uzantısıdır.\n\nÖne çıkanlar:\n• Kısaca: Projenin ne olduğu ve neden var olduğu, README başlıkları, konular ve açıklamanın deterministik sınıflandırmasına dayalı bir veya iki cümle.\n• Nedir: README den alınan kısa bir özet ile etiket ve projenin kendi beş ana kadar önemli noktası.\n• Bilgiler: Kenar çubuğu açıklaması, konu etiketleri, yıldızlar, lisans ve ana diller; tek tıkla açılan derin analiz görünümü.\n• Yapay zekana sor: Hazır bir soruyu ve pencerenin bildiği her şeyi favori yapay zeka sohbetinize kopyalar.\n• %100 yerel: Çıkarma, sınıflandırma ve çeviri Chrome Translator ve LanguageDetector API leriyle cihaz içinde yapılır. Yapay zeka hizmeti yok, harici API yok, ağ bağlantısı yok, telemetri yok.\n• Beş arayüz dili: English, Svenska, Türkçe, العربية (tam sağdan sola düzen) ve Español; kod, yollar ve tanımlayıcılar çevrili kalmaz.',
+  },
 };

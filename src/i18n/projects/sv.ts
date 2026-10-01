@@ -135,4 +135,11 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'AutoAccountMaker är ett intelligent webbläsartillägg utvecklat av nRnWorld som automatiserar kontoregistrering från början till slut.\n\nHuvudfunktioner:\n• Automatisk registrering: Upptäcker registreringsformulär på vilken sida som helst och fyller i dem med ett klick.\n• Omedelbar tillfällig e-post: Integrerad med mail.tm (helt gratis) och RapidAPI temp-mail.\n• Automatisk verifiering: Hämtar engångskoder via e-post och slutför verifieringen automatiskt.\n• Säker kontovalv: Lokalt krypterad lagring av alla skapade konton med export till CSV, PDF och krypterad säkerhetskopia (.enc).\n• Flerspråksstöd: 7 inbyggda språk inklusive svenska och engelska.',
   },
+  'github-repo-analyzer': {
+    name: 'GitHubRepoAnalyzer',
+    tagline: 'Förstå vilket som helst GitHub-repo på sekunder. Helt lokalt Chrome-tillägg utan AI-tjänster, externa API:er eller nätverksanrop.',
+    description: 'Manifest V3-tillägg som läser en GitHub-reposida och sammanfattar vad projektet faktiskt är: syfte, README-höjdpunkter, ämnen, stjärnor, licens och språk – allt hämtat och översatt på enheten.',
+    detailedAbout:
+      'GitHubRepoAnalyzer är ett Manifest V3-Chrome-tillägg utvecklat av nRnWorld som förvandlar vilken github.com-reposida som helst till en kort, läsbar sammanfattning på sekunder.\n\nHuvudfunktioner:\n• Kort sagt: en eller två meningar om vad projektet är och varför det finns, byggt på deterministisk klassificering av README-rubriker, ämnen och beskrivning.\n• Vad det är: en sammanfattning direkt från README:n plus taglinen, och upp till fem nyckelpunkter i projektets egna ord.\n• Fakta: beskrivning i sidofältet, ämneschips, stjärnor, licens och huvudspråk, med en djupanalys ett klick bort.\n• Fråga din AI: kopierar en färdig fråga plus allt popupfönstret redan vet till din favorit-AI-chatt.\n• 100 % lokalt: uttag, klassificering och översättning sker på enheten via Chromes Translator- och LanguageDetector-API:er. Inga AI-tjänster, inga externa API:er, inga nätverksanrop, ingen telemetri.\n• Fem UI-språk: English, Svenska, Türkçe, العربية (fullt höger-till-vänster-layout) och Español, medan kod, sökvägar och identifierare förblir oöversatta.',
+  },
 };

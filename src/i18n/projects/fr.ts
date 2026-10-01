@@ -115,4 +115,10 @@ export const frProjects: Record<string, ProjectTranslation> = {
     description: 'Extension de navigateur autonome qui génère des adresses e-mail temporaires, remplit les formulaires d’inscription, valide les codes de confirmation et enregistre les identifiants.',
     detailedAbout: 'AutoAccountMaker est une extension de navigateur intelligente développée par nRnWorld pour automatiser la création de comptes avec support de mail.tm, RapidAPI et coffre-fort chiffré.',
   },
+  'github-repo-analyzer': {
+    name: 'GitHubRepoAnalyzer',
+    tagline: 'Comprenez n’importe quel dépôt GitHub en quelques secondes. Extension Chrome entièrement locale, sans service d’IA, sans API externe et sans appel réseau.',
+    description: 'Extension Manifest V3 qui lit la page d’un dépôt GitHub et résume en quoi consiste le projet : objectif, points forts du README, topics, étoiles, licence et langues, le tout extrait et traduit sur l’appareil.',
+    detailedAbout: 'GitHubRepoAnalyzer est une extension Chrome Manifest V3 développée par nRnWorld qui transforme la page de n’importe quel dépôt github.com en un résumé court et lisible en quelques secondes.\n\nFonctionnalités clés :\n• En bref : une ou deux phrases sur ce qu’est le projet et pourquoi il existe, issues du classement déterministe des titres, topics et descriptions du README.\n• Ce que c’est : un résumé humain issu du README et de la tagline, plus jusqu’à cinq points clés avec les mots des auteurs.\n• Faits : description de la barre latérale, topics, étoiles, licence et langues principales, avec une vue d’analyse approfondie en un clic.\n• Interrogez votre IA : copie une question prête à coller avec tout ce que connaît la popup pour votre chat IA favori.\n• 100 % local : l’extraction, le classement et la traduction ont lieu sur l’appareil via les API Translator et LanguageDetector de Chrome. Aucun service d’IA, aucune API externe, aucune connexion réseau, aucune télémétrie.\n• Cinq langues d’interface : English, Svenska, Türkçe, العربية (mise en page complète de droite à gauche) et Español, le code, les chemins et les identifiants restant non traduits.',
+  },
 };
