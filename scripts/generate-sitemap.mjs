@@ -7,13 +7,23 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const projects = loadSeoProjects();
 const today = new Date().toISOString().slice(0, 10);
 
-const urls = [
+const staticPages = [
   {
     loc: `${SITE.origin}/`,
     lastmod: today,
     changefreq: 'daily',
     priority: '1.0',
   },
+  {
+    loc: `${SITE.origin}/privacy/`,
+    lastmod: today,
+    changefreq: 'yearly',
+    priority: '0.3',
+  },
+];
+
+const urls = [
+  ...staticPages,
   ...projects.map((p) => ({
     loc: `${SITE.origin}/p/${p.slug}`,
     lastmod: p.releaseDate || today,

@@ -72,6 +72,7 @@ export const enUi: TranslationDictionary = {
     kofiLabel: 'Buy Me a Coffee',
     contact: 'Contact',
     about: 'About Me',
+    privacy: 'Privacy Policy',
     github: 'GitHub',
     copyEmail: 'Copy email address',
     copied: 'Copied!',

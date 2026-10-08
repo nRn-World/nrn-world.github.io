@@ -46,6 +46,7 @@ export const frUi = deepMerge(enUi, {
   footer: {
     swishTitle: 'Soutenir via Swish',
     contact: 'Contact',
+    privacy: 'Politique de confidentialité',
     copyEmail: "Copier l'e-mail",
     copied: 'Copié !',
   },

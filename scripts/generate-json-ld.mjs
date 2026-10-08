@@ -76,7 +76,8 @@ const graph = {
 const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(graph)}\n    </script>`;
 
 if (indexHtml.includes('application/ld+json')) {
-  indexHtml = indexHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
+  // Also drop the leading indentation, otherwise each run adds four more spaces.
+  indexHtml = indexHtml.replace(/[^\S\n]*<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
 }
 
 if (indexHtml.includes('</body>')) {

@@ -50,6 +50,7 @@ export const trUi = deepMerge(enUi, {
     swishAria: 'Swish QR kodunu aç',
     kofiTitle: "Ko-fi'de destekle",
     contact: 'İletişim',
+    privacy: 'Gizlilik Politikası',
     copyEmail: 'E-postayı kopyala',
     copied: 'Kopyalandı!',
   },

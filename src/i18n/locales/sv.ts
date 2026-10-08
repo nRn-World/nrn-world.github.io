@@ -57,6 +57,7 @@ export const svUi = deepMerge(enUi, {
     kofiTitle: 'Stöd på Ko-fi',
     contact: 'Kontakt',
     about: 'Om mig',
+    privacy: 'Integritetspolicy',
     copyEmail: 'Kopiera e-postadress',
     copied: 'Kopierat!',
   },

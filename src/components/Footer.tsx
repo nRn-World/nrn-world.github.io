@@ -104,6 +104,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
             <span className="sm:hidden">GitHub</span>
             <span className="hidden sm:inline">{t('footer.github')}</span>
           </a>
+
+          <a
+            href="/privacy/"
+            className="hover:text-blue-400 transition-colors shrink-0"
+          >
+            {t('footer.privacy')}
+          </a>
         </div>
 
         {/* About + email — only row below */}

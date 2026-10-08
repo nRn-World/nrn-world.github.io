@@ -46,6 +46,7 @@ export const arUi = deepMerge(enUi, {
   footer: {
     swishTitle: 'ادعم عبر Swish',
     contact: 'اتصل',
+    privacy: 'سياسة الخصوصية',
     copyEmail: 'نسخ البريد',
     copied: 'تم النسخ!',
   },
