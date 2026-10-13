@@ -268,6 +268,7 @@ export const INITIAL_PROJECTS: Project[] = [
         filename: 'OctosArmy-Setup-1.1.36.exe',
         directUrl: 'https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/OctosArmy-Setup-1.1.36.exe',
         githubReleaseUrl: 'https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/OctosArmy-Setup-1.1.36.exe',
+        md5Checksum: 'f99362c95f5cba9c3c8b65e6b44d1f8a',
         architecture: 'x64',
         isPrimary: true,
       },

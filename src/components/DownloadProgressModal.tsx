@@ -74,16 +74,18 @@ export const DownloadProgressModal: React.FC<DownloadProgressModalProps> = ({
           </div>
         </div>
 
-        {/* Verification Check / MD5 */}
-        <div className="bg-[#181818] rounded-xl p-2.5 border border-white/5 flex items-center justify-between text-xs font-mono text-white/80">
-          <div className="flex items-center gap-1.5 truncate mr-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-            <span className="truncate">{t('downloadModal.md5Label', { hash: download.option.md5Checksum.substring(0, 16) })}</span>
+        {/* Verification Check / MD5 (endast när releasen har publicerad checksumma) */}
+        {download.option.md5Checksum && (
+          <div className="bg-[#181818] rounded-xl p-2.5 border border-white/5 flex items-center justify-between text-xs font-mono text-white/80">
+            <div className="flex items-center gap-1.5 truncate mr-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="truncate">{t('downloadModal.md5Label', { hash: download.option.md5Checksum.substring(0, 16) })}</span>
+            </div>
+            {isComplete && (
+              <span className="text-emerald-400 font-bold shrink-0">{t('downloadModal.pass')}</span>
+            )}
           </div>
-          {isComplete && (
-            <span className="text-emerald-400 font-bold shrink-0">{t('downloadModal.pass')}</span>
-          )}
-        </div>
+        )}
 
         {/* Action Tip */}
         {isComplete && (

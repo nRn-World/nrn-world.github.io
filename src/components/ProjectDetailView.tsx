@@ -156,7 +156,8 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
     }
   };
 
-  const handleCopyMd5 = (md5: string) => {
+  const handleCopyMd5 = (md5?: string) => {
+    if (!md5) return;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(md5);
       setCopiedMd5(md5);
@@ -700,14 +701,17 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                           </span>
                         )}
                       </div>
-                      <button
-                        onClick={() => handleCopyMd5(opt.md5Checksum)}
-                        className="truncate ml-3 opacity-60 hover:opacity-100 hover:text-blue-400 transition-all flex items-center gap-1 max-w-[180px] cursor-pointer"
-                        title={t('detail.md5Title')}
-                      >
-                        <span>{copiedMd5 === opt.md5Checksum ? t('detail.md5Copied') : t('detail.md5Prefix', { hash: opt.md5Checksum.substring(0, 10) })}</span>
-                        <Copy className="w-2.5 h-2.5" />
-                      </button>
+                      {/* Releaser utan publicerad MD5 visar ingen checksum-rad (annars kraschar vyn). */}
+                      {opt.md5Checksum && (
+                        <button
+                          onClick={() => handleCopyMd5(opt.md5Checksum)}
+                          className="truncate ml-3 opacity-60 hover:opacity-100 hover:text-blue-400 transition-all flex items-center gap-1 max-w-[180px] cursor-pointer"
+                          title={t('detail.md5Title')}
+                        >
+                          <span>{copiedMd5 === opt.md5Checksum ? t('detail.md5Copied') : t('detail.md5Prefix', { hash: opt.md5Checksum.substring(0, 10) })}</span>
+                          <Copy className="w-2.5 h-2.5" />
+                        </button>
+                      )}
                     </div>
                   </div>
                   );

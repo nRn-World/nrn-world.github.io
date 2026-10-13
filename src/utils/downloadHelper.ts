@@ -126,8 +126,7 @@ Platform:       ${option.platform} (${option.architecture || 'x64/Universal'})
 Target File:    ${option.filename}
 Format:         .${option.fileType.toUpperCase()}
 Package Size:   ${option.size}
-Checksum (MD5): ${option.md5Checksum}
-Maintainer:     ${project.maintainer}
+${option.md5Checksum ? `Checksum (MD5): ${option.md5Checksum}\n` : ''}Maintainer:     ${project.maintainer}
 License:        ${project.license}
 Release Date:   ${project.releaseDate}
 

@@ -20,7 +20,8 @@ export interface DownloadOption {
   filename: string;
   directUrl?: string;
   githubReleaseUrl?: string;
-  md5Checksum: string;
+  /** Valfri: äldre/nya releaser kan sakna publicerad MD5 — UI:t döljer då checksum-raden. */
+  md5Checksum?: string;
   architecture?: string;
   isPrimary?: boolean;
   downloadCount?: number;
