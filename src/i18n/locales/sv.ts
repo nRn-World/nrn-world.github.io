@@ -52,9 +52,9 @@ export const svUi = deepMerge(enUi, {
     name: 'Namn (A-Z)',
   },
   footer: {
-    swishTitle: 'Stöd med Swish',
-    swishAria: 'Öppna Swish QR-kod',
     kofiTitle: 'Stöd på Ko-fi',
+    kofiAria: 'Bjud mig på en kaffe på Ko-fi',
+    kofiLabel: 'Bjud mig på en kaffe',
     contact: 'Kontakt',
     about: 'Om mig',
     privacy: 'Integritetspolicy',
@@ -155,14 +155,6 @@ export const svUi = deepMerge(enUi, {
     verified: '100 % verifierad',
     savedHint: 'Sparad direkt i din nedladdningsmapp.',
     done: 'Klar',
-  },
-  swish: {
-    close: 'Stäng',
-    title: 'Stöd med Swish',
-    body: 'Gillar du mina projekt och vill visa uppskattning? Du kan alltid swisha mig på numret nedan. Tack för ditt stöd, det hjälper mig att fortsätta utveckla och underhålla nRnWorld-projekt.',
-    qrHint: 'Skanna med Swish-appen',
-    copy: 'Kopiera Swish-nummer',
-    copied: 'Kopierat!',
   },
   about: {
     close: 'Stäng',

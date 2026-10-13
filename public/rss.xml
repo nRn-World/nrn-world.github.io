@@ -5,13 +5,22 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Sep 2026 22:13:57 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 00:46:12 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-72.webp</url>
       <title>nRnWorld</title>
       <link>https://nrnworld.one</link>
     </image>
+    <item>
+      <title>GitHubRepoAnalyzer</title>
+      <link>https://nrnworld.one/p/githubrepoanalyzer</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/githubrepoanalyzer</guid>
+      <description>Understand any GitHub repository in seconds. Fully local Chrome extension with no AI services, no external APIs and no network calls.</description>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Chrome Extensions</category>
+      <enclosure url="https://nrnworld.one/images/projects/githubRepoAnalyzer.svg" type="image/webp" length="0" />
+    </item>
     <item>
       <title>AutoAccountMaker</title>
       <link>https://nrnworld.one/p/autoaccountmaker</link>
@@ -110,6 +119,15 @@
       <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
       <category>Chrome Extensions</category>
       <enclosure url="https://nrnworld.one/images/projects/privateLinkSaver.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>Svalna</title>
+      <link>https://nrnworld.one/p/svalna</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/svalna</guid>
+      <description>Din kyl minns åt dig – helt offline och helt privat.</description>
+      <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+      <category>Tools</category>
+      <enclosure url="https://nrnworld.one/images/projects/svalna/cover.webp" type="image/webp" length="0" />
     </item>
     <item>
       <title>SiteScannerPro</title>

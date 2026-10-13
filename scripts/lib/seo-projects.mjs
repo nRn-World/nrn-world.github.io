@@ -20,6 +20,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
  *   releaseDate: string,
  *   projectType: string,
  *   liveDemoUrl: string | null,
+ *   hideGithubLinks: boolean,
  * }} SeoProject
  */
 
@@ -57,6 +58,7 @@ export function loadSeoProjects() {
     const releaseDate = chunk.match(/releaseDate:\s*'([^']+)'/)?.[1] ?? '';
     const projectType = chunk.match(/projectType:\s*'([^']+)'/)?.[1] ?? 'downloadable';
     const liveDemoUrl = chunk.match(/liveDemoUrl:\s*'([^']+)'/)?.[1] ?? null;
+    const hideGithubLinks = /hideGithubLinks:\s*true/.test(chunk);
     const imgKey = chunk.match(/PROJECT_IMAGES\.(\w+)/)?.[1];
 
     if (!id || !name || !category || !githubUrl) continue;
@@ -83,6 +85,7 @@ export function loadSeoProjects() {
       releaseDate,
       projectType,
       liveDemoUrl,
+      hideGithubLinks,
     });
   }
 

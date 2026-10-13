@@ -278,27 +278,31 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
               )}
 
               {/* Direct GitHub Link Button */}
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 px-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white/80 hover:text-white font-mono text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
-                title={t('detail.githubTitle')}
-              >
-                <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
-                <span>{t('detail.githubRepo')}</span>
-              </a>
+              {!project.hideGithubLinks && (
+                <>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 px-3 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-white/80 hover:text-white font-mono text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                    title={t('detail.githubTitle')}
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
+                    <span>{t('detail.githubRepo')}</span>
+                  </a>
 
-              <a
-                href={getGithubContributeUrl(project.githubUrl)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 px-3 rounded-full bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 hover:text-emerald-200 font-mono text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
-                title={t('detail.contributeTitle', { name: project.name })}
-              >
-                <GitFork className="w-3.5 h-3.5" />
-                <span>{t('detail.contributeGithub')}</span>
-              </a>
+                  <a
+                    href={getGithubContributeUrl(project.githubUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 px-3 rounded-full bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 hover:text-emerald-200 font-mono text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                    title={t('detail.contributeTitle', { name: project.name })}
+                  >
+                    <GitFork className="w-3.5 h-3.5" />
+                    <span>{t('detail.contributeGithub')}</span>
+                  </a>
+                </>
+              )}
             </div>
 
             <h1
@@ -745,21 +749,23 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
 
               {/* Extra Documentation & GitHub actions */}
               <div className="pt-4 border-t border-white/5 flex flex-col gap-3 font-mono text-xs">
-                <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] p-3.5 flex flex-col gap-2.5">
-                  <p className="font-inter text-[11px] sm:text-xs text-white/65 leading-relaxed text-center sm:text-left">
-                    {t('detail.contributeInvite')}
-                  </p>
-                  <a
-                    href={getGithubContributeUrl(project.githubUrl)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full p-2.5 rounded-lg flex items-center justify-center gap-2 transition-all font-mono text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-300 cursor-pointer"
-                    title={t('detail.contributeTitle', { name: project.name })}
-                  >
-                    <GitFork className="w-4 h-4" />
-                    <span>{t('detail.contributeGithub')}</span>
-                  </a>
-                </div>
+                {!project.hideGithubLinks && (
+                  <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.06] p-3.5 flex flex-col gap-2.5">
+                    <p className="font-inter text-[11px] sm:text-xs text-white/65 leading-relaxed text-center sm:text-left">
+                      {t('detail.contributeInvite')}
+                    </p>
+                    <a
+                      href={getGithubContributeUrl(project.githubUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full p-2.5 rounded-lg flex items-center justify-center gap-2 transition-all font-mono text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 text-emerald-300 cursor-pointer"
+                      title={t('detail.contributeTitle', { name: project.name })}
+                    >
+                      <GitFork className="w-4 h-4" />
+                      <span>{t('detail.contributeGithub')}</span>
+                    </a>
+                  </div>
+                )}
 
                 <button
                   onClick={() => onToggleStar && onToggleStar(project)}
@@ -781,33 +787,37 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                   <span>{t('detail.installGuide')}</span>
                 </button>
 
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white/70 hover:text-blue-400 flex items-center gap-2 transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4 text-blue-400" />
-                  <span>{t('detail.sourceCode')}</span>
-                </a>
+                {!project.hideGithubLinks && (
+                  <>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-white/70 hover:text-blue-400 flex items-center gap-2 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4 text-blue-400" />
+                      <span>{t('detail.sourceCode')}</span>
+                    </a>
 
-                {/* Git Clone Snippet */}
-                <div className="bg-[#0A0A0A] p-3 rounded-lg border border-white/10 flex items-center justify-between text-[11px] text-white/70">
-                  <span className="truncate font-mono mr-2 text-white/80">
-                    git clone {project.githubUrl}.git
-                  </span>
-                  <button
-                    onClick={handleCopyClone}
-                    className="p-1 hover:text-white text-white/60 transition-colors shrink-0 cursor-pointer"
-                    title={t('detail.cloneCopy')}
-                  >
-                    {copiedClone ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    ) : (
-                      <Copy className="w-3.5 h-3.5" />
-                    )}
-                  </button>
-                </div>
+                    {/* Git Clone Snippet */}
+                    <div className="bg-[#0A0A0A] p-3 rounded-lg border border-white/10 flex items-center justify-between text-[11px] text-white/70">
+                      <span className="truncate font-mono mr-2 text-white/80">
+                        git clone {project.githubUrl}.git
+                      </span>
+                      <button
+                        onClick={handleCopyClone}
+                        className="p-1 hover:text-white text-white/60 transition-colors shrink-0 cursor-pointer"
+                        title={t('detail.cloneCopy')}
+                      >
+                        {copiedClone ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 

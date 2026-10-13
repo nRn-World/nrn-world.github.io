@@ -46,9 +46,9 @@ export const trUi = deepMerge(enUi, {
     name: 'Ad (A-Z)',
   },
   footer: {
-    swishTitle: 'Swish ile destekle',
-    swishAria: 'Swish QR kodunu aç',
     kofiTitle: "Ko-fi'de destekle",
+    kofiAria: "Ko-fi'de bana bir kahve ısmarla",
+    kofiLabel: 'Bir kahve ısmarla',
     contact: 'İletişim',
     privacy: 'Gizlilik Politikası',
     copyEmail: 'E-postayı kopyala',
@@ -102,14 +102,6 @@ export const trUi = deepMerge(enUi, {
     verifying: 'MD5 doğrulanıyor...',
     verified: '%100 Doğrulandı',
     done: 'Tamam',
-  },
-  swish: {
-    close: 'Kapat',
-    title: 'Swish ile destekle',
-    body: 'Projelerimi beğendiyseniz numaramdan Swish ile destek olabilirsiniz. Desteğiniz için teşekkürler!',
-    qrHint: 'Swish uygulamasıyla tara',
-    copy: 'Swish numarasını kopyala',
-    copied: 'Kopyalandı!',
   },
   connect: {
     close: 'Kapat',

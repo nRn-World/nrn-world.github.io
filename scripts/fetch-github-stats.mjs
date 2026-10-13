@@ -36,6 +36,8 @@ const REPOS = [
   'ParkeraiSthlm',
   'AutoAccountMaker',
   'GitHubRepoAnalyzer',
+  // Private repo — stats fetch fails gracefully and the seeded values are kept.
+  'Svalna',
 ];
 
 const GITHUB_OWNER = 'nRn-World';

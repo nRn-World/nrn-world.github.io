@@ -126,4 +126,13 @@ export const PROJECT_IMAGES = {
     raw('GitHubRepoAnalyzer', 'main', 'Screenshots/2.png'),
     raw('GitHubRepoAnalyzer', 'main', 'Screenshots/3.png'),
   ],
+  // Source repo is private, so cover + screenshots are hosted locally instead of via raw.githubusercontent.com.
+  svalna: [
+    '/images/projects/svalna/cover.webp',
+    '/images/projects/svalna/home.webp',
+    '/images/projects/svalna/scan.webp',
+    '/images/projects/svalna/shopping-list.webp',
+    '/images/projects/svalna/stats.webp',
+    '/images/projects/svalna/settings.webp',
+  ],
 } as const;

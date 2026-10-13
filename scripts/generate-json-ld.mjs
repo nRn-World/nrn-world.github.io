@@ -23,7 +23,7 @@ const listItems = projects.map((p, i) => ({
       p.projectType === 'web_game' || p.projectType === 'web_app'
         ? 'Web Browser'
         : 'Windows 10, Windows 11, Web',
-    downloadUrl: `${p.githubUrl}/releases/latest`,
+    ...(p.hideGithubLinks ? {} : { downloadUrl: `${p.githubUrl}/releases/latest` }),
     ...(p.liveDemoUrl ? { installUrl: p.liveDemoUrl } : {}),
     offers: {
       '@type': 'Offer',

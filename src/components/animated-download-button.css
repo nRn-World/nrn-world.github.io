@@ -13,9 +13,15 @@
   max-width: 100%;
 }
 
+/* Kompakt variant: etiketten är 176x59px i layout men skalas 0.76 från
+   top-left. Lådan är därför 134x45px (176 * 0.76 / 59 * 0.76) och etiketten
+   ankras i övre vänstra hörnet, annars centreras layoutmåttet och pillen
+   ritas förskjuten uppåt/vänster om sin plats. */
 .dl-container--compact {
   width: 134px;
-  height: 46px;
+  height: 45px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .dl-container--compact .dl-label {

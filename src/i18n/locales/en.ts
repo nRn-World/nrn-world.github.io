@@ -65,8 +65,6 @@ export const enUi: TranslationDictionary = {
   footer: {
     copyright: 'Copyright © 2026',
     systems: 'Systems. All systems operational.',
-    swishTitle: 'Support with Swish',
-    swishAria: 'Open Swish QR code',
     kofiTitle: 'Support on Ko-fi',
     kofiAria: 'Buy Me a Coffee on Ko-fi',
     kofiLabel: 'Buy Me a Coffee',
@@ -208,16 +206,6 @@ export const enUi: TranslationDictionary = {
     done: 'Done',
     speed: '{speed} MB/s',
     progress: '{received} MB / {total} MB',
-  },
-  swish: {
-    close: 'Close',
-    title: 'Support with Swish',
-    subtitle: 'nRnWorld Project Hub',
-    body: 'Enjoy my projects and want to show appreciation? You can always Swish me at the number below. Thank you for your support, it helps me keep building and maintaining nRnWorld projects.',
-    qrAlt: 'Swish QR code',
-    qrHint: 'Scan with the Swish app',
-    copy: 'Copy Swish number',
-    copied: 'Copied!',
   },
   about: {
     close: 'Close',

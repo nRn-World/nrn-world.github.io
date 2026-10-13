@@ -1,5 +1,5 @@
 # nRnWorld
-> Open Windows tools, AI agents, audio engines and browser games. 19 projects with direct downloads and source on GitHub (@nRn-World).
+> Open Windows tools, AI agents, audio engines and browser games. 21 projects with direct downloads and source on GitHub (@nRn-World).
 
 ## Projects
 - [ShadowPaw: Noir Typist](https://nrnworld.one/p/shadowpaw): https://nrnworld.one/p/shadowpaw: Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth. | Live: https://nrnworld.one/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
@@ -11,7 +11,7 @@
 - [NeonPathPuzzle](https://nrnworld.one/p/neonpathpuzzle): https://nrnworld.one/p/neonpathpuzzle: Challenging neon light pathfinding and circuit alignment logic game. | Live: https://nrnworld.one/NeonPathPuzzle/ | GitHub: https://github.com/nRn-World/NeonPathPuzzle
 - [DoneTogether](https://nrnworld.one/p/donetogether): https://nrnworld.one/p/donetogether: Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase. | Live: https://nrnworld.one/DoneTogether/ | GitHub: https://github.com/nRn-World/DoneTogether
 - [NexNote](https://nrnworld.one/p/nexnote): https://nrnworld.one/p/nexnote: Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math. | Live: https://nrnworld.one/NexNote/ | GitHub: https://github.com/nRn-World/NexNote
-- [SecretPromts](https://nrnworld.one/p/secretpromts): https://nrnworld.one/p/secretpromts: Curated AI prompt discovery directory, tester, and optimization playground. | Live: https://secretpromts.vercel.app | GitHub: https://github.com/nRn-World/SecretPromts
+- [SecretPromts](https://nrnworld.one/p/secretpromts): https://nrnworld.one/p/secretpromts: Curated AI prompt discovery directory, tester, and optimization playground. | Live: https://nrnworld.one/SecretPromts/ | GitHub: https://github.com/nRn-World/SecretPromts
 - [SiteScannerPro](https://nrnworld.one/p/sitescannerpro): https://nrnworld.one/p/sitescannerpro: Website health analysis for SEO, performance, security, accessibility, and code quality. | Live: https://nrnworld.one/SiteScannerPro/ | GitHub: https://github.com/nRn-World/SiteScannerPro
 - [GLOBAL_EMERGENCY](https://nrnworld.one/p/globalemergency): https://nrnworld.one/p/globalemergency: Global Emergency, source-backed country emergency information and travel safety PWA. | Live: https://nrnworld.one/GLOBAL_EMERGENCY/ | GitHub: https://github.com/nRn-World/GLOBAL_EMERGENCY
 - [PrivateLinkSaver](https://nrnworld.one/p/privatelinksaver): https://nrnworld.one/p/privatelinksaver: A secure Chrome extension to privately save, organize, and manage bookmarks with password protection. | Live: https://chromewebstore.google.com/detail/privatelinksaver/kdnhcpdhlpopdggnbkechdkcdbolkinf?hl=sv | GitHub: https://github.com/nRn-World/PrivateLinkSaver
@@ -21,6 +21,8 @@
 - [NotePin](https://nrnworld.one/p/notepin): https://nrnworld.one/p/notepin: Minimalist sticky note desktop pin utility for quick thoughts. | GitHub: https://github.com/nRn-World/NotePin
 - [ParkeraiSthlm](https://nrnworld.one/p/parkeraisthlm): https://nrnworld.one/p/parkeraisthlm: Realtidskarta för gatuparkering i Stockholm med officiella taxezoner och priser. | Live: https://nrnworld.one/ParkeraiSthlm/ | GitHub: https://github.com/nRn-World/ParkeraiSthlm
 - [AutoAccountMaker](https://nrnworld.one/p/autoaccountmaker): https://nrnworld.one/p/autoaccountmaker: Creates accounts automatically with a temporary email address, verifies them, and logs in for you. | GitHub: https://github.com/nRn-World/AutoAccountMaker
+- [GitHubRepoAnalyzer](https://nrnworld.one/p/githubrepoanalyzer): https://nrnworld.one/p/githubrepoanalyzer: Understand any GitHub repository in seconds. Fully local Chrome extension with no AI services, no external APIs and no network calls. | GitHub: https://github.com/nRn-World/GitHubRepoAnalyzer
+- [Svalna](https://nrnworld.one/p/svalna): https://nrnworld.one/p/svalna: Din kyl minns åt dig – helt offline och helt privat. | Live: https://svalna-nrnworld.web.app/
 
 ## About
 - Website: https://nrnworld.one/

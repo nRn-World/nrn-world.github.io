@@ -3,7 +3,6 @@ import { X, Code2, Heart, Share2, Sparkles } from 'lucide-react';
 import { useI18n } from '../i18n/context';
 import { GITHUB_PROFILE_URL, INSTAGRAM_URL } from '../constants/social';
 import { GitHubMarkIcon, InstagramGlyphIcon } from './BrandSocialIcons';
-import { SwishModal } from './SwishModal';
 
 interface AboutModalProps {
   isOpen: boolean;
@@ -12,7 +11,6 @@ interface AboutModalProps {
 
 export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
   const { t } = useI18n();
-  const [swishOpen, setSwishOpen] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -121,27 +119,6 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 w-full">
-                  <button
-                    type="button"
-                    onClick={() => setSwishOpen(true)}
-                    className="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all cursor-pointer"
-                    title={t('footer.swishTitle')}
-                    aria-label={t('footer.swishAria')}
-                  >
-                    <img
-                      src="/swish-logo.webp"
-                      alt=""
-                      width={54}
-                      height={20}
-                      className="h-5 w-[54px] shrink-0 object-contain"
-                      aria-hidden
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="font-mono text-[11px] text-white/70 group-hover:text-white transition-colors">
-                      Swish
-                    </span>
-                  </button>
                   <a
                     href="https://ko-fi.com/nrnworld"
                     target="_blank"
@@ -185,7 +162,6 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
         </div>
       </div>
 
-      <SwishModal isOpen={swishOpen} onClose={() => setSwishOpen(false)} />
     </div>
   );
 };

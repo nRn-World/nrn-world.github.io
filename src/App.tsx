@@ -358,9 +358,12 @@ export default function App() {
       setStarredProjectIds((prev) => [...prev, project.id]);
       bumpEngagement(project.id, 'stars');
     }
-    // Always open GitHub Star dialog so user can easily star it on GitHub too
-    setStarModalProject(project);
-    setStarModalOpen(true);
+    // Open the GitHub Star dialog so the user can star it on GitHub too —
+    // skipped for projects whose source repo is not public.
+    if (!project.hideGithubLinks) {
+      setStarModalProject(project);
+      setStarModalOpen(true);
+    }
   };
 
   const handleDownload = (project: Project, option: DownloadOption, e?: React.MouseEvent) => {

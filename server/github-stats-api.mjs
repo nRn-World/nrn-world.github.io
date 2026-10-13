@@ -22,6 +22,8 @@ const REPOS = [
   'ParkeraiSthlm',
   'AutoAccountMaker',
   'GitHubRepoAnalyzer',
+  // Private repo — the fetch returns 404 and the project keeps its seeded values.
+  'Svalna',
 ];
 
 let cachedPayload = null;

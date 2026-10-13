@@ -526,7 +526,7 @@ export const INITIAL_PROJECTS: Project[] = [
     tags: ['AI', 'Prompting', 'Webb', 'Verktyg'],
     platformBadge: 'WEB',
     projectType: 'web_app',
-    liveDemoUrl: 'https://secretpromts.vercel.app',
+    liveDemoUrl: 'https://nrnworld.one/SecretPromts/',
     featured: true,
     rating: 4.90,
     downloadsCount: 0,
@@ -1020,6 +1020,59 @@ export const INITIAL_PROJECTS: Project[] = [
       os: 'Google Chrome, Microsoft Edge, Brave, Opera, or Chromium browser',
       ram: '512 MB RAM',
       storage: '20 MB',
+    }
+  },
+
+  // 21. Svalna (Private-repo PWA — GitHub UI hidden)
+  {
+    id: 'svalna',
+    name: 'Svalna',
+    tagline: 'Din kyl minns åt dig – helt offline och helt privat.',
+    description: 'Progressive web app som håller ordning på kylskåpets innehåll, minskar matsvinn och håller koll på inköp och veckomenyer – allt lokalt på enheten.',
+    detailedAbout: 'Svalna är en progressiv webbapp (PWA) utvecklad av nRnWorld som hjälper hushåll att hålla ordning på kylskåpets innehåll, minska matsvinn och planera inköp. Allt körs lokalt på enheten – inget konto, ingen analys, ingen server krävs, med valfri livesynk via en privat hushållskod.\n\nHuvudfunktioner:\n• Kylskåpsinventering: Lägg till varor manuellt, via foto eller genom att skanna en streckkod.\n• Streckkodsscanning: Livekamera via Web BarcodeDetector med ZXing som fallback, plus OCR via Tesseract.js för bäst-före-datum.\n• Inköpslista & matplan: Smarta inköpsförslag utifrån varor som snart går ut, manuell lista och en 7-dagars matplanerare.\n• Statistik: Stapeldiagram över använda kontra slängda varor, kategorinedbrytning och räddningsgrad över tid.\n• Hushållsdelning (valfritt): Skapa ett hushåll med en privat kod (SVAL-XXXX-XXXX-XXXX) och synka kylen i realtid – utan personuppgifter.\n• Integritet först: All data lagras i IndexedDB på enheten, inga konton, ingen spårning, inga foton som lämnar enheten och JSON-export/import när du vill.\n• Installerbar PWA: Fungerar offline och installeras som en nativ app på iOS, Android och skrivbordet.\n• Fyra språk och ljust/mörkt/systemtema.',
+    version: 'v1.0.0-live',
+    releaseDate: '2026-08-23',
+    category: 'Tools',
+    tags: ['Verktyg', 'PWA', 'Offline', 'Integritet'],
+    platformBadge: 'WEB',
+    projectType: 'web_app',
+    liveDemoUrl: 'https://svalna-nrnworld.web.app/',
+    featured: false,
+    rating: 4.9,
+    downloadsCount: 0,
+    starsCount: 1,
+    images: [...PROJECT_IMAGES.svalna],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Installable PWA – iOS, Android & Desktop', icon: 'globe' },
+      { label: 'Storage', value: 'IndexedDB, Fully On-Device', icon: 'memory' },
+      { label: 'Scanning', value: 'BarcodeDetector + ZXing + Tesseract OCR', icon: 'cpu' },
+      { label: 'Privacy', value: 'No Accounts, No Analytics, No Server', icon: 'shield' },
+      { label: 'Languages', value: 'English, Svenska, Español, Türkçe', icon: 'layers' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.08.23',
+        isCurrent: true,
+        items: [
+          'Live release hosted on Firebase Hosting',
+          'Fridge inventory with shelves, freshness colour coding and drag-to-move',
+          'Barcode scanning with Open Food Facts suggestions and OCR best-before reading',
+          'Shopping list, 7-day meal planner and waste statistics',
+          'Optional household sync with a private household code',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/Svalna',
+    hideGithubLinks: true,
+    license: 'Proprietary',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Live Online',
+    systemRequirements: {
+      os: 'Any modern browser on iOS, Android or Desktop',
+      ram: '2 GB RAM',
+      storage: 'Runs in browser (offline cache ~15 MB)',
     }
   }
 ];

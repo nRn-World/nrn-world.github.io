@@ -44,7 +44,9 @@ export const arUi = deepMerge(enUi, {
     name: 'الاسم (أ-ي)',
   },
   footer: {
-    swishTitle: 'ادعم عبر Swish',
+    kofiTitle: 'ادعم على Ko-fi',
+    kofiAria: 'اشترِ لي قهوة على Ko-fi',
+    kofiLabel: 'اشترِ لي قهوة',
     contact: 'اتصل',
     privacy: 'سياسة الخصوصية',
     copyEmail: 'نسخ البريد',
@@ -73,7 +75,6 @@ export const arUi = deepMerge(enUi, {
     clearAll: 'مسح كل الإشارات المرجعية',
     close: 'إغلاق',
   },
-  swish: { close: 'إغلاق', title: 'ادعم عبر Swish', copied: 'تم النسخ!' },
   connect: {
     close: 'إغلاق',
     title: 'تواصل مع المبدع والمجتمع',

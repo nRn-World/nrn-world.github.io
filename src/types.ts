@@ -61,6 +61,8 @@ export interface Project {
   specs: TechnicalSpec[];
   changelog: ChangelogEntry[];
   githubUrl: string;
+  /** Hide GitHub repo UI (repo, contribute, clone, star dialog) — used when the source repo is not public. */
+  hideGithubLinks?: boolean;
   license: string;
   maintainer: string;
   lastUpdated: string;

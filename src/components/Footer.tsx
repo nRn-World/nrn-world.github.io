@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Github, Copy, Check } from 'lucide-react';
 import { CONTACT_EMAIL } from '../constants/contact';
 import { GITHUB_PROFILE_URL } from '../constants/social';
-import { SwishModal } from './SwishModal';
 import { useI18n } from '../i18n/context';
 
 interface FooterProps {
@@ -13,7 +12,6 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) => {
   const { t } = useI18n();
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [swishOpen, setSwishOpen] = useState(false);
 
   const handleCopyEmail = async () => {
     try {
@@ -47,24 +45,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
               {t('footer.systems')}
             </span>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setSwishOpen(true)}
-            className="hover:opacity-90 transition-opacity cursor-pointer p-0.5 shrink-0"
-            title={t('footer.swishTitle')}
-            aria-label={t('footer.swishAria')}
-          >
-            <img
-              src="/swish-logo.webp"
-              alt="Swish"
-              width={67}
-              height={24}
-              className="h-6 w-[67px] object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          </button>
 
           <a
             href="https://ko-fi.com/nrnworld"
@@ -145,7 +125,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
         </div>
       </div>
 
-      <SwishModal isOpen={swishOpen} onClose={() => setSwishOpen(false)} />
     </footer>
   );
 };

@@ -374,28 +374,32 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             >
               <Info className="w-3 h-3" />
             </button>
-            <span className="w-px h-3.5 bg-[#29345e] shrink-0" aria-hidden />
-            <button
-              type="button"
-              onClick={handleOpenGithub}
-              className="p-1.5 rounded-md text-[#8ea4df] hover:text-white hover:bg-white/5 transition-all cursor-pointer"
-              title={t('projectCard.githubOpen', { name: project.name })}
-              aria-label={t('projectCard.githubOpen', { name: project.name })}
-            >
-              <Github className="w-3 h-3" />
-            </button>
-            <span className="w-px h-3.5 bg-[#29345e] shrink-0" aria-hidden />
-            <a
-              href={getGithubContributeUrl(project.githubUrl)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="p-1.5 rounded-md text-emerald-400/90 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all cursor-pointer"
-              title={t('projectCard.contributeTitle', { name: project.name })}
-              aria-label={t('projectCard.contributeGithub')}
-            >
-              <GitFork className="w-3 h-3" />
-            </a>
+            {!project.hideGithubLinks && (
+              <>
+                <span className="w-px h-3.5 bg-[#29345e] shrink-0" aria-hidden />
+                <button
+                  type="button"
+                  onClick={handleOpenGithub}
+                  className="p-1.5 rounded-md text-[#8ea4df] hover:text-white hover:bg-white/5 transition-all cursor-pointer"
+                  title={t('projectCard.githubOpen', { name: project.name })}
+                  aria-label={t('projectCard.githubOpen', { name: project.name })}
+                >
+                  <Github className="w-3 h-3" />
+                </button>
+                <span className="w-px h-3.5 bg-[#29345e] shrink-0" aria-hidden />
+                <a
+                  href={getGithubContributeUrl(project.githubUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="p-1.5 rounded-md text-emerald-400/90 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all cursor-pointer"
+                  title={t('projectCard.contributeTitle', { name: project.name })}
+                  aria-label={t('projectCard.contributeGithub')}
+                >
+                  <GitFork className="w-3 h-3" />
+                </a>
+              </>
+            )}
           </div>
         </div>
 
