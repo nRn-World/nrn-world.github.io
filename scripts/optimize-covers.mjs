@@ -33,7 +33,7 @@ const COVERS = {
   bluetoothSafetyLock: raw('BluetoothSafetyLock', 'main', 'bluetooth-safetylock-logo.png'),
   flashVideoDownloader: raw('FlashVideoDownloader', 'main', 'icons/icon128.png'),
   notePin: raw('NotePin', 'main', 'Logo/Logo.png'),
-  parkeraISthlm: raw('ParkeraiSthlm', 'master', 'public/icon-512.png'),
+  parkiSthlm: raw('ParkiSthlm', 'master', 'public/icon-512.png'),
 };
 
 async function optimizeAll() {

@@ -33,7 +33,7 @@ const REPOS = [
   'BluetoothSafetyLock',
   'FlashVideoDownloader',
   'NotePin',
-  'ParkeraiSthlm',
+  'ParkiSthlm',
   'AutoAccountMaker',
   'GitHubRepoAnalyzer',
   // Private repo — stats fetch fails gracefully and the seeded values are kept.

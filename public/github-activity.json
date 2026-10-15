@@ -1,43 +1,8 @@
 {
-  "fetchedAt": "2026-10-10T00:46:12.354Z",
+  "fetchedAt": "2026-10-15T14:47:09.064Z",
   "login": "nRn-World",
-  "totalContributions": 1314,
+  "totalContributions": 1422,
   "days": [
-    {
-      "date": "2025-10-05",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-06",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-07",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-08",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-09",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-10",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-11",
-      "count": 0,
-      "level": 0
-    },
     {
       "date": "2025-10-12",
       "count": 0,
@@ -1185,28 +1150,28 @@
     },
     {
       "date": "2026-05-29",
-      "count": 4,
-      "level": 1
+      "count": 26,
+      "level": 3
     },
     {
       "date": "2026-05-30",
-      "count": 0,
-      "level": 0
+      "count": 7,
+      "level": 1
     },
     {
       "date": "2026-05-31",
-      "count": 0,
-      "level": 0
+      "count": 2,
+      "level": 1
     },
     {
       "date": "2026-06-01",
-      "count": 1,
+      "count": 3,
       "level": 1
     },
     {
       "date": "2026-06-02",
-      "count": 0,
-      "level": 0
+      "count": 6,
+      "level": 1
     },
     {
       "date": "2026-06-03",
@@ -1645,7 +1610,7 @@
     },
     {
       "date": "2026-08-29",
-      "count": 2,
+      "count": 7,
       "level": 1
     },
     {
@@ -1855,8 +1820,33 @@
     },
     {
       "date": "2026-10-10",
-      "count": 0,
-      "level": 0
+      "count": 30,
+      "level": 3
+    },
+    {
+      "date": "2026-10-11",
+      "count": 6,
+      "level": 1
+    },
+    {
+      "date": "2026-10-12",
+      "count": 6,
+      "level": 1
+    },
+    {
+      "date": "2026-10-13",
+      "count": 10,
+      "level": 1
+    },
+    {
+      "date": "2026-10-14",
+      "count": 11,
+      "level": 1
+    },
+    {
+      "date": "2026-10-15",
+      "count": 1,
+      "level": 1
     }
   ],
   "fetchOk": true

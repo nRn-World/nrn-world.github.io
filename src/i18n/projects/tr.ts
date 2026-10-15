@@ -121,12 +121,12 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'NotePin, ekranınızın herhangi bir yerine hafif notlar sabitlemenizi sağlayan bir masaüstü aracıdır.\n\nÖne çıkanlar:\n• Her zaman üstte kalan yapışkan notlar\n• Hızlı hatırlatıcılar ve kod parçacıkları için ideal\n• Ekranın herhangi bir yerine sabitleme\n• Minimalist ve hafif tasarım',
   },
-  'parkera-i-sthlm': {
-    name: 'ParkeraiSthlm',
+  'parkisthlm': {
+    name: 'ParkiSthlm',
     tagline: 'Stockholm sokak parkı için resmi tarife bölgeleri ve fiyatlarla gerçek zamanlı harita.',
     description: 'Stockholm\'ün beş resmi park tarifesini, gerçek zamanlı verileri ve çevrimdışı desteği doğrudan tarayıcıda gösteren etkileşimli web haritası.',
     detailedAbout:
-      'Parkera i Stockholm, Stockholm şehrinde park yeri bulmanıza ve geçerli tarifeleri görmenize yardımcı olan mobil uyumlu bir web uygulamasıdır. Trafikkontoret düzenlemelerine göre doğru fiyat ve saatlerle Taxa 1–5\'i gösterir, ayrıca OpenStreetMap üzerinden gerçek zamanlı veri sunar.\n\nÖne çıkanlar:\n• Stockholm\'ün beş resmi park tarifesi (Taxa 1–5)\n• Trafikkontoret\'e uygun doğru fiyat ve saatler\n• OpenStreetMap ile gerçek zamanlı veri\n• Çevrimdışı destek ve mobil uyumlu tasarım',
+      'ParkiSthlm, Stockholm şehrinde park yeri bulmanıza ve geçerli tarifeleri görmenize yardımcı olan mobil uyumlu bir web uygulamasıdır. Trafikkontoret düzenlemelerine göre doğru fiyat ve saatlerle Taxa 1–5\'i gösterir, ayrıca OpenStreetMap üzerinden gerçek zamanlı veri sunar.\n\nÖne çıkanlar:\n• Stockholm\'ün beş resmi park tarifesi (Taxa 1–5)\n• Trafikkontoret\'e uygun doğru fiyat ve saatler\n• OpenStreetMap ile gerçek zamanlı veri\n• Çevrimdışı destek ve mobil uyumlu tasarım',
   },
   'auto-account-maker': {
     name: 'AutoAccountMaker',

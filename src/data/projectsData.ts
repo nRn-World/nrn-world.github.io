@@ -882,25 +882,25 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 18. ParkeraiSthlm (Stockholm Parking Map)
+  // 18. ParkiSthlm (Stockholm Parking Map)
   {
-    id: 'parkera-i-sthlm',
-    name: 'ParkeraiSthlm',
+    id: 'parkisthlm',
+    name: 'ParkiSthlm',
     tagline: 'Realtidskarta för gatuparkering i Stockholm med officiella taxezoner och priser.',
     description: 'Interaktiv webbkarta som visar Stockholms fem officiella parkeringstaxor, realtidsdata och offline-stöd direkt i webbläsaren.',
-    detailedAbout: 'Parkera i Stockholm är en mobilanpassad webbapp som hjälper dig hitta parkering och se gällande taxor i Stockholms stad. Visar Taxa 1–5 med korrekta priser och tider enligt Trafikkontorets bestämmelser, plus realtidsdata via OpenStreetMap.',
+    detailedAbout: 'ParkiSthlm är en mobilanpassad webbapp som hjälper dig hitta parkering och se gällande taxor i Stockholms stad. Visar Taxa 1–5 med korrekta priser och tider enligt Trafikkontorets bestämmelser, plus realtidsdata via OpenStreetMap.',
     version: 'v1.0.0-live',
     releaseDate: '2026-08-18',
     category: 'Android',
     tags: ['Mobil', 'Webb', 'Karta', 'Stockholm'],
     platformBadge: 'WEB',
     projectType: 'web_app',
-    liveDemoUrl: 'https://nrnworld.one/ParkeraiSthlm/',
+    liveDemoUrl: 'https://nrnworld.one/ParkiSthlm/',
     featured: false,
     rating: 4.89,
     downloadsCount: 0,
     starsCount: 0,
-    images: [...PROJECT_IMAGES.parkeraISthlm],
+    images: [...PROJECT_IMAGES.parkiSthlm],
     downloadOptions: [],
     specs: [
       { label: 'Map Engine', value: 'OpenStreetMap + React 19', icon: 'globe' },
@@ -915,7 +915,7 @@ export const INITIAL_PROJECTS: Project[] = [
         items: ['Live release on GitHub Pages with interactive parking zone map']
       }
     ],
-    githubUrl: 'https://github.com/nRn-World/ParkeraiSthlm',
+    githubUrl: 'https://github.com/nRn-World/ParkiSthlm',
     license: 'Non-Commercial',
     maintainer: 'nRnWorld',
     lastUpdated: 'Live Online',

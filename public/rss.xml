@@ -5,7 +5,7 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 00:46:12 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 14:47:09 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-72.webp</url>
@@ -175,13 +175,13 @@
       <enclosure url="https://nrnworld.one/images/projects/bluetoothSafetyLock.webp" type="image/webp" length="0" />
     </item>
     <item>
-      <title>ParkeraiSthlm</title>
-      <link>https://nrnworld.one/p/parkeraisthlm</link>
-      <guid isPermaLink="true">https://nrnworld.one/p/parkeraisthlm</guid>
+      <title>ParkiSthlm</title>
+      <link>https://nrnworld.one/p/parkisthlm</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/parkisthlm</guid>
       <description>Realtidskarta för gatuparkering i Stockholm med officiella taxezoner och priser.</description>
       <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
       <category>Android</category>
-      <enclosure url="https://nrnworld.one/images/projects/parkeraISthlm.webp" type="image/webp" length="0" />
+      <enclosure url="https://nrnworld.one/images/projects/parkiSthlm.webp" type="image/webp" length="0" />
     </item>
     <item>
       <title>NotePin</title>

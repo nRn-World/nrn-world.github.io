@@ -19,7 +19,7 @@ const REPOS = [
   'BluetoothSafetyLock',
   'FlashVideoDownloader',
   'NotePin',
-  'ParkeraiSthlm',
+  'ParkiSthlm',
   'AutoAccountMaker',
   'GitHubRepoAnalyzer',
   // Private repo — the fetch returns 404 and the project keeps its seeded values.

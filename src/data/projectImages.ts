@@ -108,9 +108,9 @@ export const PROJECT_IMAGES = {
     raw('NotePin', 'main', 'Screenshot/SC3.png'),
     raw('NotePin', 'main', 'Screenshot/SC4.png'),
   ],
-  parkeraISthlm: [
-    '/images/projects/parkeraISthlm.webp',
-    raw('ParkeraiSthlm', 'master', 'public/icon-192.png'),
+  parkiSthlm: [
+    '/images/projects/parkiSthlm.webp',
+    raw('ParkiSthlm', 'master', 'public/icon-192.png'),
   ],
   autoAccountMaker: [
     '/images/projects/autoAccountMaker.svg',

@@ -121,12 +121,12 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'NotePin är ett skrivbordsverktyg som låter dig fästa lätta anteckningar var som helst på skärmen.\n\nHuvudfunktioner:\n• Fäst anteckningar var som helst på skrivbordet\n• Alltid synliga ovanpå andra fönster\n• Perfekt för snabba påminnelser och kodsnuttar\n• Minimalistiskt och lättviktigt gränssnitt',
   },
-  'parkera-i-sthlm': {
-    name: 'ParkeraiSthlm',
+  'parkisthlm': {
+    name: 'ParkiSthlm',
     tagline: 'Realtidskarta för gatuparkering i Stockholm med officiella taxezoner och priser.',
     description: 'Interaktiv webbkarta som visar Stockholms fem officiella parkeringstaxor, realtidsdata och offline-stöd direkt i webbläsaren.',
     detailedAbout:
-      'Parkera i Stockholm är en mobilanpassad webbapp som hjälper dig hitta parkering och se gällande taxor i Stockholms stad.\n\nHuvudfunktioner:\n• Visar Taxa 1–5 med korrekta priser och tider enligt Trafikkontorets bestämmelser\n• Realtidsdata via OpenStreetMap\n• Offline-stöd direkt i webbläsaren\n• Mobilanpassad karta för gatuparkering i Stockholm',
+      'ParkiSthlm är en mobilanpassad webbapp som hjälper dig hitta parkering och se gällande taxor i Stockholms stad.\n\nHuvudfunktioner:\n• Visar Taxa 1–5 med korrekta priser och tider enligt Trafikkontorets bestämmelser\n• Realtidsdata via OpenStreetMap\n• Offline-stöd direkt i webbläsaren\n• Mobilanpassad karta för gatuparkering i Stockholm',
   },
   'auto-account-maker': {
     name: 'AutoAccountMaker',

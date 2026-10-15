@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-10T00:46:11.473Z",
+  "fetchedAt": "2026-10-15T14:47:08.054Z",
   "successCount": 21,
   "totalRepos": 21,
   "repos": {
@@ -9,27 +9,27 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-04T02:24:56Z",
       "assets": [],
-      "lastFetched": 1791593153405,
+      "lastFetched": 1792075606598,
       "fetchOk": true
     },
     "Doggy-Player": {
       "repoName": "Doggy-Player",
-      "totalDownloads": 617,
-      "starsCount": 7,
+      "totalDownloads": 642,
+      "starsCount": 8,
       "latestVersion": "v1.1.75",
       "latestReleaseDate": "2026-10-05T21:12:21Z",
-      "githubPushedAt": "2026-10-05T21:34:03Z",
+      "githubPushedAt": "2026-10-10T21:03:49Z",
       "assets": [
         {
           "name": "Doggy-Player-1.1.75.AppImage",
           "size": 177456319,
-          "download_count": 10,
+          "download_count": 28,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.AppImage"
         },
         {
           "name": "Doggy-Player-1.1.75.dmg",
           "size": 156382703,
-          "download_count": 0,
+          "download_count": 1,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.dmg"
         },
         {
@@ -53,7 +53,7 @@
         {
           "name": "Doggy-Player-Setup-1.1.75.exe",
           "size": 137589634,
-          "download_count": 8,
+          "download_count": 9,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-Setup-1.1.75.exe"
         },
         {
@@ -71,7 +71,7 @@
         {
           "name": "latest-linux.yml",
           "size": 379,
-          "download_count": 3,
+          "download_count": 8,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/latest-linux.yml"
         },
         {
@@ -83,7 +83,7 @@
         {
           "name": "latest.yml",
           "size": 356,
-          "download_count": 27,
+          "download_count": 67,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/latest.yml"
         },
         {
@@ -185,13 +185,13 @@
         {
           "name": "Doggy-Player-Setup-1.1.71.exe",
           "size": 137581323,
-          "download_count": 5,
+          "download_count": 6,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.71.zip",
           "size": 187359781,
-          "download_count": 7,
+          "download_count": 9,
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.zip"
         },
         {
@@ -891,13 +891,13 @@
           "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/1.0.9/DoggyStyle-Player.zip.Setup-1.0.9.zip"
         }
       ],
-      "lastFetched": 1791593154882,
+      "lastFetched": 1792075608785,
       "fetchOk": true
     },
     "WindowsSmartTaskbar": {
       "repoName": "WindowsSmartTaskbar",
-      "totalDownloads": 72,
-      "starsCount": 4,
+      "totalDownloads": 73,
+      "starsCount": 5,
       "latestVersion": "v1.5.17",
       "latestReleaseDate": "2026-04-29T20:57:35Z",
       "githubPushedAt": "2026-08-23T21:33:09Z",
@@ -917,7 +917,7 @@
         {
           "name": "releases.win.json",
           "size": 799,
-          "download_count": 68,
+          "download_count": 71,
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.17/releases.win.json"
         },
         {
@@ -947,7 +947,7 @@
         {
           "name": "WindowsSmartTaskbar-win-Setup.exe",
           "size": 73919503,
-          "download_count": 33,
+          "download_count": 34,
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.17/WindowsSmartTaskbar-win-Setup.exe"
         },
         {
@@ -957,13 +957,13 @@
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.0/WindowsSmartTaskbar-v1.5.0.zip"
         }
       ],
-      "lastFetched": 1791593155820,
+      "lastFetched": 1792075610183,
       "fetchOk": true
     },
     "NOBreak-Audio-Builder": {
       "repoName": "NOBreak-Audio-Builder",
       "totalDownloads": 14,
-      "starsCount": 4,
+      "starsCount": 5,
       "latestVersion": "v1.0.7",
       "latestReleaseDate": "2026-05-16T00:32:38Z",
       "githubPushedAt": "2026-08-23T21:33:08Z",
@@ -983,7 +983,7 @@
         {
           "name": "latest.yml",
           "size": 375,
-          "download_count": 24,
+          "download_count": 25,
           "browser_download_url": "https://github.com/nRn-World/NOBreak-Audio-Builder/releases/download/v1.0.7/latest.yml"
         },
         {
@@ -1113,34 +1113,40 @@
           "browser_download_url": "https://github.com/nRn-World/NOBreak-Audio-Builder/releases/download/v1.0.0/NoBreak-Audio-Builder-Setup-1.0.0.zip"
         }
       ],
-      "lastFetched": 1791593156776,
+      "lastFetched": 1792075611182,
       "fetchOk": true
     },
     "OctosArmy": {
       "repoName": "OctosArmy",
-      "totalDownloads": 19,
-      "starsCount": 7,
-      "latestVersion": "v1.1.36",
-      "latestReleaseDate": "2026-04-27T19:04:07Z",
-      "githubPushedAt": "2026-08-23T21:36:29Z",
+      "totalDownloads": 21,
+      "starsCount": 8,
+      "latestVersion": "v1.1.37",
+      "latestReleaseDate": "2026-10-13T15:23:53Z",
+      "githubPushedAt": "2026-10-13T15:37:49Z",
       "assets": [
         {
           "name": "latest.yml",
           "size": 350,
-          "download_count": 5,
-          "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/latest.yml"
+          "download_count": 1,
+          "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.37/latest.yml"
+        },
+        {
+          "name": "OctosArmy-Setup-1.1.37.exe",
+          "size": 114374882,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.37/OctosArmy-Setup-1.1.37.exe"
+        },
+        {
+          "name": "OctosArmy-Setup-1.1.37.exe.blockmap",
+          "size": 120451,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.37/OctosArmy-Setup-1.1.37.exe.blockmap"
         },
         {
           "name": "OctosArmy-Setup-1.1.36.exe",
           "size": 114363587,
-          "download_count": 2,
+          "download_count": 3,
           "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/OctosArmy-Setup-1.1.36.exe"
-        },
-        {
-          "name": "OctosArmy-Setup-1.1.36.exe.blockmap",
-          "size": 120625,
-          "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.36/OctosArmy-Setup-1.1.36.exe.blockmap"
         },
         {
           "name": "OctosArmy-Setup-1.1.35.exe",
@@ -1197,16 +1203,16 @@
           "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.28/OctosArmy-Setup-1.1.28.exe"
         }
       ],
-      "lastFetched": 1791593157624,
+      "lastFetched": 1792075612117,
       "fetchOk": true
     },
     "TheSilentRoom1986": {
       "repoName": "TheSilentRoom1986",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-09-11T12:52:05Z",
+      "githubPushedAt": "2026-10-10T20:11:08Z",
       "assets": [],
-      "lastFetched": 1791593158542,
+      "lastFetched": 1792075613195,
       "fetchOk": true
     },
     "NeonPathPuzzle": {
@@ -1215,52 +1221,52 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:32:58Z",
       "assets": [],
-      "lastFetched": 1791593159355,
+      "lastFetched": 1792075614077,
       "fetchOk": true
     },
     "DoneTogether": {
       "repoName": "DoneTogether",
-      "totalDownloads": 24,
+      "totalDownloads": 25,
       "starsCount": 1,
       "latestVersion": "v1.2.2",
       "latestReleaseDate": "2026-09-03T20:50:41Z",
-      "githubPushedAt": "2026-09-08T19:46:58Z",
+      "githubPushedAt": "2026-10-11T17:47:56Z",
       "assets": [
         {
           "name": "DoneTogether-1.2.2.apk",
           "size": 4731648,
-          "download_count": 21,
+          "download_count": 22,
           "browser_download_url": "https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk"
         }
       ],
-      "lastFetched": 1791593160330,
+      "lastFetched": 1792075615069,
       "fetchOk": true
     },
     "NexNote": {
       "repoName": "NexNote",
       "totalDownloads": 0,
       "starsCount": 7,
-      "githubPushedAt": "2026-09-21T23:31:54Z",
+      "githubPushedAt": "2026-10-10T00:46:38Z",
       "assets": [],
-      "lastFetched": 1791593161165,
+      "lastFetched": 1792075616119,
       "fetchOk": true
     },
     "SecretPromts": {
       "repoName": "SecretPromts",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-10-09T23:16:28Z",
+      "githubPushedAt": "2026-10-12T20:47:56Z",
       "assets": [],
-      "lastFetched": 1791593162006,
+      "lastFetched": 1792075616989,
       "fetchOk": true
     },
     "SiteScannerPro": {
       "repoName": "SiteScannerPro",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-09-22T20:23:50Z",
+      "githubPushedAt": "2026-10-10T00:46:44Z",
       "assets": [],
-      "lastFetched": 1791593162796,
+      "lastFetched": 1792075617847,
       "fetchOk": true
     },
     "GLOBAL_EMERGENCY": {
@@ -1269,34 +1275,34 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:36:28Z",
       "assets": [],
-      "lastFetched": 1791593163596,
+      "lastFetched": 1792075618704,
       "fetchOk": true
     },
     "PrivateLinkSaver": {
       "repoName": "PrivateLinkSaver",
       "totalDownloads": 0,
-      "starsCount": 4,
+      "starsCount": 5,
       "githubPushedAt": "2026-09-24T22:31:55Z",
       "assets": [],
-      "lastFetched": 1791593164360,
+      "lastFetched": 1792075619544,
       "fetchOk": true
     },
     "BUGRAIDER": {
       "repoName": "BUGRAIDER",
       "totalDownloads": 0,
       "starsCount": 8,
-      "githubPushedAt": "2026-09-26T00:03:59Z",
+      "githubPushedAt": "2026-10-15T08:05:55Z",
       "assets": [],
-      "lastFetched": 1791593165149,
+      "lastFetched": 1792075620415,
       "fetchOk": true
     },
     "BluetoothSafetyLock": {
       "repoName": "BluetoothSafetyLock",
       "totalDownloads": 9,
-      "starsCount": 3,
+      "starsCount": 4,
       "latestVersion": "v1.1.4",
       "latestReleaseDate": "2026-09-23T15:02:54Z",
-      "githubPushedAt": "2026-09-23T15:01:35Z",
+      "githubPushedAt": "2026-10-10T20:27:54Z",
       "assets": [
         {
           "name": "BluetoothSafetyLock-v1.1.4.zip",
@@ -1305,16 +1311,16 @@
           "browser_download_url": "https://github.com/nRn-World/BluetoothSafetyLock/releases/download/v1.1.4/BluetoothSafetyLock-v1.1.4.zip"
         }
       ],
-      "lastFetched": 1791593166129,
+      "lastFetched": 1792075621562,
       "fetchOk": true
     },
     "FlashVideoDownloader": {
       "repoName": "FlashVideoDownloader",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-10-08T19:52:39Z",
+      "githubPushedAt": "2026-10-12T16:17:11Z",
       "assets": [],
-      "lastFetched": 1791593167009,
+      "lastFetched": 1792075623479,
       "fetchOk": true
     },
     "NotePin": {
@@ -1323,34 +1329,34 @@
       "starsCount": 2,
       "githubPushedAt": "2026-10-05T22:35:23Z",
       "assets": [],
-      "lastFetched": 1791593167832,
+      "lastFetched": 1792075624350,
       "fetchOk": true
     },
-    "ParkeraiSthlm": {
-      "repoName": "ParkeraiSthlm",
+    "ParkiSthlm": {
+      "repoName": "ParkiSthlm",
       "totalDownloads": 0,
       "starsCount": 2,
-      "githubPushedAt": "2026-08-23T21:32:59Z",
+      "githubPushedAt": "2026-10-15T14:45:33Z",
       "assets": [],
-      "lastFetched": 1791593168667,
+      "lastFetched": 1792075625233,
       "fetchOk": true
     },
     "AutoAccountMaker": {
       "repoName": "AutoAccountMaker",
       "totalDownloads": 0,
-      "starsCount": 1,
-      "githubPushedAt": "2026-09-29T21:47:32Z",
+      "starsCount": 2,
+      "githubPushedAt": "2026-10-10T20:42:58Z",
       "assets": [],
-      "lastFetched": 1791593169506,
+      "lastFetched": 1792075626179,
       "fetchOk": true
     },
     "GitHubRepoAnalyzer": {
       "repoName": "GitHubRepoAnalyzer",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-10-01T19:28:59Z",
+      "githubPushedAt": "2026-10-10T21:01:46Z",
       "assets": [],
-      "lastFetched": 1791593170454,
+      "lastFetched": 1792075627038,
       "fetchOk": true
     },
     "Svalna": {
@@ -1359,7 +1365,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:32:55Z",
       "assets": [],
-      "lastFetched": 1791593171473,
+      "lastFetched": 1792075628054,
       "fetchOk": true
     }
   }

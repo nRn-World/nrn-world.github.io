@@ -103,11 +103,11 @@ export const esProjects: Record<string, ProjectTranslation> = {
     description: 'Mantén recordatorios rápidos y fragmentos de código siempre visibles sobre tu escritorio.',
     detailedAbout: 'NotePin es una utilidad de escritorio que te permite fijar notas ligeras en cualquier lugar de tu pantalla.',
   },
-  'parkera-i-sthlm': {
-    name: 'ParkeraiSthlm',
+  'parkisthlm': {
+    name: 'ParkiSthlm',
     tagline: 'Mapa en tiempo real de aparcamiento en calle en Estocolmo con zonas tarifarias y precios oficiales.',
     description: 'Mapa web interactivo que muestra las cinco tarifas oficiales de aparcamiento de Estocolmo, datos en tiempo real y soporte sin conexión directamente en el navegador.',
-    detailedAbout: 'Parkera i Stockholm es una aplicación web adaptada a móviles que te ayuda a encontrar aparcamiento y ver las tarifas vigentes en la ciudad de Estocolmo. Muestra las Tarifas 1–5 con precios y horarios correctos según las normas de la Oficina de Tráfico, además de datos en tiempo real vía OpenStreetMap.',
+    detailedAbout: 'ParkiSthlm es una aplicación web adaptada a móviles que te ayuda a encontrar aparcamiento y ver las tarifas vigentes en la ciudad de Estocolmo. Muestra las Tarifas 1–5 con precios y horarios correctos según las normas de la Oficina de Tráfico, además de datos en tiempo real vía OpenStreetMap.',
   },
   'auto-account-maker': {
     name: 'AutoAccountMaker',

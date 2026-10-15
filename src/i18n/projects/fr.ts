@@ -103,11 +103,11 @@ export const frProjects: Record<string, ProjectTranslation> = {
     description: 'Gardez des rappels rapides et des extraits de code toujours visibles au-dessus de votre bureau.',
     detailedAbout: 'NotePin est un utilitaire de bureau qui vous permet d\'épingler des notes légères n\'importe où sur votre écran.',
   },
-  'parkera-i-sthlm': {
-    name: 'ParkeraiSthlm',
+  'parkisthlm': {
+    name: 'ParkiSthlm',
     tagline: 'Carte en temps réel du stationnement de rue à Stockholm avec zones tarifaires et prix officiels.',
     description: 'Carte web interactive affichant les cinq tarifs officiels de stationnement de Stockholm, des données en temps réel et un support hors ligne directement dans le navigateur.',
-    detailedAbout: 'Parkera i Stockholm est une application web adaptée aux mobiles qui vous aide à trouver un stationnement et à consulter les tarifs en vigueur dans la ville de Stockholm. Affiche les Tarifs 1 à 5 avec les prix et horaires corrects selon les règlements du Bureau des Transports, plus des données en temps réel via OpenStreetMap.',
+    detailedAbout: 'ParkiSthlm est une application web adaptée aux mobiles qui vous aide à trouver un stationnement et à consulter les tarifs en vigueur dans la ville de Stockholm. Affiche les Tarifs 1 à 5 avec les prix et horaires corrects selon les règlements du Bureau des Transports, plus des données en temps réel via OpenStreetMap.',
   },
   'auto-account-maker': {
     name: 'AutoAccountMaker',
