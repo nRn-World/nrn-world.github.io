@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Github, Copy, Check } from 'lucide-react';
-import { CONTACT_EMAIL } from '../constants/contact';
+import React from 'react';
+import { Github } from 'lucide-react';
 import { GITHUB_PROFILE_URL } from '../constants/social';
 import { useI18n } from '../i18n/context';
 
@@ -11,25 +10,6 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) => {
   const { t } = useI18n();
-  const [copiedEmail, setCopiedEmail] = useState(false);
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(CONTACT_EMAIL);
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2000);
-    } catch {
-      const textarea = document.createElement('textarea');
-      textarea.value = CONTACT_EMAIL;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2000);
-    }
-  };
-
   return (
     <footer className="w-full pt-5 pb-8 md:pb-7 bg-[#0D0D0D] border-t border-white/5 mt-auto safe-area-bottom overflow-x-hidden">
       <div className="px-4 md:px-8 max-w-[1440px] mx-auto text-xs font-mono text-white/50 text-center min-w-0">
@@ -93,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
           </a>
         </div>
 
-        {/* About + email — only row below */}
+        {/* About + contact — only row below */}
         <div className="flex flex-wrap items-center justify-center gap-3 mt-1.5 text-xs tracking-wide text-white/65 font-mono">
           <button
             type="button"
@@ -102,26 +82,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConnect, onOpenAbout }) =>
           >
             {t('footer.about')}
           </button>
-          <div className="flex items-center gap-2 min-w-0">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="text-white/75 hover:text-blue-400 transition-colors truncate"
-            >
-              {CONTACT_EMAIL}
-            </a>
-            <button
-              onClick={handleCopyEmail}
-              className="p-1 rounded-md hover:bg-white/10 text-white/50 hover:text-blue-400 transition-colors cursor-pointer shrink-0"
-              title={copiedEmail ? t('footer.copied') : t('footer.copyEmail')}
-              aria-label={t('footer.copyEmail')}
-            >
-              {copiedEmail ? (
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-              ) : (
-                <Copy className="w-3.5 h-3.5" />
-              )}
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={onOpenConnect}
+            className="text-white/75 hover:text-blue-400 transition-colors cursor-pointer shrink-0"
+          >
+            {t('footer.contact')}
+          </button>
         </div>
       </div>
 

@@ -120,13 +120,13 @@ export const trUi = deepMerge(enUi, {
     messageLabel: 'Mesaj veya proje isteği',
     sent: 'Mesaj gönderildi!',
     sending: 'Gönderiliyor...',
-    sendError: 'Mesaj gönderilemedi. Tekrar deneyin veya doğrudan e-posta atın.',
-    sendErrorConfig: 'İletişim formu henüz yapılandırılmadı. Aşağıdaki doğrudan e-postayı kullanın.',
+    sendError: 'Mesaj gönderilemedi. Lütfen biraz sonra tekrar deneyin.',
+    sendErrorConfig: 'İletişim formu henüz yapılandırılmadı. Lütfen biraz sonra tekrar deneyin.',
     sendBlocked:
-      'Tarayıcınız veya bir eklenti iletişim formunu engelledi. nrnworld.one için reklam engelleyiciyi kapatmayı deneyin veya aşağıdan doğrudan e-posta gönderin.',
+      'Tarayıcınız veya bir eklenti iletişim formunu engelledi. nrnworld.one için reklam engelleyiciyi kapatıp tekrar deneyin.',
     rateLimited: 'Kısa sürede çok fazla mesaj gönderildi. Yaklaşık bir saat bekleyip tekrar deneyin.',
     activationRequired:
-      'Neredeyse hazır! bynrnworld@gmail.com adresinde FormSubmit aktivasyon e-postasını bulun, bağlantıya bir kez tıklayın ve tekrar deneyin.',
+      'İletişim formu şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.',
     submit: 'Mesaj gönder',
     mailSubject: 'nRnWorld Proje Merkezi, Geri Bildirim',
   },

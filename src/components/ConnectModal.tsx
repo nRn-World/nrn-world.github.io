@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Github, Mail, Send, Check, Globe, MessageSquare, AlertCircle } from 'lucide-react';
-import { CONTACT_EMAIL, HCAPTCHA_SITE_KEY, WEB3FORMS_ACCESS_KEY } from '../constants/contact';
+import { X, Github, Send, Check, Globe, MessageSquare, AlertCircle } from 'lucide-react';
+import { HCAPTCHA_SITE_KEY, WEB3FORMS_ACCESS_KEY } from '../constants/contact';
 import { GITHUB_PROFILE_URL } from '../constants/social';
 import { ALL_PROJECTS } from '../data/projectsData';
 import { useI18n } from '../i18n/context';
@@ -373,7 +373,7 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+        <div className="grid grid-cols-1 gap-3 mb-6">
           <a
             href={GITHUB_PROFILE_URL}
             target="_blank"
@@ -389,18 +389,6 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
             </div>
           </a>
 
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="p-3.5 bg-[#181818] rounded-xl border border-white/5 hover:border-blue-500/50 transition-all flex items-center gap-3 group cursor-pointer"
-          >
-            <div className="p-2 rounded-lg bg-white/5 group-hover:bg-blue-600/20 text-blue-400 transition-colors">
-              <Mail className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="font-sora text-xs font-bold text-white">{t('connect.emailTitle')}</div>
-              <div className="font-mono text-[11px] text-white/60 truncate max-w-[140px]">{CONTACT_EMAIL}</div>
-            </div>
-          </a>
         </div>
 
         <form ref={formRef} onSubmit={handleSendMessage} className="space-y-4">

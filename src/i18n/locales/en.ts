@@ -253,13 +253,13 @@ export const enUi: TranslationDictionary = {
     messagePlaceholder: 'Write a message, request a new project, or report an issue...',
     sent: 'Message sent!',
     sending: 'Sending...',
-    sendError: 'Could not send your message. Please try again or email us directly.',
-    sendErrorConfig: 'Could not send your message right now. Please try again or use Direct Email below.',
+    sendError: 'Could not send your message. Please try again in a moment.',
+    sendErrorConfig: 'Could not send your message right now. Please try again in a moment.',
     sendBlocked:
-      'Your browser or an extension blocked the contact form. Try disabling ad blockers for nrnworld.one, or email us directly below.',
+      'Your browser or an extension blocked the contact form. Try disabling ad blockers for nrnworld.one and try again.',
     rateLimited: 'Too many messages sent in a short time. Please wait about an hour and try again.',
     activationRequired:
-      'Almost ready! Check bynrnworld@gmail.com for an activation email from FormSubmit and click the link once. Then try again.',
+      'The contact form is not available right now. Please try again later.',
     submit: 'Send Message',
     mailSubject: 'nRnWorld Project Hub, Feedback',
     replyNotProvided: 'Not provided',

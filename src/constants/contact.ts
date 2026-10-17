@@ -1,5 +1,3 @@
-export const CONTACT_EMAIL = 'bynrnworld@gmail.com';
-
 const RAW_WEB3FORMS_KEY =
   import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '14b7a724-6fa9-415d-9689-56101e828c81';
 

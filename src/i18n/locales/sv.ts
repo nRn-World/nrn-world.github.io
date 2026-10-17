@@ -196,13 +196,13 @@ export const svUi = deepMerge(enUi, {
     messagePlaceholder: 'Skriv ett meddelande, begär ett nytt projekt eller rapportera ett problem...',
     sent: 'Meddelande skickat!',
     sending: 'Skickar...',
-    sendError: 'Kunde inte skicka meddelandet. Försök igen eller maila oss direkt.',
-    sendErrorConfig: 'Kunde inte skicka meddelandet just nu. Försök igen eller använd Direkt e-post nedan.',
+    sendError: 'Kunde inte skicka meddelandet. Försök igen om en stund.',
+    sendErrorConfig: 'Kunde inte skicka meddelandet just nu. Försök igen om en stund.',
     sendBlocked:
-      'Din webbläsare eller ett tillägg blockerade kontaktformuläret. Prova att stänga av adblockers för nrnworld.one, eller maila oss direkt nedan.',
+      'Din webbläsare eller ett tillägg blockerade kontaktformuläret. Prova att stänga av adblockers för nrnworld.one och försök igen.',
     rateLimited: 'För många meddelanden på kort tid. Vänta ungefär en timme och försök igen.',
     activationRequired:
-      'Nästan klart! Kolla byrnworld@gmail.com efter ett aktiveringsmail från FormSubmit och klicka på länken en gång. Försök sedan igen.',
+      'Kontaktformuläret är inte tillgängligt just nu. Försök igen senare.',
     submit: 'Skicka meddelande',
     mailSubject: 'nRnWorld Projekthubb, Feedback',
     replyNotProvided: 'Ej angivet',
