@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, Globe } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
+import { Flag } from './Flag';
 import { LANGUAGES } from '../i18n/languages';
 import { useI18n } from '../i18n/context';
 import { Locale } from '../i18n/types';
@@ -43,7 +44,7 @@ export const LanguageSwitcher: React.FC = () => {
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <Globe className="w-4 h-4 text-blue-400 shrink-0" />
+        <Flag locale={current.code} />
         <span className="hidden sm:inline max-w-[5.5rem] truncate">{current.native}</span>
         <ChevronDown className={`w-3.5 h-3.5 text-white/50 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -73,9 +74,9 @@ export const LanguageSwitcher: React.FC = () => {
                     : 'text-white/75 hover:bg-white/5 hover:text-white'
                 }`}
               >
-                <span className="flex flex-col leading-tight">
+                <span className="flex items-center gap-2.5">
+                  <Flag locale={lang.code} />
                   <span className="font-medium">{lang.native}</span>
-                  <span className="text-[10px] text-white/40 font-mono">{lang.label}</span>
                 </span>
                 {isActive && <Check className="w-4 h-4 text-blue-400 shrink-0" />}
               </button>
