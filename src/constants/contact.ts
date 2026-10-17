@@ -5,7 +5,8 @@ const RAW_WEB3FORMS_KEY =
 export const WEB3FORMS_ACCESS_KEY = RAW_WEB3FORMS_KEY.replace(/\s+/g, '');
 
 /**
- * Web3Forms' own public hCaptcha site key (required on the free plan; it verifies the token itself).
- * Set it to '' to turn the captcha off. hCaptcha must also be selected in the form's Spam & Security settings.
+ * hCaptcha is OFF (no visible captcha; spam is handled by Web3Forms' filter and the hidden honeypot fields).
+ * To turn it on again: set VITE_HCAPTCHA_SITE_KEY to Web3Forms' public key 50b2fe65-b00b-4b9e-ad62-3ba471098be2
+ * and select hCaptcha under the form's Spam & Security settings in Web3Forms.
  */
-export const HCAPTCHA_SITE_KEY = (import.meta.env.VITE_HCAPTCHA_SITE_KEY || '50b2fe65-b00b-4b9e-ad62-3ba471098be2').trim();
+export const HCAPTCHA_SITE_KEY = (import.meta.env.VITE_HCAPTCHA_SITE_KEY || '').trim();
