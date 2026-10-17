@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Github, Send, Check, Globe, MessageSquare, AlertCircle } from 'lucide-react';
 import { HCAPTCHA_SITE_KEY, WEB3FORMS_ACCESS_KEY } from '../constants/contact';
 import { GITHUB_PROFILE_URL } from '../constants/social';
-import { ALL_PROJECTS } from '../data/projectsData';
 import { useI18n } from '../i18n/context';
 
 interface ConnectModalProps {
@@ -355,22 +354,6 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
           <p className="text-white/60 text-sm mt-1 font-inter">
             {t('connect.subtitle')}
           </p>
-        </div>
-
-        <div className="bg-[#181818] p-4 rounded-xl border border-white/5 flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <span className="w-3 h-3 rounded-full bg-emerald-500 block"></span>
-              <span className="w-3 h-3 rounded-full bg-emerald-400 absolute inset-0 animate-ping opacity-75"></span>
-            </div>
-            <div>
-              <div className="font-sora text-sm font-bold text-white">{t('connect.statusTitle')}</div>
-              <div className="font-mono text-xs text-white/60">{t('connect.statusSubtitle', { count: ALL_PROJECTS.length })}</div>
-            </div>
-          </div>
-          <div className="font-mono text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded font-bold">
-            {t('connect.operational')}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-3 mb-6">
