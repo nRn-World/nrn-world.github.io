@@ -12,6 +12,30 @@ interface ConnectModalProps {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Cloudflare Turnstile. Without VITE_TURNSTILE_SITE_KEY the form behaves exactly as before.
+// With it, a challenge is shown and the message goes only through /api/contact (which verifies it).
+const TURNSTILE_SITE_KEY = (import.meta.env.VITE_TURNSTILE_SITE_KEY || '').trim();
+const TURNSTILE_SCRIPT = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+
+type TurnstileApi = {
+  render: (el: HTMLElement, options: Record<string, unknown>) => string;
+  reset: (widgetId?: string) => void;
+  remove: (widgetId?: string) => void;
+};
+
+function loadTurnstile(): Promise<TurnstileApi> {
+  const w = window as unknown as { turnstile?: TurnstileApi };
+  if (w.turnstile) return Promise.resolve(w.turnstile);
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = TURNSTILE_SCRIPT;
+    script.async = true;
+    script.onload = () => (w.turnstile ? resolve(w.turnstile) : reject(new Error('turnstile_missing')));
+    script.onerror = () => reject(new Error('turnstile_load_failed'));
+    document.head.appendChild(script);
+  });
+}
+
 export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) => {
   const { t } = useI18n();
   const [name, setName] = useState('');
@@ -23,6 +47,33 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [errorDetail, setErrorDetail] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const turnstileBoxRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | undefined>(undefined);
+  const [turnstileToken, setTurnstileToken] = useState('');
+
+  useEffect(() => {
+    if (!isOpen || !TURNSTILE_SITE_KEY) return;
+    let cancelled = false;
+    loadTurnstile()
+      .then((api) => {
+        if (cancelled || !turnstileBoxRef.current) return;
+        turnstileWidgetId.current = api.render(turnstileBoxRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: 'dark',
+          callback: (token: string) => setTurnstileToken(token),
+          'expired-callback': () => setTurnstileToken(''),
+          'error-callback': () => setTurnstileToken(''),
+        });
+      })
+      .catch(() => setErrorKey('send_blocked'));
+    return () => {
+      cancelled = true;
+      const api = (window as unknown as { turnstile?: TurnstileApi }).turnstile;
+      if (api && turnstileWidgetId.current) api.remove(turnstileWidgetId.current);
+      turnstileWidgetId.current = undefined;
+      setTurnstileToken('');
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -68,6 +119,8 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
         return t('connect.sendErrorConfig');
       case 'activation_required':
         return t('connect.activationRequired');
+      case 'captcha_failed':
+        return t('connect.sendBlocked');
       case 'rate_limited':
         return t('connect.rateLimited');
       case 'send_blocked':
@@ -89,13 +142,15 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
     email: string;
     link: string;
     message: string;
-  }): Promise<'ok' | 'activation_required' | 'failed'> => {
+  }): Promise<'ok' | 'activation_required' | 'captcha_failed' | 'rate_limited' | 'failed'> => {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         ...payload,
         subject: t('connect.mailSubject'),
+        website: (formRef.current?.querySelector('input[name="website"]') as HTMLInputElement | null)?.value ?? '',
+        turnstileToken,
       }),
     });
 
@@ -107,6 +162,10 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
 
     if (data.error === 'activation_required') {
       return 'activation_required';
+    }
+
+    if (data.error === 'captcha_failed' || data.error === 'rate_limited') {
+      return data.error;
     }
 
     return 'failed';
@@ -153,6 +212,11 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
       return;
     }
 
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setErrorKey('captcha_failed');
+      return;
+    }
+
     setSending(true);
 
     const payload = {
@@ -185,13 +249,19 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
     };
 
     try {
-      if (!WEB3FORMS_ACCESS_KEY) {
+      // Challenge enabled: go through the server only, so the token is verified and the
+      // public Web3Forms key in the browser is not used to bypass it.
+      if (TURNSTILE_SITE_KEY || !WEB3FORMS_ACCESS_KEY) {
         const fallback = await submitViaServerFallback(payload);
         if (fallback === 'ok') {
           handleSuccess();
           return;
         }
-        setErrorKey(fallback === 'activation_required' ? 'activation_required' : 'send_failed');
+        setErrorKey(
+          fallback === 'activation_required' || fallback === 'captcha_failed' || fallback === 'rate_limited'
+            ? fallback
+            : 'send_failed'
+        );
         return;
       }
 
@@ -250,6 +320,11 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
       setErrorKey('send_blocked');
     } finally {
       setSending(false);
+      if (TURNSTILE_SITE_KEY) {
+        // Tokens are single-use: get a fresh challenge for any retry.
+        setTurnstileToken('');
+        (window as unknown as { turnstile?: TurnstileApi }).turnstile?.reset(turnstileWidgetId.current);
+      }
     }
   };
 
@@ -413,6 +488,17 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
               className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"
             />
           </div>
+
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute -left-[9999px] h-0 w-0 opacity-0"
+          />
+
+          {TURNSTILE_SITE_KEY && <div ref={turnstileBoxRef} className="min-h-[65px]" />}
 
           {errorKey && (
             <div className="flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">

@@ -2,6 +2,50 @@ const DEFAULT_CONTACT_EMAIL = 'bynrnworld@gmail.com';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MESSAGE_LENGTH = 5000;
 
+// Anti-spam. In-memory limiter: per server instance only (serverless instances do not share it),
+// so it stops floods from one client but is not a hard global cap.
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+const rateHits = new Map();
+
+function clientIp(req) {
+  const forwarded = String(req.headers?.['x-forwarded-for'] || '').split(',')[0].trim();
+  return forwarded || String(req.headers?.['x-real-ip'] || '') || req.socket?.remoteAddress || 'unknown';
+}
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  for (const [key, stamps] of rateHits) {
+    const fresh = stamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+    if (fresh.length) rateHits.set(key, fresh);
+    else rateHits.delete(key);
+  }
+  const stamps = rateHits.get(ip) || [];
+  if (stamps.length >= RATE_LIMIT_MAX) return true;
+  stamps.push(now);
+  rateHits.set(ip, stamps);
+  return false;
+}
+
+// Cloudflare Turnstile. Enforced only when TURNSTILE_SECRET_KEY is set, so the form keeps
+// working until the key pair is configured; once set, a missing/invalid token is rejected.
+async function passesTurnstile(token, ip) {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true;
+  if (!token || typeof token !== 'string') return false;
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ secret, response: token, remoteip: ip }).toString(),
+    });
+    const result = await response.json().catch(() => ({}));
+    return result.success === true;
+  } catch {
+    return false;
+  }
+}
+
 async function readJsonBody(req) {
   if (req.body !== undefined && req.body !== null) {
     if (typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
@@ -179,8 +223,26 @@ export async function handleContactRequest(req, res) {
     return;
   }
 
+  const ip = clientIp(req);
+  if (isRateLimited(ip)) {
+    sendJson(res, 429, { error: 'rate_limited' });
+    return;
+  }
+
   try {
     const body = await readJsonBody(req);
+
+    // Honeypot: real visitors never see or fill this field. Pretend success so bots move on.
+    if (String(body.website || '').trim()) {
+      sendJson(res, 200, { ok: true, id: null });
+      return;
+    }
+
+    if (!(await passesTurnstile(body.turnstileToken, ip))) {
+      sendJson(res, 400, { error: 'captcha_failed' });
+      return;
+    }
+
     const name = String(body.name || '').trim();
     const email = String(body.email || '').trim().toLowerCase();
     const link = String(body.link || '').trim();
