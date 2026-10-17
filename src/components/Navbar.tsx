@@ -34,11 +34,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       aria-label="Huvudmeny"
       className="fixed top-0 left-0 right-0 w-full max-w-full z-50 bg-[#0D0D0D]/95 md:backdrop-blur-2xl border-b border-white/5 safe-area-top"
     >
-      <div className="flex justify-between items-center gap-1.5 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[1440px] mx-auto min-w-0">
+      <div className="flex justify-between items-center gap-1.5 sm:gap-4 h-14 sm:h-16 px-3 sm:px-4 md:px-8 max-w-[940px] mx-auto min-w-0">
         {/* Brand — always show full nRnWorld */}
         <button
           onClick={onResetView}
-          className="flex items-center gap-1.5 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1 overflow-hidden"
+          className="flex items-center gap-1.5 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1 overflow-hidden lg:-ml-16 xl:-ml-40"
         >
           <img
             src="/logo-72.webp"
@@ -70,22 +70,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {t('navbar.allProjects')}
           </button>
-          <button
-            onClick={onOpenDocs}
-            className="py-1.5 hover:text-white transition-colors cursor-pointer"
-          >
-            {t('navbar.installationGuide')}
-          </button>
-          <button
-            onClick={onOpenConnect}
-            className="py-1.5 hover:text-white transition-colors cursor-pointer"
-          >
-            {t('navbar.creatorNetwork')}
-          </button>
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 lg:mr-10 xl:mr-24">
           {/* Active Projects Counter Badge */}
           <div className="hidden lg:flex items-center px-3.5 py-1.5 bg-white/5 rounded-full border border-white/10 text-xs text-white/70 font-mono">
             <span className="text-blue-400 font-bold mr-1.5">{allProjects.length}</span> {t('navbar.projects')}
@@ -186,15 +174,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <User className="w-4 h-4" />
               {t('footer.about')}
             </button>
-            <button
-              onClick={() => {
-                onOpenDocs();
-                setMobileMenuOpen(false);
-              }}
-              className="text-left text-white/70 hover:text-white py-1.5 text-sm"
-            >
-              {t('navbar.mobileGuide')}
-            </button>
             <a
               href={GITHUB_PROFILE_URL}
               target="_blank"
@@ -212,15 +191,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="text-left text-white/70 hover:text-white py-1.5 text-sm"
             >
               {t('navbar.contact')}
-            </button>
-            <button
-              onClick={() => {
-                onOpenConnect();
-                setMobileMenuOpen(false);
-              }}
-              className="text-left text-white/70 hover:text-white py-1.5 text-sm"
-            >
-              {t('navbar.creatorNetwork')}
             </button>
           </div>
         </div>

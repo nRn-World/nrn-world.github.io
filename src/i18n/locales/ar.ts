@@ -21,7 +21,7 @@ export const arUi = deepMerge(enUi, {
     mobileGuide: 'دليل التثبيت (.zip)',
   },
   hub: {
-    title: 'مركز المشاريع',
+    title: 'nRnWorld Hub',
     subtitle: 'أحلم. أبني. أشارك. هذا ما أنا عليه.',
     githubDownloads: 'إجمالي تنزيلات GitHub',
     refreshStats: 'تحديث إحصائيات GitHub المباشرة',

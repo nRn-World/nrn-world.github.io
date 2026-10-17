@@ -1,7 +1,7 @@
 'use client';
 
 import { Github, Globe } from 'lucide-react';
-import { SplineScene } from '@/components/ui/splite';
+import { DitherOrbit } from '@/components/ui/dither-orbit';
 import { Card } from '@/components/ui/card';
 import { TypingEffect } from '@/components/ui/typing-effect';
 import { GitHubActivityStatus } from '@/components/GitHubActivityStatus';
@@ -27,21 +27,17 @@ export function SplineSceneBasic({
   githubActivity,
 }: SplineSceneBasicProps) {
   return (
-    <Card className="w-full h-auto md:h-[500px] bg-black/[0.96] relative overflow-hidden border-0 shadow-none">
-      <div className="flex h-full flex-col md:flex-row relative z-10">
+    <Card className="w-full h-auto bg-black/[0.96] relative overflow-hidden border-0 shadow-none">
+      <div className="flex flex-col-reverse relative z-10">
         {/* Text + widgets — krymper inte roboten på mobil */}
-        <div className="shrink-0 md:flex-1 p-5 sm:p-6 md:p-8 relative z-20 flex flex-col justify-center items-center md:items-end md:pr-2 lg:pr-4">
-          <div className="w-full max-w-md md:max-w-sm lg:max-w-md text-center">
+        <div className="shrink-0 md:flex-1 p-5 sm:p-6 md:p-8 mt-2 md:-mt-12 relative z-20 flex flex-col justify-center items-center">
+          <div className="w-full max-w-md sm:max-w-2xl text-center">
             <h1 className="font-sora text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-white">
-              <span className="inline-flex flex-col items-center gap-1">
-                <span>
-                  n<span className="text-blue-500">R</span>nW
-                  <Globe className="w-[0.75em] h-[0.75em] text-blue-400 mx-[0.02em] inline-block align-[-0.1em] animate-[spin_20s_linear_infinite]" />
-                  rld
-                </span>
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-                  {hubTitle}
-                </span>
+              n<span className="text-blue-500">R</span>nW
+              <Globe className="w-[0.75em] h-[0.75em] text-blue-400 mx-[0.02em] inline-block align-[-0.1em] animate-[spin_20s_linear_infinite]" />
+              rld{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+                {hubTitle.replace(/^nRnWorld\s*/, '')}
               </span>
             </h1>
             <TypingEffect
@@ -52,13 +48,13 @@ export function SplineSceneBasic({
             />
 
             {/* Kompakta GitHub-widgets — mindre mellanrum på mobil */}
-            <div className="mt-4 md:mt-20 lg:mt-24 flex flex-col gap-2 w-full max-w-[26rem] mx-auto">
-              <div className="flex items-center gap-2.5 bg-[#0e1626] px-2.5 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/30 font-mono text-white/70 w-full">
+            <div className="mt-4 flex flex-col sm:flex-row sm:items-stretch gap-2 w-full max-w-[26rem] sm:max-w-2xl mx-auto">
+              <div className="flex items-center gap-2.5 bg-[#0e1626] px-2.5 py-2 rounded-xl border border-blue-500/30 text-blue-300 shadow-md shadow-blue-950/30 font-mono text-white/70 w-full sm:w-auto sm:shrink-0">
                 <div className="w-7 h-7 rounded-lg bg-black border border-white/10 flex items-center justify-center shrink-0">
                   <Github className="w-3.5 h-3.5 text-white" />
                 </div>
                 <div className="flex flex-col items-start text-left min-w-0 flex-1">
-                  <span className="text-[9px] text-blue-300/80 leading-tight truncate w-full">
+                  <span className="text-xs text-blue-300/90 leading-tight whitespace-nowrap">
                     {downloadsLabel}
                   </span>
                   <div className="flex items-center gap-1.5">
@@ -66,7 +62,7 @@ export function SplineSceneBasic({
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
                     </span>
-                    <span className="font-sora text-base font-bold text-white tabular-nums leading-none">
+                    <span className="font-sora text-xl font-bold text-white tabular-nums leading-none">
                       {totalDownloads !== null ? totalDownloads.toLocaleString() : '…'}
                     </span>
                   </div>
@@ -85,9 +81,9 @@ export function SplineSceneBasic({
           </div>
         </div>
 
-        {/* Robot — garanterad synlig höjd på mobil */}
-        <div className="relative w-full h-[280px] sm:h-[320px] md:h-auto md:flex-1 md:min-h-0 shrink-0">
-          <SplineScene className="w-full h-full" />
+        {/* Porträtt + projekt i omloppsbana */}
+        <div className="relative w-full shrink-0">
+          <DitherOrbit className="relative w-full" />
         </div>
       </div>
     </Card>

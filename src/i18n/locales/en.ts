@@ -27,7 +27,7 @@ export const enUi: TranslationDictionary = {
     mobileGithub: 'GitHub profile (@nRn-World)',
   },
   hub: {
-    title: 'Project Hub',
+    title: 'nRnWorld Hub',
     subtitle: "I dream. I build. I share. That's who I am.",
     githubDownloads: 'Total GitHub downloads',
     githubActivityTitle: '{count} contributions on GitHub (@{login})',

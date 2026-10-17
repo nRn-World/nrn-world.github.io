@@ -21,7 +21,7 @@ export const frUi = deepMerge(enUi, {
     mobileGuide: "Guide d'Installation (.zip)",
   },
   hub: {
-    title: 'Hub de Projets',
+    title: 'nRnWorld Hub',
     subtitle: 'Je rêve. Je construis. Je partage. C’est qui je suis.',
     githubDownloads: 'Téléchargements GitHub au total',
     refreshStats: 'Actualiser les stats GitHub en direct',

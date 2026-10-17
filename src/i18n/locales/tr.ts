@@ -21,7 +21,7 @@ export const trUi = deepMerge(enUi, {
     mobileGuide: 'Kurulum Rehberi (.zip)',
   },
   hub: {
-    title: 'Proje Merkezi',
+    title: 'nRnWorld Hub',
     subtitle: 'Hayal kurarım. İnşa ederim. Paylaşırım. Ben buyum.',
     githubDownloads: 'Toplam GitHub indirmesi',
     githubActivityTitle: 'GitHub\'da {count} katkı (@{login})',

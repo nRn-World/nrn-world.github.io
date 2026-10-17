@@ -23,7 +23,7 @@ export const svUi = deepMerge(enUi, {
     mobileGithub: 'GitHub-profil (@nRn-World)',
   },
   hub: {
-    title: 'Projekthubb',
+    title: 'nRnWorld Hub',
     subtitle: 'Jag drömmer. Jag bygger. Jag delar. Det är vem jag är.',
     githubDownloads: 'GitHub-nedladdningar totalt',
     githubActivityTitle: '{count} bidrag på GitHub (@{login})',

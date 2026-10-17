@@ -30,6 +30,7 @@
     <link rel="manifest" href="/manifest.json" />
     <!-- LCP: logo i navbar (inte 3D/video/grid — de laddas lazy) -->
     <link rel="preload" as="image" href="/logo-72.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/profil-dither.jpg" type="image/jpeg" fetchpriority="high" />
     <!-- LCP_PRELOADS_START -->
     <!-- LCP_PRELOADS_END -->
     <!-- Google AdSense -->
@@ -55,7 +56,10 @@
         object-fit: cover;
         pointer-events: none;
         background: #000000;
+        opacity: 0;
+        transition: opacity 1.2s ease;
       }
+      #site-bg-video.ready { opacity: 1; }
     </style>
       </head>
   <body class="bg-black text-[#E0E0E0] antialiased min-h-screen">
@@ -85,13 +89,19 @@
             };
             video.addEventListener('loadedmetadata', play);
             video.addEventListener('canplay', play);
+            video.addEventListener('playing', function () { video.classList.add('ready'); });
             play();
           };
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(start, { timeout: 2500 });
-          } else {
-            setTimeout(start, 1200);
-          }
+          // Starta först när sidan är laddad, så videon inte konkurrerar med första visningen.
+          var later = function () {
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(start, { timeout: 2500 });
+            } else {
+              setTimeout(start, 1200);
+            }
+          };
+          if (document.readyState === 'complete') later();
+          else window.addEventListener('load', later, { once: true });
         } catch (e) {}
       })();
     </script>

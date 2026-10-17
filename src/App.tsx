@@ -24,6 +24,7 @@ import { updatePageSeo } from './utils/seoMeta';
 import { useI18n, useLocalizedProjects } from './i18n/context';
 import { Search, Monitor, Smartphone, Wrench, Shield, Star, Download, ArrowUpDown, Puzzle } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
+import { HudColumn } from './components/ui/hud-panels';
 import { SplineSceneBasic } from './components/ui/spline-scene-basic';
 
 const ProjectDetailView = lazy(() =>
@@ -505,7 +506,8 @@ export default function App() {
         ) : (
           <main id="main-content" tabIndex={-1} className="flex-grow w-full max-w-[1920px] mx-auto px-3 md:px-6 pb-24 min-w-0 overflow-x-hidden focus:outline-none">
           {/* Hero Section — text eager; Spline lazy desktop-only */}
-          <section className="py-4 sm:py-5 md:py-7 lg:py-8 flex flex-col items-center px-2 min-w-0 max-w-full overflow-hidden">
+          <section className="relative py-4 sm:py-5 md:py-7 lg:py-8 flex flex-col items-center px-2 min-w-0 max-w-full">
+            <HudColumn />
             <div className="w-full max-w-5xl mx-auto min-w-0">
               <SplineSceneBasic
                 hubTitle={t('hub.title')}
