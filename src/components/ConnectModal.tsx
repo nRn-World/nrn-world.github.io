@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Github, Mail, Send, Check, Globe, MessageSquare, AlertCircle } from 'lucide-react';
-import { CONTACT_EMAIL, WEB3FORMS_ACCESS_KEY } from '../constants/contact';
+import { CONTACT_EMAIL, HCAPTCHA_SITE_KEY, WEB3FORMS_ACCESS_KEY } from '../constants/contact';
 import { GITHUB_PROFILE_URL } from '../constants/social';
 import { ALL_PROJECTS } from '../data/projectsData';
 import { useI18n } from '../i18n/context';
@@ -12,26 +12,26 @@ interface ConnectModalProps {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Cloudflare Turnstile. Without VITE_TURNSTILE_SITE_KEY the form behaves exactly as before.
-// With it, a challenge is shown and the message goes only through /api/contact (which verifies it).
-const TURNSTILE_SITE_KEY = (import.meta.env.VITE_TURNSTILE_SITE_KEY || '').trim();
-const TURNSTILE_SCRIPT = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+// hCaptcha (free Web3Forms feature). Without a site key the form behaves exactly as before.
+// With one, a challenge is shown and its token is sent to Web3Forms, which verifies it with the
+// hCaptcha secret saved in the Web3Forms form settings.
+const HCAPTCHA_SCRIPT = 'https://js.hcaptcha.com/1/api.js?render=explicit';
 
-type TurnstileApi = {
+type HCaptchaApi = {
   render: (el: HTMLElement, options: Record<string, unknown>) => string;
   reset: (widgetId?: string) => void;
   remove: (widgetId?: string) => void;
 };
 
-function loadTurnstile(): Promise<TurnstileApi> {
-  const w = window as unknown as { turnstile?: TurnstileApi };
-  if (w.turnstile) return Promise.resolve(w.turnstile);
+function loadHCaptcha(): Promise<HCaptchaApi> {
+  const w = window as unknown as { hcaptcha?: HCaptchaApi };
+  if (w.hcaptcha) return Promise.resolve(w.hcaptcha);
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = TURNSTILE_SCRIPT;
+    script.src = HCAPTCHA_SCRIPT;
     script.async = true;
-    script.onload = () => (w.turnstile ? resolve(w.turnstile) : reject(new Error('turnstile_missing')));
-    script.onerror = () => reject(new Error('turnstile_load_failed'));
+    script.onload = () => (w.hcaptcha ? resolve(w.hcaptcha) : reject(new Error('hcaptcha_missing')));
+    script.onerror = () => reject(new Error('hcaptcha_load_failed'));
     document.head.appendChild(script);
   });
 }
@@ -47,31 +47,31 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [errorDetail, setErrorDetail] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const turnstileBoxRef = useRef<HTMLDivElement>(null);
-  const turnstileWidgetId = useRef<string | undefined>(undefined);
-  const [turnstileToken, setTurnstileToken] = useState('');
+  const captchaBoxRef = useRef<HTMLDivElement>(null);
+  const captchaWidgetId = useRef<string | undefined>(undefined);
+  const [captchaToken, setCaptchaToken] = useState('');
 
   useEffect(() => {
-    if (!isOpen || !TURNSTILE_SITE_KEY) return;
+    if (!isOpen || !HCAPTCHA_SITE_KEY) return;
     let cancelled = false;
-    loadTurnstile()
+    loadHCaptcha()
       .then((api) => {
-        if (cancelled || !turnstileBoxRef.current) return;
-        turnstileWidgetId.current = api.render(turnstileBoxRef.current, {
-          sitekey: TURNSTILE_SITE_KEY,
+        if (cancelled || !captchaBoxRef.current) return;
+        captchaWidgetId.current = api.render(captchaBoxRef.current, {
+          sitekey: HCAPTCHA_SITE_KEY,
           theme: 'dark',
-          callback: (token: string) => setTurnstileToken(token),
-          'expired-callback': () => setTurnstileToken(''),
-          'error-callback': () => setTurnstileToken(''),
+          callback: (token: string) => setCaptchaToken(token),
+          'expired-callback': () => setCaptchaToken(''),
+          'error-callback': () => setCaptchaToken(''),
         });
       })
       .catch(() => setErrorKey('send_blocked'));
     return () => {
       cancelled = true;
-      const api = (window as unknown as { turnstile?: TurnstileApi }).turnstile;
-      if (api && turnstileWidgetId.current) api.remove(turnstileWidgetId.current);
-      turnstileWidgetId.current = undefined;
-      setTurnstileToken('');
+      const api = (window as unknown as { hcaptcha?: HCaptchaApi }).hcaptcha;
+      if (api && captchaWidgetId.current) api.remove(captchaWidgetId.current);
+      captchaWidgetId.current = undefined;
+      setCaptchaToken('');
     };
   }, [isOpen]);
 
@@ -150,7 +150,6 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
         ...payload,
         subject: t('connect.mailSubject'),
         website: (formRef.current?.querySelector('input[name="website"]') as HTMLInputElement | null)?.value ?? '',
-        turnstileToken,
       }),
     });
 
@@ -212,7 +211,7 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
       return;
     }
 
-    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+    if (HCAPTCHA_SITE_KEY && !captchaToken) {
       setErrorKey('captcha_failed');
       return;
     }
@@ -238,6 +237,9 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
     if (trimmedLink) {
       web3formsBody.link = trimmedLink;
     }
+    if (HCAPTCHA_SITE_KEY) {
+      web3formsBody['h-captcha-response'] = captchaToken;
+    }
 
     const handleSuccess = () => {
       setSent(true);
@@ -249,19 +251,13 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
     };
 
     try {
-      // Challenge enabled: go through the server only, so the token is verified and the
-      // public Web3Forms key in the browser is not used to bypass it.
-      if (TURNSTILE_SITE_KEY || !WEB3FORMS_ACCESS_KEY) {
+      if (!WEB3FORMS_ACCESS_KEY) {
         const fallback = await submitViaServerFallback(payload);
         if (fallback === 'ok') {
           handleSuccess();
           return;
         }
-        setErrorKey(
-          fallback === 'activation_required' || fallback === 'captcha_failed' || fallback === 'rate_limited'
-            ? fallback
-            : 'send_failed'
-        );
+        setErrorKey(fallback === 'activation_required' ? 'activation_required' : 'send_failed');
         return;
       }
 
@@ -320,10 +316,10 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
       setErrorKey('send_blocked');
     } finally {
       setSending(false);
-      if (TURNSTILE_SITE_KEY) {
+      if (HCAPTCHA_SITE_KEY) {
         // Tokens are single-use: get a fresh challenge for any retry.
-        setTurnstileToken('');
-        (window as unknown as { turnstile?: TurnstileApi }).turnstile?.reset(turnstileWidgetId.current);
+        setCaptchaToken('');
+        (window as unknown as { hcaptcha?: HCaptchaApi }).hcaptcha?.reset(captchaWidgetId.current);
       }
     }
   };
@@ -498,7 +494,7 @@ export const ConnectModal: React.FC<ConnectModalProps> = ({ isOpen, onClose }) =
             className="absolute -left-[9999px] h-0 w-0 opacity-0"
           />
 
-          {TURNSTILE_SITE_KEY && <div ref={turnstileBoxRef} className="min-h-[65px]" />}
+          {HCAPTCHA_SITE_KEY && <div ref={captchaBoxRef} className="min-h-[65px]" />}
 
           {errorKey && (
             <div className="flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
