@@ -100,7 +100,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
           return (
             <article
               key={project.id}
-              className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.2fr_1fr] md:gap-6 ${group.card}`}
+              className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.2fr_1fr] md:gap-6 lg:w-[92%] lg:max-w-none ${group.card}`}
             >
               <div className="flex min-w-0 flex-col">
                 <div className="flex items-center justify-between gap-3">
@@ -114,7 +114,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                   <span className="shrink-0 font-mono text-xs text-white/50">{pad2(i + 1)}</span>
                 </div>
 
-                <h4 className="mt-5 break-words font-sora text-[clamp(1.5rem,2.6vw,2.25rem)] font-extrabold leading-tight">{project.name}</h4>
+                <h4 className="mt-5 break-words font-sora text-[clamp(1.5rem,2.6vw,2.25rem)] font-extrabold leading-tight lg:text-[clamp(1.3rem,1.9vw,2rem)]">{project.name}</h4>
                 <p className="mt-3 line-clamp-5 text-[15px] leading-relaxed text-white/90">{project.tagline}</p>
 
                 <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
@@ -169,12 +169,12 @@ export const ProjectShowcase: React.FC<{ projects: Project[]; onSelect: (project
 
   if (rails.length === 0) return null;
   return (
-    <section aria-labelledby="showcase-title" className="mx-auto mb-10 mt-4 w-full max-w-6xl min-w-0 px-1 md:mt-8">
+    <section aria-labelledby="showcase-title" className="mx-auto mb-10 mt-4 w-full max-w-6xl min-w-0 px-1 md:mt-8 lg:max-w-[1500px]">
       <h2 id="showcase-title" className="font-sora text-3xl font-extrabold text-white sm:text-4xl">
         {t('showcase.title')}
       </h2>
       <p className="mb-8 mt-2 text-white/60">{t('showcase.subtitle')}</p>
-      <div className="space-y-10 md:space-y-12">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:gap-y-12 lg:grid-cols-2">
         {rails.map(({ group, items }) => (
           <Rail key={group.key} group={group} projects={items} onSelect={onSelect} />
         ))}
