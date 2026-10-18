@@ -146,7 +146,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                     src={project.images[0]}
                     alt={project.name}
                     loading="lazy"
-                    className="h-full max-h-[300px] w-full object-contain p-3"
+                    className="h-auto max-h-[300px] w-full object-contain p-3 md:h-full"
                   />
                 )}
               </div>
