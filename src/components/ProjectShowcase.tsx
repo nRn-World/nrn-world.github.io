@@ -274,6 +274,20 @@ export const ProjectShowcase: React.FC<{ projects: Project[]; onSelect: (project
         {rails.map(({ group, items }) => (
           <Rail key={group.key} group={group} projects={items} onSelect={onSelect} />
         ))}
+        {/* Odd number of categories: the empty cell next to the last one holds the animated logo (two-column layout only) */}
+        {rails.length % 2 === 1 && (
+          <div className="hidden items-center justify-center lg:flex">
+            <img
+              src="/images/nrn-world-loop.webp"
+              alt="nRn World"
+              width={334}
+              height={246}
+              loading="lazy"
+              draggable={false}
+              className="h-auto w-full max-w-[460px] rounded-3xl border border-white/10 shadow-2xl shadow-blue-900/30"
+            />
+          </div>
+        )}
       </div>
     </section>
   );
