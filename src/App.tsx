@@ -4,6 +4,7 @@ import { Project, ProjectCategory, DownloadOption } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ProjectCard } from './components/ProjectCard';
+import { ProjectShowcase } from './components/ProjectShowcase';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub, mergeGithubStatsPayload, type GithubStatsPayload } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
@@ -541,6 +542,9 @@ export default function App() {
               />
             </div>
           </section>
+
+          {/* Showcase: one big card per project, one rail per category */}
+          <ProjectShowcase projects={projects} onSelect={handleSelectProject} />
 
           {/* Search & Filter Bar Section */}
           <section className="mb-2 md:mb-2.5">

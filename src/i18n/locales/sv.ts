@@ -22,6 +22,14 @@ export const svUi = deepMerge(enUi, {
     mobileGuide: 'Installationsguide (.zip)',
     mobileGithub: 'GitHub-profil (@nRn-World)',
   },
+  showcase: {
+    title: 'Projekt',
+    subtitle: 'Allt jag har byggt, per kategori.',
+    view: 'Visa projekt',
+    open: 'Öppna',
+    prev: 'Föregående projekt',
+    next: 'Nästa projekt',
+  },
   hub: {
     title: 'nRnWorld Hub',
     subtitle: 'Jag drömmer. Jag bygger. Jag delar. Det är vem jag är.',

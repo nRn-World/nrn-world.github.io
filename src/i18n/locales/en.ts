@@ -26,6 +26,14 @@ export const enUi: TranslationDictionary = {
     mobileGuide: 'Installation Guide (.zip)',
     mobileGithub: 'GitHub profile (@nRn-World)',
   },
+  showcase: {
+    title: 'Projects',
+    subtitle: 'Everything I have built, by category.',
+    view: 'View project',
+    open: 'Open',
+    prev: 'Previous project',
+    next: 'Next project',
+  },
   hub: {
     title: 'nRnWorld Hub',
     subtitle: "I dream. I build. I share. That's who I am.",
