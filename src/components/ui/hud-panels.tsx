@@ -94,6 +94,13 @@ function ProfilePanel() {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
+// ISO 8601 week number (Swedish weeks: Monday first, week 1 contains the first Thursday).
+function isoWeek(d: Date): number {
+  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7));
+  return Math.ceil(((t.getTime() - Date.UTC(t.getUTCFullYear(), 0, 1)) / 86400000 + 1) / 7);
+}
+
 function ClockPanel() {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
@@ -116,6 +123,10 @@ function ClockPanel() {
       </p>
       <span aria-hidden className="mt-2 block" style={ruler} />
       <p className={`${label} mt-3 normal-case tracking-[0.08em]`}>{date}</p>
+      <p className={`${label} mt-1.5 flex items-baseline gap-1.5`}>
+        <span>Vecka</span>
+        <span className="font-mono text-sm tracking-wider text-blue-400">{isoWeek(now)}</span>
+      </p>
     </Panel>
   );
 }
