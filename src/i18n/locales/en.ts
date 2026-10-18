@@ -31,6 +31,7 @@ export const enUi: TranslationDictionary = {
     subtitle: 'Everything I have built, by category.',
     view: 'View project',
     open: 'Open',
+    store: 'Get on Chrome Web Store',
     prev: 'Previous project',
     next: 'Next project',
   },

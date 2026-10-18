@@ -27,6 +27,7 @@ export const svUi = deepMerge(enUi, {
     subtitle: 'Allt jag har byggt, per kategori.',
     view: 'Visa projekt',
     open: 'Öppna',
+    store: 'Hämta i Chrome Web Store',
     prev: 'Föregående projekt',
     next: 'Nästa projekt',
   },

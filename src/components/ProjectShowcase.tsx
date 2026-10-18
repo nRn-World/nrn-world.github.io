@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Gamepad2, Globe, Monitor, Puzzle, Smartphone } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Download, ExternalLink, Gamepad2, Globe, Monitor, Puzzle, Smartphone } from 'lucide-react';
 import { Project, ProjectCategory } from '../types';
 import { useI18n } from '../i18n/context';
+import { getProjectPath } from '../utils/projectSlug';
 
 // One horizontal rail of big cards per category (scroll-snap, arrows, counter + progress line).
 const GROUPS: { key: ProjectCategory; icon: React.ReactNode; card: string; chip: string }[] = [
@@ -11,6 +12,8 @@ const GROUPS: { key: ProjectCategory; icon: React.ReactNode; card: string; chip:
   { key: 'Android', icon: <Smartphone className="size-4" />, card: 'from-[#14532d] to-[#15803d]', chip: 'text-emerald-300' },
   { key: 'Games', icon: <Gamepad2 className="size-4" />, card: 'from-[#7f1d1d] to-[#9f1239]', chip: 'text-rose-300' },
 ];
+
+const isStoreUrl = (url?: string) => Boolean(url && /chromewebstore\.google\.com|chrome\.google\.com\/webstore|addons\.mozilla\.org/.test(url));
 
 const pad2 = (n: number) => String(n).padStart(2, '0');
 
@@ -209,14 +212,18 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                 <p className="mt-3 line-clamp-5 text-[15px] leading-relaxed text-white/90">{project.tagline}</p>
 
                 <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
-                  <button
-                    type="button"
-                    onClick={() => onSelect(project)}
-                    className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-transform hover:scale-[1.03]"
+                  <a
+                    href={getProjectPath(project)}
+                    onClick={(e) => {
+                      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                      e.preventDefault();
+                      onSelect(project);
+                    }}
+                    className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 no-underline transition-transform hover:scale-[1.03]"
                   >
                     {t('showcase.view')}
                     <ArrowRight className="size-4" />
-                  </button>
+                  </a>
                   {project.liveDemoUrl && (
                     <a
                       href={project.liveDemoUrl}
@@ -224,8 +231,8 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-white/30 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
                     >
-                      {t('showcase.open')}
-                      <ExternalLink className="size-3.5" />
+                      {isStoreUrl(project.liveDemoUrl) ? t('showcase.store') : t('showcase.open')}
+                      {isStoreUrl(project.liveDemoUrl) ? <Download className="size-3.5" /> : <ExternalLink className="size-3.5" />}
                     </a>
                   )}
                 </div>
