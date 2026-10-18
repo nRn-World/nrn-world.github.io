@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-1.5 sm:gap-2.5 text-left group cursor-pointer min-w-0 flex-1 overflow-hidden lg:-ml-16 xl:-ml-40"
         >
           <img
-            src="/logo-72.webp"
+            src="/logo-v2.webp"
             alt=""
             aria-hidden
             width={36}
