@@ -23,7 +23,7 @@ import {
 } from './utils/projectSlug';
 import { updatePageSeo } from './utils/seoMeta';
 import { useI18n, useLocalizedProjects } from './i18n/context';
-import { Search, Monitor, Smartphone, Wrench, Star, Download, ArrowUpDown, Puzzle, Bot, Gamepad2 } from 'lucide-react';
+import { Search, Monitor, Smartphone, Star, Download, ArrowUpDown, Puzzle, Globe, Gamepad2 } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
 import { HudColumn } from './components/ui/hud-panels';
 import { SplineSceneBasic } from './components/ui/spline-scene-basic';
@@ -55,12 +55,29 @@ type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
 // Order and icons of the catalog sections (also the order of the filter pills).
 const CATEGORY_GROUPS: { key: ProjectCategory; icon: React.ReactNode }[] = [
   { key: 'Chrome Extensions', icon: <Puzzle className="w-4 h-4" /> },
-  { key: 'AI', icon: <Bot className="w-4 h-4" /> },
+  { key: 'Websites', icon: <Globe className="w-4 h-4" /> },
   { key: 'Windows', icon: <Monitor className="w-4 h-4" /> },
-  { key: 'Tools', icon: <Wrench className="w-4 h-4" /> },
   { key: 'Android', icon: <Smartphone className="w-4 h-4" /> },
   { key: 'Games', icon: <Gamepad2 className="w-4 h-4" /> },
 ];
+
+// One ordering for the catalog and the showcase rails, so the sort choice applies to both.
+function compareProjects(category: HubFilter, sortBy: 'featured' | 'downloads' | 'newest' | 'name' | 'stars') {
+  return (a: Project, b: Project): number => {
+    const effectiveSort = category === 'Top Stars' ? 'stars' : category === 'Most Downloads' ? 'downloads' : sortBy;
+    if (effectiveSort === 'featured') {
+      if (category === 'All') return getGithubActivityTimestamp(b) - getGithubActivityTimestamp(a);
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return b.downloadsCount - a.downloadsCount;
+    }
+    if (effectiveSort === 'downloads') return b.downloadsCount - a.downloadsCount;
+    if (effectiveSort === 'stars') return (b.starsCount || 0) - (a.starsCount || 0);
+    if (effectiveSort === 'newest') return getGithubActivityTimestamp(b) - getGithubActivityTimestamp(a);
+    if (effectiveSort === 'name') return a.name.localeCompare(b.name);
+    return 0;
+  };
+}
 
 const STORAGE_SAVED_KEY = 'nrnworld_saved_projects_v1';
 const STORAGE_STARRED_KEY = 'nrnworld_starred_projects_v1';
@@ -416,7 +433,7 @@ export default function App() {
         const matchName = p.name.toLowerCase().includes(q);
         const matchDesc = p.description.toLowerCase().includes(q);
         const matchTag = p.tagline?.toLowerCase().includes(q);
-        const matchCategory = p.category.toLowerCase().includes(q);
+        const matchCategory = p.category.toLowerCase().includes(q) || localizeCategory(p.category).toLowerCase().includes(q);
         const matchFiles = p.downloadOptions.some((d) =>
           d.filename.toLowerCase().includes(q) || d.fileType.toLowerCase().includes(q)
         );
@@ -426,37 +443,8 @@ export default function App() {
       }
 
       return true;
-    }).sort((a, b) => {
-      const effectiveSort =
-        selectedCategory === 'Top Stars'
-          ? 'stars'
-          : selectedCategory === 'Most Downloads'
-            ? 'downloads'
-            : sortBy;
-
-      if (effectiveSort === 'featured') {
-        if (selectedCategory === 'All') {
-          return getGithubActivityTimestamp(b) - getGithubActivityTimestamp(a);
-        }
-        if (a.featured && !b.featured) return -1;
-        if (!a.featured && b.featured) return 1;
-        return b.downloadsCount - a.downloadsCount;
-      }
-      if (effectiveSort === 'downloads') {
-        return b.downloadsCount - a.downloadsCount;
-      }
-      if (effectiveSort === 'stars') {
-        return (b.starsCount || 0) - (a.starsCount || 0);
-      }
-      if (effectiveSort === 'newest') {
-        return getGithubActivityTimestamp(b) - getGithubActivityTimestamp(a);
-      }
-      if (effectiveSort === 'name') {
-        return a.name.localeCompare(b.name);
-      }
-      return 0;
-    });
-  }, [localizedProjects, selectedCategory, fileTypeFilter, searchQuery, sortBy]);
+    }).sort(compareProjects(selectedCategory, sortBy));
+  }, [localizedProjects, selectedCategory, fileTypeFilter, searchQuery, sortBy, localizeCategory]);
 
   const presentCategories = new Set<ProjectCategory>(projects.map((p) => p.category as ProjectCategory));
   const categories: { label: HubFilter; icon?: React.ReactNode }[] = [
@@ -544,7 +532,7 @@ export default function App() {
           </section>
 
           {/* Showcase: one big card per project, one rail per category */}
-          <ProjectShowcase projects={localizedProjects} onSelect={handleSelectProject} />
+          <ProjectShowcase projects={[...localizedProjects].sort(compareProjects('All', sortBy))} onSelect={handleSelectProject} />
 
           {/* Search & Filter Bar Section */}
           <section className="mb-2 md:mb-2.5">

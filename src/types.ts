@@ -5,6 +5,7 @@ export type ProjectCategory =
   | 'Tools'
   | 'CLI'
   | 'AI'
+  | 'Websites'
   | 'Security'
   | 'Games'
   | 'Chrome Extensions';

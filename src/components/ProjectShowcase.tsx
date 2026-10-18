@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowRight, Bot, ChevronLeft, ChevronRight, ExternalLink, Gamepad2, Monitor, Puzzle, Smartphone, Wrench } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Gamepad2, Globe, Monitor, Puzzle, Smartphone } from 'lucide-react';
 import { Project, ProjectCategory } from '../types';
 import { useI18n } from '../i18n/context';
 
 // One horizontal rail of big cards per category (scroll-snap, arrows, counter + progress line).
 const GROUPS: { key: ProjectCategory; icon: React.ReactNode; card: string; chip: string }[] = [
   { key: 'Chrome Extensions', icon: <Puzzle className="size-4" />, card: 'from-[#1e3a8a] to-[#1d4ed8]', chip: 'text-blue-300' },
-  { key: 'AI', icon: <Bot className="size-4" />, card: 'from-[#4c1d95] via-[#6b21a8] to-[#9d174d]', chip: 'text-fuchsia-300' },
+  { key: 'Websites', icon: <Globe className="size-4" />, card: 'from-[#4c1d95] via-[#6b21a8] to-[#9d174d]', chip: 'text-fuchsia-300' },
   { key: 'Windows', icon: <Monitor className="size-4" />, card: 'from-[#0f3f4f] to-[#0e7490]', chip: 'text-cyan-300' },
-  { key: 'Tools', icon: <Wrench className="size-4" />, card: 'from-[#78350f] to-[#b45309]', chip: 'text-amber-300' },
   { key: 'Android', icon: <Smartphone className="size-4" />, card: 'from-[#14532d] to-[#15803d]', chip: 'text-emerald-300' },
   { key: 'Games', icon: <Gamepad2 className="size-4" />, card: 'from-[#7f1d1d] to-[#9f1239]', chip: 'text-rose-300' },
 ];
@@ -255,9 +254,7 @@ export const ProjectShowcase: React.FC<{ projects: Project[]; onSelect: (project
   const { t } = useI18n();
   const rails = GROUPS.map((group) => ({
     group,
-    items: projects
-      .filter((p) => p.category === group.key)
-      .sort((a, b) => Number(!!b.featured) - Number(!!a.featured) || b.downloadsCount - a.downloadsCount),
+    items: projects.filter((p) => p.category === group.key), // order comes from the page's sort choice
   })).filter((r) => r.items.length > 0);
 
   if (rails.length === 0) return null;
