@@ -20,6 +20,14 @@ export const frUi = deepMerge(enUi, {
     contact: 'Contact',
     mobileGuide: "Guide d'Installation (.zip)",
   },
+  showcase: {
+    title: "Projets",
+    subtitle: "Tout ce que j'ai construit, par catégorie.",
+    view: "Voir le projet",
+    open: "Ouvrir",
+    prev: "Projet précédent",
+    next: "Projet suivant",
+  },
   hub: {
     title: 'nRnWorld Hub',
     subtitle: 'Je rêve. Je construis. Je partage. C’est qui je suis.',

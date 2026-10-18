@@ -20,6 +20,14 @@ export const arUi = deepMerge(enUi, {
     contact: 'اتصل',
     mobileGuide: 'دليل التثبيت (.zip)',
   },
+  showcase: {
+    title: "المشاريع",
+    subtitle: "كل ما بنيته، حسب الفئة.",
+    view: "عرض المشروع",
+    open: "فتح",
+    prev: "المشروع السابق",
+    next: "المشروع التالي",
+  },
   hub: {
     title: 'nRnWorld Hub',
     subtitle: 'أحلم. أبني. أشارك. هذا ما أنا عليه.',

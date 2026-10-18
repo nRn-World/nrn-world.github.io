@@ -15,6 +15,10 @@ const GROUPS: { key: ProjectCategory; icon: React.ReactNode; card: string; chip:
 
 const pad2 = (n: number) => String(n).padStart(2, '0');
 
+const AUTO_SPEED = 28;      // px per second: slow drift
+const PAUSE_AFTER_USE = 4000; // ms before the drift resumes after the visitor touched the rail
+const PAUSE_AT_END = 1500;
+
 interface RailProps {
   group: (typeof GROUPS)[number];
   projects: Project[];
@@ -25,6 +29,11 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
   const { t, localizeCategory, dir } = useI18n();
   const railRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
+  const [grabbing, setGrabbing] = useState(false);
+  const hover = useRef(false);
+  const pauseUntil = useRef(0);
+  const drag = useRef<{ x: number; left: number; moved: boolean; id: number } | null>(null);
+  const suppressClick = useRef(false);
 
   const update = useCallback(() => {
     const rail = railRef.current;
@@ -40,7 +49,80 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
     return () => window.removeEventListener('resize', update);
   }, [update]);
 
+  // Slow automatic drift (ping-pong). Pauses on hover, drag, touch, focus and when off screen.
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let raf = 0;
+    let last = performance.now();
+    let pos = rail.scrollLeft;
+    let lastSet = pos;
+    let dir = 1;
+    let visible = true;
+    const io = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; });
+    io.observe(rail);
+
+    const tick = (now: number) => {
+      const dt = Math.min(64, now - last) / 1000;
+      last = now;
+      const active = visible && !document.hidden && !hover.current && !drag.current && now > pauseUntil.current;
+      if (active) {
+        if (rail.style.scrollSnapType !== 'none') rail.style.scrollSnapType = 'none';
+        if (Math.abs(rail.scrollLeft - lastSet) > 1.5) pos = rail.scrollLeft; // visitor moved it
+        const max = rail.scrollWidth - rail.clientWidth;
+        pos += dir * AUTO_SPEED * dt;
+        if (pos >= max) { pos = max; dir = -1; pauseUntil.current = now + PAUSE_AT_END; }
+        else if (pos <= 0) { pos = 0; dir = 1; pauseUntil.current = now + PAUSE_AT_END; }
+        rail.scrollLeft = pos;
+        lastSet = pos;
+      } else if (rail.style.scrollSnapType === 'none' && !drag.current) {
+        rail.style.scrollSnapType = ''; // back to the stylesheet's snap, card settles into place
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); io.disconnect(); rail.style.scrollSnapType = ''; };
+  }, []);
+
+  const touched = () => { pauseUntil.current = performance.now() + PAUSE_AFTER_USE; };
+
+  // Mouse drag (touch and pen use the browser's native swipe).
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    touched();
+    const rail = railRef.current;
+    if (!rail || e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag.current = { x: e.clientX, left: rail.scrollLeft, moved: false, id: e.pointerId };
+    rail.style.scrollSnapType = 'none';
+  };
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const d = drag.current;
+    const rail = railRef.current;
+    if (!d || !rail) return;
+    const dx = e.clientX - d.x;
+    if (!d.moved && Math.abs(dx) > 5) {
+      d.moved = true;
+      rail.setPointerCapture(d.id); // only once it is a real drag, so plain clicks still reach the buttons
+      setGrabbing(true);
+    }
+    if (d.moved) rail.scrollLeft = d.left - dx;
+  };
+  const endDrag = () => {
+    const d = drag.current;
+    const rail = railRef.current;
+    if (!d || !rail) return;
+    drag.current = null;
+    if (d.moved) {
+      suppressClick.current = true;
+      setTimeout(() => { suppressClick.current = false; }, 0);
+      if (rail.hasPointerCapture(d.id)) rail.releasePointerCapture(d.id);
+    }
+    setGrabbing(false);
+    touched();
+    rail.style.scrollSnapType = ''; // snap to the nearest card
+  };
+
   const go = (delta: number) => {
+    touched();
     const rail = railRef.current;
     const first = rail?.firstElementChild as HTMLElement | null;
     if (!rail || !first) return;
@@ -90,10 +172,20 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
       <div
         ref={railRef}
         onScroll={update}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onMouseEnter={() => { hover.current = true; }}
+        onMouseLeave={() => { hover.current = false; pauseUntil.current = performance.now() + 800; }}
+        onClickCapture={(e) => { if (suppressClick.current) { e.preventDefault(); e.stopPropagation(); } }}
+        onDragStart={(e) => e.preventDefault()}
+        onWheel={touched}
+        onFocus={touched}
         tabIndex={0}
         role="region"
         aria-label={localizeCategory(group.key)}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-3 scrollbar-hide focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60 rounded-[28px]"
+        className={`flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 scrollbar-hide focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/60 rounded-[28px] ${grabbing ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
       >
         {projects.map((project, i) => {
           const tags = (project.tags ?? []).slice(0, 3);
@@ -146,6 +238,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                     src={project.images[0]}
                     alt={project.name}
                     loading="lazy"
+                    draggable={false}
                     className="h-auto max-h-[300px] w-full object-contain p-3 md:h-full"
                   />
                 )}

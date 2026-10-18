@@ -20,6 +20,14 @@ export const trUi = deepMerge(enUi, {
     contact: 'İletişim',
     mobileGuide: 'Kurulum Rehberi (.zip)',
   },
+  showcase: {
+    title: "Projeler",
+    subtitle: "Yaptığım her şey, kategoriye göre.",
+    view: "Projeyi incele",
+    open: "Aç",
+    prev: "Önceki proje",
+    next: "Sonraki proje",
+  },
   hub: {
     title: 'nRnWorld Hub',
     subtitle: 'Hayal kurarım. İnşa ederim. Paylaşırım. Ben buyum.',

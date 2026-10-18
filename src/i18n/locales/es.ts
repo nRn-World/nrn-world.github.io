@@ -20,6 +20,14 @@ export const esUi = deepMerge(enUi, {
     contact: 'Contacto',
     mobileGuide: 'Guía de Instalación (.zip)',
   },
+  showcase: {
+    title: "Proyectos",
+    subtitle: "Todo lo que he construido, por categoría.",
+    view: "Ver proyecto",
+    open: "Abrir",
+    prev: "Proyecto anterior",
+    next: "Proyecto siguiente",
+  },
   hub: {
     title: 'nRnWorld Hub',
     subtitle: 'Sueño. Construyo. Comparto. Eso es quien soy.',

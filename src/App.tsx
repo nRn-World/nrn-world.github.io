@@ -544,7 +544,7 @@ export default function App() {
           </section>
 
           {/* Showcase: one big card per project, one rail per category */}
-          <ProjectShowcase projects={projects} onSelect={handleSelectProject} />
+          <ProjectShowcase projects={localizedProjects} onSelect={handleSelectProject} />
 
           {/* Search & Filter Bar Section */}
           <section className="mb-2 md:mb-2.5">
