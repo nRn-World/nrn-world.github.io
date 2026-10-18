@@ -160,7 +160,7 @@ export const trUi = deepMerge(enUi, {
     Security: 'Güvenlik',
     Games: 'Oyunlar',
     Websites: 'Web Siteleri',
-    'Chrome Extensions': 'Chrome ve Firefox Uzantıları',
+    'Chrome Extensions': 'Chrome & Firefox Uzantıları',
     'Top Stars': 'En Çok Yıldız',
     'Most Downloads': 'En Çok İndirilen',
   },
