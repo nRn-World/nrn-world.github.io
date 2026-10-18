@@ -266,10 +266,10 @@ export const ProjectShowcase: React.FC<{ projects: Project[]; onSelect: (project
   if (rails.length === 0) return null;
   return (
     <section aria-labelledby="showcase-title" className="mx-auto mb-10 mt-4 w-full max-w-6xl min-w-0 px-1 md:mt-8 lg:max-w-[1500px]">
-      <h2 id="showcase-title" className="font-sora text-3xl font-extrabold text-white sm:text-4xl">
+      <h2 id="showcase-title" className="text-center font-sora text-3xl font-extrabold text-white sm:text-4xl">
         {t('showcase.title')}
       </h2>
-      <p className="mb-8 mt-2 text-white/60">{t('showcase.subtitle')}</p>
+      <p className="mb-8 mt-2 text-center text-white/60">{t('showcase.subtitle')}</p>
       <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:gap-y-12 lg:grid-cols-2">
         {rails.map(({ group, items }) => (
           <Rail key={group.key} group={group} projects={items} onSelect={onSelect} />
