@@ -100,7 +100,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
           return (
             <article
               key={project.id}
-              className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.05fr_1fr] md:gap-6 ${group.card}`}
+              className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.2fr_1fr] md:gap-6 ${group.card}`}
             >
               <div className="flex min-w-0 flex-col">
                 <div className="flex items-center justify-between gap-3">
@@ -114,7 +114,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                   <span className="shrink-0 font-mono text-xs text-white/50">{pad2(i + 1)}</span>
                 </div>
 
-                <h4 className="mt-5 break-words font-sora text-3xl font-extrabold leading-tight sm:text-4xl">{project.name}</h4>
+                <h4 className="mt-5 break-words font-sora text-[clamp(1.5rem,2.6vw,2.25rem)] font-extrabold leading-tight">{project.name}</h4>
                 <p className="mt-3 line-clamp-5 text-[15px] leading-relaxed text-white/90">{project.tagline}</p>
 
                 <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
@@ -140,7 +140,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                 </div>
               </div>
 
-              <div className="mt-5 flex min-h-[180px] items-center justify-center overflow-hidden rounded-2xl bg-black/25 md:mt-0">
+              <div className="mt-5 flex min-h-[180px] items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:mt-0">
                 {project.images[0] && (
                   <img
                     src={project.images[0]}
