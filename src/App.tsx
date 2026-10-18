@@ -22,7 +22,7 @@ import {
 } from './utils/projectSlug';
 import { updatePageSeo } from './utils/seoMeta';
 import { useI18n, useLocalizedProjects } from './i18n/context';
-import { Search, Monitor, Smartphone, Wrench, Shield, Star, Download, ArrowUpDown, Puzzle } from 'lucide-react';
+import { Search, Monitor, Smartphone, Wrench, Star, Download, ArrowUpDown, Puzzle, Bot, Gamepad2 } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
 import { HudColumn } from './components/ui/hud-panels';
 import { SplineSceneBasic } from './components/ui/spline-scene-basic';
@@ -50,6 +50,16 @@ const SavedProjectsDrawer = lazy(() =>
 );
 
 type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
+
+// Order and icons of the catalog sections (also the order of the filter pills).
+const CATEGORY_GROUPS: { key: ProjectCategory; icon: React.ReactNode }[] = [
+  { key: 'Chrome Extensions', icon: <Puzzle className="w-4 h-4" /> },
+  { key: 'AI', icon: <Bot className="w-4 h-4" /> },
+  { key: 'Windows', icon: <Monitor className="w-4 h-4" /> },
+  { key: 'Tools', icon: <Wrench className="w-4 h-4" /> },
+  { key: 'Android', icon: <Smartphone className="w-4 h-4" /> },
+  { key: 'Games', icon: <Gamepad2 className="w-4 h-4" /> },
+];
 
 const STORAGE_SAVED_KEY = 'nrnworld_saved_projects_v1';
 const STORAGE_STARRED_KEY = 'nrnworld_starred_projects_v1';
@@ -447,17 +457,30 @@ export default function App() {
     });
   }, [localizedProjects, selectedCategory, fileTypeFilter, searchQuery, sortBy]);
 
+  const presentCategories = new Set<ProjectCategory>(projects.map((p) => p.category as ProjectCategory));
   const categories: { label: HubFilter; icon?: React.ReactNode }[] = [
     { label: 'All' },
-    { label: 'Windows', icon: <Monitor className="w-3.5 h-3.5" /> },
-    { label: 'Android', icon: <Smartphone className="w-3.5 h-3.5" /> },
-    { label: 'Tools', icon: <Wrench className="w-3.5 h-3.5" /> },
-    { label: 'Chrome Extensions', icon: <Puzzle className="w-3.5 h-3.5" /> },
-    { label: 'Security', icon: <Shield className="w-3.5 h-3.5" /> },
-    { label: 'Games' },
+    ...CATEGORY_GROUPS.filter((g) => presentCategories.has(g.key)).map((g) => ({
+      label: g.key as HubFilter,
+      icon: g.icon,
+    })),
     { label: 'Top Stars', icon: <Star className="w-3.5 h-3.5" /> },
     { label: 'Most Downloads', icon: <Download className="w-3.5 h-3.5" /> },
   ];
+
+  // "All" without search/format filter: show the catalog as labelled category sections.
+  const grouped = selectedCategory === 'All' && !searchQuery.trim() && fileTypeFilter === 'all';
+  const knownKeys = CATEGORY_GROUPS.map((g) => g.key);
+  const sections = grouped
+    ? [
+        ...CATEGORY_GROUPS,
+        ...Array.from(presentCategories)
+          .filter((c) => !knownKeys.includes(c) && c !== 'All')
+          .map((c) => ({ key: c, icon: null as React.ReactNode })),
+      ]
+        .map((g) => ({ ...g, items: filteredProjects.filter((p) => p.category === g.key) }))
+        .filter((g) => g.items.length > 0)
+    : [];
 
   return (
     <div className="relative min-h-screen bg-transparent text-[#E0E0E0] selection:bg-blue-600 selection:text-white overflow-x-hidden max-w-full">
@@ -647,24 +670,42 @@ export default function App() {
               </button>
             </div>
           ) : (
-            <section aria-label="Projektkatalog" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2 md:gap-2.5">
+            <section aria-label="Projektkatalog" className="space-y-8 md:space-y-10">
               <h2 className="sr-only">Projektkatalog</h2>
-              {filteredProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  githubSynced={githubSynced}
-                  engagement={engagement}
-                  onSelect={handleSelectProject}
-                  isSaved={savedProjectIds.includes(project.id)}
-                  onToggleSave={handleToggleSave}
-                  isStarred={starredProjectIds.includes(project.id)}
-                  onToggleStar={handleToggleStar}
-                  onDownload={handleDownload}
-                  onLiveOpen={handleLiveOpen}
-                  onCountDownload={(p) => bumpEngagement(p.id, 'downloads')}
-                  imagePriority={index < 2}
-                />
+              {(grouped ? sections : [{ key: null, icon: null, items: filteredProjects }]).map((group) => (
+                <div key={group.key ?? 'flat'}>
+                  {group.key && (
+                    <div className="mb-3 flex items-center gap-3">
+                      <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-blue-500/25 bg-blue-600/15 text-blue-400">
+                        {group.icon}
+                      </span>
+                      <h3 className="font-sora text-base font-bold text-white sm:text-lg">{localizeCategory(group.key)}</h3>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[11px] text-white/60">
+                        {group.items.length}
+                      </span>
+                      <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-white/20 via-white/5 to-transparent" />
+                    </div>
+                  )}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2 md:gap-2.5">
+                    {group.items.map((project) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                        githubSynced={githubSynced}
+                        engagement={engagement}
+                        onSelect={handleSelectProject}
+                        isSaved={savedProjectIds.includes(project.id)}
+                        onToggleSave={handleToggleSave}
+                        isStarred={starredProjectIds.includes(project.id)}
+                        onToggleStar={handleToggleStar}
+                        onDownload={handleDownload}
+                        onLiveOpen={handleLiveOpen}
+                        onCountDownload={(p) => bumpEngagement(p.id, 'downloads')}
+                        imagePriority={filteredProjects.indexOf(project) < 2}
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
             </section>
           )}
