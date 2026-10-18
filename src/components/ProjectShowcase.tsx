@@ -194,7 +194,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
           return (
             <article
               key={project.id}
-              className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.2fr_1fr] md:gap-6 lg:w-[92%] lg:max-w-none ${group.card}`}
+              className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.5fr_1fr] md:gap-6 lg:w-[92%] lg:max-w-none ${group.card}`}
             >
               <div className="flex min-w-0 flex-col">
                 <div className="flex items-center justify-between gap-3">
@@ -211,7 +211,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                 <h4 className="mt-5 break-words font-sora text-[clamp(1.5rem,2.6vw,2.25rem)] font-extrabold leading-tight lg:text-[clamp(1.3rem,1.9vw,2rem)]">{project.name}</h4>
                 <p className="mt-3 line-clamp-5 text-[15px] leading-relaxed text-white/90">{project.tagline}</p>
 
-                <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-6">
+                <div className="mt-auto flex flex-nowrap items-center gap-2 pt-6">
                   <a
                     href={getProjectPath(project)}
                     onClick={(e) => {
@@ -219,7 +219,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                       e.preventDefault();
                       onSelect(project);
                     }}
-                    className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 no-underline transition-transform hover:scale-[1.03]"
+                    className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-neutral-900 no-underline transition-transform hover:scale-[1.03] sm:px-5 sm:py-2.5 sm:text-sm"
                   >
                     {t('showcase.view')}
                     <ArrowRight className="size-4" />
@@ -229,9 +229,9 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                       href={project.liveDemoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/30 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                      className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-white/30 px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-white/10 sm:px-4 sm:py-2.5 sm:text-sm"
                     >
-                      {isStoreUrl(project.liveDemoUrl) ? t('showcase.store') : t('showcase.open')}
+                      {isStoreUrl(project.liveDemoUrl) ? 'Chrome Web Store' : t('showcase.open')}
                       {isStoreUrl(project.liveDemoUrl) ? <Download className="size-3.5" /> : <ExternalLink className="size-3.5" />}
                     </a>
                   )}
