@@ -23,7 +23,7 @@ import {
 } from './utils/projectSlug';
 import { updatePageSeo } from './utils/seoMeta';
 import { useI18n, useLocalizedProjects } from './i18n/context';
-import { Search, Monitor, Smartphone, Star, Download, ArrowUpDown, Puzzle, Globe, Gamepad2 } from 'lucide-react';
+import { Search, Star, ArrowUpDown } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
 import { HudColumn } from './components/ui/hud-panels';
 import { SplineSceneBasic } from './components/ui/spline-scene-basic';
@@ -51,15 +51,6 @@ const SavedProjectsDrawer = lazy(() =>
 );
 
 type HubFilter = ProjectCategory | 'Top Stars' | 'Most Downloads';
-
-// Order and icons of the catalog sections (also the order of the filter pills).
-const CATEGORY_GROUPS: { key: ProjectCategory; icon: React.ReactNode }[] = [
-  { key: 'Chrome Extensions', icon: <Puzzle className="w-4 h-4" /> },
-  { key: 'Websites', icon: <Globe className="w-4 h-4" /> },
-  { key: 'Windows', icon: <Monitor className="w-4 h-4" /> },
-  { key: 'Android', icon: <Smartphone className="w-4 h-4" /> },
-  { key: 'Games', icon: <Gamepad2 className="w-4 h-4" /> },
-];
 
 // One ordering for the catalog and the showcase rails, so the sort choice applies to both.
 function compareProjects(category: HubFilter, sortBy: 'featured' | 'downloads' | 'newest' | 'name' | 'stars') {
@@ -446,31 +437,6 @@ export default function App() {
     }).sort(compareProjects(selectedCategory, sortBy));
   }, [localizedProjects, selectedCategory, fileTypeFilter, searchQuery, sortBy, localizeCategory]);
 
-  const presentCategories = new Set<ProjectCategory>(projects.map((p) => p.category as ProjectCategory));
-  const categories: { label: HubFilter; icon?: React.ReactNode }[] = [
-    { label: 'All' },
-    ...CATEGORY_GROUPS.filter((g) => presentCategories.has(g.key)).map((g) => ({
-      label: g.key as HubFilter,
-      icon: g.icon,
-    })),
-    { label: 'Top Stars', icon: <Star className="w-3.5 h-3.5" /> },
-    { label: 'Most Downloads', icon: <Download className="w-3.5 h-3.5" /> },
-  ];
-
-  // "All" without search/format filter: show the catalog as labelled category sections.
-  const grouped = selectedCategory === 'All' && !searchQuery.trim() && fileTypeFilter === 'all';
-  const knownKeys = CATEGORY_GROUPS.map((g) => g.key);
-  const sections = grouped
-    ? [
-        ...CATEGORY_GROUPS,
-        ...Array.from(presentCategories)
-          .filter((c) => !knownKeys.includes(c) && c !== 'All')
-          .map((c) => ({ key: c, icon: null as React.ReactNode })),
-      ]
-        .map((g) => ({ ...g, items: filteredProjects.filter((p) => p.category === g.key) }))
-        .filter((g) => g.items.length > 0)
-    : [];
-
   return (
     <div className="relative min-h-screen bg-transparent text-[#E0E0E0] selection:bg-blue-600 selection:text-white overflow-x-hidden max-w-full">
 
@@ -564,41 +530,6 @@ export default function App() {
                 )}
               </div>
 
-              {/* Category Filter Pills — egen rad med horisontell scroll */}
-              <div className="relative w-full min-w-0">
-                <div className="flex gap-2 w-full min-w-0 overflow-x-auto pb-1 scrollbar-hide filter-pill-scroll">
-                  {categories.map((cat) => {
-                    const isActive = selectedCategory === cat.label;
-                    const filterLabel =
-                      cat.label === 'Top Stars'
-                        ? t('filters.topStars')
-                        : cat.label === 'Most Downloads'
-                          ? t('filters.mostDownloads')
-                          : localizeCategory(cat.label);
-
-                    return (
-                      <button
-                        key={cat.label}
-                        onClick={() => {
-                          setSelectedCategory(cat.label);
-                          if (cat.label === 'Top Stars') setSortBy('stars');
-                          else if (cat.label === 'Most Downloads') setSortBy('downloads');
-                          else if (cat.label === 'All') setSortBy('featured');
-                        }}
-                        className={`shrink-0 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl font-mono text-[11px] sm:text-xs whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
-                          isActive
-                            ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-900/30'
-                            : 'bg-white/5 hover:bg-white/10 text-white/60 hover:text-white border border-white/5'
-                        }`}
-                      >
-                        {cat.icon}
-                        <span>{filterLabel}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
               {/* Format filter & Sort — inside card to save vertical space */}
               <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5 text-[11px] sm:text-xs font-mono text-white/60">
                 <div className="flex items-center gap-2">
@@ -642,8 +573,9 @@ export default function App() {
             </div>
           </section>
 
-          {/* Project Grid */}
-          {filteredProjects.length === 0 ? (
+          {/* Search results only: the showcase above already lists every project */}
+          {searchQuery.trim() &&
+            (filteredProjects.length === 0 ? (
             <div className="bg-[#121212] rounded-2xl p-12 text-center max-w-xl mx-auto my-12 border border-white/5 shadow-xl shadow-black/40">
               <Search className="w-12 h-12 text-white/30 mx-auto mb-4" />
               <h3 className="font-sora text-xl font-bold text-white mb-2">{t('hub.emptyTitle')}</h3>
@@ -661,46 +593,27 @@ export default function App() {
                 {t('hub.resetFilters')}
               </button>
             </div>
-          ) : (
-            <section aria-label="Projektkatalog" className="space-y-8 md:space-y-10">
-              <h2 className="sr-only">Projektkatalog</h2>
-              {(grouped ? sections : [{ key: null, icon: null, items: filteredProjects }]).map((group) => (
-                <div key={group.key ?? 'flat'}>
-                  {group.key && (
-                    <div className="mb-3 flex items-center gap-3">
-                      <span className="flex size-8 shrink-0 items-center justify-center rounded-lg border border-blue-500/25 bg-blue-600/15 text-blue-400">
-                        {group.icon}
-                      </span>
-                      <h3 className="font-sora text-base font-bold text-white sm:text-lg">{localizeCategory(group.key)}</h3>
-                      <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[11px] text-white/60">
-                        {group.items.length}
-                      </span>
-                      <span aria-hidden className="h-px flex-1 bg-gradient-to-r from-white/20 via-white/5 to-transparent" />
-                    </div>
-                  )}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2 md:gap-2.5">
-                    {group.items.map((project) => (
-                      <ProjectCard
-                        key={project.id}
-                        project={project}
-                        githubSynced={githubSynced}
-                        engagement={engagement}
-                        onSelect={handleSelectProject}
-                        isSaved={savedProjectIds.includes(project.id)}
-                        onToggleSave={handleToggleSave}
-                        isStarred={starredProjectIds.includes(project.id)}
-                        onToggleStar={handleToggleStar}
-                        onDownload={handleDownload}
-                        onLiveOpen={handleLiveOpen}
-                        onCountDownload={(p) => bumpEngagement(p.id, 'downloads')}
-                        imagePriority={filteredProjects.indexOf(project) < 2}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </section>
-          )}
+            ) : (
+              <section aria-label="Sökresultat" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-2 md:gap-2.5">
+                {filteredProjects.map((project, index) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    githubSynced={githubSynced}
+                    engagement={engagement}
+                    onSelect={handleSelectProject}
+                    isSaved={savedProjectIds.includes(project.id)}
+                    onToggleSave={handleToggleSave}
+                    isStarred={starredProjectIds.includes(project.id)}
+                    onToggleStar={handleToggleStar}
+                    onDownload={handleDownload}
+                    onLiveOpen={handleLiveOpen}
+                    onCountDownload={(p) => bumpEngagement(p.id, 'downloads')}
+                    imagePriority={index < 2}
+                  />
+                ))}
+              </section>
+            ))}
         </main>
       )}
 
