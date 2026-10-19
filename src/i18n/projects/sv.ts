@@ -149,4 +149,11 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'Svalna är en progressiv webbapp (PWA) utvecklad av nRnWorld som hjälper hushåll att hålla ordning i kylen, minska matsvinn och planera inköp. Allt körs lokalt på enheten – inget konto, ingen analys och ingen server krävs, med valfri livesynk via en privat hushållskod.\n\nHuvudfunktioner:\n• Kylskåpsinventering: Lägg till varor manuellt, via foto eller genom att skanna en streckkod.\n• Streckkodsscanning: Livekamera via Web BarcodeDetector med ZXing som fallback, plus OCR för bäst-före-datum.\n• Inköpslista & matplan: Smarta inköpsförslag utifrån varor som snart går ut och en 7-dagars matplanerare.\n• Statistik: Stapeldiagram över använda kontra slängda varor och din räddningsgrad över tid.\n• Hushållsdelning: Valfri synk i realtid med en privat hushållskod (SVAL-XXXX-XXXX-XXXX), utan personuppgifter.\n• Integritet först: All data ligger i IndexedDB på enheten, inga konton, ingen spårning och inga foton som lämnar enheten.\n• Installerbar PWA: Fungerar offline och installeras som en nativ app på iOS, Android och skrivbordet.\n• Fyra språk och ljust, mörkt eller systemstyrt tema.',
   },
+  'newzlocal': {
+    name: 'NewzLocal',
+    tagline: "Snurra jorden, klicka på en plats och läs vad som händer där just nu.",
+    description: "3D-jordglob som webbapp (PWA) som visar senaste lokala nyheter och forumtrådar för exakt den plats du klickar på, från land ner till gata, på 7 språk.",
+    detailedAbout:
+      "NewzLocal är en webbapp med en riktig 3D-jord. Zooma från hela världen ner till land, region, stad, stadsdel och enskild gata och få de senaste nyheterna och forumtrådarna om exakt den platsen, i en tidningsdesign.\n\nHuvudfunktioner:\n• Riktig 3D-jord med satellitbilder, atmosfär och 3D-byggnader.\n• Exakta lokala nyheter: bara rubriker som nämner platsen, upp till 100 senaste.\n• Forum-flik med Flashback, Reddit, Hacker News och Stack Exchange.\n• Favoriter och kategorier med dra-och-släpp samt notiser.\n• Min tidning: alla favoriter på en gammaldags framsida.\n• Nyhetsvärme på kartan, tidsreglage, jämför platser och grannskapsrapport.\n• Installerbar PWA med offline-kopia.\n• 7 språk.",
+  },
 };

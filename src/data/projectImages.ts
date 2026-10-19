@@ -135,4 +135,9 @@ export const PROJECT_IMAGES = {
     '/images/projects/svalna/stats.webp',
     '/images/projects/svalna/settings.webp',
   ],
+  newzLocal: [
+    '/images/projects/newzLocal.webp',
+    raw('NewzLocal', 'main', 'docs/news.png'),
+    raw('NewzLocal', 'main', 'docs/globe.png'),
+  ],
 } as const;

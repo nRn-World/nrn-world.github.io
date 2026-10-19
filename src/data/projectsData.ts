@@ -1076,6 +1076,55 @@ export const INITIAL_PROJECTS: Project[] = [
       ram: '2 GB RAM',
       storage: 'Runs in browser (offline cache ~15 MB)',
     }
+  },
+  // 22. NewzLocal (3D globe local news PWA)
+  {
+    id: 'newzlocal',
+    name: 'NewzLocal',
+    tagline: 'Spin the globe, click any place and read what is happening there right now.',
+    description: 'A 3D-globe web app (PWA) that shows the latest local news and forum posts for the exact place you click, from country down to street, in 7 languages.',
+    detailedAbout: "NewzLocal is a web app with a real 3D globe. Zoom from the whole world down to country, region, city, district and even a single street, and get the newest news and forum threads about exactly that place, in a newspaper-style design.\n\nMain features:\n• Real 3D globe: Satellite imagery, atmosphere and 3D buildings with MapLibre.\n• Exact local news: Only headlines that mention the place, up to the 100 newest.\n• Forum tab: Threads from Flashback, Reddit, Hacker News and Stack Exchange.\n• Favourites & categories: Save places, sort them with drag and drop, get alerts for new headlines.\n• My newspaper: All your favourites on one old-style front page.\n• News heat on the map, time slider, compare two places and neighbourhood report.\n• Installable PWA with offline copy of the latest list.\n• 7 languages: English, Svenska, Türkçe, العربية, Español, Français, Deutsch.",
+    version: 'v0.1.0',
+    releaseDate: '2026-10-19',
+    category: 'Websites',
+    tags: ['News', 'Maps', 'PWA', 'Globe'],
+    platformBadge: 'WEB',
+    projectType: 'web_app',
+    featured: false,
+    rating: 4.9,
+    downloadsCount: 0,
+    starsCount: 0,
+    images: [...PROJECT_IMAGES.newzLocal],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Installable PWA – Desktop & Mobile', icon: 'globe' },
+      { label: 'Map', value: 'MapLibre 3D Globe + 3D Buildings', icon: 'layers' },
+      { label: 'Sources', value: 'News, Reddit, Hacker News, Flashback', icon: 'cpu' },
+      { label: 'Privacy', value: 'No Accounts, Favourites Stay In Your Browser', icon: 'shield' },
+      { label: 'Languages', value: 'English, Svenska, Türkçe, العربية, Español, Français, Deutsch', icon: 'layers' },
+    ],
+    changelog: [
+      {
+        version: 'v0.1.0',
+        date: '2026.10.19',
+        isCurrent: true,
+        items: [
+          'First public source release on GitHub',
+          '3D globe with country-to-street drill-down',
+          'Exact local news and forum tabs',
+          'Favourites, categories, alerts and My newspaper',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/NewzLocal',
+    license: 'Non-Commercial + Attribution',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Oct 2026',
+    systemRequirements: {
+      os: 'Any modern browser on desktop or mobile',
+      ram: '4 GB RAM',
+      storage: 'Runs in browser',
+    }
   }
 ];
 

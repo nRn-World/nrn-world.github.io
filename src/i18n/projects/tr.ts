@@ -149,4 +149,11 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'Svalna, nRnWorld tarafından geliştirilen ve hanelerin buzdolabı içeriğini düzenlemesine, gıda israfını azaltmasına ve alışveriş planlamasına yardımcı olan ilerici bir web uygulamasıdır (PWA). Her şey cihazda yerel olarak çalışır – hesap yok, analitik yok, sunucu gerekmez; isteğe bağlı olarak özel bir hane koduyla canlı senkronizasyon.\n\nÖne çıkanlar:\n• Buzdolabı envanteri: Ürünleri elle, fotoğrafla veya barkod tarayarak ekleyin.\n• Barkod tarama: Web BarcodeDetector ve ZXing yedeği ile canlı kamera, ayrıca son kullanma tarihi için OCR.\n• Alışveriş listesi ve yemek planı: Süresi yaklaşan ürünlere göre akıllı öneriler ve 7 günlük yemek planlayıcı.\n• İstatistikler: Kullanılan ve atılan ürünlerin grafiği ile zaman içindeki kurtarma oranı.\n• Hane paylaşımı: Özel bir hane koduyla (SVAL-XXXX-XXXX-XXXX) isteğe bağlı gerçek zamanlı senkronizasyon, kişisel veri yok.\n• Önce gizlilik: Tüm veriler cihazdaki IndexedDB de saklanır; hesap yok, izleme yok, cihazdan çıkan fotoğraf yok.\n• Kurulabilir PWA: Çevrimdışı çalışır ve iOS, Android ile masaüstünde yerel uygulama gibi kurulur.\n• Dört dil ve açık, koyu veya sistem teması.',
   },
+  'newzlocal': {
+    name: 'NewzLocal',
+    tagline: "Dünyayı çevir, bir yere tıkla ve orada şu an olanları oku.",
+    description: "Tıkladığın yerin en son yerel haberlerini ve forum konularını ülkeden sokağa kadar 7 dilde gösteren 3B küre web uygulaması (PWA).",
+    detailedAbout:
+      "NewzLocal gerçek bir 3B küreye sahip web uygulamasıdır. Dünyadan ülkeye, bölgeye, şehre, mahalleye ve tek bir sokağa yakınlaş ve tam o yerle ilgili en yeni haberleri ve forum konularını gazete tasarımında oku.\n\nÖne çıkanlar:\n• Uydu görüntüleri, atmosfer ve 3B binalarla gerçek 3B küre.\n• Tam yerel haberler: yalnızca yeri anan başlıklar, en yeni 100'e kadar.\n• Flashback, Reddit, Hacker News ve Stack Exchange forum sekmesi.\n• Favoriler, kategoriler ve bildirimler.\n• Benim gazetem: tüm favoriler tek bir eski usul ön sayfada.\n• Haber yoğunluğu, zaman kaydırıcı, yer karşılaştırma ve mahalle raporu.\n• Çevrimdışı kopyalı kurulabilir PWA.\n• 7 dil.",
+  },
 };
