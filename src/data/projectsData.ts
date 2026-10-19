@@ -1090,6 +1090,7 @@ export const INITIAL_PROJECTS: Project[] = [
     tags: ['News', 'Maps', 'PWA', 'Globe'],
     platformBadge: 'WEB',
     projectType: 'web_app',
+    liveDemoUrl: 'https://nrnworld.one/NewzLocal/',
     featured: false,
     rating: 4.9,
     downloadsCount: 0,
