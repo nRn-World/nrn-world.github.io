@@ -323,9 +323,8 @@ export default function App() {
             return;
           }
         }
-        // Short link /NewzLocal → project page
+        // Short link /NewzLocal → project page (URL stays as typed)
         if (fromRoot && !fromRoot.liveDemoUrl?.startsWith(window.location.origin)) {
-          history.replaceState(null, '', getProjectPath(fromRoot));
           setSelectedProject(fromRoot);
           window.scrollTo({ top: 0, behavior: 'smooth' });
           return;
