@@ -196,7 +196,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
               key={project.id}
               className={`relative grid min-h-[360px] w-[88vw] max-w-[760px] shrink-0 snap-start overflow-hidden rounded-[28px] bg-gradient-to-br p-5 text-white sm:p-7 md:min-h-[400px] md:w-[min(760px,72vw)] md:grid-cols-[1.5fr_1fr] md:grid-rows-[1fr_auto] md:gap-x-6 md:gap-y-0 lg:w-[92%] lg:max-w-none ${group.card}`}
             >
-              <div className="order-1 flex min-w-0 flex-col">
+              <div className="order-1 flex min-w-0 flex-col [container-type:inline-size]">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex min-w-0 flex-wrap gap-1.5">
                     {tags.map((tag) => (
@@ -208,7 +208,13 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                   <span className="shrink-0 font-mono text-xs text-white/50">{pad2(i + 1)}</span>
                 </div>
 
-                <h4 className="mt-5 break-words font-sora text-[clamp(1.5rem,2.6vw,2.25rem)] font-extrabold leading-tight lg:text-[clamp(1.3rem,1.9vw,2rem)]">{project.name}</h4>
+                <h4
+                  className="mt-5 whitespace-nowrap font-sora font-extrabold leading-tight"
+                  // namnet ska alltid rymmas på en rad: storlek = kolumnbredd / (antal tecken * ~0.66em)
+                  style={{ fontSize: `min(2.25rem, ${(100 / (project.name.length * 0.66)).toFixed(2)}cqw)` }}
+                >
+                  {project.name}
+                </h4>
                 <p className="mt-3 line-clamp-5 text-[15px] leading-relaxed text-white/90">{project.tagline}</p>
               </div>
 
