@@ -9,7 +9,7 @@ const og = (repo: string) => `https://opengraph.githubassets.com/1/nRn-World/${r
 
 export const PROJECT_IMAGES = {
   shadowPaw: [
-    '/images/projects/shadowPaw.svg',
+    '/images/projects/shadowPaw-v2.svg',
     raw('ShadowPaw', 'main', 'Screenshot/main-menu.png'),
     raw('ShadowPaw', 'main', 'Screenshot/gameplay.png'),
     raw('ShadowPaw', 'main', 'Screenshot/Gameover.png'),

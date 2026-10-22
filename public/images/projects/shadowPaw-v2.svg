@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Shadow Paw">
+  <defs>
+    <linearGradient id="sp-bg" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#1a1040"/>
+      <stop offset="1" stop-color="#06050f"/>
+    </linearGradient>
+    <radialGradient id="sp-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0.55" stop-color="#9d8cff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#9d8cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sp-moon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbf7e4"/>
+      <stop offset="1" stop-color="#e6dfbf"/>
+    </linearGradient>
+    <filter id="sp-eye" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#sp-bg)"/>
+
+  <!-- moon -->
+  <circle cx="256" cy="226" r="215" fill="url(#sp-halo)"/>
+  <circle cx="256" cy="226" r="158" fill="url(#sp-moon)"/>
+  <circle cx="318" cy="174" r="26" fill="#d9d1ae" opacity="0.7"/>
+  <circle cx="190" cy="282" r="18" fill="#d9d1ae" opacity="0.7"/>
+  <circle cx="330" cy="290" r="11" fill="#d9d1ae" opacity="0.7"/>
+
+  <!-- skyline -->
+  <path d="M0 512 V404 H34 V366 H84 V390 H112 V350 H160 V404 H196 V426 H316 V408 H352 V392 H404 V402 H432 V392 H478 V410 H512 V512 Z" fill="#05040c"/>
+  <g fill="#ffd96b" opacity="0.8">
+    <rect x="46" y="378" width="8" height="10"/><rect x="66" y="378" width="8" height="10"/>
+    <rect x="124" y="366" width="8" height="10"/><rect x="448" y="418" width="8" height="10"/>
+  </g>
+
+  <!-- sitting cat -->
+  <g fill="#05040c" stroke="#05040c" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M222 286 C198 330 198 396 204 428 H308 C314 396 314 330 290 286 Z"/>
+    <circle cx="256" cy="252" r="44"/>
+    <path d="M214 250 L210 180 L254 216 Z M298 250 L302 180 L258 216 Z"/>
+    <path d="M306 424 C372 430 398 384 374 340 C364 324 346 332 354 346" fill="none" stroke-width="15"/>
+  </g>
+  <g filter="url(#sp-eye)" fill="#35ff86">
+    <ellipse cx="236" cy="254" rx="9" ry="7.5"/>
+    <ellipse cx="276" cy="254" rx="9" ry="7.5"/>
+  </g>
+  <ellipse cx="236" cy="254" rx="2.5" ry="6.5" fill="#031208"/>
+  <ellipse cx="276" cy="254" rx="2.5" ry="6.5" fill="#031208"/>
+</svg>
