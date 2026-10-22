@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config } from 'dotenv';
@@ -142,6 +142,27 @@ async function main() {
 
   const payload = await fetchAllWithGhFallback(REPOS, token);
   const outPath = join(root, 'public', 'github-stats.json');
+
+  // Without a token the shared build IP gets rate limited. Fall back to the last committed
+  // stats for repos that failed, so a bad fetch never blanks the numbers or fails the build.
+  let previous = null;
+  try {
+    if (existsSync(outPath)) previous = JSON.parse(readFileSync(outPath, 'utf8'));
+  } catch {
+    previous = null;
+  }
+  if (previous && previous.repos) {
+    for (const [name, stats] of Object.entries(payload.repos)) {
+      if (!stats && previous.repos[name]) {
+        payload.repos[name] = previous.repos[name];
+        console.warn(`  Kept previous stats for ${name}`);
+      }
+    }
+    if (payload.successCount === 0) {
+      console.warn('All fetches failed; keeping previous github-stats.json unchanged.');
+      return;
+    }
+  }
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, JSON.stringify(payload, null, 2), 'utf8');
   console.log(
