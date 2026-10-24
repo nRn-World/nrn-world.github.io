@@ -135,4 +135,11 @@ export const frProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       "NewzLocal est une application web avec un vrai globe 3D. Zoomez du monde entier au pays, à la région, à la ville, au quartier et même à une seule rue, et lisez les actualités et fils de forum les plus récents sur ce lieu précis, dans un design de journal.\n\nFonctionnalités principales :\n• Vrai globe 3D avec images satellite, atmosphère et bâtiments 3D.\n• Actualités locales exactes : seulement les titres qui citent le lieu, jusqu'à 100.\n• Onglet forum : Flashback, Reddit, Hacker News et Stack Exchange.\n• Favoris, catégories et alertes.\n• Mon journal : tous vos favoris sur une une à l'ancienne.\n• Chaleur de l'actualité, curseur de temps, comparaison de lieux et rapport de quartier.\n• PWA installable avec copie hors ligne.\n• 7 langues.",
   },
+  'ribegatan': {
+    name: 'Ribegatan',
+    tagline: "Référence : un site web que j'ai créé pour une communauté résidentielle à Kista. Envie du même ? Contactez-moi.",
+    description: "Site de référence créé par nRnWorld pour Ribe Samfällighetsförening : clair, rapide et facile à utiliser pour les habitants.",
+    detailedAbout:
+      "Ribegatan.se est le site web de Ribe Samfällighetsförening, une communauté résidentielle verte et adaptée aux enfants à Kista, Stockholm. Il offre aux habitants un endroit calme où tout trouver, sur tous les appareils.\n\nFonctions principales :\n• Page d'accueil claire avec horloge en direct, fête du jour, numéro de semaine et dates clés de l'année.\n• Archives de documents : statuts, procès-verbaux du conseil et des assemblées, formulaires et consignes.\n• Guides pratiques : laveries, parking, recharge de voitures électriques, déchets, déneigement, fenêtres, panneaux, chauffage et plus.\n• Conseil, charges, TV et haut débit, ainsi que des informations pour agents immobiliers et changement de propriétaire.\n• Galerie de photos et histoire du quartier depuis le début des travaux en 1979.\n• Calendrier, recherche sur tout le site et assistant d'aide intégré.\n• Design adaptatif aux couleurs vertes de la communauté.",
+  },
 };

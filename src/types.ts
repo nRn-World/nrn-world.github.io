@@ -65,6 +65,8 @@ export interface Project {
   githubUrl: string;
   /** Hide GitHub repo UI (repo, contribute, clone, star dialog) — used when the source repo is not public. */
   hideGithubLinks?: boolean;
+  /** Client/reference work: showcase card shows only a visit-site button, no project page link. */
+  isReference?: boolean;
   license: string;
   maintainer: string;
   lastUpdated: string;

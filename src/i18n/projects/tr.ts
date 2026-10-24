@@ -156,4 +156,11 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       "NewzLocal gerçek bir 3B küreye sahip web uygulamasıdır. Dünyadan ülkeye, bölgeye, şehre, mahalleye ve tek bir sokağa yakınlaş ve tam o yerle ilgili en yeni haberleri ve forum konularını gazete tasarımında oku.\n\nÖne çıkanlar:\n• Uydu görüntüleri, atmosfer ve 3B binalarla gerçek 3B küre.\n• Tam yerel haberler: yalnızca yeri anan başlıklar, en yeni 100'e kadar.\n• Flashback, Reddit, Hacker News ve Stack Exchange forum sekmesi.\n• Favoriler, kategoriler ve bildirimler.\n• Benim gazetem: tüm favoriler tek bir eski usul ön sayfada.\n• Haber yoğunluğu, zaman kaydırıcı, yer karşılaştırma ve mahalle raporu.\n• Çevrimdışı kopyalı kurulabilir PWA.\n• 7 dil.",
   },
+  'ribegatan': {
+    name: 'Ribegatan',
+    tagline: "Referans: Kista'daki bir konut topluluğu için yaptığım web sitesi. Size de böyle bir site ister misiniz? Bana ulaşın.",
+    description: "nRnWorld'un Ribe Samfällighetsförening için yaptığı referans web sitesi: net, hızlı ve sakinler için kullanımı kolay.",
+    detailedAbout:
+      "Ribegatan.se, Stockholm Kista'daki yeşil ve çocuk dostu bir konut topluluğu olan Ribe Samfällighetsförening'in web sitesidir. Sakinlere her cihazda ihtiyaç duydukları her şeyi bulabilecekleri sakin bir yer sunar.\n\nÖne çıkan özellikler:\n• Canlı saat, isim günü, hafta numarası ve yılın önemli tarihleriyle net bir ana sayfa.\n• Belge arşivi: tüzük, yönetim ve genel kurul tutanakları, formlar ve talimatlar.\n• Pratik rehberler: çamaşırhaneler, otopark, elektrikli araç şarjı, atık, kar temizliği, pencere, panel, ısıtma ve daha fazlası.\n• Yönetim, aidat, TV ve internet ile emlakçı ve mülk devri bilgileri.\n• 1979'daki ilk inşaattan bugüne fotoğraf galerisi ve bölgenin tarihi.\n• Takvim, site içi arama ve yerleşik yardım asistanı.\n• Topluluğun yeşil renklerinde duyarlı tasarım.",
+  },
 };

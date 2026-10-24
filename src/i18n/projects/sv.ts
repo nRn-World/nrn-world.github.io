@@ -156,4 +156,11 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       "NewzLocal är en webbapp med en riktig 3D-jord. Zooma från hela världen ner till land, region, stad, stadsdel och enskild gata och få de senaste nyheterna och forumtrådarna om exakt den platsen, i en tidningsdesign.\n\nHuvudfunktioner:\n• Riktig 3D-jord med satellitbilder, atmosfär och 3D-byggnader.\n• Exakta lokala nyheter: bara rubriker som nämner platsen, upp till 100 senaste.\n• Forum-flik med Flashback, Reddit, Hacker News och Stack Exchange.\n• Favoriter och kategorier med dra-och-släpp samt notiser.\n• Min tidning: alla favoriter på en gammaldags framsida.\n• Nyhetsvärme på kartan, tidsreglage, jämför platser och grannskapsrapport.\n• Installerbar PWA med offline-kopia.\n• 7 språk.",
   },
+  'ribegatan': {
+    name: 'Ribegatan',
+    tagline: "Referens: en hemsida jag byggt åt ett bostadsområde i Kista. Vill du ha en liknande? Hör av dig.",
+    description: "Referenshemsida byggd av nRnWorld åt Ribe Samfällighetsförening: tydlig, snabb och lätt för de boende att använda.",
+    detailedAbout:
+      "Ribegatan.se är hemsidan för Ribe Samfällighetsförening, ett grönt och barnvänligt bostadsområde i Kista, Stockholm. Den ger de boende en lugn plats där allt finns, på alla enheter.\n\nHuvudfunktioner:\n• Tydlig startsida med levande klocka, namnsdag, veckonummer och årets viktiga datum.\n• Dokumentarkiv: stadgar, styrelse- och stämmoprotokoll, blanketter och instruktioner.\n• Praktiska guider: tvättstugor, parkering, laddning av elbil, avfall, snöröjning, fönster, panel, värme och mer.\n• Styrelse, avgift, TV och bredband samt information om mäklare och ägarbyte.\n• Bildgalleri och områdets historia från byggstarten 1979.\n• Kalender, sök på hela sidan och en inbyggd hjälpassistent.\n• Responsiv design i föreningens gröna färger.",
+  },
 };

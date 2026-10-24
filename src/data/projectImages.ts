@@ -140,4 +140,10 @@ export const PROJECT_IMAGES = {
     raw('NewzLocal', 'main', 'docs/news.png'),
     raw('NewzLocal', 'main', 'docs/globe.png'),
   ],
+  // Source repo is private, so cover + screenshots are hosted locally.
+  ribegatan: [
+    '/images/projects/ribegatan/cover.webp',
+    '/images/projects/ribegatan/home.webp',
+    '/images/projects/ribegatan/mobile.webp',
+  ],
 } as const;

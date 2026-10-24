@@ -230,7 +230,7 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                 )}
               </div>
               <div className="order-2 flex flex-nowrap items-center gap-2 pt-5 md:order-3 md:col-span-2">
-                <a
+                {!project.isReference && <a
                   href={getProjectPath(project)}
                   onClick={(e) => {
                     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
@@ -241,13 +241,13 @@ const Rail: React.FC<RailProps> = ({ group, projects, onSelect }) => {
                 >
                   {t('showcase.view')}
                   <ArrowRight className="size-4" />
-                </a>
+                </a>}
                 {project.liveDemoUrl && (
                   <a
                     href={project.liveDemoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-white/30 px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-white/10 sm:px-4 sm:py-2.5 sm:text-sm"
+                    className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 ${project.isReference ? 'bg-white font-semibold text-neutral-900' : 'border border-white/30 font-medium text-white hover:bg-white/10'} py-2 text-[13px] transition-colorssm:px-4 sm:py-2.5 sm:text-sm`}
                   >
                     {isStoreUrl(project.liveDemoUrl) ? 'Chrome Web Store' : t('showcase.open')}
                     {isStoreUrl(project.liveDemoUrl) ? <Download className="size-3.5" /> : <ExternalLink className="size-3.5" />}

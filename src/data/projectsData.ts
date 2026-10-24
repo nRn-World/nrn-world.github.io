@@ -1126,6 +1126,57 @@ export const INITIAL_PROJECTS: Project[] = [
       ram: '4 GB RAM',
       storage: 'Runs in browser',
     }
+  },
+  // 23. Ribegatan (community website for Ribe Samfällighet)
+  {
+    id: 'ribegatan',
+    name: 'Ribegatan',
+    tagline: 'Reference: a website I built for a residential community in Kista. Want one like it? Get in touch.',
+    description: 'Reference website built by nRnWorld for Ribe Samfällighetsförening: clear, fast and easy for residents to use.',
+    detailedAbout: "Ribegatan.se is the website of Ribe Samfällighetsförening, a green and child-friendly residential community in Kista, Stockholm. It gives residents one calm place to find what they need, on any device.\n\nMain features:\n• Clear start page with live clock, name day, week number and key dates for the year.\n• Document archive: statutes, board minutes, meeting minutes, forms and instructions.\n• Practical guides: laundry rooms, parking, EV charging, waste, snow clearing, windows, panels, heating and more.\n• Board, fees, TV and broadband, broker and ownership-change information.\n• Picture gallery and the history of the area from the first construction start in 1979.\n• Calendar, site-wide search and a built-in help assistant.\n• Responsive design in the community's green colours.",
+    version: 'v1.0.0-live',
+    releaseDate: '2026-09-21',
+    category: 'Websites',
+    tags: ['Reference', 'Website', 'Design'],
+    isReference: true,
+    platformBadge: 'WEB',
+    projectType: 'web_app',
+    liveDemoUrl: 'https://ribegatan.se/',
+    featured: false,
+    rating: 4.9,
+    downloadsCount: 0,
+    starsCount: 0,
+    images: [...PROJECT_IMAGES.ribegatan],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Website – Desktop, Tablet & Mobile', icon: 'globe' },
+      { label: 'Content', value: 'Documents, Guides, Calendar, Gallery', icon: 'layers' },
+      { label: 'Features', value: 'Search, Help Assistant, Live Clock & Name Day', icon: 'cpu' },
+      { label: 'Language', value: 'Svenska', icon: 'layers' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.09.21',
+        isCurrent: true,
+        items: [
+          'Live release at ribegatan.se',
+          'Start page with clock, name day and important dates',
+          'Document archive, guides, gallery and history',
+          'Calendar, site search and help assistant',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/ribegatan',
+    hideGithubLinks: true,
+    license: 'Proprietary',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Live Online',
+    systemRequirements: {
+      os: 'Any modern browser on desktop or mobile',
+      ram: '2 GB RAM',
+      storage: 'Runs in browser',
+    }
   }
 ];
 

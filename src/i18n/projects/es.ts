@@ -135,4 +135,11 @@ export const esProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       "NewzLocal es una aplicación web con un globo 3D real. Acércate del mundo al país, región, ciudad, barrio y hasta una sola calle, y lee las noticias y hilos de foro más recientes sobre ese lugar exacto, con diseño de periódico.\n\nFunciones principales:\n• Globo 3D real con imágenes de satélite, atmósfera y edificios 3D.\n• Noticias locales exactas: solo titulares que mencionan el lugar, hasta 100.\n• Pestaña de foros: Flashback, Reddit, Hacker News y Stack Exchange.\n• Favoritos, categorías y alertas.\n• Mi periódico: todos tus favoritos en una portada clásica.\n• Calor de noticias, control de tiempo, comparar lugares e informe del barrio.\n• PWA instalable con copia sin conexión.\n• 7 idiomas.",
   },
+  'ribegatan': {
+    name: 'Ribegatan',
+    tagline: "Referencia: un sitio web que creé para una comunidad residencial en Kista. ¿Quieres uno parecido? Contáctame.",
+    description: "Sitio de referencia creado por nRnWorld para Ribe Samfällighetsförening: claro, rápido y fácil de usar para los vecinos.",
+    detailedAbout:
+      "Ribegatan.se es el sitio web de Ribe Samfällighetsförening, una comunidad residencial verde y apta para niños en Kista, Estocolmo. Ofrece a los vecinos un lugar tranquilo donde encontrar todo, en cualquier dispositivo.\n\nFunciones principales:\n• Página de inicio clara con reloj en vivo, santoral, número de semana y fechas clave del año.\n• Archivo de documentos: estatutos, actas de la junta y de asambleas, formularios e instrucciones.\n• Guías prácticas: lavanderías, aparcamiento, carga de coches eléctricos, residuos, retirada de nieve, ventanas, paneles, calefacción y más.\n• Junta, cuotas, TV y banda ancha, e información sobre agentes inmobiliarios y cambio de propietario.\n• Galería de fotos e historia de la zona desde el inicio de la obra en 1979.\n• Calendario, búsqueda en todo el sitio y asistente de ayuda integrado.\n• Diseño adaptable en los colores verdes de la comunidad.",
+  },
 };
