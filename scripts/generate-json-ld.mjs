@@ -46,7 +46,7 @@ const graph = {
       '@id': `${SITE.origin}/#organization`,
       name: SITE.name,
       url: SITE.origin,
-      logo: `${SITE.origin}/logo-v3.webp`,
+      logo: `${SITE.origin}/logo-v4.webp`,
       sameAs: [SITE.githubOrg, 'https://ko-fi.com/nrnworld'],
     },
     {

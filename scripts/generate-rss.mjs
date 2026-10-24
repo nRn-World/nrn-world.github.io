@@ -46,7 +46,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
     <lastBuildDate>${now}</lastBuildDate>
     <atom:link href="${SITE.origin}/rss.xml" rel="self" type="application/rss+xml" />
     <image>
-      <url>${SITE.origin}/logo-v3.webp</url>
+      <url>${SITE.origin}/logo-v4.webp</url>
       <title>${escapeXml(SITE.name)}</title>
       <link>${SITE.origin}</link>
     </image>
