@@ -46,7 +46,7 @@ export function loadSeoProjects() {
 
   /** @type {SeoProject[]} */
   const projects = [];
-  const blocks = projectsSrc.split(/\n  \{\n/);
+  const blocks = projectsSrc.split(/\r?\n  \{\r?\n/);
 
   for (const chunk of blocks) {
     const id = chunk.match(/id:\s*'([^']+)'/)?.[1];

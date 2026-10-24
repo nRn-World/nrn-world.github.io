@@ -393,7 +393,66 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
-  // 8. DoneTogether (Web App + Android APK)
+  // 8. Time Architect (Web + Android + iOS)
+  {
+    id: 'time-architect',
+    name: 'Time Architect',
+    tagline: 'A calm, deterministic time-manipulation puzzler: rewind, freeze and fast-forward individual mechanisms to cross clockwork chambers.',
+    description: 'Twelve handcrafted clockwork chambers where the world only ticks when you move. Freeze a bridge mid-span, rewind a failing gate, and read the rhythm before the chamber remembers you.',
+    detailedAbout: `Time Architect is a complete puzzle campaign built around one clean rule: every step advances the chamber clock. Dials, bridges and drones all keep their own time, and you can rewind, pause, play or fast-forward any one of them - but only one moment can be held still at a time.
+
+• 12 handcrafted chambers with a tutorial curve, par targets and a finale
+• Deterministic simulation shared by the game, its tests and an automated solver
+• Original isometric renderer drawn procedurally on canvas, no engine and no image packs
+• Seven complete languages including Arabic right-to-left and Japanese
+• Full offline play, free undo, instant restart, no ads and no analytics
+• Ships as a browser game, an Android app and an iOS build from one codebase
+
+Play instantly in the browser, or install the Android build from the repository.`,
+    version: 'v1.1.0',
+    releaseDate: '2026-10-24',
+    category: 'Games',
+    tags: ['Spel', 'Pussel', 'Webb', 'Android', 'iOS'],
+    platformBadge: 'CROSS',
+    projectType: 'web_game',
+    liveDemoUrl: 'https://nrnworld.one/TimeArchitect/',
+    featured: false,
+    rating: 5,
+    downloadsCount: 0,
+    starsCount: 0,
+    images: [...PROJECT_IMAGES.timeArchitect],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platforms', value: 'Browser, Android, iOS', icon: 'globe' },
+      { label: 'Content', value: '12 handcrafted chambers + finale', icon: 'layers' },
+      { label: 'Languages', value: '7 (incl. Arabic RTL)', icon: 'globe' },
+      { label: 'Engine', value: 'Original isometric canvas renderer', icon: 'terminal' },
+    ],
+    changelog: [
+      {
+        version: 'v1.1.0',
+        date: '2026.10.24',
+        isCurrent: true,
+        items: [
+          'Live browser build with offline support',
+          'Android app (1.1.0) and iOS project generated from the same codebase',
+          'Original adaptive icon, splash and studio credits',
+          'Native back-button, haptics and dialog fixes found in device testing',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/TimeArchitect',
+    license: 'Source-available (non-commercial)',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Live Online',
+    systemRequirements: {
+      os: 'Any modern browser; Android 6+; iOS 15+',
+      ram: '1 GB RAM',
+      storage: 'Runs in browser / 7 MB app',
+    }
+  },
+
+  // 9. DoneTogether (Web App + Android APK)
   {
     id: 'done-together',
     name: 'DoneTogether',

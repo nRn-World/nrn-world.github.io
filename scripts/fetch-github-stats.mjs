@@ -23,6 +23,7 @@ const REPOS = [
   'OctosArmy',
   'TheSilentRoom1986',
   'NeonPathPuzzle',
+  'TimeArchitect',
   'DoneTogether',
   'NexNote',
   'SecretPromts',

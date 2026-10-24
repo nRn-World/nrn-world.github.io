@@ -5,13 +5,31 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Oct 2026 14:47:09 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 06:11:55 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
-      <url>https://nrnworld.one/logo-72.webp</url>
+      <url>https://nrnworld.one/logo-v4.webp</url>
       <title>nRnWorld</title>
       <link>https://nrnworld.one</link>
     </image>
+    <item>
+      <title>Time Architect</title>
+      <link>https://nrnworld.one/p/timearchitect</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/timearchitect</guid>
+      <description>A calm, deterministic time-manipulation puzzler: rewind, freeze and fast-forward individual mechanisms to cross clockwork chambers.</description>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Games</category>
+      <enclosure url="https://nrnworld.one/images/projects/timeArchitect/cover.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>NewzLocal</title>
+      <link>https://nrnworld.one/p/newzlocal</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/newzlocal</guid>
+      <description>Spin the globe, click any place and read what is happening there right now.</description>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Websites</category>
+      <enclosure url="https://nrnworld.one/images/projects/newzLocal.webp" type="image/webp" length="0" />
+    </item>
     <item>
       <title>GitHubRepoAnalyzer</title>
       <link>https://nrnworld.one/p/githubrepoanalyzer</link>
@@ -29,6 +47,15 @@
       <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
       <category>Chrome Extensions</category>
       <enclosure url="https://nrnworld.one/images/projects/autoAccountMaker.svg" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>Ribegatan</title>
+      <link>https://nrnworld.one/p/ribegatan</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/ribegatan</guid>
+      <description>Reference: a website I built for a residential community in Kista. Want one like it? Get in touch.</description>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+      <category>Websites</category>
+      <enclosure url="https://nrnworld.one/images/projects/ribegatan/cover.webp" type="image/webp" length="0" />
     </item>
     <item>
       <title>Doggy-Player</title>
@@ -64,7 +91,7 @@
       <description>Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth.</description>
       <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
       <category>Games</category>
-      <enclosure url="https://nrnworld.one/images/projects/shadowPaw.svg" type="image/webp" length="0" />
+      <enclosure url="https://nrnworld.one/images/projects/shadowPaw-v2.svg" type="image/webp" length="0" />
     </item>
     <item>
       <title>TheSilentRoom1986</title>
@@ -81,7 +108,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/bugraider</guid>
       <description>Drop it into any AI agent and watch it hunt every bug, security flaw, and dead code in your project.</description>
       <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-      <category>AI</category>
+      <category>Windows</category>
       <enclosure url="https://nrnworld.one/images/projects/bugraider.webp" type="image/webp" length="0" />
     </item>
     <item>
@@ -90,7 +117,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/octosarmy</guid>
       <description>Multi-agent AI orchestration system for autonomous file management and workspace hygiene.</description>
       <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
-      <category>CLI</category>
+      <category>Windows</category>
       <enclosure url="https://nrnworld.one/images/projects/octosArmy.webp" type="image/webp" length="0" />
     </item>
     <item>
@@ -126,7 +153,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/svalna</guid>
       <description>Din kyl minns åt dig – helt offline och helt privat.</description>
       <pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Tools</category>
+      <category>Websites</category>
       <enclosure url="https://nrnworld.one/images/projects/svalna/cover.webp" type="image/webp" length="0" />
     </item>
     <item>
@@ -135,7 +162,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/sitescannerpro</guid>
       <description>Website health analysis for SEO, performance, security, accessibility, and code quality.</description>
       <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Security</category>
+      <category>Websites</category>
       <enclosure url="https://nrnworld.one/images/projects/siteScannerPro.webp" type="image/webp" length="0" />
     </item>
     <item>
@@ -144,7 +171,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/globalemergency</guid>
       <description>Global Emergency, source-backed country emergency information and travel safety PWA.</description>
       <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Security</category>
+      <category>Websites</category>
       <enclosure url="https://nrnworld.one/images/projects/globalEmergency.svg" type="image/webp" length="0" />
     </item>
     <item>
@@ -162,7 +189,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/secretpromts</guid>
       <description>Curated AI prompt discovery directory, tester, and optimization playground.</description>
       <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-      <category>AI</category>
+      <category>Websites</category>
       <enclosure url="https://nrnworld.one/images/projects/secretPrompts.webp" type="image/webp" length="0" />
     </item>
     <item>
@@ -171,7 +198,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/bluetoothsafetylock</guid>
       <description>Automated proximity lock utility that secures your Windows workstation when your Bluetooth device disconnects.</description>
       <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Security</category>
+      <category>Windows</category>
       <enclosure url="https://nrnworld.one/images/projects/bluetoothSafetyLock.webp" type="image/webp" length="0" />
     </item>
     <item>
@@ -198,7 +225,7 @@
       <guid isPermaLink="true">https://nrnworld.one/p/nexnote</guid>
       <description>Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math.</description>
       <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
-      <category>Tools</category>
+      <category>Websites</category>
       <enclosure url="https://nrnworld.one/images/projects/nexNote.webp" type="image/webp" length="0" />
     </item>
   </channel>

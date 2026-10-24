@@ -53,6 +53,12 @@ export const PROJECT_IMAGES = {
     raw('NeonPathPuzzle', 'main', 'screenshots/level-complete.png'),
     raw('NeonPathPuzzle', 'main', 'screenshots/themes.png'),
   ],
+  timeArchitect: [
+    '/images/projects/timeArchitect/cover.webp',
+    '/images/projects/timeArchitect/title.webp',
+    '/images/projects/timeArchitect/chamber.webp',
+    '/images/projects/timeArchitect/chambers.webp',
+  ],
   doneTogether: [
     '/images/projects/doneTogether.webp',
     raw('DoneTogether', 'main', 'screenshot/login.png'),

@@ -1,902 +1,926 @@
 {
-  "fetchedAt": "2026-10-15T14:47:08.054Z",
-  "successCount": 21,
-  "totalRepos": 21,
+  "fetchedAt": "2026-10-24T06:11:53.636Z",
+  "successCount": 22,
+  "totalRepos": 22,
   "repos": {
     "ShadowPaw": {
       "repoName": "ShadowPaw",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-10-04T02:24:56Z",
+      "githubPushedAt": "2026-10-24T02:49:03Z",
       "assets": [],
-      "lastFetched": 1792075606598,
+      "lastFetched": 1792822287259,
       "fetchOk": true
     },
     "Doggy-Player": {
       "repoName": "Doggy-Player",
-      "totalDownloads": 642,
+      "totalDownloads": 682,
       "starsCount": 8,
-      "latestVersion": "v1.1.75",
-      "latestReleaseDate": "2026-10-05T21:12:21Z",
-      "githubPushedAt": "2026-10-10T21:03:49Z",
+      "latestVersion": "v1.1.77",
+      "latestReleaseDate": "2026-10-18T18:46:47Z",
+      "githubPushedAt": "2026-10-23T12:59:27Z",
       "assets": [
         {
-          "name": "Doggy-Player-1.1.75.AppImage",
-          "size": 177456319,
-          "download_count": 28,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.AppImage"
+          "name": "Doggy-Player-1.1.77.AppImage",
+          "size": 177456210,
+          "download_count": 14,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-1.1.77.AppImage"
         },
         {
-          "name": "Doggy-Player-1.1.75.dmg",
-          "size": 156382703,
+          "name": "Doggy-Player-1.1.77.dmg",
+          "size": 156390124,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.dmg"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-1.1.77.dmg"
         },
         {
-          "name": "Doggy-Player-1.1.75.dmg.blockmap",
-          "size": 164173,
-          "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.dmg.blockmap"
-        },
-        {
-          "name": "Doggy-Player-1.1.75.zip",
-          "size": 150313889,
+          "name": "Doggy-Player-1.1.77.dmg.blockmap",
+          "size": 164059,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-1.1.77.dmg.blockmap"
         },
         {
-          "name": "Doggy-Player-1.1.75.zip.blockmap",
-          "size": 158046,
+          "name": "Doggy-Player-1.1.77.zip",
+          "size": 150315992,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-1.1.77.zip"
+        },
+        {
+          "name": "Doggy-Player-1.1.77.zip.blockmap",
+          "size": 158324,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-1.1.75.zip.blockmap"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-1.1.77.zip.blockmap"
         },
         {
-          "name": "Doggy-Player-Setup-1.1.75.exe",
-          "size": 137589634,
-          "download_count": 9,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-Setup-1.1.75.exe"
+          "name": "Doggy-Player-Setup-1.1.77.exe",
+          "size": 137592161,
+          "download_count": 5,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-Setup-1.1.77.exe"
         },
         {
-          "name": "Doggy-Player-Setup-1.1.75.exe.blockmap",
-          "size": 145746,
-          "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-Setup-1.1.75.exe.blockmap"
-        },
-        {
-          "name": "Doggy-Player-Setup-1.1.75.zip",
-          "size": 187368624,
+          "name": "Doggy-Player-Setup-1.1.77.exe.blockmap",
+          "size": 145605,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/Doggy-Player-Setup-1.1.75.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-Setup-1.1.77.exe.blockmap"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.77.zip",
+          "size": 187370759,
+          "download_count": 3,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/Doggy-Player-Setup-1.1.77.zip"
         },
         {
           "name": "latest-linux.yml",
           "size": 379,
-          "download_count": 8,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/latest-linux.yml"
+          "download_count": 3,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/latest-linux.yml"
         },
         {
           "name": "latest-mac.yml",
           "size": 498,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/latest-mac.yml"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/latest-mac.yml"
         },
         {
           "name": "latest.yml",
           "size": 356,
-          "download_count": 67,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.75/latest.yml"
+          "download_count": 43,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.77/latest.yml"
         },
         {
           "name": "Doggy-Player-Setup-1.1.68.exe",
           "size": 137577345,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.68.zip",
           "size": 187355361,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-94118a4c72fa67571c2c/Doggy-Player-Setup-1.1.68.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.62.exe",
           "size": 137572076,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-4ecba6e2bf11e5d1bef8/Doggy-Player-Setup-1.1.62.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-4ecba6e2bf11e5d1bef8/Doggy-Player-Setup-1.1.62.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.62.zip",
           "size": 187349764,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-4ecba6e2bf11e5d1bef8/Doggy-Player-Setup-1.1.62.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-4ecba6e2bf11e5d1bef8/Doggy-Player-Setup-1.1.62.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.60.exe",
           "size": 147345627,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-d504b8a3c5c8e580313b/Doggy-Player-Setup-1.1.60.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-d504b8a3c5c8e580313b/Doggy-Player-Setup-1.1.60.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.60.zip",
           "size": 202194801,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-d504b8a3c5c8e580313b/Doggy-Player-Setup-1.1.60.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-d504b8a3c5c8e580313b/Doggy-Player-Setup-1.1.60.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.57.exe",
           "size": 147344958,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-80e72c9e8b3e57bff31c/Doggy-Player-Setup-1.1.57.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-80e72c9e8b3e57bff31c/Doggy-Player-Setup-1.1.57.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.57.zip",
           "size": 202193583,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-80e72c9e8b3e57bff31c/Doggy-Player-Setup-1.1.57.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-80e72c9e8b3e57bff31c/Doggy-Player-Setup-1.1.57.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.52.exe",
           "size": 147344709,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-805f301944cff39cc7bd/Doggy-Player-Setup-1.1.52.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-805f301944cff39cc7bd/Doggy-Player-Setup-1.1.52.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.52.zip",
           "size": 202193264,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-805f301944cff39cc7bd/Doggy-Player-Setup-1.1.52.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-805f301944cff39cc7bd/Doggy-Player-Setup-1.1.52.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.50.exe",
           "size": 147344321,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-e2099055812c7c4087d3/Doggy-Player-Setup-1.1.50.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-e2099055812c7c4087d3/Doggy-Player-Setup-1.1.50.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.50.zip",
           "size": 202192951,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-e2099055812c7c4087d3/Doggy-Player-Setup-1.1.50.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-e2099055812c7c4087d3/Doggy-Player-Setup-1.1.50.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.42.exe",
           "size": 147343718,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-5b7ac5dca2009b4635b8/Doggy-Player-Setup-1.1.42.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-5b7ac5dca2009b4635b8/Doggy-Player-Setup-1.1.42.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.42.zip",
           "size": 202192671,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/untagged-5b7ac5dca2009b4635b8/Doggy-Player-Setup-1.1.42.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/untagged-5b7ac5dca2009b4635b8/Doggy-Player-Setup-1.1.42.zip"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.76.exe",
+          "size": 137592106,
+          "download_count": 1,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.76/Doggy-Player-Setup-1.1.76.exe"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.76.zip",
+          "size": 187370695,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.76/Doggy-Player-Setup-1.1.76.zip"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.75.exe",
+          "size": 137589634,
+          "download_count": 9,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.75/Doggy-Player-Setup-1.1.75.exe"
+        },
+        {
+          "name": "Doggy-Player-Setup-1.1.75.zip",
+          "size": 187368624,
+          "download_count": 2,
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.75/Doggy-Player-Setup-1.1.75.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.72.exe",
           "size": 137584937,
           "download_count": 5,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.72/Doggy-Player-Setup-1.1.72.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.72/Doggy-Player-Setup-1.1.72.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.72.zip",
           "size": 187363718,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.72/Doggy-Player-Setup-1.1.72.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.72/Doggy-Player-Setup-1.1.72.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.71.exe",
           "size": 137581323,
           "download_count": 6,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.71.zip",
           "size": 187359781,
           "download_count": 9,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.71/Doggy-Player-Setup-1.1.71.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.70.exe",
           "size": 137580510,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.70/Doggy-Player-Setup-1.1.70.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.70/Doggy-Player-Setup-1.1.70.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.70.zip",
           "size": 187358548,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.70/Doggy-Player-Setup-1.1.70.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.70/Doggy-Player-Setup-1.1.70.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.69.exe",
           "size": 137577626,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.69/Doggy-Player-Setup-1.1.69.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.69/Doggy-Player-Setup-1.1.69.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.69.zip",
           "size": 187355659,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.69/Doggy-Player-Setup-1.1.69.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.69/Doggy-Player-Setup-1.1.69.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.67.exe",
           "size": 137576132,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.67/Doggy-Player-Setup-1.1.67.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.67/Doggy-Player-Setup-1.1.67.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.67.zip",
           "size": 187353918,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.67/Doggy-Player-Setup-1.1.67.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.67/Doggy-Player-Setup-1.1.67.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.66.exe",
           "size": 137576384,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.66/Doggy-Player-Setup-1.1.66.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.66/Doggy-Player-Setup-1.1.66.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.66.zip",
           "size": 187354485,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.66/Doggy-Player-Setup-1.1.66.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.66/Doggy-Player-Setup-1.1.66.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.65.exe",
           "size": 137575496,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.65/Doggy-Player-Setup-1.1.65.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.65/Doggy-Player-Setup-1.1.65.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.65.zip",
           "size": 187353340,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.65/Doggy-Player-Setup-1.1.65.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.65/Doggy-Player-Setup-1.1.65.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.64.exe",
           "size": 137574831,
           "download_count": 5,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.64/Doggy-Player-Setup-1.1.64.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.64/Doggy-Player-Setup-1.1.64.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.64.zip",
           "size": 187352675,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.64/Doggy-Player-Setup-1.1.64.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.64/Doggy-Player-Setup-1.1.64.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.63.exe",
           "size": 137573516,
           "download_count": 7,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.63/Doggy-Player-Setup-1.1.63.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.63/Doggy-Player-Setup-1.1.63.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.63.zip",
           "size": 187351016,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.63/Doggy-Player-Setup-1.1.63.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.63/Doggy-Player-Setup-1.1.63.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.61.exe",
           "size": 147345931,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.61/Doggy-Player-Setup-1.1.61.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.61/Doggy-Player-Setup-1.1.61.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.61.zip",
           "size": 202195186,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.61/Doggy-Player-Setup-1.1.61.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.61/Doggy-Player-Setup-1.1.61.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.59.exe",
           "size": 147345563,
           "download_count": 6,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.59/Doggy-Player-Setup-1.1.59.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.59/Doggy-Player-Setup-1.1.59.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.59.zip",
           "size": 202194824,
           "download_count": 27,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.59/Doggy-Player-Setup-1.1.59.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.59/Doggy-Player-Setup-1.1.59.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.58.exe",
           "size": 147345072,
           "download_count": 6,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.58/Doggy-Player-Setup-1.1.58.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.58/Doggy-Player-Setup-1.1.58.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.58.zip",
           "size": 202193636,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.58/Doggy-Player-Setup-1.1.58.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.58/Doggy-Player-Setup-1.1.58.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.56.exe",
           "size": 147344894,
           "download_count": 8,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.56/Doggy-Player-Setup-1.1.56.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.56/Doggy-Player-Setup-1.1.56.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.56.zip",
           "size": 202193418,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.56/Doggy-Player-Setup-1.1.56.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.56/Doggy-Player-Setup-1.1.56.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.55.exe",
           "size": 147344869,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.55/Doggy-Player-Setup-1.1.55.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.55/Doggy-Player-Setup-1.1.55.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.55.zip",
           "size": 202193444,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.55/Doggy-Player-Setup-1.1.55.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.55/Doggy-Player-Setup-1.1.55.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.54.exe",
           "size": 147344818,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.54/Doggy-Player-Setup-1.1.54.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.54/Doggy-Player-Setup-1.1.54.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.54.zip",
           "size": 202193338,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.54/Doggy-Player-Setup-1.1.54.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.54/Doggy-Player-Setup-1.1.54.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.53.exe",
           "size": 147344768,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.53/Doggy-Player-Setup-1.1.53.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.53/Doggy-Player-Setup-1.1.53.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.53.zip",
           "size": 202193134,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.53/Doggy-Player-Setup-1.1.53.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.53/Doggy-Player-Setup-1.1.53.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.51.exe",
           "size": 147344407,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.51/Doggy-Player-Setup-1.1.51.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.51/Doggy-Player-Setup-1.1.51.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.51.zip",
           "size": 202192963,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.51/Doggy-Player-Setup-1.1.51.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.51/Doggy-Player-Setup-1.1.51.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.48.exe",
           "size": 147344534,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.48/Doggy-Player-Setup-1.1.48.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.48/Doggy-Player-Setup-1.1.48.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.48.zip",
           "size": 202192823,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.48/Doggy-Player-Setup-1.1.48.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.48/Doggy-Player-Setup-1.1.48.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.47.exe",
           "size": 147344360,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.47/Doggy-Player-Setup-1.1.47.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.47/Doggy-Player-Setup-1.1.47.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.47.zip",
           "size": 202192823,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.47/Doggy-Player-Setup-1.1.47.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.47/Doggy-Player-Setup-1.1.47.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.46.exe",
           "size": 147343989,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.46/Doggy-Player-Setup-1.1.46.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.46/Doggy-Player-Setup-1.1.46.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.46.zip",
           "size": 202192452,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.46/Doggy-Player-Setup-1.1.46.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.46/Doggy-Player-Setup-1.1.46.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.45.exe",
           "size": 147344242,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.45/Doggy-Player-Setup-1.1.45.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.45/Doggy-Player-Setup-1.1.45.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.45.zip",
           "size": 202192761,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.45/Doggy-Player-Setup-1.1.45.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.45/Doggy-Player-Setup-1.1.45.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.44.exe",
           "size": 147343419,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.44/Doggy-Player-Setup-1.1.44.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.44/Doggy-Player-Setup-1.1.44.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.44.zip",
           "size": 202192696,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.44/Doggy-Player-Setup-1.1.44.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.44/Doggy-Player-Setup-1.1.44.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.41.exe",
           "size": 147343701,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.41/Doggy-Player-Setup-1.1.41.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.41/Doggy-Player-Setup-1.1.41.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.41.zip",
           "size": 202192540,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.41/Doggy-Player-Setup-1.1.41.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.41/Doggy-Player-Setup-1.1.41.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.38.exe",
           "size": 147342713,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.38/Doggy-Player-Setup-1.1.38.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.38/Doggy-Player-Setup-1.1.38.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.38.zip",
           "size": 202191918,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.38/Doggy-Player-Setup-1.1.38.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.38/Doggy-Player-Setup-1.1.38.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.37.exe",
           "size": 124735330,
           "download_count": 5,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.37/Doggy-Player-Setup-1.1.37.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.37/Doggy-Player-Setup-1.1.37.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.37.zip",
           "size": 171956113,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.37/Doggy-Player-Setup-1.1.37.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.37/Doggy-Player-Setup-1.1.37.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.36.exe",
           "size": 124735089,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.36/Doggy-Player-Setup-1.1.36.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.36/Doggy-Player-Setup-1.1.36.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.36.zip",
           "size": 171955708,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.36/Doggy-Player-Setup-1.1.36.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.36/Doggy-Player-Setup-1.1.36.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.35.exe",
           "size": 124738593,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.35/Doggy-Player-Setup-1.1.35.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.35/Doggy-Player-Setup-1.1.35.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.35.zip",
           "size": 171955939,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.35/Doggy-Player-Setup-1.1.35.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.35/Doggy-Player-Setup-1.1.35.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.34.exe",
           "size": 124734425,
           "download_count": 8,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.34/Doggy-Player-Setup-1.1.34.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.34/Doggy-Player-Setup-1.1.34.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.34.zip",
           "size": 171954763,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.34/Doggy-Player-Setup-1.1.34.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.34/Doggy-Player-Setup-1.1.34.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.33.exe",
           "size": 127363201,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.33/Doggy-Player-Setup-1.1.33.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.33/Doggy-Player-Setup-1.1.33.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.33.zip",
           "size": 171834003,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.33/Doggy-Player-Setup-1.1.33.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.33/Doggy-Player-Setup-1.1.33.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.32.exe",
           "size": 122891853,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.32/Doggy-Player-Setup-1.1.32.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.32/Doggy-Player-Setup-1.1.32.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.32.zip",
           "size": 170342647,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.32/Doggy-Player-Setup-1.1.32.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.32/Doggy-Player-Setup-1.1.32.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.31.exe",
           "size": 122889312,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.31/Doggy-Player-Setup-1.1.31.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.31/Doggy-Player-Setup-1.1.31.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.31.zip",
           "size": 170339667,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.31/Doggy-Player-Setup-1.1.31.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.31/Doggy-Player-Setup-1.1.31.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.30.exe",
           "size": 122887149,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.30/Doggy-Player-Setup-1.1.30.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.30/Doggy-Player-Setup-1.1.30.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.30.zip",
           "size": 170337088,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.30/Doggy-Player-Setup-1.1.30.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.30/Doggy-Player-Setup-1.1.30.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.29.exe",
           "size": 122887030,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.29/Doggy-Player-Setup-1.1.29.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.29/Doggy-Player-Setup-1.1.29.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.29.zip",
           "size": 170337027,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.29/Doggy-Player-Setup-1.1.29.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.29/Doggy-Player-Setup-1.1.29.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.27.exe",
           "size": 122885037,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.28/Doggy-Player-Setup-1.1.27.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.28/Doggy-Player-Setup-1.1.27.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.27.zip",
           "size": 170334814,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.28/Doggy-Player-Setup-1.1.27.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.28/Doggy-Player-Setup-1.1.27.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.28.exe",
           "size": 122887064,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.28/Doggy-Player-Setup-1.1.28.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.28/Doggy-Player-Setup-1.1.28.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.28.zip",
           "size": 170337134,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.28/Doggy-Player-Setup-1.1.28.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.28/Doggy-Player-Setup-1.1.28.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.26.exe",
           "size": 122881551,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.26/Doggy-Player-Setup-1.1.26.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.26/Doggy-Player-Setup-1.1.26.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.26.zip",
           "size": 170330406,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.26/Doggy-Player-Setup-1.1.26.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.26/Doggy-Player-Setup-1.1.26.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.25.exe",
           "size": 122881552,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.25/Doggy-Player-Setup-1.1.25.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.25/Doggy-Player-Setup-1.1.25.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.25.zip",
           "size": 170330479,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.25/Doggy-Player-Setup-1.1.25.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.25/Doggy-Player-Setup-1.1.25.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.24.exe",
           "size": 122881378,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.24/Doggy-Player-Setup-1.1.24.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.24/Doggy-Player-Setup-1.1.24.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.24.zip",
           "size": 170330329,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.24/Doggy-Player-Setup-1.1.24.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.24/Doggy-Player-Setup-1.1.24.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.23.exe",
           "size": 122881438,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.23/Doggy-Player-Setup-1.1.23.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.23/Doggy-Player-Setup-1.1.23.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.23.zip",
           "size": 170330362,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.23/Doggy-Player-Setup-1.1.23.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.23/Doggy-Player-Setup-1.1.23.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.22.exe",
           "size": 122881086,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.22/Doggy-Player-Setup-1.1.22.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.22/Doggy-Player-Setup-1.1.22.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.22.zip",
           "size": 170330084,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.22/Doggy-Player-Setup-1.1.22.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.22/Doggy-Player-Setup-1.1.22.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.21.exe",
           "size": 122880750,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.21/Doggy-Player-Setup-1.1.21.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.21/Doggy-Player-Setup-1.1.21.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.21.zip",
           "size": 170329691,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.21/Doggy-Player-Setup-1.1.21.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.21/Doggy-Player-Setup-1.1.21.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.20.exe",
           "size": 122880342,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.20/Doggy-Player-Setup-1.1.20.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.20/Doggy-Player-Setup-1.1.20.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.20.zip",
           "size": 170329375,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.20/Doggy-Player-Setup-1.1.20.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.20/Doggy-Player-Setup-1.1.20.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.19.exe",
           "size": 122879799,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.19/Doggy-Player-Setup-1.1.19.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.19/Doggy-Player-Setup-1.1.19.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.19.zip",
           "size": 170328661,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.19/Doggy-Player-Setup-1.1.19.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.19/Doggy-Player-Setup-1.1.19.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.18.exe",
           "size": 122879178,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.18/Doggy-Player-Setup-1.1.18.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.18/Doggy-Player-Setup-1.1.18.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.18.zip",
           "size": 170328192,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.18/Doggy-Player-Setup-1.1.18.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.18/Doggy-Player-Setup-1.1.18.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.17.exe",
           "size": 122879285,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.17/Doggy-Player-Setup-1.1.17.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.17/Doggy-Player-Setup-1.1.17.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.17.zip",
           "size": 170328203,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.17/Doggy-Player-Setup-1.1.17.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.17/Doggy-Player-Setup-1.1.17.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.16.exe",
           "size": 122878067,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.16/Doggy-Player-Setup-1.1.16.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.16/Doggy-Player-Setup-1.1.16.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.16.zip",
           "size": 170326597,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.16/Doggy-Player-Setup-1.1.16.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.16/Doggy-Player-Setup-1.1.16.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.15.exe",
           "size": 122877811,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.15/Doggy-Player-Setup-1.1.15.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.15/Doggy-Player-Setup-1.1.15.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.15.zip",
           "size": 170326129,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.15/Doggy-Player-Setup-1.1.15.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.15/Doggy-Player-Setup-1.1.15.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.14.exe",
           "size": 118243109,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.14/Doggy-Player-Setup-1.1.14.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.14/Doggy-Player-Setup-1.1.14.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.14.zip",
           "size": 164621174,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.14/Doggy-Player-Setup-1.1.14.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.14/Doggy-Player-Setup-1.1.14.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.13.exe",
           "size": 118242948,
           "download_count": 2,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.13/Doggy-Player-Setup-1.1.13.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.13/Doggy-Player-Setup-1.1.13.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.13.zip",
           "size": 164621062,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.13/Doggy-Player-Setup-1.1.13.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.13/Doggy-Player-Setup-1.1.13.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.12.exe",
           "size": 118242459,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.12/Doggy-Player-Setup-1.1.12.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.12/Doggy-Player-Setup-1.1.12.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.12.zip",
           "size": 164620631,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.12/Doggy-Player-Setup-1.1.12.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.12/Doggy-Player-Setup-1.1.12.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.11.exe",
           "size": 118255639,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.11/Doggy-Player-Setup-1.1.11.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.11/Doggy-Player-Setup-1.1.11.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.11.zip",
           "size": 164644542,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.11/Doggy-Player-Setup-1.1.11.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.11/Doggy-Player-Setup-1.1.11.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.9.exe",
           "size": 117561055,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.9/Doggy-Player-Setup-1.1.9.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.9/Doggy-Player-Setup-1.1.9.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.9.zip",
           "size": 163998113,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.9/Doggy-Player-Setup-1.1.9.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.9/Doggy-Player-Setup-1.1.9.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.8.exe",
           "size": 117560985,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.8/Doggy-Player-Setup-1.1.8.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.8/Doggy-Player-Setup-1.1.8.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.8.zip",
           "size": 163998116,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.8/Doggy-Player-Setup-1.1.8.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.8/Doggy-Player-Setup-1.1.8.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.7.exe",
           "size": 117559208,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.7/Doggy-Player-Setup-1.1.7.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.7/Doggy-Player-Setup-1.1.7.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.7.zip",
           "size": 163996068,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.7/Doggy-Player-Setup-1.1.7.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.7/Doggy-Player-Setup-1.1.7.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.3.exe",
           "size": 117461632,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.3/Doggy-Player-Setup-1.1.3.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.3/Doggy-Player-Setup-1.1.3.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.3.zip",
           "size": 163837962,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.3/Doggy-Player-Setup-1.1.3.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.3/Doggy-Player-Setup-1.1.3.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.2.exe",
           "size": 117461596,
           "download_count": 6,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.2/Doggy-Player-Setup-1.1.2.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.2/Doggy-Player-Setup-1.1.2.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.2.zip",
           "size": 117450751,
           "download_count": 63,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.2/Doggy-Player-Setup-1.1.2.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.2/Doggy-Player-Setup-1.1.2.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.1.exe",
           "size": 116512013,
           "download_count": 1,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.1/Doggy-Player-Setup-1.1.1.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.1/Doggy-Player-Setup-1.1.1.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.1.zip",
           "size": 162884194,
           "download_count": 0,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.1/Doggy-Player-Setup-1.1.1.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.1/Doggy-Player-Setup-1.1.1.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.0.9.exe",
           "size": 115341417,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.0/Doggy-Player-Setup-1.0.9.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.0/Doggy-Player-Setup-1.0.9.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.0.9.zip",
           "size": 161778550,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.0/Doggy-Player-Setup-1.0.9.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.0/Doggy-Player-Setup-1.0.9.zip"
         },
         {
           "name": "Doggy-Player-Setup-1.1.0.exe",
           "size": 115341366,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.0/Doggy-Player-Setup-1.1.0.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.0/Doggy-Player-Setup-1.1.0.exe"
         },
         {
           "name": "Doggy-Player-Setup-1.1.0.zip",
           "size": 161778545,
           "download_count": 3,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/v1.1.0/Doggy-Player-Setup-1.1.0.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.0/Doggy-Player-Setup-1.1.0.zip"
         },
         {
           "name": "DoggyStyle-Player-Setup-1.0.9.exe",
           "size": 115341441,
           "download_count": 4,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/1.0.9/DoggyStyle-Player-Setup-1.0.9.exe"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/1.0.9/DoggyStyle-Player-Setup-1.0.9.exe"
         },
         {
           "name": "DoggyStyle-Player.zip.Setup-1.0.9.zip",
           "size": 115331333,
           "download_count": 83,
-          "browser_download_url": "https://github.com/nRn-World/Doggy-Player/releases/download/1.0.9/DoggyStyle-Player.zip.Setup-1.0.9.zip"
+          "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/1.0.9/DoggyStyle-Player.zip.Setup-1.0.9.zip"
         }
       ],
-      "lastFetched": 1792075608785,
+      "lastFetched": 1792822289821,
       "fetchOk": true
     },
     "WindowsSmartTaskbar": {
       "repoName": "WindowsSmartTaskbar",
-      "totalDownloads": 73,
+      "totalDownloads": 75,
       "starsCount": 5,
       "latestVersion": "v1.5.17",
       "latestReleaseDate": "2026-04-29T20:57:35Z",
@@ -917,7 +941,7 @@
         {
           "name": "releases.win.json",
           "size": 799,
-          "download_count": 71,
+          "download_count": 75,
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.17/releases.win.json"
         },
         {
@@ -941,13 +965,13 @@
         {
           "name": "WindowsSmartTaskbar-win-Portable.zip",
           "size": 71189521,
-          "download_count": 9,
+          "download_count": 10,
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.17/WindowsSmartTaskbar-win-Portable.zip"
         },
         {
           "name": "WindowsSmartTaskbar-win-Setup.exe",
           "size": 73919503,
-          "download_count": 34,
+          "download_count": 35,
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.17/WindowsSmartTaskbar-win-Setup.exe"
         },
         {
@@ -957,7 +981,7 @@
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.0/WindowsSmartTaskbar-v1.5.0.zip"
         }
       ],
-      "lastFetched": 1792075610183,
+      "lastFetched": 1792822291003,
       "fetchOk": true
     },
     "NOBreak-Audio-Builder": {
@@ -1113,7 +1137,7 @@
           "browser_download_url": "https://github.com/nRn-World/NOBreak-Audio-Builder/releases/download/v1.0.0/NoBreak-Audio-Builder-Setup-1.0.0.zip"
         }
       ],
-      "lastFetched": 1792075611182,
+      "lastFetched": 1792822292307,
       "fetchOk": true
     },
     "OctosArmy": {
@@ -1203,7 +1227,7 @@
           "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.28/OctosArmy-Setup-1.1.28.exe"
         }
       ],
-      "lastFetched": 1792075612117,
+      "lastFetched": 1792822293907,
       "fetchOk": true
     },
     "TheSilentRoom1986": {
@@ -1212,16 +1236,25 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-10T20:11:08Z",
       "assets": [],
-      "lastFetched": 1792075613195,
+      "lastFetched": 1792822295098,
       "fetchOk": true
     },
     "NeonPathPuzzle": {
       "repoName": "NeonPathPuzzle",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-08-23T21:32:58Z",
+      "githubPushedAt": "2026-10-23T23:27:58Z",
       "assets": [],
-      "lastFetched": 1792075614077,
+      "lastFetched": 1792822296232,
+      "fetchOk": true
+    },
+    "TimeArchitect": {
+      "repoName": "TimeArchitect",
+      "totalDownloads": 0,
+      "starsCount": 0,
+      "githubPushedAt": "2026-10-24T05:54:30Z",
+      "assets": [],
+      "lastFetched": 1792822297328,
       "fetchOk": true
     },
     "DoneTogether": {
@@ -1230,7 +1263,7 @@
       "starsCount": 1,
       "latestVersion": "v1.2.2",
       "latestReleaseDate": "2026-09-03T20:50:41Z",
-      "githubPushedAt": "2026-10-11T17:47:56Z",
+      "githubPushedAt": "2026-10-15T21:24:30Z",
       "assets": [
         {
           "name": "DoneTogether-1.2.2.apk",
@@ -1239,25 +1272,25 @@
           "browser_download_url": "https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk"
         }
       ],
-      "lastFetched": 1792075615069,
+      "lastFetched": 1792822298772,
       "fetchOk": true
     },
     "NexNote": {
       "repoName": "NexNote",
       "totalDownloads": 0,
       "starsCount": 7,
-      "githubPushedAt": "2026-10-10T00:46:38Z",
+      "githubPushedAt": "2026-10-22T17:25:36Z",
       "assets": [],
-      "lastFetched": 1792075616119,
+      "lastFetched": 1792822299965,
       "fetchOk": true
     },
     "SecretPromts": {
       "repoName": "SecretPromts",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-10-12T20:47:56Z",
+      "githubPushedAt": "2026-10-22T18:46:00Z",
       "assets": [],
-      "lastFetched": 1792075616989,
+      "lastFetched": 1792822301124,
       "fetchOk": true
     },
     "SiteScannerPro": {
@@ -1266,7 +1299,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-10T00:46:44Z",
       "assets": [],
-      "lastFetched": 1792075617847,
+      "lastFetched": 1792822302148,
       "fetchOk": true
     },
     "GLOBAL_EMERGENCY": {
@@ -1275,25 +1308,25 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:36:28Z",
       "assets": [],
-      "lastFetched": 1792075618704,
+      "lastFetched": 1792822303508,
       "fetchOk": true
     },
     "PrivateLinkSaver": {
       "repoName": "PrivateLinkSaver",
       "totalDownloads": 0,
       "starsCount": 5,
-      "githubPushedAt": "2026-09-24T22:31:55Z",
+      "githubPushedAt": "2026-10-17T21:35:27Z",
       "assets": [],
-      "lastFetched": 1792075619544,
+      "lastFetched": 1792822304549,
       "fetchOk": true
     },
     "BUGRAIDER": {
       "repoName": "BUGRAIDER",
       "totalDownloads": 0,
       "starsCount": 8,
-      "githubPushedAt": "2026-10-15T08:05:55Z",
+      "githubPushedAt": "2026-10-24T02:49:48Z",
       "assets": [],
-      "lastFetched": 1792075620415,
+      "lastFetched": 1792822305583,
       "fetchOk": true
     },
     "BluetoothSafetyLock": {
@@ -1311,43 +1344,43 @@
           "browser_download_url": "https://github.com/nRn-World/BluetoothSafetyLock/releases/download/v1.1.4/BluetoothSafetyLock-v1.1.4.zip"
         }
       ],
-      "lastFetched": 1792075621562,
+      "lastFetched": 1792822306992,
       "fetchOk": true
     },
     "FlashVideoDownloader": {
       "repoName": "FlashVideoDownloader",
       "totalDownloads": 0,
       "starsCount": 1,
-      "githubPushedAt": "2026-10-12T16:17:11Z",
+      "githubPushedAt": "2026-10-23T23:45:08Z",
       "assets": [],
-      "lastFetched": 1792075623479,
+      "lastFetched": 1792822308073,
       "fetchOk": true
     },
     "NotePin": {
       "repoName": "NotePin",
       "totalDownloads": 0,
       "starsCount": 2,
-      "githubPushedAt": "2026-10-05T22:35:23Z",
+      "githubPushedAt": "2026-10-22T17:32:00Z",
       "assets": [],
-      "lastFetched": 1792075624350,
+      "lastFetched": 1792822309445,
       "fetchOk": true
     },
     "ParkiSthlm": {
       "repoName": "ParkiSthlm",
       "totalDownloads": 0,
       "starsCount": 2,
-      "githubPushedAt": "2026-10-15T14:45:33Z",
+      "githubPushedAt": "2026-10-15T17:57:35Z",
       "assets": [],
-      "lastFetched": 1792075625233,
+      "lastFetched": 1792822310460,
       "fetchOk": true
     },
     "AutoAccountMaker": {
       "repoName": "AutoAccountMaker",
       "totalDownloads": 0,
       "starsCount": 2,
-      "githubPushedAt": "2026-10-10T20:42:58Z",
+      "githubPushedAt": "2026-10-20T15:20:49Z",
       "assets": [],
-      "lastFetched": 1792075626179,
+      "lastFetched": 1792822311521,
       "fetchOk": true
     },
     "GitHubRepoAnalyzer": {
@@ -1356,7 +1389,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-10T21:01:46Z",
       "assets": [],
-      "lastFetched": 1792075627038,
+      "lastFetched": 1792822312567,
       "fetchOk": true
     },
     "Svalna": {
@@ -1365,7 +1398,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:32:55Z",
       "assets": [],
-      "lastFetched": 1792075628054,
+      "lastFetched": 1792822313636,
       "fetchOk": true
     }
   }
