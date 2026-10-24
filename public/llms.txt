@@ -1,5 +1,5 @@
 # nRnWorld
-> Open Windows tools, AI agents, audio engines and browser games. 24 projects with direct downloads and source on GitHub (@nRn-World).
+> Open Windows tools, AI agents, audio engines and browser games. 25 projects with direct downloads and source on GitHub (@nRn-World).
 
 ## Projects
 - [ShadowPaw: Noir Typist](https://nrnworld.one/p/shadowpaw): https://nrnworld.one/p/shadowpaw: Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth. | Live: https://nrnworld.one/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
@@ -10,6 +10,7 @@
 - [TheSilentRoom1986](https://nrnworld.one/p/thesilentroom1986): https://nrnworld.one/p/thesilentroom1986: A 1980s-inspired underground typing game where your words manifest into reality to defy the regime. | Live: https://nrnworld.one/TheSilentRoom1986/ | GitHub: https://github.com/nRn-World/TheSilentRoom1986
 - [NeonPathPuzzle](https://nrnworld.one/p/neonpathpuzzle): https://nrnworld.one/p/neonpathpuzzle: Challenging neon light pathfinding and circuit alignment logic game. | Live: https://nrnworld.one/NeonPathPuzzle/ | GitHub: https://github.com/nRn-World/NeonPathPuzzle
 - [Time Architect](https://nrnworld.one/p/timearchitect): https://nrnworld.one/p/timearchitect: A calm, deterministic time-manipulation puzzler: rewind, freeze and fast-forward individual mechanisms to cross clockwork chambers. | Live: https://nrnworld.one/TimeArchitect/ | GitHub: https://github.com/nRn-World/TimeArchitect
+- [Dream Garden](https://nrnworld.one/p/dreamgarden): https://nrnworld.one/p/dreamgarden: A cozy night-garden simulation: plant dream flowers, befriend six spirits and uncover a gentle mystery. | Live: https://nrnworld.one/DreamGarden/ | GitHub: https://github.com/nRn-World/DreamGarden
 - [DoneTogether](https://nrnworld.one/p/donetogether): https://nrnworld.one/p/donetogether: Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase. | Live: https://nrnworld.one/DoneTogether/ | GitHub: https://github.com/nRn-World/DoneTogether
 - [NexNote](https://nrnworld.one/p/nexnote): https://nrnworld.one/p/nexnote: Minimalist, distraction-free markdown note-taking suite with instant live preview and KaTeX math. | Live: https://nrnworld.one/NexNote/ | GitHub: https://github.com/nRn-World/NexNote
 - [SecretPromts](https://nrnworld.one/p/secretpromts): https://nrnworld.one/p/secretpromts: Curated AI prompt discovery directory, tester, and optimization playground. | Live: https://nrnworld.one/SecretPromts/ | GitHub: https://github.com/nRn-World/SecretPromts

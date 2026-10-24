@@ -146,6 +146,13 @@ export const PROJECT_IMAGES = {
     raw('NewzLocal', 'main', 'docs/news.png'),
     raw('NewzLocal', 'main', 'docs/globe.png'),
   ],
+  dreamGarden: [
+    '/images/projects/dreamGarden/cover.webp',
+    '/images/projects/dreamGarden/garden.webp',
+    '/images/projects/dreamGarden/seeds.webp',
+    '/images/projects/dreamGarden/spirits.webp',
+    '/images/projects/dreamGarden/story.webp',
+  ],
   // Source repo is private, so cover + screenshots are hosted locally.
   ribegatan: [
     '/images/projects/ribegatan/cover.webp',

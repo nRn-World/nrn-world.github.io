@@ -24,6 +24,7 @@ const REPOS = [
   'TheSilentRoom1986',
   'NeonPathPuzzle',
   'TimeArchitect',
+  'DreamGarden',
   'DoneTogether',
   'NexNote',
   'SecretPromts',

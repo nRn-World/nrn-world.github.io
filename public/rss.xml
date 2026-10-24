@@ -5,7 +5,7 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Oct 2026 06:26:44 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 11:39:30 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-v4.webp</url>
@@ -20,6 +20,15 @@
       <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
       <category>Games</category>
       <enclosure url="https://nrnworld.one/images/projects/timeArchitect/cover.webp" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>Dream Garden</title>
+      <link>https://nrnworld.one/p/dreamgarden</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/dreamgarden</guid>
+      <description>A cozy night-garden simulation: plant dream flowers, befriend six spirits and uncover a gentle mystery.</description>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Games</category>
+      <enclosure url="https://nrnworld.one/images/projects/dreamGarden/cover.webp" type="image/webp" length="0" />
     </item>
     <item>
       <title>NewzLocal</title>

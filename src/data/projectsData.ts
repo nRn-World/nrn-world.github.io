@@ -452,6 +452,66 @@ Play instantly in the browser, or install the Android build from the repository.
     }
   },
 
+  // 8b. Dream Garden (Web + PWA game)
+  {
+    id: 'dream-garden',
+    name: 'Dream Garden',
+    tagline: 'A cozy night-garden simulation: plant dream flowers, befriend six spirits and uncover a gentle mystery.',
+    description: 'Grow eight impossible flowers in a small island garden that lives on moonlight. Water, harvest and sell blooms, fulfil the wishes of dream spirits, deepen six spirit bonds and finish a six-chapter story — entirely offline, with no ads and no tracking.',
+    detailedAbout: `Dream Garden is a complete cozy game about tending a garden that only grows at night. Every flower has its own growth rhythm, every spirit remembers what you gave them, and the island keeps a journal of everything you grow.
+
+• 8 dream flowers across four tiers, each with its own art, rhythm and value
+• 6 bondable dream spirits with gifts, wishes and story threads
+• 12 unlockable beds, a decor shop and a daily night gift
+• A six-chapter story with a real finale, plus milestones and stats
+• Seven complete languages including Arabic right-to-left and Japanese
+• Original procedural SVG art and Web Audio soundtrack, no image packs
+• Full offline play, installable PWA, no ads and no analytics
+
+Play instantly in the browser, or install it to your home screen and keep growing.`,
+    version: 'v1.0.0',
+    releaseDate: '2026-10-24',
+    category: 'Games',
+    tags: ['Spel', 'Simulation', 'Webb', 'PWA'],
+    platformBadge: 'WEB',
+    projectType: 'web_game',
+    liveDemoUrl: 'https://nrnworld.one/DreamGarden/',
+    featured: false,
+    rating: 5,
+    downloadsCount: 0,
+    starsCount: 0,
+    images: [...PROJECT_IMAGES.dreamGarden],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platforms', value: 'Browser, installable PWA', icon: 'globe' },
+      { label: 'Content', value: '8 flowers, 6 spirits, 6 story chapters', icon: 'layers' },
+      { label: 'Languages', value: '7 (incl. Arabic RTL)', icon: 'globe' },
+      { label: 'Engine', value: 'Procedural SVG art + Web Audio', icon: 'terminal' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.10.24',
+        isCurrent: true,
+        items: [
+          'Live browser build with full offline play',
+          'Complete cozy campaign: flowers, spirits, wishes and story finale',
+          'Installable PWA with the official nRnWorld mark and icon set',
+          'Seven languages, Arabic right-to-left and Japanese included',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/DreamGarden',
+    license: 'MIT License',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Live Online',
+    systemRequirements: {
+      os: 'Any modern browser on desktop or mobile',
+      ram: '1 GB RAM',
+      storage: 'Runs in browser',
+    }
+  },
+
   // 9. DoneTogether (Web App + Android APK)
   {
     id: 'done-together',
