@@ -44,9 +44,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             src="/logo-v3.webp"
             alt=""
             aria-hidden
-            width={36}
-            height={36}
-            className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
+            width={48}
+            height={48}
+            className="w-10 h-10 sm:w-12 sm:h-12 object-contain shadow-lg shadow-blue-900/20 group-hover:scale-105 transition-transform shrink-0"
             fetchPriority="high"
             decoding="async"
           />
