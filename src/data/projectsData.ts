@@ -931,6 +931,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     downloadsCount: 0,
     starsCount: 1,
     images: [...PROJECT_IMAGES.flashVideoDownloader],
+    videoUrl: '/media/projects/flashvideodownloader.mp4',
     downloadOptions: [],
     specs: [
       { label: 'Platform', value: 'Google Chrome Web Store Extension', icon: 'globe' },
