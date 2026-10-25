@@ -1064,6 +1064,8 @@ Play instantly in the browser, or install it to your home screen and keep growin
     downloadsCount: 0,
     starsCount: 0,
     images: [...PROJECT_IMAGES.autoAccountMaker],
+    videoUrl: '/media/projects/autoaccountmaker.mp4',
+    liveDemoUrl: 'https://chromewebstore.google.com/detail/autoaccountmaker/dhoolninihkdkblbkmddananbaifjpii',
     downloadOptions: [],
     specs: [
       { label: 'Platform', value: 'Chromium Browser Extension (Manifest V3)', icon: 'globe' },

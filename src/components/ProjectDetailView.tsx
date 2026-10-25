@@ -325,6 +325,15 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Column (Left) */}
         <div className="lg:col-span-8 flex flex-col gap-8">
+          {project.videoUrl && (
+            <video
+              src={project.videoUrl}
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full rounded-2xl border border-white/5 bg-black aspect-video"
+            />
+          )}
           {/* Gallery Section – screenshots only (logo is hub-only) */}
           {galleryImages.length > 0 && (
           <section className="flex flex-col gap-4">

@@ -59,6 +59,8 @@ export interface Project {
   liveDemoUrl?: string;
   projectType?: 'downloadable' | 'web_game' | 'web_app' | 'browser_extension' | 'github_repo';
   images: string[];
+  /** Optional launch/demo video (mp4) shown above the gallery on the project page. */
+  videoUrl?: string;
   downloadOptions: DownloadOption[];
   specs: TechnicalSpec[];
   changelog: ChangelogEntry[];
