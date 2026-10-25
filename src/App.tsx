@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ProjectCard } from './components/ProjectCard';
 import { ProjectShowcase } from './components/ProjectShowcase';
+import { IntroVideo } from './components/IntroVideo';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub, mergeGithubStatsPayload, type GithubStatsPayload } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
@@ -502,6 +503,8 @@ export default function App() {
               />
             </div>
           </section>
+
+          <IntroVideo />
 
           {/* Showcase: one big card per project, one rail per category */}
           <ProjectShowcase projects={[...localizedProjects].sort(compareProjects('All', sortBy))} onSelect={handleSelectProject} />
