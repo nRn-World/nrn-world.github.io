@@ -1022,6 +1022,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     downloadsCount: 0,
     starsCount: 0,
     images: [...PROJECT_IMAGES.parkiSthlm],
+    videoUrl: '/media/projects/parkisthlm.mp4',
     downloadOptions: [],
     specs: [
       { label: 'Map Engine', value: 'OpenStreetMap + React 19', icon: 'globe' },
