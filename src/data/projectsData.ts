@@ -531,6 +531,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     downloadsCount: 0,
     starsCount: 1,
     images: [...PROJECT_IMAGES.doneTogether],
+    videoUrl: '/media/projects/donetogether.mp4',
     downloadOptions: [
       {
         id: 'done-together-apk',
