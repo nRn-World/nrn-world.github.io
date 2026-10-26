@@ -35,13 +35,13 @@ export const IntroVideo: React.FC = () => {
         onMouseEnter={startOnHover}
         onVolumeChange={(e) => setSilent(e.currentTarget.muted)}
         className="aspect-square w-full rounded-3xl border border-white/10 bg-black shadow-xl shadow-black/50"
-        src="/media/intro-2.mp4"
-        poster="/media/intro-2-poster.jpg"
+        src="/media/intro-3.mp4"
+        poster="/media/intro-3-poster.jpg"
         controls
         playsInline
         preload="auto"
-        width={900}
-        height={900}
+        width={1080}
+        height={1080}
       />
       {silent && (
         <button
