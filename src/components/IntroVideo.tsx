@@ -33,6 +33,7 @@ export const IntroVideo: React.FC = () => {
       <video
         ref={ref}
         onMouseEnter={startOnHover}
+        onEnded={(e) => e.currentTarget.load()}
         onVolumeChange={(e) => setSilent(e.currentTarget.muted)}
         className="aspect-square w-full rounded-3xl border border-white/10 bg-black shadow-xl shadow-black/50"
         src="/media/intro-3.mp4"
