@@ -154,6 +154,14 @@ export const PROJECT_IMAGES = {
     '/images/projects/dreamGarden/story.webp',
   ],
   // Source repo is private, so cover + screenshots are hosted locally.
+  stepByStep: [
+    'https://raw.githubusercontent.com/nRn-World/step.by.step/main/store/09-feature.png',
+    raw('step.by.step', 'main', 'store/01-start.png'),
+    raw('step.by.step', 'main', 'store/02-tva-satt.png'),
+    raw('step.by.step', 'main', 'store/05-narheten.png'),
+    raw('step.by.step', 'main', 'store/07-topplista.png'),
+    raw('step.by.step', 'main', 'store/08-mal.png'),
+  ],
   ribegatan: [
     '/images/projects/ribegatan/cover.webp',
     '/images/projects/ribegatan/home.webp',

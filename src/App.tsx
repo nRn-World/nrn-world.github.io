@@ -28,6 +28,7 @@ import { Search, Star, ArrowUpDown } from 'lucide-react';
 import githubStatsSnapshot from './data/githubStatsSeed.json';
 import { HudColumn } from './components/ui/hud-panels';
 import { SplineSceneBasic } from './components/ui/spline-scene-basic';
+import { projectCategories, projectInCategory } from './utils/projectCategories';
 
 const ProjectDetailView = lazy(() =>
   import('./components/ProjectDetailView').then((m) => ({ default: m.ProjectDetailView }))
@@ -414,7 +415,7 @@ export default function App() {
         selectedCategory !== 'All' &&
         selectedCategory !== 'Top Stars' &&
         selectedCategory !== 'Most Downloads' &&
-        p.category !== selectedCategory
+        !projectInCategory(p, selectedCategory)
       ) {
         return false;
       }
@@ -431,7 +432,9 @@ export default function App() {
         const matchName = p.name.toLowerCase().includes(q);
         const matchDesc = p.description.toLowerCase().includes(q);
         const matchTag = p.tagline?.toLowerCase().includes(q);
-        const matchCategory = p.category.toLowerCase().includes(q) || localizeCategory(p.category).toLowerCase().includes(q);
+        const matchCategory = projectCategories(p).some(
+          (category) => category.toLowerCase().includes(q) || localizeCategory(category).toLowerCase().includes(q)
+        );
         const matchFiles = p.downloadOptions.some((d) =>
           d.filename.toLowerCase().includes(q) || d.fileType.toLowerCase().includes(q)
         );

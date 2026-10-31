@@ -50,6 +50,8 @@ export interface Project {
   version: string;
   releaseDate: string;
   category: ProjectCategory;
+  /** Extra categories besides `category`, so one project can appear in more than one list. */
+  categories?: ProjectCategory[];
   platformBadge: PlatformBadge;
   featured?: boolean;
   rating?: number;

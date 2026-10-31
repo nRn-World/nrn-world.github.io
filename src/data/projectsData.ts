@@ -1301,7 +1301,55 @@ Play instantly in the browser, or install it to your home screen and keep growin
       ram: '2 GB RAM',
       storage: 'Runs in browser',
     }
-  }
+  },
+  // 26. step.by.step (web app plus Android/iOS build, listed under Websites and Android)
+  {
+    id: 'step-by-step',
+    name: 'step.by.step',
+    tagline: 'Walk together in a group: steps, distance, goals and a leaderboard without GPS, email addresses or maps of people.',
+    description: 'A walking app for groups that runs in the browser and as an installed Android/iOS app. Steps come from the phone health store, distance is calculated on the device, and every group gets its own leaderboard, goals and celebrations.',
+    detailedAbout: 'step.by.step gathers a group for a walk. Everyone walks their own route or together, and the group sees how it is going without anyone having to hand over their position.\n\nTwo ways to walk:\n• Close by: an offline group walk with no account, no GPS and no server. Names and step totals travel directly between phones over Bluetooth Low Energy and live only in memory while the view is open.\n• Together live: shows how many people are active plus group steps and estimated distance. The server receives metres and measurement quality, and rejects calls that contain coordinates.\n\nWhat every group gets:\n• Its own leaderboard with steps, kilometres and cheer hearts, medals and a crown on the podium.\n• Goals for day, week, weekend, month and a year, plus a shared group goal.\n• Animated celebrations when a goal is reached, with a separate scene per period.\n• Optional pairing with one other group that reveals only the shared goal and the member count.\n• Nickname accounts without email; passwords are stored as scrypt hashes with a salt.\n• A marked test mode with sample data that makes no calls and saves nothing.\n\nThe interface ships in Swedish, Danish and English, with its own fonts, icons and illustrations bundled locally and no external font service.',
+    version: 'v1.0.0',
+    releaseDate: '2026-10-31',
+    category: 'Websites',
+    categories: ['Android'],
+    tags: ['Hälsa', 'Promenad', 'Webb', 'Android'],
+    platformBadge: 'CROSS',
+    projectType: 'web_app',
+    downloadsCount: 0,
+    liveDemoUrl: 'https://nrnworld.one/step.by.step/',
+    images: [...PROJECT_IMAGES.stepByStep],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Web browser, Android 8+ and iOS', icon: 'globe' },
+      { label: 'Stack', value: 'React 19, TypeScript 5.8, Vite 6, Express', icon: 'terminal' },
+      { label: 'Mobile', value: 'Capacitor 8 with HealthKit and Health Connect', icon: 'layers' },
+      { label: 'Privacy', value: 'No GPS sharing, no coordinates on the server', icon: 'shield' },
+      { label: 'Languages', value: 'Swedish, Danish and English', icon: 'globe' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.10.31',
+        isCurrent: true,
+        items: [
+          'First public version with the close by group walk and the live group mode',
+          'Group leaderboards, period goals, shared goal and goal celebrations',
+          'Nickname accounts with scrypt hashes and a marked test mode without calls',
+          'Swedish, Danish and English interface, light and dark themes',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/step.by.step',
+    license: 'step.by.step Educational License (source available, noncommercial)',
+    maintainer: 'nRnWorld',
+    lastUpdated: '2026-10-31',
+    systemRequirements: {
+      os: 'Any modern browser, or Android 8+ / iOS for the installed app',
+      ram: '2 GB RAM',
+      storage: 'Runs in the browser, or about 40 MB installed',
+    }
+  },
 ];
 
 export const ALL_PROJECTS: Project[] = INITIAL_PROJECTS;

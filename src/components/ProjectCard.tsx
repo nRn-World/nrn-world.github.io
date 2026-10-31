@@ -26,6 +26,7 @@ import { getEngagementMetric } from '../utils/projectEngagement';
 import { getProjectGalleryImages } from '../utils/projectImage';
 import { getGithubContributeUrl } from '../utils/githubLinks';
 import { getProjectPath } from '../utils/projectSlug';
+import { projectCategories } from '../utils/projectCategories';
 
 interface ProjectCardProps {
   project: Project;
@@ -165,7 +166,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   const displayTags = tagSource.slice(0, 2);
   const hoverTags = tagSource.slice(0, 4);
-  const categoryLabel = localizeCategory(project.category);
+  const categoryLabel = projectCategories(project)
+    .map((category) => localizeCategory(category))
+    .join(' · ');
   const tagsAlreadyShowCategory = tagSource.some(
     (tag) => localizeTag(tag) === categoryLabel || tag === project.category
   );

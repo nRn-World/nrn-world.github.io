@@ -3,6 +3,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Download, ExternalLink, Gamepad2
 import { Project, ProjectCategory } from '../types';
 import { useI18n } from '../i18n/context';
 import { getProjectPath } from '../utils/projectSlug';
+import { projectInCategory } from '../utils/projectCategories';
 
 // One horizontal rail of big cards per category (scroll-snap, arrows, counter + progress line).
 const GROUPS: { key: ProjectCategory; icon: React.ReactNode; card: string; chip: string }[] = [
@@ -266,7 +267,7 @@ export const ProjectShowcase: React.FC<{ projects: Project[]; onSelect: (project
   const { t } = useI18n();
   const rails = GROUPS.map((group) => ({
     group,
-    items: projects.filter((p) => p.category === group.key), // order comes from the page's sort choice
+    items: projects.filter((p) => projectInCategory(p, group.key)), // order comes from the page's sort choice
   })).filter((r) => r.items.length > 0);
 
   if (rails.length === 0) return null;
