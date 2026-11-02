@@ -14,10 +14,10 @@ const lines = [
 ];
 
 for (const p of projects) {
-  const bits = [`${SITE.origin}/p/${p.slug}: ${p.tagline || p.description}`];
+  const bits = [p.tagline || p.description];
   if (p.liveDemoUrl) bits.push(`Live: ${p.liveDemoUrl}`);
   if (!p.hideGithubLinks) bits.push(`GitHub: ${p.githubUrl}`);
-  lines.push(`- [${p.name}](${SITE.origin}/p/${p.slug}): ${bits.join(' | ')}`);
+  lines.push(`- [${p.name}](${SITE.origin}/p/${p.slug}/): ${bits.join(' | ')}`);
 }
 
 lines.push(

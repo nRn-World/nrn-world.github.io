@@ -16,13 +16,20 @@ const listItems = projects.map((p, i) => ({
     '@type': 'SoftwareApplication',
     name: p.name,
     description: p.tagline || p.description,
-    url: `${SITE.origin}/p/${p.slug}`,
+    url: `${SITE.origin}/p/${p.slug}/`,
     image: p.coverImage,
-    applicationCategory: p.category === 'Games' ? 'GameApplication' : 'UtilitiesApplication',
+    applicationCategory:
+      p.category === 'Games'
+        ? 'GameApplication'
+        : p.projectType === 'browser_extension'
+          ? 'BrowserApplication'
+          : 'UtilitiesApplication',
     operatingSystem:
-      p.projectType === 'web_game' || p.projectType === 'web_app'
-        ? 'Web Browser'
-        : 'Windows 10, Windows 11, Web',
+      p.projectType === 'browser_extension'
+        ? 'Chrome, Firefox'
+        : p.projectType === 'web_game' || p.projectType === 'web_app'
+          ? 'Web Browser'
+          : 'Windows 10, Windows 11, Web',
     ...(p.hideGithubLinks ? {} : { downloadUrl: `${p.githubUrl}/releases/latest` }),
     ...(p.liveDemoUrl ? { installUrl: p.liveDemoUrl } : {}),
     offers: {
@@ -45,9 +52,10 @@ const graph = {
       '@type': 'Organization',
       '@id': `${SITE.origin}/#organization`,
       name: SITE.name,
+      alternateName: ['nRn World', 'By nRn World', 'nRn-World'],
       url: SITE.origin,
       logo: `${SITE.origin}/logo-v4.webp`,
-      sameAs: [SITE.githubOrg, 'https://ko-fi.com/nrnworld'],
+      sameAs: [SITE.githubOrg, 'https://ko-fi.com/nrnworld', 'https://www.instagram.com/bynrnworld'],
     },
     {
       '@type': 'WebSite',

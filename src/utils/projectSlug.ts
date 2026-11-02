@@ -12,7 +12,8 @@ export function getProjectSlug(project: Project): string {
 
 /** Hub detail pages live under /p/ so root paths stay free for GitHub Pages project sites. */
 export function getProjectPath(project: Project): string {
-  return `/p/${getProjectSlug(project)}`;
+  // Trailing slash: the host 301-redirects /p/x to /p/x/, so links and canonicals must use the final URL.
+  return `/p/${getProjectSlug(project)}/`;
 }
 
 export function getProjectUrl(project: Project): string {

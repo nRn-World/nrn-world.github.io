@@ -25,7 +25,7 @@ const staticPages = [
 const urls = [
   ...staticPages,
   ...projects.map((p) => ({
-    loc: `${SITE.origin}/p/${p.slug}`,
+    loc: `${SITE.origin}/p/${p.slug}/`,
     lastmod: p.releaseDate || today,
     changefreq: 'weekly',
     priority: '0.8',

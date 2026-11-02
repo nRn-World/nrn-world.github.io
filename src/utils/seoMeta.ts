@@ -1,5 +1,5 @@
 import { Project } from '../types';
-import { getProjectSlug } from './projectSlug';
+import { getProjectPath } from './projectSlug';
 import { pickCardCoverImage } from './projectImage';
 
 const BASE_URL = 'https://nrnworld.one';
@@ -38,8 +38,8 @@ export function updatePageSeo(project: Project | null) {
   if (typeof document === 'undefined') return;
 
   if (project) {
-    const slug = getProjectSlug(project);
-    const url = `${BASE_URL}/${slug}`;
+
+    const url = `${BASE_URL}${getProjectPath(project)}`;
     const title = `${project.name} – Direct Download & Details | nRnWorld`;
     const desc = `${project.tagline || project.description} Download official releases, explore specs, and view changelogs on nRnWorld.`;
     const image = absoluteImageUrl(pickCardCoverImage(project.images ?? []));

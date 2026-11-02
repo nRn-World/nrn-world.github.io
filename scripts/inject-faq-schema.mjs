@@ -75,7 +75,7 @@ for (const p of projects) {
       name: `How do I download ${p.name}?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `Visit ${SITE.origin}/p/${p.slug} for the official download page, or get the latest release directly from GitHub at ${p.githubUrl}/releases/latest.`,
+        text: `Visit ${SITE.origin}/p/${p.slug}/ for the official download page, or get the latest release directly from GitHub at ${p.githubUrl}/releases/latest.`,
       },
     });
   }
