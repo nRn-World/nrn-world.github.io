@@ -116,10 +116,10 @@ export const svProjects: Record<string, ProjectTranslation> = {
   },
   'note-pin': {
     name: 'NotePin',
-    tagline: 'Minimalistiskt anteckningsverktyg för skrivbordet, fäst snabba tankar som sticky notes.',
-    description: 'Håll snabba påminnelser och kodsnuttar alltid synliga ovanpå ditt skrivbord.',
+    tagline: "Chrome-tillägg som fäster sticky notes på valfri webbsida, privat och offline.",
+    description: "Fäst anteckningar på vilken webbsida som helst och förankra dem vid element på sidan. Allt sparas lokalt i webbläsaren, fungerar offline och laddas aldrig upp.",
     detailedAbout:
-      'NotePin är ett skrivbordsverktyg som låter dig fästa lätta anteckningar var som helst på skärmen.\n\nHuvudfunktioner:\n• Fäst anteckningar var som helst på skrivbordet\n• Alltid synliga ovanpå andra fönster\n• Perfekt för snabba påminnelser och kodsnuttar\n• Minimalistiskt och lättviktigt gränssnitt',
+      "NotePin är ett Chrome-tillägg som låter dig fästa lätta anteckningar på valfri webbplats, förankrade vid det element du väljer.\n\nHuvudfunktioner:\n• Sticky notes på alla webbsidor\n• Förankras vid element på sidan\n• Sparas lokalt, helt privat\n• Fungerar offline",
   },
   'parkisthlm': {
     name: 'ParkiSthlm',

@@ -966,9 +966,9 @@ Play instantly in the browser, or install it to your home screen and keep growin
   {
     id: 'note-pin',
     name: 'NotePin',
-    tagline: 'Minimalist sticky note desktop pin utility for quick thoughts.',
-    description: 'Keep quick reminders and code snippets always on top of your desktop workspace.',
-    detailedAbout: 'NotePin is a desktop utility that lets you stick lightweight notes anywhere on your screen.',
+    tagline: 'Chrome extension that pins sticky notes to any webpage, private and offline.',
+    description: 'Pin sticky notes to any webpage and anchor them to page elements. Notes stay in your browser, work offline and are never uploaded.',
+    detailedAbout: 'NotePin is a Chrome extension that lets you stick lightweight notes on any website, anchored to the element you choose, stored locally and fully private.',
     version: 'v1.0.0-repo',
     releaseDate: '2026-08-16',
     category: 'Chrome Extensions',

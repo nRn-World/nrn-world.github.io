@@ -99,9 +99,10 @@ export const esProjects: Record<string, ProjectTranslation> = {
   },
   'note-pin': {
     name: 'NotePin',
-    tagline: 'Utilidad minimalista de notas adhesivas de escritorio para pensamientos rápidos.',
-    description: 'Mantén recordatorios rápidos y fragmentos de código siempre visibles sobre tu escritorio.',
-    detailedAbout: 'NotePin es una utilidad de escritorio que te permite fijar notas ligeras en cualquier lugar de tu pantalla.',
+    tagline: "Extensión de Chrome que fija notas adhesivas en cualquier página web, privada y sin conexión.",
+    description: "Fija notas en cualquier página web y ánclalas a elementos de la página. Se guardan en tu navegador, funcionan sin conexión y nunca se suben.",
+    detailedAbout:
+      "NotePin es una extensión de Chrome que te permite pegar notas ligeras en cualquier sitio web, ancladas al elemento que elijas, guardadas localmente y totalmente privadas.",
   },
   'parkisthlm': {
     name: 'ParkiSthlm',

@@ -116,10 +116,10 @@ export const trProjects: Record<string, ProjectTranslation> = {
   },
   'note-pin': {
     name: 'NotePin',
-    tagline: 'Hızlı düşünceler için minimalist yapışkan not masaüstü sabitleme aracı.',
-    description: 'Hızlı hatırlatıcıları ve kod parçacıklarını masaüstü çalışma alanınızın her zaman üstünde tutun.',
+    tagline: "Herhangi bir web sayfasına yapışkan not iliştiren, gizli ve çevrimdışı çalışan Chrome uzantısı.",
+    description: "Herhangi bir web sayfasına not sabitleyin ve sayfadaki öğelere bağlayın. Notlar tarayıcınızda kalır, çevrimdışı çalışır ve asla yüklenmez.",
     detailedAbout:
-      'NotePin, ekranınızın herhangi bir yerine hafif notlar sabitlemenizi sağlayan bir masaüstü aracıdır.\n\nÖne çıkanlar:\n• Her zaman üstte kalan yapışkan notlar\n• Hızlı hatırlatıcılar ve kod parçacıkları için ideal\n• Ekranın herhangi bir yerine sabitleme\n• Minimalist ve hafif tasarım',
+      "NotePin, herhangi bir web sitesine seçtiğiniz öğeye bağlı hafif notlar eklemenizi sağlayan bir Chrome uzantısıdır.\n\nÖne çıkanlar:\n• Her web sayfasında yapışkan notlar\n• Sayfa öğelerine bağlama\n• Yerel depolama, tamamen gizli\n• Çevrimdışı çalışır",
   },
   'parkisthlm': {
     name: 'ParkiSthlm',

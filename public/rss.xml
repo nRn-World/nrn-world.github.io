@@ -5,7 +5,7 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2026 18:21:37 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 18:24:12 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-v4.webp</url>
@@ -223,7 +223,7 @@
       <title>NotePin</title>
       <link>https://nrnworld.one/p/notepin/</link>
       <guid isPermaLink="true">https://nrnworld.one/p/notepin/</guid>
-      <description>Minimalist sticky note desktop pin utility for quick thoughts.</description>
+      <description>Chrome extension that pins sticky notes to any webpage, private and offline.</description>
       <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
       <category>Chrome Extensions</category>
       <enclosure url="https://nrnworld.one/images/projects/notePin.webp" type="image/webp" length="0" />

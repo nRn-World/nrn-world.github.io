@@ -99,9 +99,10 @@ export const frProjects: Record<string, ProjectTranslation> = {
   },
   'note-pin': {
     name: 'NotePin',
-    tagline: 'Utilitaire minimaliste de notes autocollantes de bureau pour les pensées rapides.',
-    description: 'Gardez des rappels rapides et des extraits de code toujours visibles au-dessus de votre bureau.',
-    detailedAbout: 'NotePin est un utilitaire de bureau qui vous permet d\'épingler des notes légères n\'importe où sur votre écran.',
+    tagline: "Extension Chrome qui épingle des notes autocollantes sur n'importe quelle page web, privée et hors ligne.",
+    description: "Épinglez des notes sur n'importe quelle page web et ancrez-les aux éléments de la page. Elles restent dans votre navigateur, fonctionnent hors ligne et ne sont jamais envoyées.",
+    detailedAbout:
+      "NotePin est une extension Chrome qui vous permet de coller des notes légères sur n'importe quel site, ancrées à l'élément de votre choix, stockées localement et entièrement privées.",
   },
   'parkisthlm': {
     name: 'ParkiSthlm',
