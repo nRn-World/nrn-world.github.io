@@ -44,7 +44,7 @@ const block = `
       <h2>Live web apps</h2>
       <ul>${appItems}</ul>
       <h2>Guides</h2>
-      <ul><li><a href="/parkering-stockholm/">Parkering i Stockholm – taxor och priser</a></li></ul>
+      <ul><li><a href="/parkering-stockholm/">Parkering i Stockholm – taxor och priser</a></li><li><a href="/nodnummer-europa/">Nödnummer i Europa – 112 och lokala nummer</a></li></ul>
       <h2>All projects</h2>
       <ul>${projectItems}</ul>`;
 
