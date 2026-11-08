@@ -13,6 +13,10 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
  *   name: string,
  *   tagline: string,
  *   description: string,
+ *   detailedAbout: string,
+ *   tags: string[],
+ *   specs: {label: string, value: string}[],
+ *   changelogItems: string[],
  *   category: string,
  *   githubUrl: string,
  *   slug: string,
@@ -53,6 +57,7 @@ export function loadSeoProjects() {
     const name = chunk.match(/name:\s*'([^']+)'/)?.[1];
     const tagline = chunk.match(/tagline:\s*'([^']+)'/)?.[1] ?? '';
     const description = chunk.match(/description:\s*'([^']+)'/)?.[1] ?? '';
+    const detailedAbout = chunk.match(/detailedAbout:\s*'([^']+)'/)?.[1] ?? '';
     const category = chunk.match(/category:\s*'([^']+)'/)?.[1];
     const githubUrl = chunk.match(/githubUrl:\s*'([^']+)'/)?.[1];
     const releaseDate = chunk.match(/releaseDate:\s*'([^']+)'/)?.[1] ?? '';
@@ -62,6 +67,20 @@ export function loadSeoProjects() {
     const imgKey = chunk.match(/PROJECT_IMAGES\.(\w+)/)?.[1];
 
     if (!id || !name || !category || !githubUrl) continue;
+
+    const tags = [...(chunk.match(/tags:\s*\[([^\]]*)\]/)?.[1] ?? '').matchAll(/'([^']+)'/g)].map(
+      (m) => m[1],
+    );
+
+    const specsBlock = chunk.match(/specs:\s*\[([\s\S]*?)\n    \],/)?.[1] ?? '';
+    const specs = [...specsBlock.matchAll(/label:\s*'([^']+)',\s*value:\s*'([^']+)'/g)].map((m) => ({
+      label: m[1],
+      value: m[2],
+    }));
+
+    const changelogItems = [...chunk.matchAll(/items:\s*\[([^\]]*)\]/g)]
+      .flatMap((m) => [...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]))
+      .slice(0, 6);
 
     const repoName = githubUrl.replace(/\/+$/, '').split('/').pop() ?? id;
     const slug = repoName.replace(/[-_]/g, '').toLowerCase();
@@ -78,6 +97,10 @@ export function loadSeoProjects() {
       name,
       tagline,
       description,
+      detailedAbout,
+      tags,
+      specs,
+      changelogItems,
       category,
       githubUrl,
       slug,
