@@ -20,8 +20,17 @@ if (!existsSync(keyFilePath)) {
   console.log(`Wrote IndexNow key file: ${KEY}.txt`);
 }
 
+const appUrls = [
+  ...new Set(
+    projects
+      .map((p) => p.liveDemoUrl)
+      .filter((u) => typeof u === 'string' && u.startsWith(`${SITE.origin}/`)),
+  ),
+];
+
 const urls = [
   `${SITE.origin}/`,
+  ...appUrls,
   ...projects.map((p) => `${SITE.origin}/p/${p.slug}/`),
 ];
 
