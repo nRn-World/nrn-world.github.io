@@ -31,6 +31,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Ping IndexNow (Bing, Yandex)
+        run: node scripts/ping-indexnow.mjs
+        continue-on-error: true
+
       - name: Copy 404 fallback for SPA routing
         run: cp dist/index.html dist/404.html
 
