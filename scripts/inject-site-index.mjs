@@ -43,6 +43,8 @@ const block = `
       <p>${projects.length} open source projects and ${appUrls.length} live web apps, built by nRnWorld. Everything runs in the browser, free of charge.</p>
       <h2>Live web apps</h2>
       <ul>${appItems}</ul>
+      <h2>Guides</h2>
+      <ul><li><a href="/parkering-stockholm/">Parkering i Stockholm – taxor och priser</a></li></ul>
       <h2>All projects</h2>
       <ul>${projectItems}</ul>`;
 

@@ -15,6 +15,12 @@ const staticPages = [
     priority: '1.0',
   },
   {
+    loc: `${SITE.origin}/parkering-stockholm/`,
+    lastmod: today,
+    changefreq: 'monthly',
+    priority: '0.8',
+  },
+  {
     loc: `${SITE.origin}/privacy/`,
     lastmod: today,
     changefreq: 'yearly',
