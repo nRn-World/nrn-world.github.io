@@ -11,7 +11,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const projects = loadSeoProjects();
 
 // IndexNow key — use env or fallback to a stable generated key
-const KEY = process.env.INDEXNOW_KEY || 'a248daad5773fc2150eda48e1c31447d';
+const KEY = process.env.INDEXNOW_KEY || '9d9d075bb721bf59db380903d83f672c';
 const keyFilePath = join(root, 'public', `${KEY}.txt`);
 
 // Write the key file so the verification endpoint works
