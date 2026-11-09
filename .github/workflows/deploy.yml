@@ -31,9 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Ping IndexNow (Bing, Yandex)
-        run: node scripts/ping-indexnow.mjs
-        continue-on-error: true
+      # IndexNow kors inte langre vid varje deploy: upprepade bulk-inlamningar
+      # ledde till 403. Det sker i stallet en gang per dygn i indexnow.yml.
 
       - name: Copy 404 fallback for SPA routing
         run: cp dist/index.html dist/404.html

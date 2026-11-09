@@ -42,10 +42,9 @@ async function pingIndexNow() {
     urlList: urls,
   });
 
-  const engines = [
-    'https://api.indexnow.org/indexnow',
-    'https://www.bing.com/indexnow',
-  ];
+  // En motor räcker: api.indexnow.org distribuerar själv vidare till Bing och Yandex.
+  // Att skicka samma lista till båda dubblade trafiken och ledde till 403.
+  const engines = ['https://api.indexnow.org/indexnow'];
 
   for (const engine of engines) {
     try {
@@ -54,7 +53,11 @@ async function pingIndexNow() {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body,
       });
-      console.log(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
+      if (res.status === 403) {
+        console.warn(`IndexNow ${engine}: 403 — vardnamnet ar blockerat for tillfallet, hoppar over`);
+      } else {
+        console.log(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
+      }
     } catch (err) {
       console.warn(`IndexNow ${engine} failed:`, err.message);
     }
