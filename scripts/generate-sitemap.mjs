@@ -83,6 +83,12 @@ ${body}
 writeFileSync(join(root, 'public/sitemap.xml'), xml, 'utf8');
 console.log(`Wrote sitemap.xml with ${urls.length} URLs`);
 
+// Same URL set on a second, fresh path. Bing kept a stale "page is not
+// accessible" verdict on /sitemap.xml, and sitemap-index.xml only produced one
+// discovered URL, so this gives it a clean sitemap to read and re-submit.
+writeFileSync(join(root, 'public/sitemap-pages.xml'), xml, 'utf8');
+console.log(`Wrote sitemap-pages.xml with ${urls.length} URLs`);
+
 // A sitemap index gives search engines a second, independent entry point.
 // Bing kept a stale "page is not accessible" verdict on /sitemap.xml, so a
 // fresh URL lets it re-crawl without waiting for that row to clear.
