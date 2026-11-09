@@ -82,3 +82,18 @@ ${body}
 
 writeFileSync(join(root, 'public/sitemap.xml'), xml, 'utf8');
 console.log(`Wrote sitemap.xml with ${urls.length} URLs`);
+
+// A sitemap index gives search engines a second, independent entry point.
+// Bing kept a stale "page is not accessible" verdict on /sitemap.xml, so a
+// fresh URL lets it re-crawl without waiting for that row to clear.
+const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${SITE.origin}/sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+
+writeFileSync(join(root, 'public/sitemap-index.xml'), indexXml, 'utf8');
+console.log('Wrote sitemap-index.xml');
