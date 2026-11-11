@@ -8,6 +8,16 @@ export const frUi = deepMerge(enUi, {
       'Dépôt officiel de logiciels avec téléchargements directs pour utilitaires Windows, jeux web, applications en ligne et outils développeur créés par nRnWorld (@nRn-World).',
   },
   language: { label: 'Langue', choose: 'Choisir la langue' },
+  hud: {
+    profile: 'Profil',
+    name: 'Nom',
+    born: 'Naissance',
+    projectCount: 'Projets',
+    githubAll: 'GitHub : tous les projets',
+    social: 'Réseaux sociaux',
+    localTime: 'Heure locale',
+    week: 'Semaine',
+  },
   navbar: {
     allProjects: 'Tous les Projets',
     allProjectsCount: 'Tous les Projets ({count})',

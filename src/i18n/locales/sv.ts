@@ -8,6 +8,16 @@ export const svUi = deepMerge(enUi, {
       'Officiellt programvarurepository med direkta nedladdningar för Windows-verktyg, webbspel, onlineappar och utvecklarverktyg från nRnWorld (@nRn-World).',
   },
   language: { label: 'Språk', choose: 'Välj språk' },
+  hud: {
+    profile: 'Profil',
+    name: 'Namn',
+    born: 'Född',
+    projectCount: 'Antal projekt',
+    githubAll: 'GitHub: alla projekt',
+    social: 'Socialmedia',
+    localTime: 'Lokal tid',
+    week: 'Vecka',
+  },
   navbar: {
     allProjects: 'Alla Projekt',
     allProjectsCount: 'Alla projekt ({count})',

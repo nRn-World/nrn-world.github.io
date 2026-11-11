@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Facebook, Ghost, Github, Instagram } from 'lucide-react';
 import { ALL_PROJECTS } from '@/data/projectsData';
+import { useI18n } from '@/i18n/context';
 
 // HUD-rutor i samma stil som ugurkeskekci.com: hörn-hakar, mono-etiketter, digitala siffror och linjal.
 const label = 'font-mono text-[10.5px] uppercase leading-[1.3] tracking-[0.16em] text-neutral-400';
@@ -43,25 +44,26 @@ function Row({ k, v, unit, action }: { k: string; v: string; unit?: string; acti
 }
 
 function ProfilePanel() {
+  const { t } = useI18n();
   return (
     <Panel>
       <p className={`${label} flex justify-between`}>
-        <span>Profil</span>
+        <span>{t('hud.profile')}</span>
         <span>nRnWorld</span>
       </p>
       <ul className="mt-3 space-y-3">
-        <Row k="Namn" v="Robin Ayzit" />
-        <Row k="Född" v="1986-12-16" />
+        <Row k={t('hud.name')} v="Robin Ayzit" />
+        <Row k={t('hud.born')} v="1986-12-16" />
         <Row
-          k="Antal projekt"
+          k={t('hud.projectCount')}
           v={String(ALL_PROJECTS.length)}
           action={
             <a
               href="https://github.com/nRn-World?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub: alla projekt"
-              title="GitHub: alla projekt"
+              aria-label={t('hud.githubAll')}
+              title={t('hud.githubAll')}
               className="ml-1 flex size-6 items-center justify-center self-center rounded-[4px] border border-white/10 text-neutral-300 transition-colors hover:border-blue-400 hover:text-blue-400"
             >
               <Github className="size-3.5" />
@@ -69,7 +71,7 @@ function ProfilePanel() {
           }
         />
         <li>
-          <p className={label}>Socialmedia</p>
+          <p className={label}>{t('hud.social')}</p>
           <p className="mt-1.5 flex items-center gap-2">
             {SOCIAL.map(({ name, href, Icon }) => (
               <a
@@ -102,18 +104,19 @@ function isoWeek(d: Date): number {
 }
 
 function ClockPanel() {
+  const { t, locale } = useI18n();
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
-  const date = now.toLocaleDateString('sv-SE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const date = now.toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
   return (
     <Panel>
       <p className={`${label} flex justify-between`}>
-        <span>Lokal tid</span>
-        <span>{now.toLocaleDateString('sv-SE', { month: 'short', year: 'numeric' })}</span>
+        <span>{t('hud.localTime')}</span>
+        <span>{now.toLocaleDateString(locale, { month: 'short', year: 'numeric' })}</span>
       </p>
       <p className="mt-3 flex items-baseline gap-1">
         <span className={digits}>
@@ -124,7 +127,7 @@ function ClockPanel() {
       <span aria-hidden className="mt-2 block" style={ruler} />
       <p className={`${label} mt-3 normal-case tracking-[0.08em]`}>{date}</p>
       <p className={`${label} mt-1.5 flex items-baseline gap-1.5`}>
-        <span>Vecka</span>
+        <span>{t('hud.week')}</span>
         <span className="font-mono text-sm tracking-wider text-blue-400">{isoWeek(now)}</span>
       </p>
     </Panel>

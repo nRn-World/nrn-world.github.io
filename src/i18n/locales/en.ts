@@ -10,6 +10,16 @@ export const enUi: TranslationDictionary = {
     label: 'Language',
     choose: 'Choose language',
   },
+  hud: {
+    profile: 'Profile',
+    name: 'Name',
+    born: 'Born',
+    projectCount: 'Projects',
+    githubAll: 'GitHub: all projects',
+    social: 'Social media',
+    localTime: 'Local time',
+    week: 'Week',
+  },
   navbar: {
     brandWorld: 'World',
     allProjects: 'All Projects',

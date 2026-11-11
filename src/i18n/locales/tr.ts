@@ -8,6 +8,16 @@ export const trUi = deepMerge(enUi, {
       'nRnWorld (@nRn-World) tarafından oluşturulan Windows araçları, web oyunları, çevrimiçi uygulamalar ve geliştirici araçları için resmi yazılım deposu.',
   },
   language: { label: 'Dil', choose: 'Dil seçin' },
+  hud: {
+    profile: 'Profil',
+    name: 'Ad',
+    born: 'Doğum',
+    projectCount: 'Proje sayısı',
+    githubAll: 'GitHub: tüm projeler',
+    social: 'Sosyal medya',
+    localTime: 'Yerel saat',
+    week: 'Hafta',
+  },
   navbar: {
     allProjects: 'Tüm Projeler',
     allProjectsCount: 'Tüm Projeler ({count})',
