@@ -48,9 +48,18 @@ const block = `
       <h2>All projects</h2>
       <ul>${projectItems}</ul>`;
 
-const rootRe = /(<div id="root">\s*<main>\s*<h1>[^<]*<\/h1>)([\s\S]*?)(<\/main>)/;
+/**
+ * The placeholder lives inside <div class="static-site-index"> so the block is
+ * hidden for anyone with JS (see the .js .static-site-index rule in index.html)
+ * and only ever shown to crawlers / no-JS visitors. Without that wrapper the
+ * raw text was painted for a moment on every visit before React took over.
+ */
+const rootRe =
+  /(<div id="root">\s*(?:<div class="boot-screen"[\s\S]*?<\/div>\s*)?<div class="static-site-index">\s*<main>\s*<h1>[^<]*<\/h1>)([\s\S]*?)(<\/main>)/;
 
 let changed = 0;
+const unguarded = [];
+
 for (const file of ['index.html', '404.html']) {
   const path = join(dist, file);
   if (!existsSync(path)) continue;
@@ -59,8 +68,22 @@ for (const file of ['index.html', '404.html']) {
     console.warn(`inject-site-index: no root placeholder in ${file}`);
     continue;
   }
-  writeFileSync(path, html.replace(rootRe, (_, open, _inner, close) => `${open}${block}${close}`), 'utf8');
+  const next = html.replace(rootRe, (_, open, _inner, close) => `${open}${block}${close}`);
+  // Never ship crawlable text that the browser would paint before React mounts.
+  if (!next.includes('.js .static-site-index')) {
+    unguarded.push(file);
+  }
+  writeFileSync(path, next, 'utf8');
   changed += 1;
+}
+
+if (unguarded.length) {
+  console.error(
+    `inject-site-index: ${unguarded.join(', ')} is missing the ".js .static-site-index" ` +
+      'hide rule from index.html — the raw SEO text would flash on every page load. ' +
+      'Restore that <style> rule before deploying.',
+  );
+  process.exitCode = 1;
 }
 
 console.log(`Injected static site index into ${changed} page(s): ${appUrls.length} apps, ${projects.length} projects`);
