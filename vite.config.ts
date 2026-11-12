@@ -78,6 +78,11 @@ export default defineConfig(() => {
       port: 3000,
       strictPort: true,
       host: true,
+      // Vite 6 blocks requests whose Host header it does not recognise (403
+      // "Blocked request"), which broke the proxied preview / tunnelled
+      // dev URLs. allowedHosts: true only relaxes that Host check for this
+      // local dev server; it does not affect the production build.
+      allowedHosts: true,
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
