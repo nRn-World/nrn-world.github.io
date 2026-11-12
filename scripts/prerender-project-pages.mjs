@@ -182,9 +182,11 @@ for (const project of projects) {
   });
 
   // Swap the shared placeholder headline for this project's own static content.
+  // It is wrapped in .static-site-index so it stays invisible until React
+  // mounts (crawlers and no-JS visitors still get the full text).
   html = html.replace(
-    /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root">${buildStaticMain(project, siblings)}</div>`,
+    /<div id="root">[\s\S]*?<div class="static-site-index">[\s\S]*?<\/main>\s*<\/div>\s*<\/div>/,
+    `<div id="root"><div class="static-site-index">${buildStaticMain(project, siblings)}</div></div>`,
   );
 
   const dir = join(dist, 'p', project.slug);
