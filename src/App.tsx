@@ -325,7 +325,7 @@ export default function App() {
             return;
           }
         }
-        // Short link /NewzLocal → project page (URL stays as typed)
+        // Short link /NewNewz → project page (URL stays as typed)
         if (fromRoot && !fromRoot.liveDemoUrl?.startsWith(window.location.origin)) {
           setSelectedProject(fromRoot);
           window.scrollTo({ top: 0, behavior: 'smooth' });
