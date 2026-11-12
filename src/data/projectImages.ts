@@ -143,8 +143,8 @@ export const PROJECT_IMAGES = {
   ],
   newzLocal: [
     '/images/projects/newzLocal.webp',
-    raw('NewzLocal', 'main', 'docs/news.png'),
-    raw('NewzLocal', 'main', 'docs/globe.png'),
+    raw('NewNewz', 'main', 'docs/news.png'),
+    raw('NewNewz', 'main', 'docs/globe.png'),
   ],
   dreamGarden: [
     '/images/projects/dreamGarden/cover.webp',

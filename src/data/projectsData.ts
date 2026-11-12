@@ -1201,20 +1201,20 @@ Play instantly in the browser, or install it to your home screen and keep growin
       storage: 'Runs in browser (offline cache ~15 MB)',
     }
   },
-  // 22. NewzLocal (3D globe local news PWA)
+  // 22. NewNewz (3D globe local news PWA)
   {
     id: 'newzlocal',
-    name: 'NewzLocal',
+    name: 'NewNewz',
     tagline: 'Spin the globe, click any place and read what is happening there right now.',
     description: 'A 3D-globe web app (PWA) that shows the latest local news and forum posts for the exact place you click, from country down to street, in 7 languages.',
-    detailedAbout: "NewzLocal is a web app with a real 3D globe. Zoom from the whole world down to country, region, city, district and even a single street, and get the newest news and forum threads about exactly that place, in a newspaper-style design.\n\nMain features:\n• Real 3D globe: Satellite imagery, atmosphere and 3D buildings with MapLibre.\n• Exact local news: Only headlines that mention the place, up to the 100 newest.\n• Forum tab: Threads from Flashback, Reddit, Hacker News and Stack Exchange.\n• Favourites & categories: Save places, sort them with drag and drop, get alerts for new headlines.\n• My newspaper: All your favourites on one old-style front page.\n• News heat on the map, time slider, compare two places and neighbourhood report.\n• Installable PWA with offline copy of the latest list.\n• 7 languages: English, Svenska, Türkçe, العربية, Español, Français, Deutsch.",
+    detailedAbout: "NewNewz is a web app with a real 3D globe. Zoom from the whole world down to country, region, city, district and even a single street, and get the newest news and forum threads about exactly that place, in a newspaper-style design.\n\nMain features:\n• Real 3D globe: Satellite imagery, atmosphere and 3D buildings with MapLibre.\n• Exact local news: Only headlines that mention the place, up to the 100 newest.\n• Forum tab: Threads from Flashback, Reddit, Hacker News and Stack Exchange.\n• Favourites & categories: Save places, sort them with drag and drop, get alerts for new headlines.\n• My newspaper: All your favourites on one old-style front page.\n• News heat on the map, time slider, compare two places and neighbourhood report.\n• Installable PWA with offline copy of the latest list.\n• 7 languages: English, Svenska, Türkçe, العربية, Español, Français, Deutsch.",
     version: 'v0.1.0',
     releaseDate: '2026-10-19',
     category: 'Websites',
     tags: ['News', 'Maps', 'PWA', 'Globe'],
     platformBadge: 'WEB',
     projectType: 'web_app',
-    liveDemoUrl: 'https://nrnworld.one/NewzLocal/',
+    liveDemoUrl: 'https://nrnworld.one/NewNewz/',
     featured: false,
     rating: 4.9,
     downloadsCount: 0,
@@ -1241,7 +1241,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
         ]
       }
     ],
-    githubUrl: 'https://github.com/nRn-World/NewzLocal',
+    githubUrl: 'https://github.com/nRn-World/NewNewz',
     license: 'Non-Commercial + Attribution',
     maintainer: 'nRnWorld',
     lastUpdated: 'Oct 2026',

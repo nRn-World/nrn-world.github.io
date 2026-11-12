@@ -25,7 +25,7 @@
 - [AutoAccountMaker](https://nrnworld.one/p/autoaccountmaker/): Creates accounts automatically with a temporary email address, verifies them, and logs in for you. | Live: https://chromewebstore.google.com/detail/autoaccountmaker/dhoolninihkdkblbkmddananbaifjpii | GitHub: https://github.com/nRn-World/AutoAccountMaker
 - [GitHubRepoAnalyzer](https://nrnworld.one/p/githubrepoanalyzer/): Understand any GitHub repository in seconds. Fully local Chrome extension with no AI services, no external APIs and no network calls. | GitHub: https://github.com/nRn-World/GitHubRepoAnalyzer
 - [Svalna](https://nrnworld.one/p/svalna/): Din kyl minns åt dig – helt offline och helt privat. | Live: https://svalna-nrnworld.web.app/
-- [NewzLocal](https://nrnworld.one/p/newzlocal/): Spin the globe, click any place and read what is happening there right now. | Live: https://nrnworld.one/NewzLocal/ | GitHub: https://github.com/nRn-World/NewzLocal
+- [NewNewz](https://nrnworld.one/p/newnewz/): Spin the globe, click any place and read what is happening there right now. | Live: https://nrnworld.one/NewNewz/ | GitHub: https://github.com/nRn-World/NewNewz
 - [Ribegatan](https://nrnworld.one/p/ribegatan/): Reference: a website I built for a residential community in Kista. Want one like it? Get in touch. | Live: https://ribegatan.se/
 
 ## About
