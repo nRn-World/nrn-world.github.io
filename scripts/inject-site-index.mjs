@@ -55,7 +55,7 @@ const block = `
  * raw text was painted for a moment on every visit before React took over.
  */
 const rootRe =
-  /(<div id="root">\s*<div class="static-site-index">\s*<main>\s*<h1>[^<]*<\/h1>)([\s\S]*?)(<\/main>)/;
+  /(<div id="root">\s*(?:<div class="boot-screen"[\s\S]*?<\/div>\s*)?<div class="static-site-index">\s*<main>\s*<h1>[^<]*<\/h1>)([\s\S]*?)(<\/main>)/;
 
 let changed = 0;
 const unguarded = [];

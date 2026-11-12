@@ -61,7 +61,57 @@
         color: #E0E0E0;
         margin: 0;
       }
+      /* Without this the browser paints its default (white) canvas until the
+         stylesheet arrives, so every reload flashes a white screen. It also
+         gives form controls and scrollbars the dark treatment. */
+      html {
+        color-scheme: dark;
+        background-color: #000000;
+      }
       #root { min-height: 100vh; }
+      /* Boot screen: shown from the first paint until React replaces #root.
+         Keeps reloads from being an empty/white page while modules download. */
+      .boot-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: #000000;
+      }
+      .no-js .boot-screen { display: none; }
+      .boot-screen__logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        object-fit: contain;
+        opacity: 0.9;
+      }
+      .boot-screen__bar {
+        position: relative;
+        width: 120px;
+        height: 2px;
+        overflow: hidden;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .boot-screen__bar::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+        animation: boot-slide 1.1s ease-in-out infinite;
+      }
+      @keyframes boot-slide {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(100%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .boot-screen__bar::after { animation: none; }
+      }
       /* The crawlable index injected into #root by scripts/inject-site-index.mjs
          must never be painted for real visitors: React mounts on top of it a
          moment later and the raw, unstyled text would flash. Crawlers (and
@@ -138,6 +188,10 @@
       })();
     </script>
     <div id="root">
+      <div class="boot-screen" aria-hidden="true">
+        <img class="boot-screen__logo" src="/logo-v4.webp" alt="" width="56" height="56" />
+        <div class="boot-screen__bar"></div>
+      </div>
       <div class="static-site-index">
         <main>
           <h1>nRnWorld - Project Hub &amp; Direct Downloads</h1>
