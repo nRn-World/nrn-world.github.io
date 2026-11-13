@@ -23,6 +23,15 @@ if (!csp) {
   process.exit(1);
 }
 
+// public/_headers ships the same policy on hosts that read it (Cloudflare Pages, Netlify).
+const headersCsp = readFileSync(join(root, 'public/_headers'), 'utf8').match(
+  /^\s*Content-Security-Policy:[ \t]*([^\r\n]*)/m,
+)?.[1];
+if (headersCsp !== csp) {
+  console.error('verify-csp: public/_headers and vercel.json disagree on Content-Security-Policy.');
+  process.exit(1);
+}
+
 const directives = new Map(
   csp
     .split(';')

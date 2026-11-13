@@ -139,7 +139,8 @@ nRnWorld/
 
 ## 🔒 Security & Performance
 
-- **Security headers** — `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`
+- **Security headers** — `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`, HSTS and a full CSP, declared identically in `vercel.json`, `public/_headers` and `server.js`
+- **Hosting caveat** — GitHub Pages serves nrnworld.one and cannot send response headers (it ignores `public/_headers`), so those headers only reach visitors through a proxy that sets them (a Cloudflare Transform Rule); `Referrer-Policy` and the CSP are mirrored in the HTML itself, which works everywhere
 - **Asset caching** — `Cache-Control: public, max-age=31536000, immutable` for all hashed assets
 - **API payload** — GitHub stats JSON trimmed from 1.78 MB to 50 KB at build time (-97%)
 - **Image weight** — All project covers served as local WebP/SVG (95% reduction vs. raw GitHub assets)
