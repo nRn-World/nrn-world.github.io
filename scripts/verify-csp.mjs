@@ -32,6 +32,20 @@ if (headersCsp !== csp) {
   process.exit(1);
 }
 
+// GitHub Pages cannot send response headers, so index.html (and every page prerendered
+// from it) also carries the policy as a <meta http-equiv>. frame-ancestors is dropped
+// there because browsers ignore that directive in a meta element.
+const metaValue = csp
+  .split(';')
+  .map((part) => part.trim())
+  .filter((part) => part && !part.startsWith('frame-ancestors'))
+  .join('; ');
+const indexHtml = readFileSync(join(dist, 'index.html'), 'utf8');
+if (!indexHtml.includes(`content="${metaValue}"`)) {
+  console.error('verify-csp: dist/index.html is missing the matching CSP meta tag');
+  process.exit(1);
+}
+
 const directives = new Map(
   csp
     .split(';')
