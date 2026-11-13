@@ -23,6 +23,9 @@
     <meta name="twitter:description" content="Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World)." />
     <meta name="twitter:image" content="https://nrnworld.one/og-image.png" />
     <meta name="theme-color" content="#000000" />
+    <!-- Also sent as a response header (vercel.json / _headers / server.js); the meta tag keeps it
+         in force on hosts that cannot set headers, i.e. GitHub Pages. -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="author" content="nRnWorld" />
     <meta property="og:site_name" content="nRnWorld" />
     <meta property="og:locale" content="en_US" />
@@ -152,7 +155,14 @@
       playsinline
       preload="none"
       aria-hidden="true"
-    ></video>
+    >
+      <track
+        kind="captions"
+        src="/captions/site-background.vtt"
+        srclang="en"
+        label="English"
+      />
+    </video>
     <script>
       (function () {
         try {

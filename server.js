@@ -14,10 +14,23 @@ config({ path: path.join(root, '.env') });
 config({ path: path.join(root, '.env.local') });
 
 const app = express();
+// Do not advertise the framework in X-Powered-By.
+app.disable('x-powered-by');
 const port = Number(process.env.PORT) || 3000;
 const distPath = path.join(root, 'dist');
 
 app.use(express.json({ limit: '32kb' }));
+
+// Force HTTPS for a year, subdomains included. Browsers only honour this over HTTPS.
+// Refuse framing: frame-ancestors for modern browsers, X-Frame-Options for older ones.
+app.use((_req, res, next) => {
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
 
 app.get('/api/github-stats', (req, res) => {
   void handleGithubStatsRequest(req, res);

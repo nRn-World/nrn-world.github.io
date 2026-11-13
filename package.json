@@ -8,7 +8,7 @@
     "fetch:github-stats": "node scripts/fetch-github-stats.mjs",
     "fetch:github-activity": "node scripts/fetch-github-activity.mjs",
     "prebuild": "node scripts/fetch-github-stats.mjs && node scripts/fetch-github-activity.mjs && node scripts/inject-lcp-preloads.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && node scripts/generate-llms.mjs && node scripts/generate-json-ld.mjs",
-    "build": "vite build && node scripts/defer-css.mjs && node scripts/prerender-project-pages.mjs && node scripts/inject-faq-schema.mjs && node scripts/inject-site-index.mjs",
+    "build": "vite build && node scripts/defer-css.mjs && node scripts/prerender-project-pages.mjs && node scripts/inject-faq-schema.mjs && node scripts/inject-site-index.mjs && node scripts/defer-scripts.mjs && node scripts/verify-csp.mjs",
     "postdeploy": "node scripts/ping-indexnow.mjs",
     "start": "node server.js",
     "preview": "node server.js",

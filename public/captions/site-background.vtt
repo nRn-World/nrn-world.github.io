@@ -1,0 +1,6 @@
+WEBVTT
+
+NOTE
+Decorative background loop used behind the page (muted, aria-hidden, no controls).
+It has no speech or meaningful audio, so there are no captions to display.
+This file exists so the <video> element exposes a captions track of kind="captions".
