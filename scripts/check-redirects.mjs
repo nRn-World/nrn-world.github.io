@@ -4,17 +4,16 @@
  * Bakgrund: 2026-11-14 skapade sex Cloudflare-regler en oandlig loop, eftersom
  * wildcard-monstret matchade sitt eget mal (Cloudflare matchar skiftlagesokansligt).
  * En enkel "kalla svarar 301"-kontroll sag det inte: /NewzLocal/ svarade 301, men
- * till sig sjalv. Det har skriptet foljer darfor hela kedjan, upptacker loopar och
- * kraver att slutmalet svarar 200 utan att sjalvt redirecta.
+ * till sig sjalv. Skriptet foljer darfor hela kedjan, upptacker loopar och kraver
+ * att slutmalet svarar 200 utan att sjalvt redirecta.
  *
  * Cloudflares "*" matchar inte over ett avslutande snedstreck, sa /newzlocal och
  * /newzlocal/ ar tva olika sokvagar for en regel. Varje regel provas darfor i bada
- * varianterna. De varianter som annu inte har nagon regel ar markerade med gap: true:
- * de listas som kanda luckor i stallet for att tysta rakt igenom som gront, och
- * rapporteras som FIXED nar en regel val tacker dem (ta da bort flaggan).
+ * varianterna. Varianter utan regel ar markerade gap: true och listas som kanda
+ * luckor; blir en sadan tackt rapporteras den som FIXED, sa flaggan kan tas bort.
  *
  * Kor: node scripts/check-redirects.mjs
- * (SITE_ORIGIN kan overrida domanen, t.ex. vid test mot en staging-host.)
+ * (SITE_ORIGIN overrider domanen, t.ex. vid test mot en staging-host.)
  */
 
 const ORIGIN = (process.env.SITE_ORIGIN || 'https://nrnworld.one').replace(/\/+$/, '');
@@ -23,7 +22,7 @@ const MAX_HOPS = 5;
 const TIMEOUT_MS = 20_000;
 
 /**
- * Gammal sokvag -> forvantat mal. Sokvagen ar en path pa ORIGIN om den inte ar en full URL.
+ * Gammal sokvag -> forvantat mal. En path tolkas mot ORIGIN.
  * gap: true = ingen regel tacker sokvagen an; den ska synas som lucka, inte som fel.
  */
 const CASES = [
@@ -66,6 +65,7 @@ const CASES = [
 ];
 
 const abs = (path) => (/^https?:\/\//.test(path) ? path : `${ORIGIN}${path}`);
+const isRedirect = (res) => res.status >= 300 && res.status < 400 && res.location;
 
 async function fetchOnce(url) {
   const res = await fetch(url, {
@@ -76,136 +76,113 @@ async function fetchOnce(url) {
   return { status: res.status, location: res.headers.get('location') };
 }
 
-/**
- * Foljer en URL till den slutar redirecta och rapporterar hela kedjan.
- * Avbryter vid loop och vid fler hopp an MAX_HOPS.
- */
-async function followChain(startUrl) {
-  const chain = [];
-  let current = startUrl;
+/** Foljer en URL till den slutar redirecta. ok kraver att start-URL:en sjalv svarar 200. */
+async function followChain(start) {
+  const chain = [start];
 
   for (let hop = 0; hop <= MAX_HOPS; hop += 1) {
-    if (chain.includes(current)) {
-      return { ok: false, problem: 'loop', chain: [...chain, current] };
-    }
-    chain.push(current);
+    const url = chain[chain.length - 1];
+    const res = await fetchOnce(url);
 
-    const res = await fetchOnce(current);
-    if (res.status === 200) return { ok: true, hops: hop, chain };
+    if (res.status === 200) return { ok: chain.length === 1, chain };
+    if (!isRedirect(res)) return { ok: false, chain, problem: `status ${res.status}` };
 
-    if (res.status >= 300 && res.status < 400 && res.location) {
-      current = new URL(res.location, current).toString();
-      continue;
-    }
-
-    return { ok: false, problem: `status ${res.status}`, chain };
+    const next = new URL(res.location, url).toString();
+    if (chain.includes(next)) return { ok: false, chain: [...chain, next], problem: 'loop' };
+    chain.push(next);
   }
 
-  return { ok: false, problem: `fler an ${MAX_HOPS} hopp`, chain };
+  return { ok: false, chain, problem: `fler an ${MAX_HOPS} hopp` };
 }
 
-const failures = [];
-const gaps = [];
-const closed = [];
+/** Verifierad regel: exakt 301 till ratt mal, och malet svarar 200 utan att redirecta. */
+async function checkRule({ from, to }) {
+  const source = abs(from);
+  const expected = abs(to);
 
-function fail(source, message) {
-  failures.push({ source, message });
-  console.log(`  FAIL  ${message}`);
+  const first = await fetchOnce(source);
+  if (first.status !== 301) return { kind: 'fail', detail: `forvantade 301, fick ${first.status}` };
+
+  const location = first.location ? new URL(first.location, source).toString() : '';
+  if (location !== expected) {
+    return { kind: 'fail', detail: `redirectar till ${location || '(ingen location)'} istallet for ${expected}` };
+  }
+
+  const target = await followChain(expected);
+  const trail = target.chain.map((u) => u.replace(ORIGIN, '')).join(' -> ');
+  if (!target.ok) {
+    return {
+      kind: 'fail',
+      detail: target.problem
+        ? `malet svarar inte 200 (${target.problem}): ${trail}`
+        : `malet redirectar vidare: ${trail}`,
+    };
+  }
+
+  return { kind: 'ok', detail: '301 -> 200' };
 }
 
-/** En kand lucka ska bara synas. Blir den tackt ar det ett tecken pa att flaggan ska bort. */
-async function reportGap({ from, to }) {
+/** Kand lucka: ska inte redirecta an. Ratt mal = tackt, fel mal = riktigt fel. */
+async function checkGap({ from, to }) {
   const source = abs(from);
   const res = await fetchOnce(source);
 
-  if (res.status === 301) {
-    const target = new URL(res.location, source).toString();
-    if (!to || target === abs(to)) {
-      closed.push(from);
-      console.log(`  FIXED luckan ar tackt (301 -> ${to || target}) - ta bort gap-flaggan`);
-      return;
-    }
-    // Redirectar, men till nagot annat an forvantat: det ar en riktig avvikelse.
-    fail(from, `redirectar till ${target} istallet for ${abs(to)}`);
-    return;
-  }
+  if (res.status !== 301) return { kind: 'gap', detail: `${res.status} - ingen regel tacker sokvagen` };
+  if (!res.location) return { kind: 'fail', detail: '301 utan Location-header' };
 
-  gaps.push({ from, status: res.status });
-  console.log(`  GAP   ${res.status} - ingen regel tacker sokvagen`);
+  const target = new URL(res.location, source).toString();
+  if (to && target !== abs(to)) {
+    return { kind: 'fail', detail: `redirectar till ${target} istallet for ${abs(to)}` };
+  }
+  return { kind: 'fixed', detail: `301 -> ${to || target}` };
 }
 
+const LABEL = { ok: 'ok   ', fail: 'FAIL ', gap: 'GAP  ', fixed: 'FIXED' };
+
 async function run() {
-  const gapCount = CASES.filter((c) => c.gap).length;
-  console.log(
-    `check-redirects: ${CASES.length - gapCount} regler + ${gapCount} kanda luckor mot ${ORIGIN}\n`,
-  );
+  const results = [];
 
   for (const testCase of CASES) {
-    const { from, to } = testCase;
-    console.log(`${from.replace(WWW_ORIGIN, 'https://www...')}${to ? ` -> ${to}` : ''}`);
-
+    let result;
     try {
-      if (testCase.gap) {
-        await reportGap(testCase);
-        continue;
-      }
-
-      const source = abs(from);
-      const expected = abs(to);
-
-      const first = await fetchOnce(source);
-      if (first.status !== 301) {
-        fail(from, `forvantade 301, fick ${first.status}`);
-        continue;
-      }
-
-      const location = first.location ? new URL(first.location, source).toString() : '';
-      if (location !== expected) {
-        fail(from, `redirectar till ${location || '(ingen location)'} istallet for ${expected}`);
-        continue;
-      }
-
-      // Malet maste svara 200 direkt. Redirectar det vidare ar det en kedja --
-      // och en loop om det pekar tillbaka, vilket ar precis felet vi vill fanga.
-      const target = await followChain(expected);
-      if (!target.ok) {
-        const trail = target.chain.map((u) => u.replace(ORIGIN, '')).join(' -> ');
-        fail(from, `malet svarar inte 200 (${target.problem}): ${trail}`);
-        continue;
-      }
-      if (target.hops > 0) {
-        const trail = target.chain.map((u) => u.replace(ORIGIN, '')).join(' -> ');
-        fail(from, `malet redirectar vidare: ${trail}`);
-        continue;
-      }
-
-      console.log('  ok    301 -> 200');
+      result = testCase.gap ? await checkGap(testCase) : await checkRule(testCase);
     } catch (err) {
-      fail(from, `natverksfel: ${err.message}`);
+      // Ett natverksfel ska inte stoppa resten av kontrollerna.
+      result = { kind: 'fail', detail: `natverksfel: ${err.message}` };
     }
+    results.push({ ...result, from: testCase.from, to: testCase.to });
   }
 
+  console.log(`check-redirects: ${CASES.length} kontroller mot ${ORIGIN}\n`);
+  for (const r of results) {
+    const path = r.to ? `${r.from} -> ${r.to}` : r.from;
+    console.log(`${LABEL[r.kind]} ${path}${r.detail ? `  (${r.detail})` : ''}`);
+  }
+
+  const broken = results.filter((r) => r.kind === 'fail');
+  const gaps = results.filter((r) => r.kind === 'gap');
+  const fixed = results.filter((r) => r.kind === 'fixed');
+  const okCount = results.filter((r) => r.kind === 'ok').length;
+
   console.log('');
-  if (failures.length) {
-    console.error(`check-redirects: ${failures.length} av ${CASES.length} kontroller ar trasiga.`);
+  if (broken.length) {
+    console.error(`check-redirects: ${broken.length} av ${CASES.length} kontroller ar trasiga.`);
     // exitCode i stallet for process.exit(): oppna fetch-anslutningar far stadas,
     // annars kraschar Node pa Windows (libuv UV_HANDLE_CLOSING) och exit-koden blir 127.
     process.exitCode = 1;
     return;
   }
 
-  const verified = CASES.length - gapCount;
-  console.log(`check-redirects: ok (${verified} regler, alla 301 -> 200)`);
-
-  if (gaps.length) {
-    const list = gaps.map((g) => `${g.from} (${g.status})`).join(', ');
-    console.log(`check-redirects: ${gaps.length} kanda luckor utan regel: ${list}`);
-  } else {
-    console.log('check-redirects: inga kanda luckor kvar.');
-  }
-
-  if (closed.length) {
-    console.log(`check-redirects: ${closed.length} lucka/luckor ar nu tackta - ta bort gap-flaggan: ${closed.join(', ')}`);
+  if (okCount) console.log(`check-redirects: ok (${okCount} regler, alla 301 -> 200)`);
+  console.log(
+    gaps.length
+      ? `check-redirects: ${gaps.length} kanda luckor utan regel: ${gaps.map((g) => g.from).join(', ')}`
+      : 'check-redirects: inga kanda luckor kvar.',
+  );
+  if (fixed.length) {
+    console.log(
+      `check-redirects: ${fixed.length} lucka/luckor ar nu tackta - ta bort gap-flaggan: ${fixed.map((f) => f.from).join(', ')}`,
+    );
   }
 }
 
