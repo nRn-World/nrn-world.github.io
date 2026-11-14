@@ -40,22 +40,22 @@ const CASES = [
   { from: `${WWW_ORIGIN}/`, to: '/' },
   { from: `${WWW_ORIGIN}/p/doggyplayer/`, to: '/p/doggyplayer/' },
 
-  // Samma regler, snedstrecksvarianten. Dessa svarar redan 301 idag.
+  // Samma regler i snedstrecksvarianten. Reglerna matchar numera bada formerna:
+  // ett avslutande "*" (skiftlagesokansligt) eller "strict wildcard" dar malet har
+  // samma ord och darfor inte far matchas (annars redirectar regeln till sig sjalv).
   { from: '/globalemergency/', to: '/GLOBAL_EMERGENCY/' },
   { from: '/FlashVideoDownloader/welcome.html/', to: '/p/flashvideodownloader/' },
+  { from: '/newzlocal/', to: '/NewNewz/' },
+  { from: '/nexnote/', to: '/NexNote/' },
+  { from: '/shadowpaw/', to: '/ShadowPaw/' },
+  { from: '/neonpathpuzzle/', to: '/NeonPathPuzzle/' },
+  { from: '/donetogether/', to: '/DoneTogether/' },
+  { from: '/timearchitect/', to: '/TimeArchitect/' },
+  // DoggyPlayer hade tidigare bara regeln med snedstreck.
+  { from: '/DoggyPlayer', to: '/p/doggyplayer/' },
 
-  // Kanda luckor: snedstrecksvarianten har ingen regel (Cloudflares "*" nar inte
-  // over snedstrecket, sa regeln "/newzlocal" tacker inte "/newzlocal/").
-  { from: '/newzlocal/', to: '/NewNewz/', gap: true },
-  { from: '/nexnote/', to: '/NexNote/', gap: true },
-  { from: '/shadowpaw/', to: '/ShadowPaw/', gap: true },
-  { from: '/neonpathpuzzle/', to: '/NeonPathPuzzle/', gap: true },
-  { from: '/donetogether/', to: '/DoneTogether/', gap: true },
-  { from: '/timearchitect/', to: '/TimeArchitect/', gap: true },
-  // Har ar det i stallet den snedstreckslosa varianten som saknas.
-  { from: '/DoggyPlayer', to: '/p/doggyplayer/', gap: true },
-
-  // Gamla sokvagar helt utan regel: alla 10 platser pa gratisplanen ar anvanda.
+  // Kanda luckor: gamla sokvagar helt utan regel (alla 10 platser pa gratisplanen
+  // ar anvanda, sa de kan inte tackas utan att en befintlig regel tas bort).
   { from: '/ribegatan', gap: true },
   { from: '/ribegatan/', gap: true },
   { from: '/BluetoothSafetyLock', gap: true },
