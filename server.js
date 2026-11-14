@@ -1,4 +1,5 @@
 import express from 'express';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config } from 'dotenv';
@@ -19,6 +20,16 @@ app.disable('x-powered-by');
 const port = Number(process.env.PORT) || 3000;
 const distPath = path.join(root, 'dist');
 
+// vercel.json is the single source of truth for the CSP (public/_headers mirrors it and
+// scripts/inject-csp-meta.mjs copies it into the HTML for hosts that cannot send headers).
+const contentSecurityPolicy = JSON.parse(readFileSync(path.join(root, 'vercel.json'), 'utf8'))
+  .headers.flatMap((rule) => rule.headers)
+  .find((header) => header.key.toLowerCase() === 'content-security-policy')?.value;
+
+if (!contentSecurityPolicy) {
+  throw new Error('server: no Content-Security-Policy in vercel.json');
+}
+
 app.use(express.json({ limit: '32kb' }));
 
 // Force HTTPS for a year, subdomains included. Browsers only honour this over HTTPS.
@@ -26,7 +37,7 @@ app.use(express.json({ limit: '32kb' }));
 app.use((_req, res, next) => {
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Content-Security-Policy', "frame-ancestors 'none'");
+  res.setHeader('Content-Security-Policy', contentSecurityPolicy);
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
   next();
