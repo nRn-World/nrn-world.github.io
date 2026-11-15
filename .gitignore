@@ -9,3 +9,4 @@ coverage/
 .vercel
 .psi-tmp/
 .data/
+.indexnow-state

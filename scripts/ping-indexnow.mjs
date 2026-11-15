@@ -3,10 +3,16 @@
  *
  * Att skicka alla 40 URL:er varje dygn ar onodig trafik mot en motor som redan
  * har sidorna, och en nyckel som uppfattas spamma blir blockerad (vilket redan
- * har hant en gang). Darfor jamfors HEAD mot en tidigare revision och bara
- * andrade sidor skickas. INDEXNOW_ALL=1 tvingar en full inlamning.
+ * har hant en gang). Utgangspunkten ar den commit som senast lamnades in — inte
+ * ett tidsfonster — sa att en missad korning inte tappar andringar: nasta
+ * korning jamfors mot samma position och tar med allt som hant sedan dess.
+ *
+ * Tillstandet ligger i .indexnow-state (en rad med commit-sha) och bevaras
+ * mellan korningar av workflowens cache. Saknas det skickas allt, vilket ar
+ * sakert men dyrt; INDEXNOW_ALL=1 tvingar samma sak manuellt.
+ * INDEXNOW_DRY_RUN=1 visar bara vad som skulle skickas.
  */
-import { writeFileSync, existsSync } from 'fs';
+import { writeFileSync, readFileSync, existsSync } from 'fs';
 import { execFileSync } from 'child_process';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -27,6 +33,10 @@ if (!existsSync(keyFilePath)) {
   console.log(`Wrote IndexNow key file: ${KEY}.txt`);
 }
 
+const STATE_FILE = join(root, '.indexnow-state');
+const FORCE_ALL = process.env.INDEXNOW_ALL === '1';
+const DRY_RUN = process.env.INDEXNOW_DRY_RUN === '1';
+
 const appUrls = [
   ...new Set(
     projects
@@ -41,11 +51,6 @@ const allUrls = [
   ...projects.map((p) => `${SITE.origin}/p/${p.slug}/`),
 ];
 
-// Fonstret har overlaOpp sa att en misslyckad korning inte tappar en andring.
-// Dubbletter kostar nastan inget; uteblivna inlamningar kostar indexering.
-const WINDOW_HOURS = Number(process.env.INDEXNOW_SINCE_HOURS || 30);
-const FORCE_ALL = process.env.INDEXNOW_ALL === '1';
-
 function git(args) {
   return execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
 }
@@ -58,8 +63,34 @@ function isShallow() {
   }
 }
 
-/** @returns {string[]} URL:er att lamna in */
-function changedUrls() {
+function commitExists(ref) {
+  try {
+    git(['cat-file', '-e', `${ref}^{commit}`]);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function readState() {
+  try {
+    return readFileSync(STATE_FILE, 'utf8').trim();
+  } catch {
+    return '';
+  }
+}
+
+function writeState(sha) {
+  writeFileSync(STATE_FILE, `${sha}\n`, 'utf8');
+}
+
+/**
+ * Delad kod (komponenter, App, stilar, index.html) renderas in i varje
+ * forrenderad sida, sa en andring dar motiverar alla URL:er. Projektmetadata
+ * avgor bara sina egna sidor.
+ * @returns {string[]} URL:er att lamna in
+ */
+function changedUrls(base) {
   if (FORCE_ALL) return allUrls;
 
   // Utan historik gar det inte att veta vad som andrats; hellre allt an inget.
@@ -68,17 +99,13 @@ function changedUrls() {
     return allUrls;
   }
 
-  const before = new Date(Date.now() - WINDOW_HOURS * 3600 * 1000).toISOString();
-  const base = git(['rev-list', '-1', `--before=${before}`, 'HEAD']);
-  if (!base) return allUrls;
-
   const changed = git(['diff', '--name-only', base, 'HEAD']).split('\n').filter(Boolean);
   if (changed.length === 0) return [];
 
+  if (changed.some(isSharedCode)) return allUrls;
+
   const targets = new Set();
 
-  // Projektmetadata avgor projektsidorna. Jamfor per slug, sa bara de projekt
-  // som faktiskt andrats skickas i stallet for alla 26.
   if (changed.some((f) => f.startsWith('src/data/'))) {
     let previous = null;
     try {
@@ -107,24 +134,44 @@ function changedUrls() {
     if (removed) targets.add(`${SITE.origin}/`);
   }
 
-  // Hubben renderas av index.html och applikationskoden utanfor src/data.
-  const shellChanged = changed.some(
-    (f) => f === 'index.html' || (f.startsWith('src/') && !f.startsWith('src/data/')),
-  );
-  if (shellChanged) targets.add(`${SITE.origin}/`);
-
   return [...targets].filter((u) => allUrls.includes(u));
 }
 
+/** Kod som renderas in i varje sida. */
+function isSharedCode(file) {
+  if (file === 'index.html') return true;
+  if (file.startsWith('src/data/')) return false;
+  if (file.startsWith('src/')) return true;
+  return /\.(css|scss|sass)$/.test(file);
+}
+
 async function pingIndexNow() {
-  const targetUrls = changedUrls();
-  if (targetUrls.length === 0) {
-    console.log(`IndexNow: inga andrade URL:er de senaste ${WINDOW_HOURS} timmarna — hoppar over`);
-    return { rejected: [], total: 0, sent: 0 };
+  const head = git(['rev-parse', 'HEAD']);
+  const state = readState();
+  const base = state && commitExists(state) ? state : null;
+
+  let targetUrls;
+  if (base) {
+    targetUrls = changedUrls(base);
+  } else {
+    // Utan sparad position finns inget att jamfora mot: hellre allt an inget.
+    if (!FORCE_ALL) console.warn('IndexNow: ingen sparad position — skickar alla URL:er');
+    targetUrls = allUrls;
   }
 
-  const preview = targetUrls.length > 10 ? `${targetUrls.slice(0, 10).join(', ')} …` : targetUrls.join(', ');
+  if (targetUrls.length === 0) {
+    console.log(`IndexNow: inga andrade URL:er sedan ${base.slice(0, 7)} — hoppar over`);
+    return { rejected: [], total: 0, sent: 0, head, advance: true };
+  }
+
+  const preview =
+    targetUrls.length > 10 ? `${targetUrls.slice(0, 10).join(', ')} …` : targetUrls.join(', ');
   console.log(`IndexNow: ${targetUrls.length} andrade URL:er — ${preview}`);
+
+  if (DRY_RUN) {
+    console.log('IndexNow: torrkorning — inget skickas');
+    return { rejected: [], total: 0, sent: 0, head, advance: false };
+  }
 
   const body = JSON.stringify({
     host: 'nrnworld.one',
@@ -172,15 +219,19 @@ async function pingIndexNow() {
     if (fallbackFailure) rejected.push(fallbackFailure);
   }
 
-  return { rejected, total: attempts, sent: targetUrls.length };
+  return { rejected, total: attempts, sent: targetUrls.length, head, advance: rejected.length === 0 };
 }
 
 pingIndexNow()
-  .then(({ rejected, total, sent }) => {
+  .then(({ rejected, total, sent, head, advance }) => {
     if (rejected.length > 0) {
+      // Positionen flyttas inte framat: nasta korning forsoker samma URL:er igen.
       console.error(`IndexNow: misslyckades — ${rejected.length} av ${total} motorer avvisade inlamningen: ${rejected.join(', ')}`);
       process.exitCode = 1;
       return;
+    }
+    if (advance) {
+      writeState(head);
     }
     if (sent > 0) {
       console.log(`Pinged IndexNow with ${sent} URLs`);

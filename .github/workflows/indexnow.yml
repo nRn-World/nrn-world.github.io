@@ -24,6 +24,17 @@ jobs:
         with:
           node-version: 24
 
+      # .indexnow-state bevaras mellan korningar: unik nyckel per korning gor att
+      # cachen alltid sparas, restore-keys plockar upp den senaste. Tappas cachen
+      # skickas allt igen, vilket ar sakert men dyrt.
+      - name: Restore IndexNow state
+        uses: actions/cache@v6
+        with:
+          path: .indexnow-state
+          key: indexnow-state-${{ github.run_id }}
+          restore-keys: |
+            indexnow-state-
+
       # Ett rott jobb betyder att inlamningen avvisades (t.ex. 403 fran blockerat
       # vardnamn). Gront betyder att IndexNow tog emot URL-listan.
       - name: Skicka URL:er till IndexNow
