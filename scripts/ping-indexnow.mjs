@@ -42,19 +42,9 @@ async function pingIndexNow() {
     urlList: urls,
   });
 
-  // api.indexnow.org distribuerar sjalv vidare till alla IndexNow-motorer, men
-  // Bing har blockerat den har varden. Yandex far darfor listan direkt, sa att
-  // URL:erna nar en motor medan blocken bestar.
-  const engines = [
-    'https://api.indexnow.org/indexnow',
-    'https://yandex.com/indexnow',
-  ];
-
-  // Ett gront jobb ska betyda att inlamningen accepterades. Avvisar API:et den
-  // (403 = vardnamnet blockerat) ska korningen falla i stallet for att se ut som
-  // en lyckad ping. process.exitCode anvands, inte process.exit.
-  const rejected = [];
-  for (const engine of engines) {
+  // Ett gront jobb ska betyda att inlamningen accepterades. process.exitCode
+  // anvands, inte process.exit (Windows kan klippa buffrad stdout).
+  const submit = async (engine) => {
     try {
       const res = await fetch(engine, {
         method: 'POST',
@@ -63,19 +53,35 @@ async function pingIndexNow() {
       });
       if (res.ok) {
         console.log(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
-      } else {
-        // 403 = nyckeln/verifieringen avslogs, 422 = URL:erna tillhor inte varden,
-        // 429 = for manga anrop. Svarskroppen anger orsaken, t.ex. UserForbiddedToAccessSite.
-        const detail = (await res.text()).replace(/\s+/g, ' ').slice(0, 200);
-        console.warn(`IndexNow ${engine}: ${res.status} ${res.statusText} — ${detail}`);
-        rejected.push(`${engine} (${res.status})`);
+        return null;
       }
+      // 403 = nyckeln/verifieringen avslogs, 422 = URL:erna tillhor inte varden,
+      // 429 = for manga anrop. Svarskroppen anger orsaken, t.ex. UserForbiddedToAccessSite.
+      const detail = (await res.text()).replace(/\s+/g, ' ').slice(0, 200);
+      console.warn(`IndexNow ${engine}: ${res.status} ${res.statusText} — ${detail}`);
+      return `${engine} (${res.status})`;
     } catch (err) {
       console.warn(`IndexNow ${engine} failed:`, err.message);
-      rejected.push(`${engine} (${err.message})`);
+      return `${engine} (${err.message})`;
     }
+  };
+
+  const primary = 'https://api.indexnow.org/indexnow';
+  const fallback = 'https://yandex.com/indexnow';
+
+  const rejected = [];
+  let attempts = 1;
+  const primaryFailure = await submit(primary);
+  if (primaryFailure) {
+    rejected.push(primaryFailure);
+    // api.indexnow.org distribuerar sjalv vidare till alla IndexNow-motorer. Yandex
+    // far listan bara nar den avvisar, sa en lyckad inlamning dubbelskickas aldrig.
+    attempts++;
+    const fallbackFailure = await submit(fallback);
+    if (fallbackFailure) rejected.push(fallbackFailure);
   }
-  return { rejected, total: engines.length };
+
+  return { rejected, total: attempts };
 }
 
 pingIndexNow()
