@@ -59,11 +59,11 @@ async function pingIndexNow() {
       });
       if (res.ok) {
         console.log(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
-      } else if (res.status === 403) {
-        console.warn(`IndexNow ${engine}: 403 — vardnamnet ar blockerat for tillfallet`);
-        rejected++;
       } else {
-        console.warn(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
+        // 403 = nyckeln/verifieringen avslogs, 422 = URL:erna tillhor inte varden,
+        // 429 = for manga anrop. Svarskroppen anger orsaken, t.ex. UserForbiddedToAccessSite.
+        const detail = (await res.text()).replace(/\s+/g, ' ').slice(0, 200);
+        console.warn(`IndexNow ${engine}: ${res.status} ${res.statusText} — ${detail}`);
         rejected++;
       }
     } catch (err) {
