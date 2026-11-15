@@ -137,12 +137,30 @@ function changedUrls(base) {
   return [...targets].filter((u) => allUrls.includes(u));
 }
 
+/**
+ * Byggkonfig och de skript som kor efter vite build och skriver om varje sidas
+ * HTML (prerender, CSP-metataggar, preloads, JSON-LD, deferred CSS/JS). Andras
+ * nagon av dem renderas alla sidor om, aven utan andrad projektdata.
+ */
+const SHARED_BUILD_PATTERNS = [
+  /^vite\.config\./,
+  /^tailwind\.config\./,
+  /^postcss\.config\./,
+  /^scripts\/prerender-/,
+  /^scripts\/inject-/,
+  /^scripts\/defer-/,
+  /^scripts\/generate-json-ld\.mjs$/,
+  /^scripts\/normalize-html-eol\.mjs$/,
+];
+
 /** Kod som renderas in i varje sida. */
 function isSharedCode(file) {
-  if (file === 'index.html') return true;
-  if (file.startsWith('src/data/')) return false;
-  if (file.startsWith('src/')) return true;
-  return /\.(css|scss|sass)$/.test(file);
+  const path = file.replace(/\\/g, '/');
+  if (path === 'index.html') return true;
+  if (path.startsWith('src/data/')) return false;
+  if (path.startsWith('src/')) return true;
+  if (/\.(css|scss|sass)$/.test(path)) return true;
+  return SHARED_BUILD_PATTERNS.some((re) => re.test(path));
 }
 
 async function pingIndexNow() {
