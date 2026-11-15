@@ -53,3 +53,30 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Redirect-reglerna ligger i Cloudflare och foljer inte med bygget, men malen
+  # gor det. Svarar ett mal 404 ar redirecten vardelos aven om regeln ar korrekt,
+  # sa kontrollen kors efter varje deploy och faller korningen vid trasiga kedjor.
+  verify-redirects:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Skriptet har inga beroenden, sa npm ci hoppas over: det gar snabbare och
+      # en trasig dependency kan inte blockera redirect-kontrollen.
+      - name: Verify legacy redirects
+        run: |
+          for attempt in 1 2 3; do
+            if npm run check:redirects; then
+              exit 0
+            fi
+            echo "Redirect-kontrollen misslyckades (forsok $attempt av 3), vantar 20s..."
+            sleep 20
+          done
+          echo "Redirect-kontrollen misslyckades efter 3 forsok."
+          exit 1

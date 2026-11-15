@@ -72,8 +72,12 @@ const CASES = [
   { from: '/NEWZLOCAL', to: '/NewNewz/' },
   { from: '/DOGGYPLAYER', to: '/p/doggyplayer/' },
 
-  // Kanda luckor: gamla sokvagar helt utan regel (alla 10 platser pa gratisplanen
-  // ar anvanda, sa de kan inte tackas utan att en befintlig regel tas bort).
+  // Beslutade 404:or: gamla sokvagar utan regel. Malen finns och svarar 200
+  // (/p/ribegatan/, /p/bluetoothsafetylock/, /p/nobreakaudiobuilder/), men alla
+  // 10 regelplatser pa gratisplanen ar anvanda och en regel kan bara ha ett mal.
+  // Att tacka dem kostar alltsa en fungerande redirect. Beslutet ar att lamna dem
+  // som 404 tills en plats blir ledig; de star kvar har sa att varje korning visar
+  // dem, och en framtida tackning rapporteras som FIXED.
   { from: '/ribegatan', gap: true },
   { from: '/ribegatan/', gap: true },
   { from: '/BluetoothSafetyLock', gap: true },
