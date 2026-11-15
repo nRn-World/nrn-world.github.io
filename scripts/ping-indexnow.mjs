@@ -42,14 +42,18 @@ async function pingIndexNow() {
     urlList: urls,
   });
 
-  // En motor räcker: api.indexnow.org distribuerar själv vidare till Bing och Yandex.
-  // Att skicka samma lista till båda dubblade trafiken och ledde till 403.
-  const engines = ['https://api.indexnow.org/indexnow'];
+  // api.indexnow.org distribuerar sjalv vidare till alla IndexNow-motorer, men
+  // Bing har blockerat den har varden. Yandex far darfor listan direkt, sa att
+  // URL:erna nar en motor medan blocken bestar.
+  const engines = [
+    'https://api.indexnow.org/indexnow',
+    'https://yandex.com/indexnow',
+  ];
 
   // Ett gront jobb ska betyda att inlamningen accepterades. Avvisar API:et den
   // (403 = vardnamnet blockerat) ska korningen falla i stallet for att se ut som
   // en lyckad ping. process.exitCode anvands, inte process.exit.
-  let rejected = 0;
+  const rejected = [];
   for (const engine of engines) {
     try {
       const res = await fetch(engine, {
@@ -64,11 +68,11 @@ async function pingIndexNow() {
         // 429 = for manga anrop. Svarskroppen anger orsaken, t.ex. UserForbiddedToAccessSite.
         const detail = (await res.text()).replace(/\s+/g, ' ').slice(0, 200);
         console.warn(`IndexNow ${engine}: ${res.status} ${res.statusText} — ${detail}`);
-        rejected++;
+        rejected.push(`${engine} (${res.status})`);
       }
     } catch (err) {
       console.warn(`IndexNow ${engine} failed:`, err.message);
-      rejected++;
+      rejected.push(`${engine} (${err.message})`);
     }
   }
   return { rejected, total: engines.length };
@@ -76,8 +80,8 @@ async function pingIndexNow() {
 
 pingIndexNow()
   .then(({ rejected, total }) => {
-    if (rejected > 0) {
-      console.error(`IndexNow: misslyckades — ${rejected} av ${total} motorer avvisade inlamningen`);
+    if (rejected.length > 0) {
+      console.error(`IndexNow: misslyckades — ${rejected.length} av ${total} motorer avvisade inlamningen: ${rejected.join(', ')}`);
       process.exitCode = 1;
       return;
     }
