@@ -10,8 +10,10 @@ import { loadSeoProjects, SITE } from './lib/seo-projects.mjs';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const projects = loadSeoProjects();
 
-// IndexNow key — use env or fallback to a stable generated key
-const KEY = process.env.INDEXNOW_KEY || '9d9d075bb721bf59db380903d83f672c';
+// IndexNow key — use env or fallback to a stable generated key.
+// Den gamla nyckeln (9d9d...) svarar 403 UserForbiddedToAccessSite hos Bing
+// medan en ny nyckel accepteras, sa den ar utbytt.
+const KEY = process.env.INDEXNOW_KEY || '8180857973443a4e7d88419353099639';
 const keyFilePath = join(root, 'public', `${KEY}.txt`);
 
 // Write the key file so the verification endpoint works
