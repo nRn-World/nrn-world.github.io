@@ -28,11 +28,12 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
  * }} SeoProject
  */
 
-/** @returns {SeoProject[]} */
-export function loadSeoProjects() {
-  const projectsSrc = readFileSync(join(root, 'src/data/projectsData.ts'), 'utf8');
-  const imagesSrc = readFileSync(join(root, 'src/data/projectImages.ts'), 'utf8');
-
+/**
+ * Tolkar projektmetadata ur kalltext, sa att samma logik kan kora pa en
+ * git-revision (for andringsdetektering) likval som pa arbetskatalogen.
+ * @returns {SeoProject[]}
+ */
+export function parseSeoProjects(projectsSrc, imagesSrc) {
   /** @type {Record<string, string>} */
   const imgMap = {};
   for (const line of imagesSrc.split('\n')) {
@@ -113,6 +114,14 @@ export function loadSeoProjects() {
   }
 
   return projects;
+}
+
+/** @returns {SeoProject[]} */
+export function loadSeoProjects() {
+  return parseSeoProjects(
+    readFileSync(join(root, 'src/data/projectsData.ts'), 'utf8'),
+    readFileSync(join(root, 'src/data/projectImages.ts'), 'utf8'),
+  );
 }
 
 export const SITE = {
