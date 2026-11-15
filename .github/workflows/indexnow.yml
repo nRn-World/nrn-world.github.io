@@ -21,5 +21,7 @@ jobs:
         with:
           node-version: 24
 
+      # Ett rott jobb betyder att inlamningen avvisades (t.ex. 403 fran blockerat
+      # vardnamn). Gront betyder att IndexNow tog emot URL-listan.
       - name: Skicka URL:er till IndexNow
         run: node scripts/ping-indexnow.mjs

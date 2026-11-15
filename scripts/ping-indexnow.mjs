@@ -46,6 +46,10 @@ async function pingIndexNow() {
   // Att skicka samma lista till båda dubblade trafiken och ledde till 403.
   const engines = ['https://api.indexnow.org/indexnow'];
 
+  // Ett gront jobb ska betyda att inlamningen accepterades. Avvisar API:et den
+  // (403 = vardnamnet blockerat) ska korningen falla i stallet for att se ut som
+  // en lyckad ping. process.exitCode anvands, inte process.exit.
+  let rejected = 0;
   for (const engine of engines) {
     try {
       const res = await fetch(engine, {
@@ -53,17 +57,33 @@ async function pingIndexNow() {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body,
       });
-      if (res.status === 403) {
-        console.warn(`IndexNow ${engine}: 403 — vardnamnet ar blockerat for tillfallet, hoppar over`);
-      } else {
+      if (res.ok) {
         console.log(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
+      } else if (res.status === 403) {
+        console.warn(`IndexNow ${engine}: 403 — vardnamnet ar blockerat for tillfallet`);
+        rejected++;
+      } else {
+        console.warn(`IndexNow ${engine}: ${res.status} ${res.statusText}`);
+        rejected++;
       }
     } catch (err) {
       console.warn(`IndexNow ${engine} failed:`, err.message);
+      rejected++;
     }
   }
+  return { rejected, total: engines.length };
 }
 
-pingIndexNow().then(() => {
-  console.log(`Pinged IndexNow with ${urls.length} URLs`);
-});
+pingIndexNow()
+  .then(({ rejected, total }) => {
+    if (rejected > 0) {
+      console.error(`IndexNow: misslyckades — ${rejected} av ${total} motorer avvisade inlamningen`);
+      process.exitCode = 1;
+      return;
+    }
+    console.log(`Pinged IndexNow with ${urls.length} URLs`);
+  })
+  .catch((err) => {
+    console.error('IndexNow: ovantat fel —', err.message);
+    process.exitCode = 1;
+  });
