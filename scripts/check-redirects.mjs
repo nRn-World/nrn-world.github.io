@@ -54,6 +54,24 @@ const CASES = [
   // DoggyPlayer hade tidigare bara regeln med snedstreck.
   { from: '/DoggyPlayer', to: '/p/doggyplayer/' },
 
+  // Skiftlagesvarianter. De fem forsta reglerna ar skiftlageskansliga ("strict
+  // wildcard"), sa de har ett eget versalvillkor; newzlocal och DoggyPlayer ar
+  // skiftlagesokansliga. CamelCase utan snedstreck normaliseras av GitHub Pages.
+  // Alla ska landa pa samma sida - det har var 404 innan versalvillkoren fanns.
+  { from: '/NexNote', to: '/NexNote/' },
+  { from: '/NEXNOTE', to: '/NexNote/' },
+  { from: '/ShadowPaw', to: '/ShadowPaw/' },
+  { from: '/SHADOWPAW', to: '/ShadowPaw/' },
+  { from: '/NeonPathPuzzle', to: '/NeonPathPuzzle/' },
+  { from: '/NEONPATHPUZZLE', to: '/NeonPathPuzzle/' },
+  { from: '/DoneTogether', to: '/DoneTogether/' },
+  { from: '/DONETOGETHER', to: '/DoneTogether/' },
+  { from: '/TimeArchitect', to: '/TimeArchitect/' },
+  { from: '/TIMEARCHITECT', to: '/TimeArchitect/' },
+  { from: '/NewzLocal', to: '/NewNewz/' },
+  { from: '/NEWZLOCAL', to: '/NewNewz/' },
+  { from: '/DOGGYPLAYER', to: '/p/doggyplayer/' },
+
   // Kanda luckor: gamla sokvagar helt utan regel (alla 10 platser pa gratisplanen
   // ar anvanda, sa de kan inte tackas utan att en befintlig regel tas bort).
   { from: '/ribegatan', gap: true },
