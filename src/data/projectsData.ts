@@ -7,7 +7,7 @@ export const INITIAL_PROJECTS: Project[] = [
     id: 'shadow-paw',
     name: 'ShadowPaw: Noir Typist',
     tagline: 'Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth.',
-    description: 'Fast-paced retro cyberpunk typing action game. Solve crimes, deflect enemy attacks, and uncover conspiratorial logs through lightning keystrokes directly in your browser.',
+    description: 'Fast-paced retro cyberpunk typing game. Solve crimes, deflect enemy attacks, and uncover conspiratorial logs through lightning keystrokes directly in your browser.',
     detailedAbout: 'ShadowPaw: Noir Typist blends atmospheric detective fiction with arcade typing mechanics. Step into the trenchcoat of an investigative cyber-feline navigating the rain-slicked neon alleys of New Babel.\n\nPlay directly in your browser:\n• Rhythm & Keystroke Combat: Every dialogue choice, lock-pick sequence, and brawl is executed via rapid typing.\n• Dynamic Multiplier: Build intense combo streaks to activate detective focus mode.\n• Synthwave Soundtrack: Full original 18-track synthwave & dark-jazz audio score.\n• Arcade Survival: Infinite wave mode with global leaderboards.\n• Direct Browser Play: Zero installation needed, instant load.',
     version: 'v1.0.4-live',
     releaseDate: '2026-08-28',
