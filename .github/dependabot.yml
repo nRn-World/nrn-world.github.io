@@ -1,0 +1,14 @@
+version: 2
+
+# Håller actionversionerna i .github/workflows aktuella. Utan detta åldras de
+# tyst tills GitHub börjar tvinga fram nya runtime-versioner med varningar.
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Alla action-uppdateringar samlas i en PR i stället för en per action.
+    groups:
+      github-actions:
+        patterns:
+          - "*"

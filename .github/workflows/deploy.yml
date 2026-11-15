@@ -22,7 +22,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - run: npm ci
@@ -65,7 +65,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       # Skriptet har inga beroenden, sa npm ci hoppas over: det gar snabbare och
       # en trasig dependency kan inte blockera redirect-kontrollen.
