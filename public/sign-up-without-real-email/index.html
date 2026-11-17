@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to sign up for a site without your real email</title>
+    <meta
+      name="description"
+      content="A temporary address, a filled form and the verification code back in the page: what it takes to sign up for a site without handing over your personal email, and where it fails."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://nrnworld.one/sign-up-without-real-email/" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to sign up for a site without your real email" />
+    <meta
+      property="og:description"
+      content="The three separate jobs behind a sign-up without your personal address — receiving the mail, filling the form, getting the code back in — and what each one costs."
+    />
+    <meta property="og:url" content="https://nrnworld.one/sign-up-without-real-email/" />
+    <meta property="og:image" content="https://nrnworld.one/og-image.png" />
+    <meta property="og:site_name" content="nRnWorld" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="icon" type="image/webp" href="/logo-72.webp" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="/">
+          <img src="/logo-72.webp" width="28" height="28" alt="nRnWorld logo" />
+          <span>n<em>R</em>nWorld</span>
+        </a>
+        <a class="back" href="/">&larr; Back to nRnWorld</a>
+      </div>
+
+      <h1>Sign up for a site without giving it your real email address</h1>
+      <p class="updated">Last updated: 17 November 2026</p>
+
+      <p class="lead">
+        You want to try a service, or test a sign-up flow of your own, and the form asks for an
+        address you would rather not hand over. A temporary inbox solves part of that. The rest —
+        getting the confirmation code back into the page and keeping the login afterwards — is
+        where most people give up and type their real address. This page covers both routes, with
+        and without
+        <a href="/p/autoaccountmaker/">AutoAccountMaker</a>.
+      </p>
+
+      <h2>What &ldquo;without your real email&rdquo; actually requires</h2>
+      <p>It is three separate jobs, and only the first one is easy:</p>
+      <ul>
+        <li>
+          <strong>An address that can receive mail.</strong> A made-up address is useless, because
+          the site sends a code or a confirmation link and something has to be able to open it.
+        </li>
+        <li>
+          <strong>A form filled in consistently.</strong> Name, address and password have to match,
+          and the boxes the site requires have to be ticked, or the form comes back with an error
+          and often clears itself.
+        </li>
+        <li>
+          <strong>A way to get the code back into the page.</strong> Verification mail arrives in
+          another tab, the code expires in minutes, and some sites only send a link that has to be
+          opened in the same browser.
+        </li>
+      </ul>
+      <p>
+        A temp-mail website gives you the first. The second and third are yours to do by hand, and
+        they are the slow part.
+      </p>
+
+      <h2>Doing it by hand</h2>
+      <ol class="steps">
+        <li>
+          <strong>Open a temp-mail service in a second tab and copy the address.</strong> Leave the
+          tab open: the inbox lives in that tab, and some services expire an address after a few
+          minutes of disuse. Note the address somewhere before you start typing it into a form.
+        </li>
+        <li>
+          <strong>Fill the form.</strong> Use a password you have not used anywhere else — the
+          address is disposable, but the password is what protects the account while it exists.
+        </li>
+        <li>
+          <strong>Submit, then switch tabs and wait.</strong> Verification codes usually expire
+          within 10–15 minutes. If the message contains a link instead, open it in the same browser
+          profile you registered in.
+        </li>
+        <li>
+          <strong>Write down the address, the password and the site.</strong> When the inbox
+          disappears you cannot receive a password reset, so the login is all you will have.
+        </li>
+      </ol>
+
+      <h2>Where the manual route breaks</h2>
+      <ul>
+        <li>
+          <strong>The tab is the account.</strong> Close it, or let the address expire early, and
+          the confirmation mail is gone with no way to ask for another one.
+        </li>
+        <li>
+          <strong>Custom forms.</strong> Native dropdowns are easy. Hand-built listboxes, fields
+          inside web components, and six-box code inputs are not, and a wrong guess clears the form
+          you just filled.
+        </li>
+        <li>
+          <strong>Timing.</strong> Some sites send the mail half a minute late, some open a modal
+          over the form, and some log you out of the registration flow while you are in the other
+          tab.
+        </li>
+        <li>
+          <strong>Bookkeeping.</strong> Three sign-ups later, nobody remembers which address belongs
+          to which site.
+        </li>
+      </ul>
+
+      <h2>One click instead of four tabs</h2>
+      <p>
+        AutoAccountMaker does the whole run in one go. It creates a temporary address and a
+        password, fills the fields, ticks the required boxes, submits the form, waits for the
+        verification mail, enters the code (or opens the link), and logs in. The account is saved
+        to a vault, so the next visit only needs <em>Log in</em>.
+      </p>
+
+      <div class="card">
+        <h3>Filling the form</h3>
+        <p>
+          Names, email, confirmation, password, country, gender and date of birth. Ordinary inputs,
+          native selects, dropdowns and listboxes built out of divs, and code fields. Fields inside
+          a shadow root — sites built from web components such as
+          <code>&lt;w-textfield&gt;</code> — are reached too, which plain HTML injection cannot do.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Reading the code</h3>
+        <p>
+          It waits for the message, reads the code and enters it, whether the page uses one field or
+          six small boxes. If the site sends a link instead, the link is opened and the flow
+          continues from there.
+        </p>
+      </div>
+      <div class="card">
+        <h3>The vault</h3>
+        <p>
+          Accounts are stored locally in the browser, capped at 10, 50 or 199. Export to CSV or PDF,
+          or to an encrypted <code>.enc</code> backup that needs a master password on export and on
+          import. CSV and PDF leave passwords out unless you tick <em>Include passwords</em>, and
+          neither of those files is encrypted.
+        </p>
+      </div>
+
+      <p>
+        <a
+          class="cta"
+          href="https://chromewebstore.google.com/detail/autoaccountmaker/dhoolninihkdkblbkmddananbaifjpii"
+          target="_blank"
+          rel="noreferrer"
+          >Install AutoAccountMaker</a
+        >
+        <a class="cta secondary" href="/p/autoaccountmaker/">Read the project page</a>
+      </p>
+
+      <h2>What it will not do</h2>
+      <ul>
+        <li>
+          <strong>Solve CAPTCHAs.</strong> It ticks the checkbox and lets the site do its own check.
+          There is no image or proof-of-work solver, so a site that demands more than a click stops
+          the run.
+        </li>
+        <li>
+          <strong>Create phone numbers.</strong> It is email only. A site that requires an SMS code
+          cannot be completed.
+        </li>
+        <li>
+          <strong>Guarantee the account.</strong> &ldquo;Verified&rdquo; means the site accepted the
+          code it was sent. A site that rejects the account later is outside the extension's
+          control.
+        </li>
+        <li>
+          <strong>Work on every form.</strong> Fields are found with heuristics. Unusual flows,
+          heavy bot protection or a site's own login logic can refuse the registration or fill it
+          only partly — and that does not change with a bigger version number.
+        </li>
+        <li>
+          <strong>Ignore the provider.</strong> If mail.tm or the RapidAPI provider rate-limits you,
+          or a message never arrives, the run fails. The free tier also allows one automated
+          sign-up every three hours; Pro removes the wait.
+        </li>
+      </ul>
+
+      <h2>Is a temporary address allowed?</h2>
+      <p>
+        Sometimes. What matters is the site's terms, not the tool. Plenty of services accept
+        disposable addresses, and plenty forbid them outright or block known temp-mail domains, in
+        which case the sign-up simply fails with a generic error. The terms take a minute to read.
+      </p>
+      <p>
+        Two things worth avoiding: using it to get around a limit you already agreed to — trial
+        abuse, vote or referral manipulation — and using it where the account has to stay reachable.
+        Banking, work and anything you would need support for need an address you actually own.
+      </p>
+      <p class="note">
+        The extension is meant for testing your own sign-up flow and for trying a service without
+        your personal address. It is not a tool for creating accounts in bulk on someone else's
+        site.
+      </p>
+
+      <h2>Questions people ask</h2>
+      <details>
+        <summary>Will I lose the account when the temporary inbox expires?</summary>
+        <p>
+          You lose the ability to receive password resets and any later mail sent to that address.
+          The account itself stays on the site for as long as the site keeps it, but treat the saved
+          password as the only way in.
+        </p>
+      </details>
+      <details>
+        <summary>Which email providers can it use?</summary>
+        <p>
+          mail.tm by default: free, no key, works immediately. A RapidAPI key for temp-mail.org is
+          optional and goes under <em>Advanced</em> in the settings. Both providers apply their own
+          limits on how fast addresses can be created, and those limits are theirs, not the
+          extension's.
+        </p>
+      </details>
+      <details>
+        <summary>Does it create phone numbers for SMS verification?</summary>
+        <p>
+          No. It creates email addresses only, so a site that insists on a phone number cannot be
+          completed with it.
+        </p>
+      </details>
+      <details>
+        <summary>What happens on a site with a CAPTCHA?</summary>
+        <p>
+          The checkbox gets ticked and the site runs its own check. If it asks for an image puzzle
+          or a proof-of-work challenge, the run stops there — there is no solver.
+        </p>
+      </details>
+      <details>
+        <summary>Is the free version enough to try it?</summary>
+        <p>
+          Yes, with one automated sign-up every three hours. Pro is a lifetime licence for one
+          browser and removes the wait; it does not change what the extension is able to fill.
+        </p>
+      </details>
+      <details>
+        <summary>Where are the created accounts stored?</summary>
+        <p>
+          Locally in the browser, in the extension's vault. CSV and PDF exports leave passwords out
+          unless you include them, and neither file is encrypted — use the
+          <code>.enc</code> backup when the file has to travel.
+        </p>
+      </details>
+
+      <h2>Related</h2>
+      <ul>
+        <li>
+          <a href="/p/autoaccountmaker/">AutoAccountMaker — project page, screenshots and changelog</a>
+        </li>
+        <li>
+          <a href="https://github.com/nRn-World/AutoAccountMaker" target="_blank" rel="noreferrer"
+            >Source code and full README on GitHub</a
+          >
+        </li>
+        <li><a href="/">All nRnWorld projects</a></li>
+      </ul>
+
+      <footer>
+        <a href="/">&larr; nRnWorld</a> · <span>Sign up without your real email</span> · Copyright
+        &copy; 2026
+      </footer>
+    </div>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Will I lose the account when the temporary inbox expires?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You lose the ability to receive password resets and any later mail sent to that address. The account itself stays on the site for as long as the site keeps it, but treat the saved password as the only way in."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which email providers can it use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "mail.tm by default: free, no key, works immediately. A RapidAPI key for temp-mail.org is optional and goes under Advanced in the settings. Both providers apply their own limits on how fast addresses can be created, and those limits are theirs, not the extension's."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it create phone numbers for SMS verification?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It creates email addresses only, so a site that insists on a phone number cannot be completed with it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens on a site with a CAPTCHA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The checkbox gets ticked and the site runs its own check. If it asks for an image puzzle or a proof-of-work challenge, the run stops there — there is no solver."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the free version enough to try it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with one automated sign-up every three hours. Pro is a lifetime licence for one browser and removes the wait; it does not change what the extension is able to fill."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are the created accounts stored?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Locally in the browser, in the extension's vault. CSV and PDF exports leave passwords out unless you include them, and neither file is encrypted — use the .enc backup when the file has to travel."
+            }
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to hide bookmarks in Chrome on a shared computer</title>
+    <meta
+      name="description"
+      content="Chrome has no bookmark lock. What the browser can and cannot hide, why a second profile is not a password, and how to keep private links behind a master password."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://nrnworld.one/hide-bookmarks-chrome/" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to hide bookmarks in Chrome on a shared computer" />
+    <meta
+      property="og:description"
+      content="Hiding the bookmarks bar hides nothing. The four options Chrome gives you, ranked by how much they actually protect, and how a bookmark vault works."
+    />
+    <meta property="og:url" content="https://nrnworld.one/hide-bookmarks-chrome/" />
+    <meta property="og:image" content="https://nrnworld.one/og-image.png" />
+    <meta property="og:site_name" content="nRnWorld" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="icon" type="image/webp" href="/logo-72.webp" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="/">
+          <img src="/logo-72.webp" width="28" height="28" alt="nRnWorld logo" />
+          <span>n<em>R</em>nWorld</span>
+        </a>
+        <a class="back" href="/">&larr; Back to nRnWorld</a>
+      </div>
+
+      <h1>How to hide bookmarks in Chrome on a shared computer</h1>
+      <p class="updated">Last updated: 17 November 2026</p>
+
+      <p class="lead">
+        You share the PC, or someone else uses your Chrome profile, and there are links in your
+        bookmarks you would rather not explain: a job search, a medical page, a gift, a client's
+        staging URL. The bookmarks bar can be hidden with one keystroke — but hiding the bar is not
+        hiding the bookmarks. This page goes through what Chrome actually protects, what it does
+        not, and how to put a password in front of the list with
+        <a href="/p/privatelinksaver/">PrivateLinkSaver</a>.
+      </p>
+
+      <h2>What Chrome can and cannot hide</h2>
+      <ul>
+        <li>
+          <strong>Hide the bar, not the bookmarks.</strong> <code>Ctrl+Shift+B</code> (or the
+          <em>Show bookmarks bar</em> item in the menu) removes the bar from view. Every bookmark is
+          still in the bookmark manager at <code>Ctrl+Shift+O</code>, in the folder menus, and in
+          the address bar's suggestions. Anyone who knows those two shortcuts has seen your list.
+        </li>
+        <li>
+          <strong>A second profile is not a locked profile.</strong> It keeps work and personal
+          bookmarks apart, and it stops someone casually browsing your folders. It has no password:
+          the profile avatar sits in the toolbar and anyone can switch to it. Chrome's profile lock
+          protects the profile against another <em>operating system</em> account, not against
+          someone using yours.
+        </li>
+        <li>
+          <strong>Guest and incognito keep nothing.</strong> That is the point of them: close the
+          window and the bookmark, the history and the cookies are gone. Useful for a link you need
+          once, useless for one you need tomorrow.
+        </li>
+        <li>
+          <strong>Sync spreads them.</strong> Turning on sync copies your bookmarks to every device
+          signed into the Google account. Convenient, and the opposite of keeping a subset private.
+        </li>
+      </ul>
+      <p>
+        The short version: Chrome has no password on bookmarks, no private folder, and no way to
+        mark a single bookmark as hidden.
+      </p>
+
+      <h2>The options, from lightest to strongest</h2>
+      <div class="card">
+        <h3>1. A Guest window, for one link</h3>
+        <p>
+          Chrome menu &rarr; <em>Open Guest window</em>. Nothing is written to the profile while you
+          browse, so there is nothing to hide afterwards. It is the fastest option and it protects
+          nothing you want to keep.
+        </p>
+      </div>
+      <div class="card">
+        <h3>2. A separate Chrome profile</h3>
+        <p>
+          Quick to create, and it separates the two sets of bookmarks and history completely. It
+          fails the moment the other person clicks the avatar — there is no password on it.
+        </p>
+      </div>
+      <div class="card">
+        <h3>3. A separate operating system account</h3>
+        <p>
+          The strongest separation Chrome itself can offer, because the other person cannot read
+          your browser profile files at all. It is also the heaviest: it splits everything, not just
+          one folder of links.
+        </p>
+      </div>
+      <div class="card">
+        <h3>4. A bookmark vault extension</h3>
+        <p>
+          The list lives in the extension's own encrypted storage behind a master password, so
+          opening it takes a deliberate step. It is the only option here that locks a subset of
+          links instead of the whole profile.
+        </p>
+      </div>
+
+      <h2>What a vault does differently</h2>
+      <p>
+        A bookmark vault keeps its own list. Chrome's bookmark manager never sees those links: they
+        are not in the bookmarks file, not in the bar, and not in the address bar's suggestions.
+        PrivateLinkSaver works that way — a master password locks the panel, folders with colours
+        and tags organise the links, <code>Ctrl+Shift+S</code> saves the current page and
+        <code>Ctrl+Shift+F</code> searches the list. The interface is available in English, Swedish,
+        Turkish, Spanish and French, and syncing to other devices is optional.
+      </p>
+      <p class="note">
+        One detail worth knowing before you trust it: local storage is not encrypted by default.
+        Turn on <em>Encrypt local data</em> in Settings — that is what applies AES-256-GCM with a key
+        derived from your master password through PBKDF2-SHA256. Without it, the master password is a
+        lock on the interface, not encryption at rest.
+      </p>
+
+      <h2>Setting it up</h2>
+      <ol class="steps">
+        <li>
+          <strong>Install PrivateLinkSaver</strong> from the Chrome Web Store and open it from the
+          toolbar.
+        </li>
+        <li>
+          <strong>Set a master password you have not used elsewhere.</strong> The encryption key is
+          derived from it, so there is no server-side reset to fall back on — pick one you will
+          remember.
+        </li>
+        <li>
+          <strong>Open Settings and turn on <em>Encrypt local data</em>.</strong> Do this before you
+          save anything worth protecting.
+        </li>
+        <li>
+          <strong>Move the private links across.</strong> Open each page, press
+          <code>Ctrl+Shift+S</code>, then delete the bookmark from Chrome. Deleting it is the step
+          people skip — a link that is still in Chrome's bookmarks is still readable.
+        </li>
+        <li>
+          <strong>Check your work.</strong> Press <code>Ctrl+Shift+B</code> and
+          <code>Ctrl+Shift+O</code>: if the links no longer appear in the bar or the manager, they
+          are out of Chrome's list.
+        </li>
+      </ol>
+
+      <p>
+        <a
+          class="cta"
+          href="https://chromewebstore.google.com/detail/privatelinksaver/kdnhcpdhlpopdggnbkechdkcdbolkinf"
+          target="_blank"
+          rel="noreferrer"
+          >Install PrivateLinkSaver</a
+        >
+        <a class="cta secondary" href="/p/privatelinksaver/">Read the project page</a>
+      </p>
+
+      <h2>What this protects against — and what it does not</h2>
+      <div class="card">
+        <h3>Protected</h3>
+        <ul>
+          <li>Someone opening your browser while you are away from the desk.</li>
+          <li>A shared family PC where the other person knows about the bookmark manager.</li>
+          <li>A link on screen in the bar, in a suggestion list or in a screenshot.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Not protected</h3>
+        <ul>
+          <li>Someone with your operating system account and a keylogger.</li>
+          <li>The vault's storage while it is unlocked and open on screen.</li>
+          <li>Anyone you have given the master password to.</li>
+          <li>
+            Chrome's history and address bar autocomplete, which are stored separately and are not
+            cleaned up by saving a link in a vault.
+          </li>
+        </ul>
+      </div>
+
+      <h2>If it is only one link</h2>
+      <p>
+        Use an incognito window: <code>Ctrl+Shift+N</code> on Windows and Linux,
+        <code>Cmd+Shift+N</code> on a Mac. Nothing is saved, so there is nothing to find later —
+        which is exactly the trade you are making.
+      </p>
+
+      <h2>Questions people ask</h2>
+      <details>
+        <summary>Can I password-protect a single Chrome bookmarks folder?</summary>
+        <p>
+          No. Chrome has no per-folder or per-bookmark password. The whole profile can be tied to
+          your operating system account, but anyone using that account sees every bookmark in it.
+        </p>
+      </details>
+      <details>
+        <summary>Does hiding the bookmarks bar hide the bookmarks?</summary>
+        <p>
+          No. It only removes the bar. The bookmark manager (<code>Ctrl+Shift+O</code>), the folder
+          menus and the address bar suggestions still show everything.
+        </p>
+      </details>
+      <details>
+        <summary>Is incognito the same as a private bookmark folder?</summary>
+        <p>
+          No. Incognito keeps nothing, so a bookmark saved there disappears when the window closes.
+          A private folder would have to keep the link — Chrome has no such feature.
+        </p>
+      </details>
+      <details>
+        <summary>Where are the saved links stored?</summary>
+        <p>
+          Locally in the browser, in the extension's own storage behind the master password. Cloud
+          sync is optional, and when it is on, the data is encrypted on the device before it is
+          uploaded.
+        </p>
+      </details>
+      <details>
+        <summary>Does it work in Edge, Brave and Opera?</summary>
+        <p>
+          Yes. It is a Manifest V3 extension published in the Chrome Web Store, so Chromium browsers
+          such as Edge, Brave, Opera and Vivaldi can install it. Firefox is a different extension
+          platform and is not supported by this build.
+        </p>
+      </details>
+      <details>
+        <summary>What happens if I forget the master password?</summary>
+        <p>
+          The key that decrypts your links is derived from that password. There is no server holding
+          a copy of it, so treat the password as the only way into the list.
+        </p>
+      </details>
+
+      <h2>Related</h2>
+      <ul>
+        <li>
+          <a href="/p/privatelinksaver/">PrivateLinkSaver — project page, screenshots and changelog</a>
+        </li>
+        <li>
+          <a href="https://github.com/nRn-World/PrivateLinkSaver" target="_blank" rel="noreferrer"
+            >Source code and full README on GitHub</a
+          >
+        </li>
+        <li><a href="/">All nRnWorld projects</a></li>
+      </ul>
+
+      <footer>
+        <a href="/">&larr; nRnWorld</a> · <span>Hiding bookmarks in Chrome</span> · Copyright &copy;
+        2026
+      </footer>
+    </div>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I password-protect a single Chrome bookmarks folder?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Chrome has no per-folder or per-bookmark password. The whole profile can be tied to your operating system account, but anyone using that account sees every bookmark in it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does hiding the bookmarks bar hide the bookmarks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It only removes the bar. The bookmark manager (Ctrl+Shift+O), the folder menus and the address bar suggestions still show everything."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is incognito the same as a private bookmark folder?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Incognito keeps nothing, so a bookmark saved there disappears when the window closes. A private folder would have to keep the link — Chrome has no such feature."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are the saved links stored?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Locally in the browser, in the extension's own storage behind the master password. Cloud sync is optional, and when it is on, the data is encrypted on the device before it is uploaded."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work in Edge, Brave and Opera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It is a Manifest V3 extension published in the Chrome Web Store, so Chromium browsers such as Edge, Brave, Opera and Vivaldi can install it. Firefox is a different extension platform and is not supported by this build."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I forget the master password?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The key that decrypts your links is derived from that password. There is no server holding a copy of it, so treat the password as the only way into the list."
+            }
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

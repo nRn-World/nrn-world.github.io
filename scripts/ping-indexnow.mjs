@@ -51,6 +51,18 @@ const staticPages = [
     file: 'public/no-download-button/index.html',
     url: `${SITE.origin}/no-download-button/`,
   },
+  {
+    file: 'public/sign-up-without-real-email/index.html',
+    url: `${SITE.origin}/sign-up-without-real-email/`,
+  },
+  {
+    file: 'public/hide-bookmarks-chrome/index.html',
+    url: `${SITE.origin}/hide-bookmarks-chrome/`,
+  },
+  {
+    file: 'public/sticky-note-on-a-webpage/index.html',
+    url: `${SITE.origin}/sticky-note-on-a-webpage/`,
+  },
 ];
 
 const allUrls = [
@@ -145,6 +157,12 @@ function changedUrls(base) {
 
   for (const page of staticPages) {
     if (changed.includes(page.file)) targets.add(page.url);
+  }
+
+  // Den delade stilmallen renderas in i alla handskrivna sidor, sa en andring
+  // dar motiverar alla deras URL:er.
+  if (changed.includes('public/landing.css')) {
+    for (const page of staticPages) targets.add(page.url);
   }
 
   return [...targets].filter((u) => allUrls.includes(u));

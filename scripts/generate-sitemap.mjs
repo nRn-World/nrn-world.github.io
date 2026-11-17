@@ -33,6 +33,24 @@ const staticPages = [
     priority: '0.7',
   },
   {
+    loc: `${SITE.origin}/sign-up-without-real-email/`,
+    lastmod: today,
+    changefreq: 'monthly',
+    priority: '0.7',
+  },
+  {
+    loc: `${SITE.origin}/hide-bookmarks-chrome/`,
+    lastmod: today,
+    changefreq: 'monthly',
+    priority: '0.7',
+  },
+  {
+    loc: `${SITE.origin}/sticky-note-on-a-webpage/`,
+    lastmod: today,
+    changefreq: 'monthly',
+    priority: '0.7',
+  },
+  {
     loc: `${SITE.origin}/privacy/`,
     lastmod: today,
     changefreq: 'yearly',

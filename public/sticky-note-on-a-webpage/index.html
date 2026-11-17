@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to put a sticky note on a web page</title>
+    <meta
+      name="description"
+      content="Why bookmarks, print-to-PDF and a notes app all lose the context, and how to pin a note to the page itself so it is still in the right place when you come back."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://nrnworld.one/sticky-note-on-a-webpage/" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to put a sticky note on a web page" />
+    <meta
+      property="og:description"
+      content="A bookmark is a link with a title. Three things people try instead, why each one loses the context, and how to pin a note where the thing is."
+    />
+    <meta property="og:url" content="https://nrnworld.one/sticky-note-on-a-webpage/" />
+    <meta property="og:image" content="https://nrnworld.one/og-image.png" />
+    <meta property="og:site_name" content="nRnWorld" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="icon" type="image/webp" href="/logo-72.webp" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="/">
+          <img src="/logo-72.webp" width="28" height="28" alt="nRnWorld logo" />
+          <span>n<em>R</em>nWorld</span>
+        </a>
+        <a class="back" href="/">&larr; Back to nRnWorld</a>
+      </div>
+
+      <h1>How to put a sticky note on a web page — and still find it tomorrow</h1>
+      <p class="updated">Last updated: 17 November 2026</p>
+
+      <p class="lead">
+        You are reading something long: a contract, a spec, a product page you are comparing. You
+        want to leave yourself a note on it — <em>ask about this line</em>, <em>this price
+        changed</em>, <em>come back to this paragraph</em>. A bookmark is a link with a title, so it
+        cannot hold that thought in the right place. This page goes through what actually works,
+        and where each option breaks.
+      </p>
+
+      <h2>Three things people try first</h2>
+      <h3>Put it in the bookmark title</h3>
+      <p>
+        The bookmarks bar shows about a dozen characters before it truncates, and the rest ends up
+        in a menu you never open. Worse, it mixes remarks into a list you use for navigation, so the
+        note is now part of your filing system instead of the page.
+      </p>
+
+      <h3>Print the page to PDF and annotate that</h3>
+      <p>
+        Fine for a document you intend to keep. It falls apart for a page that changes, and the
+        annotation lives in the PDF — not on the page you will actually revisit next week.
+      </p>
+
+      <h3>Keep a note in a notes app with the URL pasted in</h3>
+      <p>
+        The note survives; the context does not. You come back with a URL and one sentence, then
+        re-read four thousand words looking for the paragraph the sentence was about.
+      </p>
+
+      <h2>What a note on a page needs</h2>
+      <ul>
+        <li>
+          <strong>A place.</strong> The note should sit next to the thing it is about, so finding
+          the note means finding the passage — not searching the page again.
+        </li>
+        <li>
+          <strong>Persistence.</strong> It has to survive a reload, a browser restart and a week of
+          not visiting the page.
+        </li>
+        <li>
+          <strong>A way back.</strong> One list of every note, with a link to the page each note
+          belongs to.
+        </li>
+        <li>
+          <strong>No interference.</strong> The note must not break the page's own clicks, keyboard
+          shortcuts or scrolling.
+        </li>
+      </ul>
+
+      <h2>Pinning a note with NotePin</h2>
+      <p>
+        <a href="/p/notepin/">NotePin</a> adds a layer on top of the page instead of changing the
+        page itself. On any site, hold the right mouse button for about a second — a normal
+        right-click still opens the usual context menu, so the page keeps working — and choose
+        <em>Add Sticky Note</em>.
+      </p>
+      <ol class="steps">
+        <li>
+          <strong>Hold right-click for a second</strong> on the page and pick
+          <em>Add Sticky Note</em>. The note appears where you are pointing.
+        </li>
+        <li>
+          <strong>Type.</strong> Every keystroke is saved as you type, so there is no save button to
+          forget and no draft to lose.
+        </li>
+        <li>
+          <strong>Move it, resize it, minimise it.</strong> Drag the top handlebar to move, the
+          bottom-right corner to resize, and click a note to bring it to the front. The position is
+          kept with the note.
+        </li>
+        <li>
+          <strong>Come back later.</strong> Open the same page and the note is there, in the same
+          spot, with the text you left.
+        </li>
+        <li>
+          <strong>Find it again from the toolbar icon.</strong> <em>Saved Notes</em> lists every
+          note with search, custom categories and a <em>Go to page</em> button that takes you back
+          to the source.
+        </li>
+      </ol>
+
+      <p>
+        <a
+          class="cta"
+          href="https://chromewebstore.google.com/detail/notepin/fbodkflennhdbmabddjjmpfccpdghlmo"
+          target="_blank"
+          rel="noreferrer"
+          >Install NotePin</a
+        >
+        <a class="cta secondary" href="/p/notepin/">Read the project page</a>
+      </p>
+
+      <h2>What it keeps, and where</h2>
+      <p>
+        Notes live in the browser's own extension storage. There is no account, no server, no
+        analytics and no telemetry — the extension makes no network calls of its own. Export takes
+        the whole set to a JSON file, and import restores it, which is also how you move notes to a
+        machine you did not sync. The interface is in English, Swedish, Spanish and French, and
+        there is a Firefox build next to the Chrome one.
+      </p>
+      <p>
+        Chrome Sync is opt-in for anyone who wants notes on more than one computer, with one caveat
+        from the release notes: sync has an 8 KB limit per item, which is why notes were moved to
+        local storage in v1.0.8. If you write long notes, keep them local and use the JSON export
+        as your backup.
+      </p>
+
+      <h2>Where this approach breaks</h2>
+      <ul>
+        <li>
+          <strong>The note belongs to the URL.</strong> It is tied to the exact address it was
+          created on, so a page that puts a session ID or a changing hash in the address may not
+          show the note the next time you arrive. Logged-in dashboards and single-page apps are the
+          usual culprits.
+        </li>
+        <li>
+          <strong>The note is not glued to the paragraph.</strong> It is saved at a position on that
+          page. When a site redesigns, the text moves and the note stays where you left it — still
+          there, just next to the wrong thing.
+        </li>
+        <li>
+          <strong>It is private by design, so it is not a review tool.</strong> Nobody else sees the
+          note. For feedback to a colleague or a client you need a shared annotation service, not
+          this.
+        </li>
+        <li>
+          <strong>It is not a highlighter.</strong> There is no text selection, no highlighting and
+          no saved copy of what the page said — the note is a floating card next to the text.
+        </li>
+      </ul>
+
+      <h2>Questions people ask</h2>
+      <details>
+        <summary>Do the notes sync between computers?</summary>
+        <p>
+          Only if you turn on Chrome Sync. The default is local storage on the machine where the
+          note was written, and the JSON export is the portable copy.
+        </p>
+      </details>
+      <details>
+        <summary>What happens when a website changes its address?</summary>
+        <p>
+          The note is tied to the URL it was created on, so a new address is a different page as far
+          as the extension is concerned. The old note stays in <em>Saved Notes</em> with the old
+          address, so you can still read it and recreate it on the new one.
+        </p>
+      </details>
+      <details>
+        <summary>Does it work in Firefox and Edge?</summary>
+        <p>
+          There is a Firefox build on addons.mozilla.org alongside the Chrome Web Store listing.
+          Edge, Brave and other Chromium browsers install the Chrome build.
+        </p>
+      </details>
+      <details>
+        <summary>Can I back up my notes?</summary>
+        <p>
+          Yes. The popup has a one-click JSON export and import, so the notes are portable and not
+          locked to one browser profile.
+        </p>
+      </details>
+      <details>
+        <summary>Is it free?</summary>
+        <p>
+          Yes — no account, no ads, no paid tier. Development is supported through donations, and the
+          source is on GitHub under CC BY-NC 4.0.
+        </p>
+      </details>
+      <details>
+        <summary>Will the notes show up on pages I open in a private window?</summary>
+        <p>
+          The note is stored against the page's address, so it is not tied to a normal or private
+          session. What decides it is the URL: if the private window opens the same address, the
+          note is there. If the site hands out a different address per visit, it is not.
+        </p>
+      </details>
+
+      <h2>Related</h2>
+      <ul>
+        <li>
+          <a href="/p/notepin/">NotePin — project page, screenshots and changelog</a>
+        </li>
+        <li>
+          <a href="https://github.com/nRn-World/NotePin" target="_blank" rel="noreferrer"
+            >Source code and full README on GitHub</a
+          >
+        </li>
+        <li><a href="/">All nRnWorld projects</a></li>
+      </ul>
+
+      <footer>
+        <a href="/">&larr; nRnWorld</a> · <span>Sticky notes on a web page</span> · Copyright &copy;
+        2026
+      </footer>
+    </div>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do the notes sync between computers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Only if you turn on Chrome Sync. The default is local storage on the machine where the note was written, and the JSON export is the portable copy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when a website changes its address?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The note is tied to the URL it was created on, so a new address is a different page as far as the extension is concerned. The old note stays in Saved Notes with the old address, so you can still read it and recreate it on the new one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work in Firefox and Edge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is a Firefox build on addons.mozilla.org alongside the Chrome Web Store listing. Edge, Brave and other Chromium browsers install the Chrome build."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I back up my notes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The popup has a one-click JSON export and import, so the notes are portable and not locked to one browser profile."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — no account, no ads, no paid tier. Development is supported through donations, and the source is on GitHub under CC BY-NC 4.0."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will the notes show up on pages I open in a private window?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The note is stored against the page's address, so it is not tied to a normal or private session. What decides it is the URL: if the private window opens the same address, the note is there. If the site hands out a different address per visit, it is not."
+            }
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>
