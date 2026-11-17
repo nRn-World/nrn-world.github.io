@@ -27,6 +27,12 @@ const staticPages = [
     priority: '0.8',
   },
   {
+    loc: `${SITE.origin}/no-download-button/`,
+    lastmod: today,
+    changefreq: 'monthly',
+    priority: '0.7',
+  },
+  {
     loc: `${SITE.origin}/privacy/`,
     lastmod: today,
     changefreq: 'yearly',

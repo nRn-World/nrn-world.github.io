@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No download button? How to save a video from a page in Chrome</title>
+    <meta
+      name="description"
+      content="Some pages hide the download button because the video is streamed. Find the MP4, WEBM or M3U8 the tab is already loading and save it in Chrome — no ffmpeg, no account."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://nrnworld.one/no-download-button/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="No download button? How to save a video from a page in Chrome" />
+    <meta
+      property="og:description"
+      content="Why the download button is missing, how to find the MP4, WEBM or M3U8 the tab is actually loading, and how to save it with a Chrome extension."
+    />
+    <meta property="og:url" content="https://nrnworld.one/no-download-button/" />
+    <meta property="og:image" content="https://nrnworld.one/og-image.png" />
+    <meta property="og:site_name" content="nRnWorld" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="icon" type="image/webp" href="/logo-72.webp" />
+
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #000000;
+        color: #e0e0e0;
+        font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 40px 20px 72px;
+      }
+      .top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-bottom: 20px;
+        margin-bottom: 32px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      .brand img {
+        height: 28px;
+        width: 28px;
+        border-radius: 6px;
+      }
+      .brand em {
+        font-style: normal;
+        color: #60a5fa;
+      }
+      a {
+        color: #60a5fa;
+      }
+      a:hover {
+        color: #93c5fd;
+      }
+      .back {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        text-decoration: none;
+      }
+      h1 {
+        font-size: clamp(26px, 4vw, 36px);
+        line-height: 1.2;
+        margin: 0 0 8px;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font-size: 20px;
+        margin: 42px 0 12px;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+      }
+      h3 {
+        font-size: 15px;
+        margin: 22px 0 6px;
+        color: #ffffff;
+      }
+      p,
+      li {
+        font-size: 15px;
+      }
+      p {
+        margin: 0 0 14px;
+      }
+      ul,
+      ol {
+        margin: 0 0 14px;
+        padding-left: 22px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+      .updated {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 0 28px;
+      }
+      .lead {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .card {
+        background: #0d0d0d;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 12px;
+        padding: 18px 20px;
+        margin: 0 0 16px;
+      }
+      .card h3 {
+        margin-top: 0;
+      }
+      .cta {
+        display: inline-block;
+        background: #2563eb;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 10px;
+        margin: 6px 10px 6px 0;
+      }
+      .cta:hover {
+        background: #1d4ed8;
+        color: #ffffff;
+      }
+      .cta.secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #e0e0e0;
+      }
+      .cta.secondary:hover {
+        border-color: rgba(255, 255, 255, 0.35);
+        color: #ffffff;
+      }
+      .note {
+        border-left: 2px solid #2563eb;
+        padding-left: 14px;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 4px;
+        padding: 1px 5px;
+        word-break: break-all;
+      }
+      details {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 12px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      details p {
+        margin: 10px 0 0;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      ol.steps {
+        counter-reset: step;
+        list-style: none;
+        padding-left: 0;
+      }
+      ol.steps li {
+        counter-increment: step;
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 16px;
+      }
+      ol.steps li::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: rgba(37, 99, 235, 0.18);
+        border: 1px solid rgba(37, 99, 235, 0.45);
+        color: #93c5fd;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      footer {
+        margin-top: 48px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="/">
+          <img src="/logo-72.webp" width="28" height="28" alt="nRnWorld logo" />
+          <span>n<em>R</em>nWorld</span>
+        </a>
+        <a class="back" href="/">&larr; Back to nRnWorld</a>
+      </div>
+
+      <h1>No download button? How to save a video from a page in Chrome</h1>
+      <p class="updated">Last updated: 17 November 2026</p>
+
+      <p class="lead">
+        You are watching a video in Chrome and there is no download button anywhere — not on the
+        player, not in the right-click menu, not in the page. That is usually not an accident: most
+        modern players never publish a file link at all. This page explains why the button is
+        missing, how to find the video the tab is actually loading, and how to save it with
+        <a href="/p/flashvideodownloader/">FlashVideoDownloader</a>.
+      </p>
+
+      <h2>Why the download button is often missing</h2>
+      <p>There are four common reasons, and they need different handling:</p>
+      <ul>
+        <li>
+          <strong>The player streams instead of linking.</strong> The page hands a file to a
+          <code>&lt;video&gt;</code> element and never prints the address. The file is right there
+          in the network traffic, but nothing on the page lets you click it.
+        </li>
+        <li>
+          <strong>The video is HLS (M3U8).</strong> Instead of one MP4, the player requests a playlist
+          and then hundreds of short segments. There is no single file URL to right-click, which is
+          why “save video as” often gives you a useless text file.
+        </li>
+        <li>
+          <strong>The player builds the stream in JavaScript.</strong> Some players use a
+          <code>blob:</code> address through Media Source Extensions. That address only exists inside
+          the page, so copying it into a new tab or a download manager does nothing.
+        </li>
+        <li>
+          <strong>The video is DRM-protected.</strong> Netflix, Disney+, Prime Video and similar
+          services encrypt the stream and decrypt it inside the browser. There is no usable file to
+          find, and an extension that claims otherwise is either misreporting or breaking the law.
+        </li>
+      </ul>
+
+      <h2>Find the video the tab is already loading</h2>
+      <p>
+        The trick is not to search the page for a link, but to look at what the tab has already
+        requested. That is exactly what FlashVideoDownloader does: it reads the media the active tab
+        is loading and lists it in the toolbar popup.
+      </p>
+      <ol class="steps">
+        <li>
+          <strong>Start the video and let it play for a few seconds.</strong> Many players load
+          nothing at all until you press play, so the extension has nothing to list before that.
+        </li>
+        <li>
+          <strong>Click the FlashVideoDownloader icon.</strong> The popup shows the media this tab
+          has requested: direct MP4 and WEBM files and M3U8 playlists, with the file size where the
+          server reports one.
+        </li>
+        <li>
+          <strong>Pick the entry you want and preview it.</strong> Previewing first avoids saving a
+          trailer, an advert or a silent audio track by mistake. Downloads can be paused and
+          cancelled.
+        </li>
+        <li>
+          <strong>Save it.</strong> The file goes to your normal Downloads folder. Your history stays
+          in the extension on your own machine — there is no account and no cloud library.
+        </li>
+      </ol>
+
+      <p>
+        <a
+          class="cta"
+          href="https://chromewebstore.google.com/detail/flash-video-downloader/blbajmihakahbldejkginpccillhakdg"
+          target="_blank"
+          rel="noreferrer"
+          >Install FlashVideoDownloader</a
+        >
+        <a class="cta secondary" href="/p/flashvideodownloader/">Read the project page</a>
+      </p>
+
+      <h2>What it can and cannot do</h2>
+      <div class="card">
+        <h3>What it does</h3>
+        <ul>
+          <li>Detects open videos in the active tab: MP4, WEBM and M3U8 playlists.</li>
+          <li>Preview, pause and cancel downloads, with a local history of what you saved.</li>
+          <li>Runs in Chrome, Brave, Edge, Opera and Vivaldi — all Chromium browsers.</li>
+          <li>Keeps everything on your device: no account, no cloud, no tracking.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What it does not do</h3>
+        <ul>
+          <li>It does not bypass DRM. Encrypted streams stay encrypted.</li>
+          <li>It does not download YouTube video, which the Chrome Web Store does not allow.</li>
+          <li>It does not fetch segments behind a login the browser cannot reach itself.</li>
+          <li>It does not turn a blob-only player into a file when no plain media URL exists.</li>
+        </ul>
+      </div>
+
+      <h2>If nothing is detected</h2>
+      <p>A quick checklist before you blame the extension:</p>
+      <ul>
+        <li>Press play and wait until the video actually starts. An idle player loads nothing.</li>
+        <li>Reload the page once and open the popup again — some players request media late.</li>
+        <li>Check whether the player uses DRM. If it does, no downloader will produce a playable file.</li>
+        <li>
+          If the page shows an M3U8 entry instead of an MP4, that is the stream itself: the playlist
+          is the video in its segmented form, not a broken download.
+        </li>
+      </ul>
+      <p class="note">
+        Only save videos you have the right to keep. Downloading someone else's broadcast or a
+        subscription stream is usually a breach of that service's terms, and in many countries also
+        of copyright law.
+      </p>
+
+      <h2>Questions people ask</h2>
+      <details>
+        <summary>Is there a hidden download button on the page?</summary>
+        <p>
+          Almost never. If the player is HTML5, the page holds a file address in its source, but that
+          is not the same as a button. Reading the media the tab requested is the practical way to
+          get it.
+        </p>
+      </details>
+      <details>
+        <summary>Why does it show an M3U8 file instead of an MP4?</summary>
+        <p>
+          Because the site streams with HLS. The M3U8 file is the playlist that points at the video
+          segments, so what the tab loads is a playlist rather than one finished MP4.
+        </p>
+      </details>
+      <details>
+        <summary>Does it work in Edge, Brave and Opera?</summary>
+        <p>
+          Yes. Those browsers are built on Chromium and can install extensions from the Chrome Web
+          Store. Firefox is not supported.
+        </p>
+      </details>
+      <details>
+        <summary>Is it free?</summary>
+        <p>
+          The extension is free to install and use, with an optional Pro licence through Ko-fi for
+          people who want to support development. There is no account and no subscription to try it.
+        </p>
+      </details>
+      <details>
+        <summary>Does it work on Netflix, Disney+ or Prime Video?</summary>
+        <p>
+          No. Those services use DRM, and the extension explicitly does not bypass it. That is a
+          limit of the format, not a bug to wait for.
+        </p>
+      </details>
+
+      <h2>Related</h2>
+      <ul>
+        <li><a href="/p/flashvideodownloader/">FlashVideoDownloader — project page and changelog</a></li>
+        <li>
+          <a href="https://github.com/nRn-World/FlashVideoDownloader" target="_blank" rel="noreferrer"
+            >Source code on GitHub</a
+          >
+        </li>
+        <li><a href="/">All nRnWorld projects</a></li>
+      </ul>
+
+      <footer>
+        <a href="/">&larr; nRnWorld</a> · <span>No download button?</span> · Copyright &copy; 2026
+      </footer>
+    </div>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is there a hidden download button on the page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Almost never. If the player is HTML5, the page holds a file address in its source, but that is not the same as a button. Reading the media the tab requested is the practical way to get it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does it show an M3U8 file instead of an MP4?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because the site streams with HLS. The M3U8 file is the playlist that points at the video segments, so what the tab loads is a playlist rather than one finished MP4."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work in Edge, Brave and Opera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Those browsers are built on Chromium and can install extensions from the Chrome Web Store. Firefox is not supported."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The extension is free to install and use, with an optional Pro licence through Ko-fi for people who want to support development. There is no account and no subscription to try it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work on Netflix, Disney+ or Prime Video?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Those services use DRM, and the extension explicitly does not bypass it. That is a limit of the format, not a bug to wait for."
+            }
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

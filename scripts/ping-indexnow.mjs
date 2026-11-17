@@ -45,10 +45,19 @@ const appUrls = [
   ),
 ];
 
+/** Handskrivna statiska sidor under public/, som serveras som de ar (ingen React). */
+const staticPages = [
+  {
+    file: 'public/no-download-button/index.html',
+    url: `${SITE.origin}/no-download-button/`,
+  },
+];
+
 const allUrls = [
   `${SITE.origin}/`,
   ...appUrls,
   ...projects.map((p) => `${SITE.origin}/p/${p.slug}/`),
+  ...staticPages.map((p) => p.url),
 ];
 
 function git(args) {
@@ -132,6 +141,10 @@ function changedUrls(base) {
     // Borttagna projekt syns i hubben, inte pa en egen URL.
     const removed = [...beforeBySlug.keys()].some((slug) => !nowBySlug.has(slug));
     if (removed) targets.add(`${SITE.origin}/`);
+  }
+
+  for (const page of staticPages) {
+    if (changed.includes(page.file)) targets.add(page.url);
   }
 
   return [...targets].filter((u) => allUrls.includes(u));
