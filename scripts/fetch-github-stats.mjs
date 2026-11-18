@@ -17,6 +17,7 @@ config({ path: join(root, '.env.local') });
 
 const REPOS = [
   'ShadowPaw',
+  'AnimalPuzzle',
   'Doggy-Player',
   'WindowsSmartTaskbar',
   'NOBreak-Audio-Builder',

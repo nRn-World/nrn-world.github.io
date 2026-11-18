@@ -51,6 +51,56 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
+  // 1b. AnimalPuzzle (Web game)
+  {
+    id: 'animal-puzzle',
+    name: 'AnimalPuzzle',
+    tagline: 'Tactical match-3 puzzle with cute animal gems, prism reactions and frost that melts one layer per hit.',
+    description: 'A generous match-3 campaign on a drifting island: swap animal crystals, charge beam tools, break layered ice and chase three-star clears through hand-authored chapters and thousands of generated levels.',
+    detailedAbout: 'AnimalPuzzle is a tactical match-3 puzzler built around readability and real decisions instead of luck. Every animal gem carries its own colour identity, beams charge from cascades and frost tiles absorb several hits before they crack.\n\n• Three-star objectives on every level, with move budgets that reward planning\n• Layered ice that melts one layer per hit, so thick blocks need a second pass\n• Beam, nova and prism boosters that charge from matches instead of purchases\n• Campaign chapters plus daily, weekly, endless, timed and custom puzzle modes\n• Puzzle builder with shareable codes and an offline installable PWA\n• Local progress, statistics, achievements and league scoring without an account',
+    version: 'v1.0.0-live',
+    releaseDate: '2026-11-18',
+    category: 'Games',
+    tags: ['Spel', 'Pussel', 'Webb', 'Match-3'],
+    platformBadge: 'WEB',
+    projectType: 'web_game',
+    liveDemoUrl: 'https://nrnworld.one/AnimalPuzzle/',
+    featured: true,
+    rating: 4.9,
+    downloadsCount: 0,
+    starsCount: 1,
+    images: [...PROJECT_IMAGES.animalPuzzle],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Browser, installable PWA', icon: 'globe' },
+      { label: 'Modes', value: 'Campaign, daily, weekly, endless, timed, custom', icon: 'layers' },
+      { label: 'Level goals', value: 'Three-star targets with limited moves', icon: 'speed' },
+      { label: 'Input', value: 'Mouse, touch and keyboard', icon: 'terminal' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.11.18',
+        isCurrent: true,
+        items: [
+          'Live browser build on GitHub Pages',
+          'Readable board with per-animal glow and larger animal art',
+          'Frost melts one layer per hit, including double-layer ice',
+          'Puzzle builder that always starts with valid moves',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/AnimalPuzzle',
+    license: 'MIT License',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Live Online',
+    systemRequirements: {
+      os: 'Any modern browser on desktop or mobile',
+      ram: '1 GB RAM',
+      storage: 'Runs in browser',
+    }
+  },
+
   // 2. Doggy-Player (Direct Windows Download)
   {
     id: 'doggy-player',

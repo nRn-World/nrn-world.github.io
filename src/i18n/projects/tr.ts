@@ -8,6 +8,13 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'ShadowPaw: Noir Typist, atmosferik dedektif kurgusunu arcade yazma mekaniğiyle birleştirir. New Babel\'in yağmurla ıslanmış neon sokaklarında dolaşan araştırmacı bir siber-kedinin pardösüsüne bürünün.\n\nDoğrudan tarayıcınızda oynayın:\n• Ritim ve Tuş Vuruşu Savaşı: Her diyalog seçimi, kilit açma sekansı ve kavga hızlı yazma ile gerçekleştirilir.\n• Dinamik Çarpan: Yoğun kombo serileri oluşturarak dedektif odak modunu etkinleştirin.\n• Synthwave Müzikleri: 18 parçalık özgün synthwave ve dark-jazz ses tasarımı.\n• Arcade Hayatta Kalma: Küresel liderlik tablolarıyla sonsuz dalga modu.\n• Doğrudan Tarayıcıda Oyna: Kurulum gerekmez, anında yüklenir.',
   },
+  'animal-puzzle': {
+    name: 'AnimalPuzzle',
+    tagline: 'Sevimli hayvan kristalleri, prizma tepkileri ve her vuruşta bir kat eriyen buzla taktiksel match-3 bulmacası.',
+    description: 'Sürüklenen bir adada geçen cömert bir match-3 macerası: hayvan kristallerini değiştir, ışınları doldur, katmanlı buzu kır ve elle hazırlanmış bölümler ile binlerce üretilmiş seviyede üç yıldızı hedefle.',
+    detailedAbout:
+      'AnimalPuzzle, şansa değil okunabilirliğe ve gerçek kararlara dayanan taktiksel bir match-3 bulmacasıdır. Her hayvan kristalinin kendi renk kimliği vardır, ışınlar zincirlerden dolar ve buz karoları çatlamadan önce birkaç vuruş emer.\n\n• Her bölümde üç yıldızlı hedefler ve planlamayı ödüllendiren hamle bütçesi\n• Her vuruşta bir kat eriyen buz, yani kalın buz ikinci bir vuruş ister\n• Işın, nova ve prizma güçlendiricileri satın alma yerine eşleşmelerden dolar\n• Kampanya bölümleri ile günlük, haftalık, sonsuz, süreli ve özel bulmaca modları\n• Paylaşılabilir kodlu bulmaca oluşturucu ve çevrimdışı kurulabilir PWA\n• Hesap gerektirmeyen yerel ilerleme, istatistik, başarım ve lig puanı',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Özelleştirilebilir arayüz, EQ ve kesintisiz çalma özellikli yüksek kaliteli masaüstü ses ve video oynatıcı.',

@@ -7,6 +7,13 @@ export const frProjects: Record<string, ProjectTranslation> = {
     description: 'Jeu d\'action cyberpunk rétro de dactylographie au rythme effréné. Résolvez des crimes, parez les attaques ennemies et découvrez des journaux conspiratifs grâce à des frappes éclair directement dans votre navigateur.',
     detailedAbout: 'ShadowPaw: Noir Typist mêle fiction policière atmosphérique et mécaniques arcade de dactylographie. Enfilez le trench-coat d\'un cyber-félin enquêteur parcourant les ruelles néon trempées de pluie de New Babel.\n\nJouez directement dans votre navigateur :\n• Combat rythmique par frappe : Chaque dialogue, crochetage et bagarre s\'exécute par une saisie rapide.\n• Multiplicateur dynamique : Enchaînez des combos intenses pour activer le mode focus détective.\n• Bande-son synthwave : 18 pistes originales de synthwave et dark jazz.\n• Survie arcade : Mode vagues infinies avec classements mondiaux.\n• Jeu direct dans le navigateur : Aucune installation, chargement instantané.',
   },
+  'animal-puzzle': {
+    name: 'AnimalPuzzle',
+    tagline: 'Puzzle tactique match-3 avec des gemmes animales, des réactions de prisme et une glace qui fond une couche par coup.',
+    description: 'Une généreuse campagne match-3 sur une île à la dérive : échangez des cristaux animaux, chargez des faisceaux, brisez la glace en plusieurs couches et visez trois étoiles dans des chapitres faits main et des milliers de niveaux générés.',
+    detailedAbout:
+      'AnimalPuzzle est un puzzle tactique match-3 construit autour de la lisibilité et de vrais choix plutôt que de la chance. Chaque gemme animale a son identité de couleur, les faisceaux se chargent avec les chaînes et la glace absorbe plusieurs coups avant de céder.\n\n• Objectifs trois étoiles à chaque niveau, avec un budget de coups qui récompense la planification\n• Glace en couches qui fond une couche par coup, donc la glace épaisse demande un second passage\n• Bonus faisceau, nova et prisme qui se chargent avec les combinaisons plutôt que par des achats\n• Chapitres de campagne plus modes quotidien, hebdomadaire, infini, chronométré et puzzles personnalisés\n• Créateur de puzzles avec codes partageables et PWA installable hors ligne\n• Progression locale, statistiques, succès et points de ligue sans compte',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Lecteur multimédia de bureau audio et vidéo haute fidélité avec habillage personnalisé, égaliseur et lecture sans interruption.',
