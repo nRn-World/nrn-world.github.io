@@ -1,5 +1,5 @@
 # nRnWorld
-> Open Windows tools, AI agents, audio engines and browser games. 25 projects with direct downloads and source on GitHub (@nRn-World).
+> Open Windows tools, AI agents, audio engines and browser games. 26 projects with direct downloads and source on GitHub (@nRn-World).
 
 ## Projects
 - [ShadowPaw: Noir Typist](https://nrnworld.one/p/shadowpaw/): Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth. | Live: https://nrnworld.one/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
@@ -27,6 +27,10 @@
 - [Svalna](https://nrnworld.one/p/svalna/): Din kyl minns åt dig – helt offline och helt privat. | Live: https://svalna-nrnworld.web.app/
 - [NewNewz](https://nrnworld.one/p/newnewz/): Spin the globe, click any place and read what is happening there right now. | Live: https://nrnworld.one/NewNewz/ | GitHub: https://github.com/nRn-World/NewNewz
 - [Ribegatan](https://nrnworld.one/p/ribegatan/): Reference: a website I built for a residential community in Kista. Want one like it? Get in touch. | Live: https://ribegatan.se/
+- [step.by.step](https://nrnworld.one/p/step.by.step/): Walk together in a group: steps, distance, goals and a leaderboard without GPS, email addresses or maps of people. | Live: https://nrnworld.one/step.by.step/ | GitHub: https://github.com/nRn-World/step.by.step
+
+## Press
+- [Podcast: Känslan av att tjäna pengar på något man byggt själv – Robin Ayzit](https://www.youtube.com/watch?v=w-F3AtBce48): Vibecodepodden, 2026-11-01, 37 min. Vibecodepodden episode with Robin Ayzit (nRnWorld): the road from his own need to a browser extension with 600+ users, the first payment, free vs Pro, and what AI is still bad at when you build. | Channel: https://www.youtube.com/@Vibecodepodden
 
 ## About
 - Website: https://nrnworld.one/

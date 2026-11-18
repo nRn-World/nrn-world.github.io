@@ -8,6 +8,8 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const indexPath = join(root, 'index.html');
 let indexHtml = readFileSync(indexPath, 'utf8');
 const projects = loadSeoProjects();
+const episode = JSON.parse(readFileSync(join(root, 'src/data/podcastEpisode.json'), 'utf8'));
+const episodeWatchUrl = `https://www.youtube.com/watch?v=${episode.videoId}`;
 
 const listItems = projects.map((p, i) => ({
   '@type': 'ListItem',
@@ -77,6 +79,24 @@ const graph = {
       name: 'nRnWorld – Open tools, apps and games',
       numberOfItems: listItems.length,
       itemListElement: listItems,
+    },
+    {
+      // Podcast feature on the hub, so the episode is indexable as video content.
+      '@type': 'VideoObject',
+      '@id': `${SITE.origin}/#podcast`,
+      name: episode.title,
+      description: episode.description,
+      thumbnailUrl: `${SITE.origin}${episode.thumbnail}`,
+      uploadDate: `${episode.publishDate}T00:00:00+01:00`,
+      duration: episode.durationIso,
+      contentUrl: episodeWatchUrl,
+      embedUrl: `https://www.youtube-nocookie.com/embed/${episode.videoId}`,
+      publisher: {
+        '@type': 'Organization',
+        name: episode.channel,
+        url: episode.channelUrl,
+      },
+      isPartOf: { '@id': `${SITE.origin}/#website` },
     },
   ],
 };

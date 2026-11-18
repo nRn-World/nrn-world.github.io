@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { ProjectCard } from './components/ProjectCard';
 import { ProjectShowcase } from './components/ProjectShowcase';
 import { IntroVideo } from './components/IntroVideo';
+import { PressSection } from './components/PressSection';
 import { triggerDirectDownload, ActiveDownload } from './utils/downloadHelper';
 import { syncProjectsWithGitHub, mergeGithubStatsPayload, type GithubStatsPayload } from './services/githubService';
 import { fetchGithubActivity, GithubActivityPayload } from './services/githubActivityService';
@@ -508,6 +509,9 @@ export default function App() {
           </section>
 
           <IntroVideo />
+
+          {/* Press: podcast + interview, above the catalog */}
+          <PressSection />
 
           {/* Showcase: one big card per project, one rail per category */}
           <ProjectShowcase projects={[...localizedProjects].sort(compareProjects('All', sortBy))} onSelect={handleSelectProject} />

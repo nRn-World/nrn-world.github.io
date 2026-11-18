@@ -1,10 +1,12 @@
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { loadSeoProjects, SITE } from './lib/seo-projects.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const projects = loadSeoProjects();
+const episode = JSON.parse(readFileSync(join(root, 'src/data/podcastEpisode.json'), 'utf8'));
+const episodeWatchUrl = `https://www.youtube.com/watch?v=${episode.videoId}`;
 
 const lines = [
   `# ${SITE.name}`,
@@ -21,6 +23,9 @@ for (const p of projects) {
 }
 
 lines.push(
+  '',
+  '## Press',
+  `- [Podcast: ${episode.title}](${episodeWatchUrl}): ${episode.channel}, ${episode.publishDate}, ${episode.durationLabel}. ${episode.description} | Channel: ${episode.channelUrl}`,
   '',
   '## About',
   `- Website: ${SITE.origin}/`,
