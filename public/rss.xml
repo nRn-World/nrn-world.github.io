@@ -5,13 +5,31 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2026 18:24:12 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 10:46:44 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-v4.webp</url>
       <title>nRnWorld</title>
       <link>https://nrnworld.one</link>
     </image>
+    <item>
+      <title>AnimalPuzzle</title>
+      <link>https://nrnworld.one/p/animalpuzzle/</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/animalpuzzle/</guid>
+      <description>Tactical match-3 puzzle with cute animal gems, prism reactions and frost that melts one layer per hit.</description>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Games</category>
+      <enclosure url="https://raw.githubusercontent.com/nRn-World/AnimalPuzzle/main/public/og-image.jpg" type="image/webp" length="0" />
+    </item>
+    <item>
+      <title>step.by.step</title>
+      <link>https://nrnworld.one/p/step.by.step/</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/step.by.step/</guid>
+      <description>Walk together in a group: steps, distance, goals and a leaderboard without GPS, email addresses or maps of people.</description>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Websites</category>
+      <enclosure url="https://raw.githubusercontent.com/nRn-World/step.by.step/main/store/09-feature.png" type="image/webp" length="0" />
+    </item>
     <item>
       <title>Time Architect</title>
       <link>https://nrnworld.one/p/timearchitect/</link>

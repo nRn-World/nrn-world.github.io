@@ -8,6 +8,13 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'ShadowPaw: Noir Typist blandar atmosfärisk deckarfiktion med arkadliknande skrivmekanik. Kliv in i trenchcoaten hos en utredande cyberkatt som navigerar de regnvåta neongränderna i New Babel.\n\nSpela direkt i webbläsaren:\n• Rytm & tangentstrid: Varje dialogval, dyrkning och slagsmål utförs via snabb skrivning.\n• Dynamisk multiplikator: Bygg intensiva komboserier för att aktivera detektivens fokusläge.\n• Synthwave-soundtrack: Fullständigt original med 18 spår i synthwave och mörk jazz.\n• Arkadöverlevnad: Oändligt vågläge med globala topplistor.\n• Direktspel i webbläsaren: Ingen installation krävs, laddas direkt.',
   },
+  'animal-puzzle': {
+    name: 'AnimalPuzzle',
+    tagline: 'Taktiskt match-3-pussel med gulliga djurkristaller, prismareaktioner och frost som smälter ett lager per träff.',
+    description: 'Ett generöst match-3-äventyr på en drivande ö: byt djurkristaller, ladda strålar, bryt is i flera lager och jaga tre stjärnor genom handgjorda kapitel och tusentals genererade nivåer.',
+    detailedAbout:
+      'AnimalPuzzle är ett taktiskt match-3-pussel byggt kring läsbarhet och riktiga beslut i stället för tur. Varje djur har sin egen färgidentitet, strålar laddas av kedjor och isrutor tål flera träffar innan de krackelerar.\n\n• Tre stjärnmål på varje nivå, med dragbudget som belönar planering\n• Is i lager som smälter en nivå per träff, så tjock is kräver en andra träff\n• Stråle, nova och prisma laddas av matcher i stället för köp\n• Kampanjkapitel plus dagliga, veckovisa, oändliga, tidsbegränsade och egna pussel\n• Pusselbyggare med delbara koder och en offlinebar PWA\n• Lokal progress, statistik, prestationer och ligapoäng utan konto',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Högupplöst ljud- och videospelare för Windows med anpassade teman, equalizer och gapless-uppspelning.',

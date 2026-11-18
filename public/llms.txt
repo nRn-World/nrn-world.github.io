@@ -1,8 +1,9 @@
 # nRnWorld
-> Open Windows tools, AI agents, audio engines and browser games. 26 projects with direct downloads and source on GitHub (@nRn-World).
+> Open Windows tools, AI agents, audio engines and browser games. 27 projects with direct downloads and source on GitHub (@nRn-World).
 
 ## Projects
 - [ShadowPaw: Noir Typist](https://nrnworld.one/p/shadowpaw/): Retro noir typing thriller where words become powers, reality reacts to your keys, and every chapter pushes you deeper into the truth. | Live: https://nrnworld.one/ShadowPaw/ | GitHub: https://github.com/nRn-World/ShadowPaw
+- [AnimalPuzzle](https://nrnworld.one/p/animalpuzzle/): Tactical match-3 puzzle with cute animal gems, prism reactions and frost that melts one layer per hit. | Live: https://nrnworld.one/AnimalPuzzle/ | GitHub: https://github.com/nRn-World/AnimalPuzzle
 - [Doggy-Player](https://nrnworld.one/p/doggyplayer/): High-fidelity audio & video desktop media player with customized skinning, EQ, and gapless playback. | GitHub: https://github.com/nRn-World/Doggy-Player
 - [WindowsSmartTaskbar](https://nrnworld.one/p/windowssmarttaskbar/): Sleek Windows system tray utility for smart application organization and taskbar decluttering. | GitHub: https://github.com/nRn-World/WindowsSmartTaskbar
 - [NOBreak-Audio-Builder](https://nrnworld.one/p/nobreakaudiobuilder/): Professional desktop audio mixer for creating seamless, gapless audio compilations. | GitHub: https://github.com/nRn-World/NOBreak-Audio-Builder

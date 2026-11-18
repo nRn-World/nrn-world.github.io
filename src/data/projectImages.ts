@@ -14,6 +14,12 @@ export const PROJECT_IMAGES = {
     raw('ShadowPaw', 'main', 'Screenshot/gameplay.png'),
     raw('ShadowPaw', 'main', 'Screenshot/Gameover.png'),
   ],
+  animalPuzzle: [
+    'https://raw.githubusercontent.com/nRn-World/AnimalPuzzle/main/public/og-image.jpg',
+    raw('AnimalPuzzle', 'main', 'docs/screenshots/board.webp'),
+    raw('AnimalPuzzle', 'main', 'docs/screenshots/victory.webp'),
+    raw('AnimalPuzzle', 'main', 'docs/screenshots/menu.webp'),
+  ],
   doggyPlayer: [
     '/images/projects/doggyPlayer.webp',
     raw('Doggy-Player', 'main', 'Screenshot/Sc2.png'),

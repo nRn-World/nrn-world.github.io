@@ -7,6 +7,13 @@ export const esProjects: Record<string, ProjectTranslation> = {
     description: 'Juego de acción cyberpunk retro de mecanografía trepidante. Resuelve crímenes, desvía ataques enemigos y descubre registros conspirativos con pulsaciones relámpago directamente en tu navegador.',
     detailedAbout: 'ShadowPaw: Noir Typist combina ficción detectivesca atmosférica con mecánicas arcade de mecanografía. Ponte el gabardina de un ciberfelino investigador que recorre los callejones de neón empapados de lluvia de New Babel.\n\nJuega directamente en tu navegador:\n• Combate rítmico por teclas: Cada diálogo, ganzúa y pelea se ejecuta mediante escritura rápida.\n• Multiplicador dinámico: Construye rachas de combos intensas para activar el modo de enfoque detectivesco.\n• Banda sonora synthwave: 18 pistas originales de synthwave y jazz oscuro.\n• Supervivencia arcade: Modo de oleadas infinitas con tablas de clasificación globales.\n• Juego directo en navegador: Sin instalación, carga instantánea.',
   },
+  'animal-puzzle': {
+    name: 'AnimalPuzzle',
+    tagline: 'Puzle táctico match-3 con gemas de animales, reacciones de prisma y hielo que se derrite una capa por golpe.',
+    description: 'Una campaña generosa de match-3 en una isla a la deriva: intercambia cristales de animales, carga haces, rompe hielo por capas y persigue tres estrellas en capítulos hechos a mano y miles de niveles generados.',
+    detailedAbout:
+      'AnimalPuzzle es un puzle táctico de match-3 construido en torno a la legibilidad y a decisiones reales en lugar de la suerte. Cada gema de animal tiene su identidad de color, los haces se cargan con cadenas y el hielo absorbe varios golpes antes de romperse.\n\n• Objetivos de tres estrellas en cada nivel, con presupuestos de movimientos que premian la planificación\n• Hielo por capas que se derrite una capa por golpe, así que el hielo grueso necesita un segundo impacto\n• Potenciadores de haz, nova y prisma que se cargan con combinaciones en lugar de compras\n• Capítulos de campaña más modos diario, semanal, infinito, contrarreloj y puzles propios\n• Constructor de puzles con códigos compartibles y PWA instalable sin conexión\n• Progreso local, estadísticas, logros y puntos de liga sin cuenta',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Reproductor multimedia de escritorio de audio y vídeo de alta fidelidad con skins personalizados, ecualizador y reproducción sin pausas.',
