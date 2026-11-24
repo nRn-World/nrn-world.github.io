@@ -623,17 +623,6 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                         );
                       })}
 
-                  <a
-                    href={project.liveDemoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => onLiveOpen?.(project)}
-                    className="bg-[#181818] rounded-xl p-3 border border-white/5 hover:border-emerald-500/40 transition-all text-xs font-mono text-white/70 hover:text-emerald-300 flex items-center gap-2 break-all"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                    <span>{project.liveDemoUrl}</span>
-                  </a>
-
                   {isHybridAccess &&
                     project.downloadOptions
                       .filter((opt) => opt.fileType === 'apk' && (opt.directUrl || opt.githubReleaseUrl))
