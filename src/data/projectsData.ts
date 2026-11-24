@@ -576,6 +576,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     platformBadge: 'APK',
     projectType: 'web_app',
     liveDemoUrl: 'https://nrnworld.one/DoneTogether/',
+    storeUrl: 'https://play.google.com/store/apps/details?id=nrn.DoneTogether.com',
     featured: true,
     rating: 4.90,
     downloadsCount: 0,
