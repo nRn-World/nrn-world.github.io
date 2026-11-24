@@ -558,6 +558,18 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                 </div>
               </div>
 
+              {project.storeUrl && (
+                <a
+                  href={project.storeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-xl text-sm font-mono font-bold flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-emerald-950/40 cursor-pointer no-underline"
+                >
+                  <Smartphone className="w-4 h-4" />
+                  <span>Google Play</span>
+                </a>
+              )}
+
               {showLiveAction && (
                 <div className="flex flex-col gap-3">
                   <a

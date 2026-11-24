@@ -1068,6 +1068,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     platformBadge: 'WEB',
     projectType: 'web_app',
     liveDemoUrl: 'https://nrnworld.one/ParkiSthlm/',
+    storeUrl: 'https://play.google.com/store/apps/details?id=one.nrnworld.parkisthlm',
     featured: false,
     rating: 4.89,
     downloadsCount: 0,
