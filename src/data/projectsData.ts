@@ -572,7 +572,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     version: 'v1.3.5',
     releaseDate: '2026-11-24',
     category: 'Android',
-    tags: ['Mobil', 'Webb', 'Android', 'APK'],
+    tags: ['Mobil', 'Webb', 'Android', 'Google Play'],
     platformBadge: 'APK',
     projectType: 'web_app',
     liveDemoUrl: 'https://nrnworld.one/DoneTogether/',
@@ -587,7 +587,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     specs: [
       { label: 'Sync Engine', value: 'Real-Time Firebase Synchronization', icon: 'wifi' },
       { label: 'Offline Mode', value: 'Optimistic Caching & Offline PWA', icon: 'memory' },
-      { label: 'Platforms', value: 'Web PWA / Android APK / iOS', icon: 'smartphone' },
+      { label: 'Platforms', value: 'Web PWA / Google Play / iOS', icon: 'smartphone' },
     ],
     changelog: [
       {
