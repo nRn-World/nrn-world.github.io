@@ -15,6 +15,13 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'AnimalPuzzle, şansa değil okunabilirliğe ve gerçek kararlara dayanan taktiksel bir match-3 bulmacasıdır. Her hayvan kristalinin kendi renk kimliği vardır, ışınlar zincirlerden dolar ve buz karoları çatlamadan önce birkaç vuruş emer.\n\n• Her bölümde üç yıldızlı hedefler ve planlamayı ödüllendiren hamle bütçesi\n• Her vuruşta bir kat eriyen buz, yani kalın buz ikinci bir vuruş ister\n• Işın, nova ve prizma güçlendiricileri satın alma yerine eşleşmelerden dolar\n• Kampanya bölümleri ile günlük, haftalık, sonsuz, süreli ve özel bulmaca modları\n• Paylaşılabilir kodlu bulmaca oluşturucu ve çevrimdışı kurulabilir PWA\n• Hesap gerektirmeyen yerel ilerleme, istatistik, başarım ve lig puanı',
   },
+  'team-ai': {
+    name: 'TeamAi',
+    tagline: 'Tarayıcı için sesli komutlu taktiksel birinci şahıs nişancı. Sesiniz, klavyeniz ve farenizle A ve B Takımlarını gerilimli SWAT operasyonlarında yönetin.',
+    description: 'SWAT 4 esintili 3D taktiksel nişancı doğrudan tarayıcınızda. İngilizce veya İsveççe sesli komutlarla ekibinizi yönetin, kilitli kapıları kırın, sıkı angajman kurallarıyla şüphelileri tutuklayın ve tek başınıza veya çevrimiçi eşli oynayın.',
+    detailedAbout:
+      'TeamAi, SWAT 4\'ten esinlenen ve Three.js ile doğrudan tarayıcıda çalışan sesli komutlu 3D taktiksel bir FPS oyunudur. Planlamanın, ölümcül olmayan tutuklamaların ve disiplinin ateş gücünden daha önemli olduğu operasyonlarda A Takımı (Ken, Maya) ve B Takımı\'na (Jack, Zoe) liderlik edersiniz.\n\n• Sesli ekip yapay zekâsı: Yerel Whisper AI veya tarayıcı Web Speech ile İngilizce ve İsveççe taktiksel emirler verin ya da memurlara isimleriyle seslenin\n• Sıkı angajman kuralları (ROE): Teslim ol çağrısı yapın, ses bombası atın, kilitli kapıları kırın ve teslim olan şüphelileri kelepçeleyin\n• Kariyer ve cephanelik ilerlemesi: Rütbe atladıkça yeni ekipmanların kilidini açın (TX-4 karabina, ARC-2 şok tabancası, S-87 pompalı, LL-12 fırlatıcı ve balistik kalkan), yaralı memurları yönetin ve Ironman modunu deneyin\n• Çok katlı haritalar: Yürünebilir merdivenler, çalışan asansör, bomba imha görevleri ve detaylı iç mekânlar\n• Tek oyunculu, günlük baskın ve çevrimiçi eşli oyun: Kampanyayı oynayın, eğitim görevini tekrarlayın veya PeerJS ile kurulumsuz çevrimiçi eşli oynayın',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Özelleştirilebilir arayüz, EQ ve kesintisiz çalma özellikli yüksek kaliteli masaüstü ses ve video oynatıcı.',

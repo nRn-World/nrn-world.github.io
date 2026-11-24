@@ -14,6 +14,13 @@ export const esProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'AnimalPuzzle es un puzle táctico de match-3 construido en torno a la legibilidad y a decisiones reales en lugar de la suerte. Cada gema de animal tiene su identidad de color, los haces se cargan con cadenas y el hielo absorbe varios golpes antes de romperse.\n\n• Objetivos de tres estrellas en cada nivel, con presupuestos de movimientos que premian la planificación\n• Hielo por capas que se derrite una capa por golpe, así que el hielo grueso necesita un segundo impacto\n• Potenciadores de haz, nova y prisma que se cargan con combinaciones en lugar de compras\n• Capítulos de campaña más modos diario, semanal, infinito, contrarreloj y puzles propios\n• Constructor de puzles con códigos compartibles y PWA instalable sin conexión\n• Progreso local, estadísticas, logros y puntos de liga sin cuenta',
   },
+  'team-ai': {
+    name: 'TeamAi',
+    tagline: 'Shooter táctico en primera persona controlado por voz para el navegador. Dirige al Equipo A y al Equipo B en tensas operaciones SWAT con tu voz, teclado y ratón.',
+    description: 'Shooter táctico 3D inspirado en SWAT 4 directamente en tu navegador. Da órdenes por voz a tu escuadrón en inglés o sueco, irrumpe por puertas cerradas, arresta sospechosos bajo estrictas reglas de enfrentamiento y juega en solitario o cooperativo online.',
+    detailedAbout:
+      'TeamAi es un shooter táctico 3D en primera persona controlado por voz, inspirado en SWAT 4 y diseñado para ejecutarse directamente en el navegador con Three.js. Diriges al Equipo A (Ken, Maya) y al Equipo B (Jack, Zoe) en operaciones de alto riesgo donde la planificación, los arrestos no letales y la disciplina importan más que la potencia de fuego.\n\n• IA de escuadrón por voz: Da órdenes tácticas por voz (Whisper local o Web Speech del navegador, en inglés y sueco) o dirígete a agentes concretos por su nombre\n• Reglas de enfrentamiento estrictas: Grita advertencias, lanza granadas aturdidoras, derriba puertas cerradas y esposa a los sospechosos rendidos\n• Progresión de carrera y armería: Desbloquea equipo al subir de rango (carabina TX-4, aturdidor ARC-2, escopeta S-87, lanzador LL-12 y escudo balístico), gestiona agentes heridos y activa el modo Ironman\n• Mapas de varias plantas: Escaleras transitables, ascensor funcional, desactivación de bombas e interiores amueblados\n• Solitario, incursión diaria y cooperativo online: Juega la campaña, repite el entrenamiento o colabora online mediante PeerJS sin instalar nada',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Reproductor multimedia de escritorio de audio y vídeo de alta fidelidad con skins personalizados, ecualizador y reproducción sin pausas.',

@@ -101,6 +101,56 @@ export const INITIAL_PROJECTS: Project[] = [
     }
   },
 
+  // 1c. TeamAi (Web game)
+  {
+    id: 'team-ai',
+    name: 'TeamAi',
+    tagline: 'Voice-commanded tactical first-person shooter for the browser. Lead Team A and Team B through tense SWAT operations with your voice, keyboard and mouse.',
+    description: 'SWAT 4-inspired 3D tactical shooter running directly in your browser. Command your entry squad by voice in English or Swedish, breach locked doors, arrest suspects under strict rules of engagement and play solo or online co-op.',
+    detailedAbout: 'TeamAi is a voice-commanded 3D tactical first-person shooter inspired by SWAT 4 and built to run directly in the browser with Three.js. You lead Team A (Ken, Maya) and Team B (Jack, Zoe) into high-stakes operations where planning, non-lethal arrests and discipline matter more than firepower.\n\n• Voice-commanded squad AI: Give tactical orders by voice (local Whisper AI or browser Web Speech, supporting English and Swedish) or address individual officers by name\n• Strict Rules of Engagement: Shout challenges, deploy flashbangs, kick locked doors and cuff surrendered suspects — arrests pay, unauthorized force hurts your debrief score\n• Career & Armory progression: Unlock new kit as you rank up (TX-4 carbine, ARC-2 stunner, S-87 shotgun, LL-12 launcher and ballistic shield), manage injured officers and toggle Ironman mode\n• Multi-storey tactical maps: Walkable stair flights, working service elevator, bomb defusal operations and dense furnished interiors\n• Solo, Daily Raid & Online Co-op: Play the campaign, repeat the First Deployment training, or team up via PeerJS co-op directly in the browser',
+    version: 'v1.0.0-live',
+    releaseDate: '2026-11-24',
+    category: 'Games',
+    tags: ['Spel', 'FPS', 'Taktik', 'Webb', 'Röststyrning'],
+    platformBadge: 'WEB',
+    projectType: 'web_game',
+    liveDemoUrl: 'https://nrnworld.one/TeamAi/',
+    featured: true,
+    rating: 4.95,
+    downloadsCount: 0,
+    starsCount: 2,
+    images: [...PROJECT_IMAGES.teamAi],
+    downloadOptions: [],
+    specs: [
+      { label: 'Platform', value: 'Web Browser / Three.js 3D', icon: 'globe' },
+      { label: 'Voice Engine', value: 'Local Whisper AI & Web Speech (EN/SV)', icon: 'terminal' },
+      { label: 'Modes', value: 'Campaign, Training, Daily Raid, Online Co-op', icon: 'layers' },
+      { label: 'Squad AI', value: 'Team A & Team B tactical orders & ROE', icon: 'speed' },
+    ],
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026.11.24',
+        isCurrent: true,
+        items: [
+          'Live browser build on GitHub Pages at nrnworld.one/TeamAi/',
+          'Voice-commanded Team A & Team B squad AI with local Whisper speech recognition',
+          'Multi-storey operations with walkable stairs, working service elevator and bomb defusal',
+          'Career ranks, Armory unlocks, Rules of Engagement debrief and online PeerJS co-op',
+        ]
+      }
+    ],
+    githubUrl: 'https://github.com/nRn-World/TeamAi',
+    license: 'Open Source',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'Live Online',
+    systemRequirements: {
+      os: 'Modern desktop browser (Chrome or Edge recommended for voice control)',
+      ram: '4 GB RAM',
+      storage: 'Runs in browser',
+    }
+  },
+
   // 2. Doggy-Player (Direct Windows Download)
   {
     id: 'doggy-player',

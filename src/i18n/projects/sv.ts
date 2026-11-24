@@ -15,6 +15,13 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'AnimalPuzzle är ett taktiskt match-3-pussel byggt kring läsbarhet och riktiga beslut i stället för tur. Varje djur har sin egen färgidentitet, strålar laddas av kedjor och isrutor tål flera träffar innan de krackelerar.\n\n• Tre stjärnmål på varje nivå, med dragbudget som belönar planering\n• Is i lager som smälter en nivå per träff, så tjock is kräver en andra träff\n• Stråle, nova och prisma laddas av matcher i stället för köp\n• Kampanjkapitel plus dagliga, veckovisa, oändliga, tidsbegränsade och egna pussel\n• Pusselbyggare med delbara koder och en offlinebar PWA\n• Lokal progress, statistik, prestationer och ligapoäng utan konto',
   },
+  'team-ai': {
+    name: 'TeamAi',
+    tagline: 'Röststyrd taktisk förstapersonsskjutare direkt i webbläsaren. Led Team A och Team B genom intensiva insatser med röst, tangentbord och mus.',
+    description: 'SWAT 4-inspirerat taktiskt 3D-spel i webbläsaren. Ge order till din insatsstyrka med rösten på engelska eller svenska, bryt upp låsta dörrar, grip misstänkta enligt tydliga insatsregler och spela solo eller online co-op.',
+    detailedAbout:
+      'TeamAi är en röststyrd taktisk förstapersonsskjutare i 3D, inspirerad av SWAT 4 och byggd för att köras direkt i webbläsaren med Three.js. Du leder Team A (Ken, Maya) och Team B (Jack, Zoe) i spända insatser där planering, icke-dödliga gripanden och disciplin väger tyngre än eldkraft.\n\n• Röststyrd grupp-AI: Ge taktiska order med rösten (lokal Whisper-AI eller webbläsarens Web Speech, med stöd för engelska och svenska) eller tilltala enskilda poliser vid namn\n• Tydliga insatsregler (ROE): Ropa utmaningar, kasta chockgranater, sparka in låsta dörrar och sätt handfängsel på misstänkta — gripanden ger poäng medan obefogat våld drar ner betyget\n• Karriär och vapenförråd: Lås upp ny utrustning i takt med din rang (TX-4 karbin, ARC-2 elchockpistol, S-87 hagelgevär, LL-12 granatkastare och ballistisk sköld), hantera skadade kollegor och testa Ironman-läge\n• Flersplansbanor: Gåbara trappor, fungerande hiss, bombdesarmering och detaljerade inomhusmiljöer\n• Solo, daglig räd och online co-op: Spela kampanjen, öva i träningsuppdraget eller samarbeta online via PeerJS direkt i webbläsaren',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Högupplöst ljud- och videospelare för Windows med anpassade teman, equalizer och gapless-uppspelning.',

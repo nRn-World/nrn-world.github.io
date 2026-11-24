@@ -14,6 +14,13 @@ export const frProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'AnimalPuzzle est un puzzle tactique match-3 construit autour de la lisibilité et de vrais choix plutôt que de la chance. Chaque gemme animale a son identité de couleur, les faisceaux se chargent avec les chaînes et la glace absorbe plusieurs coups avant de céder.\n\n• Objectifs trois étoiles à chaque niveau, avec un budget de coups qui récompense la planification\n• Glace en couches qui fond une couche par coup, donc la glace épaisse demande un second passage\n• Bonus faisceau, nova et prisme qui se chargent avec les combinaisons plutôt que par des achats\n• Chapitres de campagne plus modes quotidien, hebdomadaire, infini, chronométré et puzzles personnalisés\n• Créateur de puzzles avec codes partageables et PWA installable hors ligne\n• Progression locale, statistiques, succès et points de ligue sans compte',
   },
+  'team-ai': {
+    name: 'TeamAi',
+    tagline: 'FPS tactique commandé à la voix pour le navigateur. Dirigez l\'équipe A et l\'équipe B dans des interventions SWAT tendues à la voix, au clavier et à la souris.',
+    description: 'Jeu de tir tactique 3D inspiré de SWAT 4 jouable directement dans votre navigateur. Donnez des ordres vocaux en anglais ou en suédois, forcez les portes verrouillées, arrêtez les suspects selon des règles d\'engagement strictes et jouez en solo ou en coop en ligne.',
+    detailedAbout:
+      'TeamAi est un FPS tactique 3D commandé à la voix, inspiré de SWAT 4 et exécuté directement dans le navigateur avec Three.js. Vous dirigez l\'équipe A (Ken, Maya) et l\'équipe B (Jack, Zoe) dans des interventions où la planification, les arrestations non létales et la discipline priment sur la puissance de feu.\n\n• IA d\'escouade vocale : Donnez des ordres tactiques à la voix (Whisper local ou Web Speech, en anglais et en suédois) ou adressez-vous à chaque agent par son nom\n• Règles d\'engagement strictes : Sommez les suspects, lancez des grenades flash, enfoncez les portes verrouillées et menottez les suspects qui se rendent\n• Carrière et armurerie : Débloquez de l\'équipement en montant en grade (carabine TX-4, taser ARC-2, fusil S-87, lanceur LL-12 et bouclier balistique), gérez les agents blessés et activez le mode Ironman\n• Cartes à plusieurs étages : Escaliers praticables, ascenseur fonctionnel, désamorçage de bombes et intérieurs détaillés\n• Solo, raid quotidien et coop en ligne : Jouez la campagne, l\'entraînement ou en coopération via PeerJS sans installation',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Lecteur multimédia de bureau audio et vidéo haute fidélité avec habillage personnalisé, égaliseur et lecture sans interruption.',

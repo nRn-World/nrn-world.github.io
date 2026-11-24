@@ -20,6 +20,12 @@ export const PROJECT_IMAGES = {
     raw('AnimalPuzzle', 'main', 'docs/screenshots/victory.webp'),
     raw('AnimalPuzzle', 'main', 'docs/screenshots/menu.webp'),
   ],
+  teamAi: [
+    raw('TeamAi', 'main', 'public/missions/0.jpg'),
+    raw('TeamAi', 'main', 'public/missions/4.jpg'),
+    raw('TeamAi', 'main', 'public/missions/2.jpg'),
+    raw('TeamAi', 'main', 'public/ui/keyart.jpg'),
+  ],
   doggyPlayer: [
     '/images/projects/doggyPlayer.webp',
     raw('Doggy-Player', 'main', 'Screenshot/Sc2.png'),
