@@ -567,10 +567,10 @@ Play instantly in the browser, or install it to your home screen and keep growin
     id: 'done-together',
     name: 'DoneTogether',
     tagline: 'Real-time collaborative planning app for teams and friends, built with React, TypeScript, and Firebase.',
-    description: 'Intelligent collaborative task manager with instant real-time synchronization, smart deadline reminders, and responsive cross-platform UI. Use in the browser or install the Android APK.',
-    detailedAbout: 'DoneTogether is a modern collaborative planning application designed for teams, couples, and friends. Built with React, TypeScript, and Firebase, it provides real-time state synchronization, smart milestone tracking, custom tag workflows, and dark-themed aesthetics.\n\nOpen directly in your browser, install as a PWA, or download the official Android APK from GitHub Releases.',
-    version: 'v1.2.2',
-    releaseDate: '2026-09-03',
+    description: 'Intelligent collaborative task manager with instant real-time synchronization, smart deadline reminders, and responsive cross-platform UI. Use in the browser or install the Android app from Google Play.',
+    detailedAbout: 'DoneTogether is a modern collaborative planning application designed for teams, couples, and friends. Built with React, TypeScript, and Firebase, it provides real-time state synchronization, smart milestone tracking, custom tag workflows, and dark-themed aesthetics.\n\nOpen directly in your browser, install as a PWA, or install the official Android app from Google Play.',
+    version: 'v1.3.5',
+    releaseDate: '2026-11-24',
     category: 'Android',
     tags: ['Mobil', 'Webb', 'Android', 'APK'],
     platformBadge: 'APK',
@@ -583,23 +583,7 @@ Play instantly in the browser, or install it to your home screen and keep growin
     starsCount: 1,
     images: [...PROJECT_IMAGES.doneTogether],
     videoUrl: '/media/projects/donetogether.mp4',
-    downloadOptions: [
-      {
-        id: 'done-together-apk',
-        platform: 'Android',
-        label: 'Android APK',
-        fileType: 'apk',
-        size: '4.5 MB',
-        filename: 'DoneTogether-1.2.2.apk',
-        directUrl:
-          'https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk',
-        githubReleaseUrl:
-          'https://github.com/nRn-World/DoneTogether/releases/download/v1.2.2/DoneTogether-1.2.2.apk',
-        md5Checksum: 'b6b408ae21f4bb4b773f1d085e17d8ef',
-        architecture: 'Universal',
-        isPrimary: true,
-      },
-    ],
+    downloadOptions: [],
     specs: [
       { label: 'Sync Engine', value: 'Real-Time Firebase Synchronization', icon: 'wifi' },
       { label: 'Offline Mode', value: 'Optimistic Caching & Offline PWA', icon: 'memory' },
@@ -607,9 +591,26 @@ Play instantly in the browser, or install it to your home screen and keep growin
     ],
     changelog: [
       {
+        version: 'v1.3.5',
+        date: '2026.11.24',
+        isCurrent: true,
+        items: [
+          'Android 1.3.5 is live on Google Play',
+          'Share dialog copy button fits the frame again',
+          'Notification icon and push logging fixes',
+        ],
+      },
+      {
+        version: 'v1.3.4',
+        date: '2026.08.19',
+        items: [
+          'Native push notifications and plan-complete notice',
+          'Dark theme initialisation and ad-free policy',
+        ],
+      },
+      {
         version: 'v1.2.2',
         date: '2026.09.03',
-        isCurrent: true,
         items: [
           'Official Android APK release on GitHub Releases',
           'Direct mobile install link for phones and tablets',
