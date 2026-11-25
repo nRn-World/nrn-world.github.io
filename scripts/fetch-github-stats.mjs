@@ -28,6 +28,7 @@ const REPOS = [
   'TimeArchitect',
   'DreamGarden',
   'DoneTogether',
+  'DualShots',
   'NexNote',
   'SecretPromts',
   'SiteScannerPro',

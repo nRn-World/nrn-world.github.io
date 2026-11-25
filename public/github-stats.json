@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-11-24T22:09:57.499Z",
-  "successCount": 25,
-  "totalRepos": 25,
+  "fetchedAt": "2026-11-25T21:06:22.184Z",
+  "successCount": 26,
+  "totalRepos": 26,
   "repos": {
     "ShadowPaw": {
       "repoName": "ShadowPaw",
@@ -9,7 +9,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-11-23T10:46:58Z",
       "assets": [],
-      "lastFetched": 1795558172227,
+      "lastFetched": 1795640754165,
       "fetchOk": true
     },
     "AnimalPuzzle": {
@@ -18,21 +18,21 @@
       "starsCount": 1,
       "githubPushedAt": "2026-11-23T10:24:30Z",
       "assets": [],
-      "lastFetched": 1795558173111,
+      "lastFetched": 1795640755076,
       "fetchOk": true
     },
     "TeamAi": {
       "repoName": "TeamAi",
       "totalDownloads": 0,
       "starsCount": 2,
-      "githubPushedAt": "2026-11-23T10:47:30Z",
+      "githubPushedAt": "2026-11-25T19:59:44Z",
       "assets": [],
-      "lastFetched": 1795558174014,
+      "lastFetched": 1795640756029,
       "fetchOk": true
     },
     "Doggy-Player": {
       "repoName": "Doggy-Player",
-      "totalDownloads": 1230,
+      "totalDownloads": 1233,
       "starsCount": 8,
       "latestVersion": "v1.1.79",
       "latestReleaseDate": "2026-11-24T00:24:39Z",
@@ -41,13 +41,13 @@
         {
           "name": "Doggy-Player-1.1.79.AppImage",
           "size": 177460673,
-          "download_count": 1,
+          "download_count": 2,
           "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.79/Doggy-Player-1.1.79.AppImage"
         },
         {
           "name": "Doggy-Player-1.1.79.dmg",
           "size": 156395147,
-          "download_count": 1,
+          "download_count": 2,
           "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.79/Doggy-Player-1.1.79.dmg"
         },
         {
@@ -71,7 +71,7 @@
         {
           "name": "Doggy-Player-Setup-1.1.79.exe",
           "size": 137592643,
-          "download_count": 3,
+          "download_count": 4,
           "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.79/Doggy-Player-Setup-1.1.79.exe"
         },
         {
@@ -101,7 +101,7 @@
         {
           "name": "latest.yml",
           "size": 356,
-          "download_count": 5,
+          "download_count": 6,
           "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/v1.1.79/latest.yml"
         },
         {
@@ -957,7 +957,7 @@
           "browser_download_url": "https://github.com/nRn-World/DoggyPlayer/releases/download/1.0.9/DoggyStyle-Player.zip.Setup-1.0.9.zip"
         }
       ],
-      "lastFetched": 1795558176167,
+      "lastFetched": 1795640758322,
       "fetchOk": true
     },
     "WindowsSmartTaskbar": {
@@ -1023,7 +1023,7 @@
           "browser_download_url": "https://github.com/nRn-World/WindowsSmartTaskbar/releases/download/v1.5.0/WindowsSmartTaskbar-v1.5.0.zip"
         }
       ],
-      "lastFetched": 1795558177180,
+      "lastFetched": 1795640759413,
       "fetchOk": true
     },
     "NOBreak-Audio-Builder": {
@@ -1227,7 +1227,7 @@
           "browser_download_url": "https://github.com/nRn-World/NOBreak-Audio-Builder/releases/download/v1.0.0/NoBreak-Audio-Builder-Setup-1.0.0.zip"
         }
       ],
-      "lastFetched": 1795558178573,
+      "lastFetched": 1795640760726,
       "fetchOk": true
     },
     "OctosArmy": {
@@ -1317,7 +1317,7 @@
           "browser_download_url": "https://github.com/nRn-World/OctosArmy/releases/download/v1.1.28/OctosArmy-Setup-1.1.28.exe"
         }
       ],
-      "lastFetched": 1795558179681,
+      "lastFetched": 1795640761745,
       "fetchOk": true
     },
     "TheSilentRoom1986": {
@@ -1326,16 +1326,16 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-31T03:45:05Z",
       "assets": [],
-      "lastFetched": 1795558180589,
+      "lastFetched": 1795640762824,
       "fetchOk": true
     },
     "NeonPathPuzzle": {
       "repoName": "NeonPathPuzzle",
       "totalDownloads": 0,
       "starsCount": 2,
-      "githubPushedAt": "2026-11-24T22:08:05Z",
+      "githubPushedAt": "2026-11-25T08:00:33Z",
       "assets": [],
-      "lastFetched": 1795558181730,
+      "lastFetched": 1795640763694,
       "fetchOk": true
     },
     "TimeArchitect": {
@@ -1344,7 +1344,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-11-06T10:25:47Z",
       "assets": [],
-      "lastFetched": 1795558182620,
+      "lastFetched": 1795640764687,
       "fetchOk": true
     },
     "DreamGarden": {
@@ -1353,7 +1353,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-11-03T05:44:55Z",
       "assets": [],
-      "lastFetched": 1795558183582,
+      "lastFetched": 1795640765675,
       "fetchOk": true
     },
     "DoneTogether": {
@@ -1364,7 +1364,25 @@
       "latestReleaseDate": "2026-09-03T20:50:41Z",
       "githubPushedAt": "2026-11-24T21:13:16Z",
       "assets": [],
-      "lastFetched": 1795558184572,
+      "lastFetched": 1795640766621,
+      "fetchOk": true
+    },
+    "DualShots": {
+      "repoName": "DualShots",
+      "totalDownloads": 13,
+      "starsCount": 1,
+      "latestVersion": "v1.2.8",
+      "latestReleaseDate": "2026-11-25T21:04:23Z",
+      "githubPushedAt": "2026-11-25T21:04:22Z",
+      "assets": [
+        {
+          "name": "DualShots-v1.2.8.apk",
+          "size": 12845781,
+          "download_count": 0,
+          "browser_download_url": "https://github.com/nRn-World/DualShots/releases/download/v1.2.8/DualShots-v1.2.8.apk"
+        }
+      ],
+      "lastFetched": 1795640767675,
       "fetchOk": true
     },
     "NexNote": {
@@ -1373,7 +1391,7 @@
       "starsCount": 7,
       "githubPushedAt": "2026-11-10T22:02:45Z",
       "assets": [],
-      "lastFetched": 1795558185573,
+      "lastFetched": 1795640768696,
       "fetchOk": true
     },
     "SecretPromts": {
@@ -1382,7 +1400,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-22T18:46:00Z",
       "assets": [],
-      "lastFetched": 1795558186476,
+      "lastFetched": 1795640770448,
       "fetchOk": true
     },
     "SiteScannerPro": {
@@ -1391,7 +1409,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-11-14T02:12:24Z",
       "assets": [],
-      "lastFetched": 1795558187313,
+      "lastFetched": 1795640771427,
       "fetchOk": true
     },
     "GLOBAL_EMERGENCY": {
@@ -1400,7 +1418,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:36:28Z",
       "assets": [],
-      "lastFetched": 1795558188211,
+      "lastFetched": 1795640772530,
       "fetchOk": true
     },
     "PrivateLinkSaver": {
@@ -1409,7 +1427,7 @@
       "starsCount": 5,
       "githubPushedAt": "2026-11-23T13:59:13Z",
       "assets": [],
-      "lastFetched": 1795558189060,
+      "lastFetched": 1795640773589,
       "fetchOk": true
     },
     "BUGRAIDER": {
@@ -1418,7 +1436,7 @@
       "starsCount": 8,
       "githubPushedAt": "2026-10-29T05:45:41Z",
       "assets": [],
-      "lastFetched": 1795558189916,
+      "lastFetched": 1795640774662,
       "fetchOk": true
     },
     "BluetoothSafetyLock": {
@@ -1436,7 +1454,7 @@
           "browser_download_url": "https://github.com/nRn-World/BluetoothSafetyLock/releases/download/v1.1.4/BluetoothSafetyLock-v1.1.4.zip"
         }
       ],
-      "lastFetched": 1795558191012,
+      "lastFetched": 1795640775831,
       "fetchOk": true
     },
     "FlashVideoDownloader": {
@@ -1445,7 +1463,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-29T18:53:08Z",
       "assets": [],
-      "lastFetched": 1795558191944,
+      "lastFetched": 1795640776814,
       "fetchOk": true
     },
     "NotePin": {
@@ -1454,7 +1472,7 @@
       "starsCount": 2,
       "githubPushedAt": "2026-10-22T17:32:00Z",
       "assets": [],
-      "lastFetched": 1795558192851,
+      "lastFetched": 1795640777742,
       "fetchOk": true
     },
     "ParkiSthlm": {
@@ -1463,7 +1481,7 @@
       "starsCount": 2,
       "githubPushedAt": "2026-11-24T20:49:15Z",
       "assets": [],
-      "lastFetched": 1795558193743,
+      "lastFetched": 1795640778689,
       "fetchOk": true
     },
     "AutoAccountMaker": {
@@ -1472,7 +1490,7 @@
       "starsCount": 2,
       "githubPushedAt": "2026-10-30T23:45:56Z",
       "assets": [],
-      "lastFetched": 1795558194645,
+      "lastFetched": 1795640779653,
       "fetchOk": true
     },
     "GitHubRepoAnalyzer": {
@@ -1481,7 +1499,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-10-10T21:01:46Z",
       "assets": [],
-      "lastFetched": 1795558196576,
+      "lastFetched": 1795640781139,
       "fetchOk": true
     },
     "Svalna": {
@@ -1490,7 +1508,7 @@
       "starsCount": 1,
       "githubPushedAt": "2026-08-23T21:32:55Z",
       "assets": [],
-      "lastFetched": 1795558197499,
+      "lastFetched": 1795640782184,
       "fetchOk": true
     }
   }

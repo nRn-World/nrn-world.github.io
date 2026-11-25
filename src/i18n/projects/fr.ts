@@ -21,6 +21,13 @@ export const frProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'TeamAi est un FPS tactique 3D commandé à la voix, inspiré de SWAT 4 et exécuté directement dans le navigateur avec Three.js. Vous dirigez l\'équipe A (Ken, Maya) et l\'équipe B (Jack, Zoe) dans des interventions où la planification, les arrestations non létales et la discipline priment sur la puissance de feu.\n\n• IA d\'escouade vocale : Donnez des ordres tactiques à la voix (Whisper local ou Web Speech, en anglais et en suédois) ou adressez-vous à chaque agent par son nom\n• Règles d\'engagement strictes : Sommez les suspects, lancez des grenades flash, enfoncez les portes verrouillées et menottez les suspects qui se rendent\n• Carrière et armurerie : Débloquez de l\'équipement en montant en grade (carabine TX-4, taser ARC-2, fusil S-87, lanceur LL-12 et bouclier balistique), gérez les agents blessés et activez le mode Ironman\n• Cartes à plusieurs étages : Escaliers praticables, ascenseur fonctionnel, désamorçage de bombes et intérieurs détaillés\n• Solo, raid quotidien et coop en ligne : Jouez la campagne, l\'entraînement ou en coopération via PeerJS sans installation',
   },
+  'dualshots': {
+    name: 'DualShots',
+    tagline: 'Filmez avec les caméras avant et arrière simultanément sur Android — 100 % gratuit et illimité.',
+    description: 'Application Android native développée en Kotlin, Jetpack Compose et CameraX. Enregistrez une vidéo Dual View composée, deux fichiers séparés ou les deux à la fois — avec PiP déplaçable, 4K, HEVC, pause/reprise dans un même fichier et aperçu web.',
+    detailedAbout:
+      'DualShots est une application caméra Android gratuite et illimitée qui enregistre simultanément les caméras avant et arrière grâce à CameraX Dual Concurrent Camera et un compositeur OpenGL dédié.\n\n• Trois modes d\'enregistrement : Dual View (un MP4 composé), Separate Videos (deux fichiers indépendants) ou Both Options (les trois fichiers en une prise)\n• Petite caméra déplaçable et redimensionnable : Déplacez l\'incrustation, zoomez chaque caméra indépendamment ou mettez en pause/masquez une caméra en direct\n• Pause et reprise dans le même fichier : Poursuivez la prise dans un seul MP4 sans couper\n• 100 % gratuit et illimité : 4K Ultra HD, codec HEVC, formats par caméra (9:16, 16:9, 1:1, 4:3) sans abonnement ni filigrane\n• Galerie intégrée, statistiques et photos : Prenez des photos à tout moment ou essayez l\'aperçu web directement',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Lecteur multimédia de bureau audio et vidéo haute fidélité avec habillage personnalisé, égaliseur et lecture sans interruption.',

@@ -77,6 +77,13 @@ export const PROJECT_IMAGES = {
     raw('DoneTogether', 'main', 'screenshot/create.png'),
     raw('DoneTogether', 'main', 'screenshot/creat2.png'),
   ],
+  dualShots: [
+    raw('DualShots', 'main', 'web/assets/hero.webp'),
+    raw('DualShots', 'main', 'screenshots/home.png'),
+    raw('DualShots', 'main', 'screenshots/record.png'),
+    raw('DualShots', 'main', 'screenshots/gallery.png'),
+    raw('DualShots', 'main', 'screenshots/settings.png'),
+  ],
   nexNote: [
     '/images/projects/nexNote.webp',
     raw('NexNote', 'main', 'Screenshots/Start.png'),

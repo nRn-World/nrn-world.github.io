@@ -22,6 +22,13 @@ export const svProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'TeamAi är en röststyrd taktisk förstapersonsskjutare i 3D, inspirerad av SWAT 4 och byggd för att köras direkt i webbläsaren med Three.js. Du leder Team A (Ken, Maya) och Team B (Jack, Zoe) i spända insatser där planering, icke-dödliga gripanden och disciplin väger tyngre än eldkraft.\n\n• Röststyrd grupp-AI: Ge taktiska order med rösten (lokal Whisper-AI eller webbläsarens Web Speech, med stöd för engelska och svenska) eller tilltala enskilda poliser vid namn\n• Tydliga insatsregler (ROE): Ropa utmaningar, kasta chockgranater, sparka in låsta dörrar och sätt handfängsel på misstänkta — gripanden ger poäng medan obefogat våld drar ner betyget\n• Karriär och vapenförråd: Lås upp ny utrustning i takt med din rang (TX-4 karbin, ARC-2 elchockpistol, S-87 hagelgevär, LL-12 granatkastare och ballistisk sköld), hantera skadade kollegor och testa Ironman-läge\n• Flersplansbanor: Gåbara trappor, fungerande hiss, bombdesarmering och detaljerade inomhusmiljöer\n• Solo, daglig räd och online co-op: Spela kampanjen, öva i träningsuppdraget eller samarbeta online via PeerJS direkt i webbläsaren',
   },
+  'dualshots': {
+    name: 'DualShots',
+    tagline: 'Spela in med fram- och bakkameran samtidigt på Android — 100 % gratis och obegränsad.',
+    description: 'Nativ Android-app byggd med Kotlin, Jetpack Compose och CameraX. Spela in en sammansatt Dual View-video, två separata filer eller båda samtidigt — med flyttbar liten kamera, 4K, HEVC, paus/återuppta i samma fil och live-webbförhandsvisning.',
+    detailedAbout:
+      'DualShots är en helt gratis och obegränsad Android-kameraapp som spelar in från fram- och bakkameran samtidigt via CameraX Dual Concurrent Camera API och en egen OpenGL-motor.\n\n• Tre inspelningslägen: Dual View (en sammansatt bild-i-bild-MP4), Separate Videos (två fristående filer) eller Both Options (alla tre filer i samma tagning)\n• Flyttbar och skalbar liten kamera: Dra rutan vart du vill, ändra storlek i hörnet, nyp för att zooma varje kamera separat eller pausa/dölj valfri kamera under inspelning\n• Pausa och återuppta i samma fil: Timern fryser och inspelningen fortsätter i samma MP4 utan att delas upp\n• 100 % gratis och obegränsad: 4K Ultra HD, HEVC, valfritt bildformat per kamera (9:16, 16:9, 1:1, 4:3) och eget filformat utan betalväggar eller vattenstämplar\n• Inbyggt galleri, statistik och foto: Ta stillbilder när som helst, spela upp/dela/radera klipp i appen eller testa direkt i webbläsaren',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Högupplöst ljud- och videospelare för Windows med anpassade teman, equalizer och gapless-uppspelning.',

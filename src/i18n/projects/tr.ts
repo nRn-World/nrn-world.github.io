@@ -22,6 +22,13 @@ export const trProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'TeamAi, SWAT 4\'ten esinlenen ve Three.js ile doğrudan tarayıcıda çalışan sesli komutlu 3D taktiksel bir FPS oyunudur. Planlamanın, ölümcül olmayan tutuklamaların ve disiplinin ateş gücünden daha önemli olduğu operasyonlarda A Takımı (Ken, Maya) ve B Takımı\'na (Jack, Zoe) liderlik edersiniz.\n\n• Sesli ekip yapay zekâsı: Yerel Whisper AI veya tarayıcı Web Speech ile İngilizce ve İsveççe taktiksel emirler verin ya da memurlara isimleriyle seslenin\n• Sıkı angajman kuralları (ROE): Teslim ol çağrısı yapın, ses bombası atın, kilitli kapıları kırın ve teslim olan şüphelileri kelepçeleyin\n• Kariyer ve cephanelik ilerlemesi: Rütbe atladıkça yeni ekipmanların kilidini açın (TX-4 karabina, ARC-2 şok tabancası, S-87 pompalı, LL-12 fırlatıcı ve balistik kalkan), yaralı memurları yönetin ve Ironman modunu deneyin\n• Çok katlı haritalar: Yürünebilir merdivenler, çalışan asansör, bomba imha görevleri ve detaylı iç mekânlar\n• Tek oyunculu, günlük baskın ve çevrimiçi eşli oyun: Kampanyayı oynayın, eğitim görevini tekrarlayın veya PeerJS ile kurulumsuz çevrimiçi eşli oynayın',
   },
+  'dualshots': {
+    name: 'DualShots',
+    tagline: 'Android\'de ön ve arka kameralarla aynı anda kayıt yapın — %100 ücretsiz ve sınırsız.',
+    description: 'Kotlin, Jetpack Compose ve CameraX ile geliştirilmiş yerel Android çift kamera uygulaması. Tek birleşik Dual View videosu, iki ayrı dosya veya ikisini birden kaydedin — taşınabilir PiP, 4K, HEVC, tek dosyada duraklat/devam et ve web önizlemesi ile.',
+    detailedAbout:
+      'DualShots, CameraX Dual Concurrent Camera API ve özel OpenGL birleştirici kullanarak ön ve arka kameralardan eşzamanlı kayıt yapan ücretsiz ve sınırsız bir Android kamera uygulamasıdır.\n\n• Üç kayıt modu: Dual View (tek birleşik PiP MP4), Separate Videos (iki bağımsız dosya) veya Both Options (tek çekimde üç dosya)\n• Taşınabilir ve boyutlandırılabilir küçük kamera: Pencereyi sürükleyin, boyutlandırın, her kamerayı ayrı yakınlaştırın veya kayıt sırasında duraklatın/gizleyin\n• Tek dosyada duraklat ve devam et: Klipleri bölmeden aynı MP4 dosyasına kayda devam edin\n• %100 ücretsiz ve sınırsız: 4K Ultra HD, HEVC, kamera başına en-boy oranları (9:16, 16:9, 1:1, 4:3), ödeme duvarı veya filigran yok\n• Dahili galeri, istatistikler ve fotoğraf çekimi: İstediğiniz an fotoğraf çekin veya canlı web önizlemesini hemen deneyin',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Özelleştirilebilir arayüz, EQ ve kesintisiz çalma özellikli yüksek kaliteli masaüstü ses ve video oynatıcı.',

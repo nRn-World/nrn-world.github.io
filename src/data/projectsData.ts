@@ -612,6 +612,68 @@ Play instantly in the browser, or install it to your home screen and keep growin
     }
   },
 
+  // 8b. DualShots (Android APK + Web Preview)
+  {
+    id: 'dualshots',
+    name: 'DualShots',
+    tagline: 'Record from the front and back cameras simultaneously on Android — 100% free and unlimited.',
+    description: 'Native Android dual-camera app built with Kotlin, Jetpack Compose and CameraX. Record one composed Dual View video, two separate files, or both at once — with movable PiP, 4K, HEVC, pause/resume in one file and an interactive web preview.',
+    detailedAbout: 'DualShots is a free, unlimited Android camera app that records from the front and back cameras at the same time using the CameraX Dual Concurrent Camera API and a custom OpenGL compositor.\n\n• Three recording modes: Dual View (single composed picture-in-picture MP4), Separate Videos (two independent files) or Both Options (all three files in one take)\n• Movable & resizable small camera: Drag the overlay anywhere, resize it from the corner, pinch to zoom each camera independently, or pause/hide either camera mid-take\n• Pause & resume in one file: Freeze the timer and continue recording into the same MP4 instead of splitting clips\n• 100% free & unlimited: Full 4K Ultra HD, HEVC codec, per-camera aspect ratios (9:16, 16:9, 1:1, 4:3) and custom output format (e.g. 16:9 for YouTube) with no paywalls or watermarks\n• Built-in gallery, stats & photo capture: Take still photos anytime, preview/share/delete clips in-app, or try the live browser preview right away',
+    version: 'v1.2.8',
+    releaseDate: '2026-11-25',
+    category: 'Android',
+    tags: ['Mobil', 'Android', 'APK', 'Kamera', 'Video'],
+    platformBadge: 'APK',
+    projectType: 'web_app',
+    liveDemoUrl: 'https://nrnworld.one/DualShots/',
+    featured: true,
+    rating: 4.95,
+    downloadsCount: 0,
+    starsCount: 1,
+    images: [...PROJECT_IMAGES.dualShots],
+    downloadOptions: [
+      {
+        id: 'dualshots-apk',
+        platform: 'Android',
+        label: 'Android APK (v1.2.8)',
+        fileType: 'apk',
+        size: '12.8 MB',
+        filename: 'DualShots-v1.2.8.apk',
+        directUrl: 'https://github.com/nRn-World/DualShots/releases/latest/download/DualShots-v1.2.8.apk',
+        githubReleaseUrl: 'https://github.com/nRn-World/DualShots/releases/latest',
+        isPrimary: true,
+      },
+    ],
+    specs: [
+      { label: 'Camera Engine', value: 'CameraX 1.5 Dual Concurrent + OpenGL ES', icon: 'cpu' },
+      { label: 'Recording Modes', value: 'Dual View / Separate / Both Options', icon: 'layers' },
+      { label: 'Quality & Codec', value: 'Up to 4K Ultra HD · MP4 & HEVC (Free)', icon: 'speed' },
+      { label: 'Platforms', value: 'Android 7.0+ (APK) & Live Web Preview', icon: 'smartphone' },
+    ],
+    changelog: [
+      {
+        version: 'v1.2.8',
+        date: '2026.11.25',
+        isCurrent: true,
+        items: [
+          '100% free and unlimited — 4K, HEVC, Both Options and all aspect ratios unlocked for everyone',
+          'Official Android APK release on GitHub Releases with mobile install prompt on the web preview',
+          'Live browser preview deployed at nrnworld.one/DualShots/',
+          'OpenGL Dual View compositor, pause/resume in a single file, movable PiP and photo capture',
+        ],
+      },
+    ],
+    githubUrl: 'https://github.com/nRn-World/DualShots',
+    license: 'MIT License',
+    maintainer: 'nRnWorld',
+    lastUpdated: 'v1.2.8',
+    systemRequirements: {
+      os: 'Android 7.0 (API 24) or newer — or any modern browser for the live web preview',
+      ram: '2 GB RAM',
+      storage: '25 MB',
+    },
+  },
+
   // 9. DoneTogether (Web App + Android APK)
   {
     id: 'done-together',

@@ -5,13 +5,22 @@
     <link>https://nrnworld.one</link>
     <description>Official software repository and direct downloads hub for Windows utilities, AI agents, audio engines, and tools created by nRnWorld (@nRn-World).</description>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Nov 2026 22:09:58 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 21:06:23 GMT</lastBuildDate>
     <atom:link href="https://nrnworld.one/rss.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://nrnworld.one/logo-v4.webp</url>
       <title>nRnWorld</title>
       <link>https://nrnworld.one</link>
     </image>
+    <item>
+      <title>DualShots</title>
+      <link>https://nrnworld.one/p/dualshots/</link>
+      <guid isPermaLink="true">https://nrnworld.one/p/dualshots/</guid>
+      <description>Record from the front and back cameras simultaneously on Android — 100% free and unlimited.</description>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Android</category>
+      <enclosure url="https://nrnworld.one/og-image.png" type="image/webp" length="0" />
+    </item>
     <item>
       <title>TeamAi</title>
       <link>https://nrnworld.one/p/teamai/</link>

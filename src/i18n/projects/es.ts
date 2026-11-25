@@ -21,6 +21,13 @@ export const esProjects: Record<string, ProjectTranslation> = {
     detailedAbout:
       'TeamAi es un shooter táctico 3D en primera persona controlado por voz, inspirado en SWAT 4 y diseñado para ejecutarse directamente en el navegador con Three.js. Diriges al Equipo A (Ken, Maya) y al Equipo B (Jack, Zoe) en operaciones de alto riesgo donde la planificación, los arrestos no letales y la disciplina importan más que la potencia de fuego.\n\n• IA de escuadrón por voz: Da órdenes tácticas por voz (Whisper local o Web Speech del navegador, en inglés y sueco) o dirígete a agentes concretos por su nombre\n• Reglas de enfrentamiento estrictas: Grita advertencias, lanza granadas aturdidoras, derriba puertas cerradas y esposa a los sospechosos rendidos\n• Progresión de carrera y armería: Desbloquea equipo al subir de rango (carabina TX-4, aturdidor ARC-2, escopeta S-87, lanzador LL-12 y escudo balístico), gestiona agentes heridos y activa el modo Ironman\n• Mapas de varias plantas: Escaleras transitables, ascensor funcional, desactivación de bombas e interiores amueblados\n• Solitario, incursión diaria y cooperativo online: Juega la campaña, repite el entrenamiento o colabora online mediante PeerJS sin instalar nada',
   },
+  'dualshots': {
+    name: 'DualShots',
+    tagline: 'Graba con la cámara frontal y trasera a la vez en Android — 100 % gratis e ilimitado.',
+    description: 'Aplicación nativa de Android creada con Kotlin, Jetpack Compose y CameraX. Graba un vídeo compuesto Dual View, dos archivos independientes o ambos a la vez — con PiP móvil, 4K, HEVC, pausa/reanudación en un solo archivo y vista previa web.',
+    detailedAbout:
+      'DualShots es una aplicación de cámara Android gratuita e ilimitada que graba con las cámaras frontal y trasera simultáneamente mediante CameraX Dual Concurrent Camera y un compositor OpenGL propio.\n\n• Tres modos de grabación: Dual View (un MP4 compuesto), Separate Videos (dos archivos independientes) o Both Options (los tres archivos en una sola toma)\n• Cámara pequeña móvil y redimensionable: Arrastra la ventana donde quieras, cambia su tamaño, haz zoom independiente o pausa/oculta cualquier cámara mientras grabas\n• Pausa y reanuda en el mismo archivo: Continúa grabando en el mismo MP4 sin dividir clips\n• 100 % gratis e ilimitado: 4K Ultra HD, códec HEVC, formato por cámara (9:16, 16:9, 1:1, 4:3) sin muros de pago ni marcas de agua\n• Galería integrada, estadísticas y fotos: Haz fotos en cualquier momento o prueba la vista previa web al instante',
+  },
   'doggy-player': {
     name: 'Doggy-Player',
     tagline: 'Reproductor multimedia de escritorio de audio y vídeo de alta fidelidad con skins personalizados, ecualizador y reproducción sin pausas.',
